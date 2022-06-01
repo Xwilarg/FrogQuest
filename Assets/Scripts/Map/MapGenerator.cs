@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace TouhouPrideGameJam4.Map
     {
         [SerializeField]
         private MapInfo _info;
+
+        [SerializeField]
+        private GameObject _player;
 
         private Tile[][] _map;
 
@@ -26,8 +30,23 @@ namespace TouhouPrideGameJam4.Map
             // Spawn starting room
             var startingRoom = GetRoom(_info.StartingRoom);
             var randX = Random.Range(0, _info.MapSize - startingRoom[0].Length);
-            var randY = Random.Range(0, _info.MapSize - startingRoom.Length);
-            DrawRoom(randX, randY, startingRoom);
+            DrawRoom(randX, 0, startingRoom);
+
+            // Spawn player
+            List<(int X, int Y)> possibleSpawnPoints = new();
+            for (int y = 0; y < _map.Length; y++)
+            {
+                for (int x = 0; x < _map[y].Length; x++)
+                {
+                    if (_map[y][x] != null && _map[y][x].Type == TileType.StartingPos)
+                    {
+                        possibleSpawnPoints.Add((x, y));
+                    }
+                }
+            }
+            Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
+            var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
+            Instantiate(_player, new Vector3(currentSpawn.X, currentSpawn.Y), Quaternion.identity);
         }
 
         /// <summary>

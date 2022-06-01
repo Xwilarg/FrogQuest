@@ -21,3 +21,6 @@ MonoBehaviour:
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  - Character: 83
+    Type: 2
+    GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}

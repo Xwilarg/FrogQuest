@@ -3,6 +3,7 @@
     public enum TileType
     {
         Empty,
-        Wall
+        Wall,
+        StartingPos
     }
 }
