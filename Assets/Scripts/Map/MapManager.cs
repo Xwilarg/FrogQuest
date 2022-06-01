@@ -19,6 +19,7 @@ namespace TouhouPrideGameJam4.Map
         private Tile[][] _map;
 
         private Vector2Int _playerPos;
+        private List<Room> _rooms = new();
 
         private void Awake()
         {
@@ -36,11 +37,9 @@ namespace TouhouPrideGameJam4.Map
             // Spawn starting room
             var startingRoom = GetRoom(_info.StartingRoom);
             var randX = Random.Range(0, _info.MapSize - startingRoom[0].Length);
-            var doors = DrawRoom(randX, 0, startingRoom);
-            foreach (var d in doors)
-            {
-                _map[d.y][d.x].Type = TileType.Breakpoint;
-            }
+            var roomObj = new Room(randX, 0, startingRoom);
+            DrawRoom(roomObj);
+            _rooms.Add(roomObj);
 
             // Spawn player
             List<Vector2Int> possibleSpawnPoints = new();
@@ -58,6 +57,15 @@ namespace TouhouPrideGameJam4.Map
             var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
             _playerPos = new(currentSpawn.x, currentSpawn.y);
             Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity);
+
+            // DEBUG: Replace free doors by breakpoints
+            foreach (var r in _rooms)
+            {
+                foreach (var d in GetFreeDoors(r))
+                {
+                    _map[d.y][d.x].Type = TileType.Breakpoint;
+                }
+            }
         }
 
         public Vector2Int MovePlayer(int x, int y)
@@ -83,24 +91,27 @@ namespace TouhouPrideGameJam4.Map
         /// <param name="x">X position</param>
         /// <param name="y">Y position</param>
         /// <param name="roomInfo">Room data</param>
-        private Vector2Int[] DrawRoom(int x, int y, string[] roomInfo)
+        private void DrawRoom(Room room)
         {
             // Drawing the room
-            for (var yPos = y; yPos < y + roomInfo.Length; yPos++)
+            for (var yPos = room.Y; yPos < room.Y + room.Data.Length; yPos++)
             {
-                for (var xPos = x; xPos < x + roomInfo[yPos - y].Length; xPos++)
+                for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
-                    _map[yPos][xPos] = new(_info.ParsingData.FirstOrDefault(pd => pd.Character == roomInfo[yPos - y][xPos - x]).Type);
+                    _map[yPos][xPos] = new(_info.ParsingData.FirstOrDefault(pd => pd.Character == room.Data[yPos - room.Y][xPos - room.X]).Type);
                 }
             }
+        }
 
+        private Vector2Int[] GetFreeDoors(Room room)
+        {
             // Look for all exits
             List<Vector2Int> exits = new();
-            for (var yPos = y; yPos < y + roomInfo.Length; yPos++)
+            for (var yPos = room.Y; yPos < room.Y + room.Data.Length; yPos++)
             {
-                for (var xPos = x; xPos < x + roomInfo[yPos - y].Length; xPos++)
+                for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
-                    if (roomInfo[yPos - y][xPos - x] != ' ') // No need to check elements outside of the current room
+                    if (room.Data[yPos - room.Y][xPos - room.X] != ' ') // No need to check elements outside of the current room
                     {
                         // For a door to be around us, we need to be on a floor tile
                         if (_map[yPos][xPos].Type == TileType.Empty)
