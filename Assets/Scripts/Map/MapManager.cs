@@ -76,7 +76,7 @@ namespace TouhouPrideGameJam4.Map
             // Tile is in bound and can be walked on
             if (newX >= 0 && newX < _info.MapSize && newY >= 0 && newY < _info.MapSize &&
                 _map[newY][newX] != null &&
-                LookupTileByType(_map[y][x].Type).CanBeWalkedOn)
+                LookupTileByType(_map[newY][newX].Type).CanBeWalkedOn)
             {
                 _playerPos = new(newX, newY);
             }
