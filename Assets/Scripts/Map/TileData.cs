@@ -1,12 +1,12 @@
 ﻿using System;
 using UnityEngine;
 /// <summary>
-/// Information on how a tile should be parsed
+/// Information on a tile
 /// </summary>
 namespace TouhouPrideGameJam4.Map
 {
     [Serializable]
-    public class TileParsingData
+    public class TileData
     {
         /// <summary>
         /// Character that we are looking for in the file
@@ -22,5 +22,10 @@ namespace TouhouPrideGameJam4.Map
         /// Color used for gizmo debugging
         /// </summary>
         public Color GizmoColor;
+
+        /// <summary>
+        /// Is the player allowed to walk on this
+        /// </summary>
+        public bool CanBeWalkedOn;
     }
 }

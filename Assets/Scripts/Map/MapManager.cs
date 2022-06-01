@@ -6,8 +6,10 @@ using UnityEngine.Assertions;
 
 namespace TouhouPrideGameJam4.Map
 {
-    public class MapGenerator : MonoBehaviour
+    public class MapManager : MonoBehaviour
     {
+        public static MapManager Instance { get; private set; }
+
         [SerializeField]
         private MapInfo _info;
 
@@ -16,8 +18,12 @@ namespace TouhouPrideGameJam4.Map
 
         private Tile[][] _map;
 
-        private void Start()
+        private Vector2Int _playerPos;
+
+        private void Awake()
         {
+            Instance = this;
+
             Assert.IsNotNull(_info, "MapInfo is not set");
 
             // Init map
@@ -33,11 +39,11 @@ namespace TouhouPrideGameJam4.Map
             var doors = DrawRoom(randX, 0, startingRoom);
             foreach (var d in doors)
             {
-                _map[d.Y][d.X].Type = TileType.Breakpoint;
+                _map[d.y][d.x].Type = TileType.Breakpoint;
             }
 
             // Spawn player
-            List<Utils.Vector2<int>> possibleSpawnPoints = new();
+            List<Vector2Int> possibleSpawnPoints = new();
             for (int y = 0; y < _map.Length; y++)
             {
                 for (int x = 0; x < _map[y].Length; x++)
@@ -50,7 +56,24 @@ namespace TouhouPrideGameJam4.Map
             }
             Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
             var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
-            Instantiate(_player, new Vector3(currentSpawn.X, currentSpawn.Y), Quaternion.identity);
+            _playerPos = new(currentSpawn.x, currentSpawn.y);
+            Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity);
+        }
+
+        public Vector2Int MovePlayer(int x, int y)
+        {
+            var newX = _playerPos.x + x;
+            var newY = _playerPos.y + y;
+
+            // Tile is in bound and can be walked on
+            if (newX >= 0 && newX < _info.MapSize && newY >= 0 && newY < _info.MapSize &&
+                _map[newY][newX] != null &&
+                _info.ParsingData.FirstOrDefault(pd => pd.Type == _map[newY][newX].Type).CanBeWalkedOn)
+            {
+                _playerPos = new(newX, newY);
+            }
+
+            return _playerPos;
         }
 
         /// <summary>
@@ -60,7 +83,7 @@ namespace TouhouPrideGameJam4.Map
         /// <param name="x">X position</param>
         /// <param name="y">Y position</param>
         /// <param name="roomInfo">Room data</param>
-        private Utils.Vector2<int>[] DrawRoom(int x, int y, string[] roomInfo)
+        private Vector2Int[] DrawRoom(int x, int y, string[] roomInfo)
         {
             // Drawing the room
             for (var yPos = y; yPos < y + roomInfo.Length; yPos++)
@@ -72,7 +95,7 @@ namespace TouhouPrideGameJam4.Map
             }
 
             // Look for all exits
-            List<Utils.Vector2<int>> exits = new();
+            List<Vector2Int> exits = new();
             for (var yPos = y; yPos < y + roomInfo.Length; yPos++)
             {
                 for (var xPos = x; xPos < x + roomInfo[yPos - y].Length; xPos++)
@@ -83,9 +106,9 @@ namespace TouhouPrideGameJam4.Map
                         if (_map[yPos][xPos].Type == TileType.Empty)
                         {
                             var upType = yPos > 0 ? _map[yPos - 1][xPos]?.Type ?? null : null;
-                            var downType = yPos < _info.MapSize - 2 ? _map[yPos + 1][xPos]?.Type ?? null : null;
+                            var downType = yPos < _info.MapSize - 1 ? _map[yPos + 1][xPos]?.Type ?? null : null;
                             var leftType = xPos > 0 ? _map[yPos][xPos - 1]?.Type ?? null : null;
-                            var rightType = xPos < _info.MapSize - 2 ? _map[yPos][xPos + 1]?.Type ?? null : null;
+                            var rightType = xPos < _info.MapSize - 1 ? _map[yPos][xPos + 1]?.Type ?? null : null;
 
                             // A door need to be surrounded by 2 walls for the frame and then an empty tile and an unallocated one
                             // Example:

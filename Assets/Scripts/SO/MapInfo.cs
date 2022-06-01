@@ -14,6 +14,6 @@ namespace TouhouPrideGameJam4.SO
         public TextAsset[] Rooms;
 
         [Header("Parsing data")]
-        public TileParsingData[] ParsingData;
+        public TileData[] ParsingData;
     }
 }
