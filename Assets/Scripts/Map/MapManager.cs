@@ -3,6 +3,7 @@ using System.Linq;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
 using UnityEngine.Assertions;
+using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Map
 {
@@ -63,7 +64,7 @@ namespace TouhouPrideGameJam4.Map
             {
                 foreach (var d in GetFreeDoors(r, true))
                 {
-                    _map[d.y][d.x].Type = TileType.Breakpoint;
+                    _map[d.Y][d.X].Type = TileType.Breakpoint;
                 }
             }
         }
@@ -106,9 +107,9 @@ namespace TouhouPrideGameJam4.Map
         /// <param name="room">Room to check</param>
         /// <param name="validatePosOnMap">Do we take the map in consideration or only the current object?</param>
         /// <returns>All positions of free doors</returns>
-        private Vector2Int[] GetFreeDoors(Room room, bool validatePosOnMap)
+        private Door[] GetFreeDoors(Room room, bool validatePosOnMap)
         {
-            List<Vector2Int> exits = new();
+            List<Door> exits = new();
             for (var yPos = room.Y; yPos < room.Y + room.Data.Length; yPos++)
             {
                 var relativeY = yPos - room.Y;
@@ -145,19 +146,27 @@ namespace TouhouPrideGameJam4.Map
                             //  XX
                             // Here D is a valid door
 
-                            if (
-                                // Looking for vertical doors
-                                (upType == TileType.Wall && downType == TileType.Wall &&
-                                (leftType == TileType.Empty && rightType == null) ||
-                                (leftType == null && rightType == TileType.Empty))
-                                ||
-                                // Looking for horizontal doors
-                                (leftType == TileType.Wall && rightType == TileType.Wall &&
-                                (upType == TileType.Empty && downType == null) ||
-                                (upType == null && downType == TileType.Empty))
-                                )
+                            if (upType == TileType.Wall && downType == TileType.Wall)
                             {
-                                exits.Add(new(xPos, yPos));
+                                if (leftType == TileType.Empty && rightType == null)
+                                {
+                                    exits.Add(new(xPos, yPos, Direction.Right));
+                                }
+                                else if (leftType == null && rightType == TileType.Empty)
+                                {
+                                    exits.Add(new(xPos, yPos, Direction.Left));
+                                }
+                            }
+                            else if (leftType == TileType.Wall && rightType == TileType.Wall)
+                            {
+                                if (upType == TileType.Empty && downType == null)
+                                {
+                                    exits.Add(new(xPos, yPos, Direction.Down));
+                                }
+                                else if (upType == null && downType == TileType.Empty)
+                                {
+                                    exits.Add(new(xPos, yPos, Direction.Up));
+                                }
                             }
                         }
                     }
