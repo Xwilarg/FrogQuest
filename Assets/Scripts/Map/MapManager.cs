@@ -61,7 +61,7 @@ namespace TouhouPrideGameJam4.Map
             // DEBUG: Replace free doors by breakpoints
             foreach (var r in _rooms)
             {
-                foreach (var d in GetFreeDoors(r))
+                foreach (var d in GetFreeDoors(r, true))
                 {
                     _map[d.y][d.x].Type = TileType.Breakpoint;
                 }
@@ -76,7 +76,7 @@ namespace TouhouPrideGameJam4.Map
             // Tile is in bound and can be walked on
             if (newX >= 0 && newX < _info.MapSize && newY >= 0 && newY < _info.MapSize &&
                 _map[newY][newX] != null &&
-                _info.ParsingData.FirstOrDefault(pd => pd.Type == _map[newY][newX].Type).CanBeWalkedOn)
+                LookupTileByType(_map[y][x].Type).CanBeWalkedOn)
             {
                 _playerPos = new(newX, newY);
             }
@@ -88,38 +88,55 @@ namespace TouhouPrideGameJam4.Map
         /// Draw a room on the map
         /// </summary>
         /// <remarks>Doesn't check if the position is valid/empty</remarks>
-        /// <param name="x">X position</param>
-        /// <param name="y">Y position</param>
-        /// <param name="roomInfo">Room data</param>
+        /// <param name="room">Room to check</param>
         private void DrawRoom(Room room)
         {
-            // Drawing the room
             for (var yPos = room.Y; yPos < room.Y + room.Data.Length; yPos++)
             {
                 for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
-                    _map[yPos][xPos] = new(_info.ParsingData.FirstOrDefault(pd => pd.Character == room.Data[yPos - room.Y][xPos - room.X]).Type);
+                    _map[yPos][xPos] = new(LookupTileByChar(room.Data[yPos - room.Y][xPos - room.X]).Type);
                 }
             }
         }
 
-        private Vector2Int[] GetFreeDoors(Room room)
+        /// <summary>
+        /// Get all the doors that lead nowhere
+        /// </summary>
+        /// <param name="room">Room to check</param>
+        /// <param name="validatePosOnMap">Do we take the map in consideration or only the current object?</param>
+        /// <returns>All positions of free doors</returns>
+        private Vector2Int[] GetFreeDoors(Room room, bool validatePosOnMap)
         {
-            // Look for all exits
             List<Vector2Int> exits = new();
             for (var yPos = room.Y; yPos < room.Y + room.Data.Length; yPos++)
             {
-                for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
+                var relativeY = yPos - room.Y;
+                for (var xPos = room.X; xPos < room.X + room.Data[relativeY].Length; xPos++)
                 {
-                    if (room.Data[yPos - room.Y][xPos - room.X] != ' ') // No need to check elements outside of the current room
+                    var relativeX = xPos - room.X;
+
+                    if (room.Data[relativeY][relativeX] != ' ') // No need to check elements outside of the current room
                     {
                         // For a door to be around us, we need to be on a floor tile
                         if (_map[yPos][xPos].Type == TileType.Empty)
                         {
-                            var upType = yPos > 0 ? _map[yPos - 1][xPos]?.Type ?? null : null;
-                            var downType = yPos < _info.MapSize - 1 ? _map[yPos + 1][xPos]?.Type ?? null : null;
-                            var leftType = xPos > 0 ? _map[yPos][xPos - 1]?.Type ?? null : null;
-                            var rightType = xPos < _info.MapSize - 1 ? _map[yPos][xPos + 1]?.Type ?? null : null;
+                            TileType? upType, downType, leftType, rightType;
+
+                            if (validatePosOnMap) // We look what are the adjacent tiles using the map
+                            {
+                                upType = yPos > 0 ? _map[yPos - 1][xPos]?.Type ?? null : null;
+                                downType = yPos < _info.MapSize - 1 ? _map[yPos + 1][xPos]?.Type ?? null : null;
+                                leftType = xPos > 0 ? _map[yPos][xPos - 1]?.Type ?? null : null;
+                                rightType = xPos < _info.MapSize - 1 ? _map[yPos][xPos + 1]?.Type ?? null : null;
+                            }
+                            else // We only look for adjacent tiles on the object itself
+                            {
+                                upType = relativeY > 0 ? LookupTileByChar(room.Data[relativeY - 1][relativeX])?.Type ?? null : null;
+                                downType = relativeY < room.Data.Length - 1 ? LookupTileByChar(room.Data[yPos + 1][xPos])?.Type ?? null : null;
+                                leftType = relativeX > 0 ? LookupTileByChar(room.Data[yPos][xPos - 1])?.Type ?? null : null;
+                                rightType = relativeX < room.Data[relativeY].Length - 1 ? LookupTileByChar(room.Data[yPos][xPos + 1])?.Type ?? null : null;
+                            }
 
                             // A door need to be surrounded by 2 walls for the frame and then an empty tile and an unallocated one
                             // Example:
@@ -159,6 +176,12 @@ namespace TouhouPrideGameJam4.Map
             return textFile.text.Replace("\r", "").Split('\n');
         }
 
+        private TileData LookupTileByType(TileType type)
+            => _info.ParsingData.FirstOrDefault(pd => pd.Type == type);
+
+        private TileData? LookupTileByChar(char c)
+            => c == ' ' ? null :_info.ParsingData.FirstOrDefault(pd => pd.Character == c);
+
         private void OnDrawGizmos()
         {
             if (_map == null)
@@ -179,7 +202,7 @@ namespace TouhouPrideGameJam4.Map
                         }
                         else
                         {
-                            Gizmos.color = _info.ParsingData.FirstOrDefault(pd => pd.Type == _map[y][x].Type).GizmoColor;
+                            Gizmos.color = LookupTileByType(_map[y][x].Type).GizmoColor;
                             Gizmos.DrawCube(new Vector2(x, y), Vector2.one);
                         }
                     }
