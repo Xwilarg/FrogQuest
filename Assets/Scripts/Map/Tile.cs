@@ -10,6 +10,6 @@
             Type = type;
         }
 
-        public TileType Type { private set; get; }
+        public TileType Type { set; get; }
     }
 }

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapSize: 50
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
+  Rooms:
+  - {fileID: 4900000, guid: 3b9a479da647164489ce246c51358df5, type: 3}
+  - {fileID: 4900000, guid: cf15dba9beaf05041bc20f4f0c2c9e04, type: 3}
   ParsingData:
   - Character: 46
     Type: 0

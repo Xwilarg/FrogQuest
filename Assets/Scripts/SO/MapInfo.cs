@@ -11,6 +11,7 @@ namespace TouhouPrideGameJam4.SO
 
         [Header("Rooms")]
         public TextAsset StartingRoom;
+        public TextAsset[] Rooms;
 
         [Header("Parsing data")]
         public TileParsingData[] ParsingData;

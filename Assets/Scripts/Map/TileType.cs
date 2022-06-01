@@ -4,6 +4,7 @@
     {
         Empty,
         Wall,
-        StartingPos
+        StartingPos,
+        Breakpoint
     }
 }
