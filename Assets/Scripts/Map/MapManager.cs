@@ -43,20 +43,18 @@ namespace TouhouPrideGameJam4.Map
             _rooms.Add(roomObj);
 
             // Place the next rooms
-            for (int c = 1; c > 0; c--)
+            for (int c = 10; c > 0; c--)
             {
-                for (int i = _rooms.Count - 1; i >= 0; i--)
+                var r = _rooms[^1];
+                foreach (var d in GetFreeDoors(r, true))
                 {
-                    var r = _rooms[i];
-                    foreach (var d in GetFreeDoors(r, true))
+                    if (d.Direction == Direction.Down)
                     {
-                        if (d.Direction == Direction.Up)
-                        {
-                            var possibilities = GetRandomMatchingRoom(d);
-                            var randRoom = possibilities[Random.Range(0, possibilities.Length)];
-                            DrawRoom(randRoom);
-                            _rooms.Add(randRoom);
-                        }
+                        var possibilities = GetRandomMatchingRoom(d);
+                        var randRoom = possibilities[Random.Range(0, possibilities.Length)];
+                        DrawRoom(randRoom);
+                        _rooms.Add(randRoom);
+                        break;
                     }
                 }
             }
