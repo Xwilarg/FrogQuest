@@ -2,5 +2,9 @@
 {
     public class Enemy : ACharacter
     {
+        private void Awake()
+        {
+            Init();
+        }
     }
 }

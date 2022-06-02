@@ -6,6 +6,11 @@ namespace TouhouPrideGameJam4.Character.Player
 {
     public class PlayerController : ACharacter
     {
+        private void Awake()
+        {
+            Init();
+        }
+
         public void OnMovement(InputAction.CallbackContext value)
         {
             if (value.performed)
