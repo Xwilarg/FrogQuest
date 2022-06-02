@@ -1,4 +1,5 @@
 ﻿using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Inventory;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.Character
@@ -22,6 +23,11 @@ namespace TouhouPrideGameJam4.Character
             {
                 return _position;
             }
+        }
+
+        public void ShowItems(InventoryUI inventory)
+        {
+            inventory.UpdateContent(new[] { _info.DefaultWeapon });
         }
 
         protected void Init()

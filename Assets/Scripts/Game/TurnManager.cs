@@ -2,6 +2,7 @@
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
@@ -18,17 +19,21 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private TMP_Text _debugText;
 
+        [SerializeField]
+        private InventoryUI _inventory;
+
         private ACharacter _player;
         public ACharacter Player
         {
             set
             {
                 _player = value;
+                _player.ShowItems(_inventory);
                 UpdateDebugText();
             }
             get => _player;
         }
-        private List<ACharacter> _enemies = new();
+        private readonly List<ACharacter> _enemies = new();
 
         private void Awake()
         {

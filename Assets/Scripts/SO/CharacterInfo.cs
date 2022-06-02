@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TouhouPrideGameJam4.SO.Item;
+using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO
 {
