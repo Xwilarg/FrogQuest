@@ -65,7 +65,21 @@ namespace TouhouPrideGameJam4.Map
                 foreach (var d in GetFreeDoors(r, true))
                 {
                     _map[d.Y][d.X].Type = TileType.Breakpoint;
+                    if (d.Direction == Direction.Down)
+                    {
+                        GetRandomMatchingRoom(d); // DEBUG: Can we get the next room going down?
+                    }
                 }
+            }
+        }
+
+        private void GetRandomMatchingRoom(Door door)
+        {
+            var testRoom = _info.Rooms[0];
+            var doors = GetFreeDoors(new(0, 0, GetRoom(testRoom)), false);
+            foreach (var d in doors)
+            {
+                Debug.Log($"{d.X} ; {d.Y} looking at {d.Direction}");
             }
         }
 
@@ -120,7 +134,7 @@ namespace TouhouPrideGameJam4.Map
                     if (room.Data[relativeY][relativeX] != ' ') // No need to check elements outside of the current room
                     {
                         // For a door to be around us, we need to be on a floor tile
-                        if (_map[yPos][xPos].Type == TileType.Empty)
+                        if (!validatePosOnMap || _map[yPos][xPos].Type == TileType.Empty)
                         {
                             TileType? upType, downType, leftType, rightType;
 
