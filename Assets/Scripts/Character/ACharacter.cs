@@ -42,5 +42,10 @@ namespace TouhouPrideGameJam4.Character
         {
             target.TakeDamage(_info.DefaultWeapon.Damage);
         }
+
+        public override string ToString()
+        {
+            return $"{name} - Health: {_health} / {_info.BaseHealth}";
+        }
     }
 }

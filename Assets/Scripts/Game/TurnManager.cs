@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO;
@@ -14,7 +15,19 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private AIInfo _aiInfo;
 
-        public ACharacter Player { set; private get; }
+        [SerializeField]
+        private TMP_Text _debugText;
+
+        private ACharacter _player;
+        public ACharacter Player
+        {
+            set
+            {
+                _player = value;
+                UpdateDebugText();
+            }
+            get => _player;
+        }
         private List<ACharacter> _enemies = new();
 
         private void Awake()
@@ -57,13 +70,12 @@ namespace TouhouPrideGameJam4.Game
             if (target != null) // Enemy on the way, we attack it
             {
                 Player.Attack(target);
-                PlayerEnemyTurn();
             }
             else if (MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
             {
                 Player.Position = new(newX, newY);
-                PlayerEnemyTurn();
             }
+            PlayerEnemyTurn();
         }
 
         private void PlayerEnemyTurn()
@@ -87,6 +99,7 @@ namespace TouhouPrideGameJam4.Game
                         if (Player.Position.x == enemy.Position.x + d.x && Player.Position.y == enemy.Position.y + d.y)
                         {
                             enemy.Attack(Player);
+                            UpdateDebugText();
                             break;
                         }
                         else if (MapManager.Instance.IsTileWalkable(enemy.Position.x + d.x, enemy.Position.y + d.y))
@@ -97,6 +110,11 @@ namespace TouhouPrideGameJam4.Game
                     }
                 }
             }
+        }
+
+        private void UpdateDebugText()
+        {
+            _debugText.text = Player.ToString();
         }
     }
 }
