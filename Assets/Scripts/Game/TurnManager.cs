@@ -1,4 +1,5 @@
-﻿using TouhouPrideGameJam4.Character;
+﻿using System.Collections.Generic;
+using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
@@ -8,7 +9,13 @@ namespace TouhouPrideGameJam4.Game
     {
         public static TurnManager Instance { get; private set; }
 
-        public ACharacter Player { set; get; }
+        public ACharacter Player { set; private get; }
+        private List<ACharacter> _enemies = new();
+
+        public void AddEnemy(ACharacter character)
+        {
+            _enemies.Add(character);
+        }
 
         private void Awake()
         {

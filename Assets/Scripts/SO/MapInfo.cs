@@ -8,6 +8,7 @@ namespace TouhouPrideGameJam4.SO
     {
         [Header("Configuration")]
         public int MapSize;
+        public int MaxEnemiesPerRoom;
 
         [Header("Rooms")]
         public TextAsset StartingRoom;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO;
@@ -17,7 +18,7 @@ namespace TouhouPrideGameJam4.Map
         private MapInfo _info;
 
         [SerializeField]
-        private GameObject _player;
+        private GameObject _prefabPlayer, _prefabEnemy;
 
         private Tile[][] _map;
         private List<Room> _rooms = new();
@@ -85,8 +86,38 @@ namespace TouhouPrideGameJam4.Map
             }
             Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
             var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
-            TurnManager.Instance.Player = Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity).GetComponent<PlayerController>();
-            TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
+            var character = Instantiate(_prefabPlayer, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity).GetComponent<ACharacter>();
+            character.Position = new(currentSpawn.x, currentSpawn.y);
+            TurnManager.Instance.Player = character;
+
+            // Spawn enemies
+            var enemyContainer = new GameObject("Enemies");
+            foreach (var room in _rooms.Skip(1)) // We check each 
+            {
+                var nbEnemies = Random.Range(0, _info.MaxEnemiesPerRoom + 1);
+                List<Vector2Int> spawnPos = new();
+
+                while (spawnPos.Count < nbEnemies)
+                {
+                    var y = Random.Range(1, room.Data.Length - 1);
+                    var x = Random.Range(1, room.Data[y].Length - 1);
+                    var pos = new Vector2Int(x, y);
+                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn;
+
+                    if (!spawnPos.Contains(pos) && tileOk == true)
+                    {
+                        spawnPos.Add(new(room.X + x, room.Y + y));
+                    }
+                }
+
+                foreach (var pos in spawnPos)
+                {
+                    var enemy = Instantiate(_prefabEnemy, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
+                    enemy.Position = new(pos.x, pos.y);
+                    TurnManager.Instance.AddEnemy(enemy);
+                    enemy.transform.parent = enemyContainer.transform;
+                }
+            }
         }
 
         /// <summary>

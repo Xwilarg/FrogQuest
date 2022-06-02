@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MapInfo
   m_EditorClassIdentifier: 
   MapSize: 200
+  MaxEnemiesPerRoom: 2
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
   Rooms:
   - {fileID: 4900000, guid: 3b9a479da647164489ce246c51358df5, type: 3}
