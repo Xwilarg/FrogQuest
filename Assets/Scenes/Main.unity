@@ -1132,7 +1132,9 @@ MonoBehaviour:
   _nameContainer: {fileID: 1197313731}
   _descriptionContainer: {fileID: 693584490}
   _quantityContainer: {fileID: 445271443}
+  _actionContainer: {fileID: 462329443}
   _textPrefab: {fileID: 2396140196542041824, guid: 976a32e5599bf8341b46ed1e6da9f27f, type: 3}
+  _buttonPrefab: {fileID: 9161603825531311707, guid: 2d04b42758752cf4f87cef05e4494743, type: 3}
 --- !u!1 &955185104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,7 +1646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -107.5}
+  m_AnchoredPosition: {x: 150, y: -83.33334}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1200176994
@@ -1951,7 +1953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -107.5}
+  m_AnchoredPosition: {x: 150, y: -121.66669}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475641954

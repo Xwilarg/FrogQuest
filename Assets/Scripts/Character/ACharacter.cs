@@ -31,9 +31,11 @@ namespace TouhouPrideGameJam4.Character
 
         public void ShowItems(InventoryUI inventory)
         {
-            var items = new List<AItemInfo>(_info.StartingItems);
-            items.Add(_info.DefaultWeapon);
-            inventory.UpdateContent(items.ToArray(), null);
+            var items = new List<AItemInfo>(_info.StartingItems)
+            {
+                _info.DefaultWeapon
+            };
+            inventory.UpdateContent(this, items.ToArray(), null);
         }
 
         protected void Init()
