@@ -1,10 +1,10 @@
-﻿using TouhouPrideGameJam4.Map;
+﻿using TouhouPrideGameJam4.Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TouhouPrideGameJam4.Player
+namespace TouhouPrideGameJam4.Character.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : ACharacter
     {
         public void OnMovement(InputAction.CallbackContext value)
         {
@@ -15,11 +15,11 @@ namespace TouhouPrideGameJam4.Player
                 {
                     if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
                     {
-                        transform.position = (Vector2)MapManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0);
+                        TurnManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0);
                     }
                     else
                     {
-                        transform.position = (Vector2)MapManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1);
+                        TurnManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1);
                     }
                 }
             }

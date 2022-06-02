@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -18,14 +20,15 @@ namespace TouhouPrideGameJam4.Map
         private GameObject _player;
 
         private Tile[][] _map;
-
-        private Vector2Int _playerPos;
         private List<Room> _rooms = new();
 
         private void Awake()
         {
             Instance = this;
+        }
 
+        private void Start()
+        {
             Assert.IsNotNull(_info, "MapInfo is not set");
 
             // Init map
@@ -58,11 +61,13 @@ namespace TouhouPrideGameJam4.Map
                     }
                 }
             }
+
+            // Replace empty spaces by walls so the player can't exit the map
             foreach (var r in _rooms)
             {
                 foreach (var d in GetFreeDoors(r, true))
                 {
-                    _map[d.Y][d.X].Type = TileType.Breakpoint;
+                    _map[d.Y][d.X].Type = TileType.Wall;
                 }
             }
 
@@ -80,8 +85,8 @@ namespace TouhouPrideGameJam4.Map
             }
             Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
             var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
-            _playerPos = new(currentSpawn.x, currentSpawn.y);
-            Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity);
+            TurnManager.Instance.Player = Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity).GetComponent<PlayerController>();
+            TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
         }
 
         /// <summary>
@@ -123,21 +128,10 @@ namespace TouhouPrideGameJam4.Map
             return positions.ToArray();
         }
 
-        public Vector2Int MovePlayer(int x, int y)
-        {
-            var newX = _playerPos.x + x;
-            var newY = _playerPos.y + y;
-
-            // Tile is in bound and can be walked on
-            if (newX >= 0 && newX < _info.MapSize && newY >= 0 && newY < _info.MapSize &&
-                _map[newY][newX] != null &&
-                LookupTileByType(_map[newY][newX].Type).CanBeWalkedOn)
-            {
-                _playerPos = new(newX, newY);
-            }
-
-            return _playerPos;
-        }
+        public bool IsTileWalkable(int x, int y)
+            => x >= 0 && x < _info.MapSize && y >= 0 && y < _info.MapSize &&
+               _map[y][x] != null &&
+               LookupTileByType(_map[y][x].Type).CanBeWalkedOn;
 
         /// <summary>
         /// Draw a room on the map
