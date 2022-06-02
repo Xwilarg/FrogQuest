@@ -245,7 +245,7 @@ namespace TouhouPrideGameJam4.Map
         private TileData LookupTileByType(TileType type)
             => _info.ParsingData.FirstOrDefault(pd => pd.Type == type);
 
-        private TileData? LookupTileByChar(char c)
+        private TileData LookupTileByChar(char c)
             => c == ' ' ? null :_info.ParsingData.FirstOrDefault(pd => pd.Character == c);
 
         private void OnDrawGizmos()
