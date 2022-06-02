@@ -60,27 +60,65 @@ namespace TouhouPrideGameJam4.Map
             Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity);
 
             // DEBUG: Replace free doors by breakpoints
+            for (int i = _rooms.Count - 1; i >= 0; i--)
+            {
+                var r = _rooms[i];
+                foreach (var d in GetFreeDoors(r, true))
+                {
+                    if (d.Direction == Direction.Up)
+                    {
+                        var possibilities = GetRandomMatchingRoom(d);
+                        var randRoom = possibilities[Random.Range(0, possibilities.Length)];
+                        DrawRoom(randRoom);
+                        _rooms.Add(randRoom);
+                    }
+                }
+            }
             foreach (var r in _rooms)
             {
                 foreach (var d in GetFreeDoors(r, true))
                 {
                     _map[d.Y][d.X].Type = TileType.Breakpoint;
-                    if (d.Direction == Direction.Down)
-                    {
-                        GetRandomMatchingRoom(d); // DEBUG: Can we get the next room going down?
-                    }
                 }
             }
         }
 
-        private void GetRandomMatchingRoom(Door door)
+        /// <summary>
+        /// Get a random room that fit in the map
+        /// </summary>
+        /// <param name="door">Door we are starting at</param>
+        private Room[] GetRandomMatchingRoom(Door door)
         {
-            var testRoom = _info.Rooms[0];
-            var doors = GetFreeDoors(new(0, 0, GetRoom(testRoom)), false);
-            foreach (var d in doors)
+            var testRoom = _info.Rooms[0]; // TODO
+            var data = GetRoom(testRoom);
+            return GetPlacementOffset(door, new(0, 0, data)).Select(o => new Room(o.x, o.y, data)).ToArray();
+        }
+
+        /// <summary>
+        /// Get the offset needed to place our room
+        /// </summary>
+        /// <param name="door">Door we need to match</param>
+        /// <param name="targetRoom">Information about our room</param>
+        /// <returns></returns>
+        private Vector2Int[] GetPlacementOffset(Door door, Room targetRoom)
+        {
+            var doors = GetFreeDoors(targetRoom, false);
+            var oppositeDoors = door.Direction switch
             {
-                Debug.Log($"{d.X} ; {d.Y} looking at {d.Direction}");
+                Direction.Up => doors.Where(x => x.Direction == Direction.Down),
+                Direction.Down => doors.Where(x => x.Direction == Direction.Up),
+                Direction.Left => doors.Where(x => x.Direction == Direction.Right),
+                Direction.Right => doors.Where(x => x.Direction == Direction.Left),
+                _ => throw new System.NotImplementedException()
+            };
+            List<Vector2Int> positions = new();
+            foreach (var d in oppositeDoors)
+            {
+                int xOffset = door.X;
+                int yOffset = door.Y;
+                positions.Add(new(xOffset - d.X, yOffset + d.Y));
             }
+            return positions.ToArray();
         }
 
         public Vector2Int MovePlayer(int x, int y)
