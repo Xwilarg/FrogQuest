@@ -1,3 +1,14 @@
+# Zane's wierd stuff
+## git bash 
+*.stackdump
+*.bak
+*.new
+## vim
+*.sw?
+*~
+/tags
+.netrwhist
+
 /[Aa]ssets/TextMesh Pro/
 /[Aa]ssets/TextMesh Pro.meta
 
