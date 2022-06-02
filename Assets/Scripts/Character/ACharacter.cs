@@ -1,5 +1,7 @@
-﻿using TouhouPrideGameJam4.Game;
+﻿using System.Collections.Generic;
+using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
+using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.Character
@@ -8,6 +10,8 @@ namespace TouhouPrideGameJam4.Character
     {
         [SerializeField]
         private SO.CharacterInfo _info;
+
+        private List<AItemInfo> _items = new();
 
         private int _health;
 
@@ -27,12 +31,15 @@ namespace TouhouPrideGameJam4.Character
 
         public void ShowItems(InventoryUI inventory)
         {
-            inventory.UpdateContent(new[] { _info.DefaultWeapon });
+            var items = new List<AItemInfo>(_info.StartingItems);
+            items.Add(_info.DefaultWeapon);
+            inventory.UpdateContent(items.ToArray(), null);
         }
 
         protected void Init()
         {
             _health = _info.BaseHealth;
+            _items.AddRange(_info.StartingItems);
         }
 
         public void TakeDamage(int amount)
