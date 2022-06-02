@@ -129,7 +129,7 @@ namespace TouhouPrideGameJam4.Game
             }
         }
 
-        private void UpdateDebugText()
+        public void UpdateDebugText()
         {
             _debugText.text = Player.ToString();
         }

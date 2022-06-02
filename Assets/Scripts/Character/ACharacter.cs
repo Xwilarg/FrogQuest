@@ -51,6 +51,11 @@ namespace TouhouPrideGameJam4.Character
             {
                 TurnManager.Instance.RemoveCharacter(this);
             }
+            else if (_health > _info.BaseHealth)
+            {
+                _health = _info.BaseHealth;
+            }
+            TurnManager.Instance.UpdateDebugText();
         }
 
         public void Attack(ACharacter target)
