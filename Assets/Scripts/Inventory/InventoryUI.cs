@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
@@ -16,10 +17,10 @@ namespace TouhouPrideGameJam4.Inventory
         [SerializeField]
         private GameObject _textPrefab, _buttonPrefab;
 
-        private AItemInfo[] _items;
+        private IReadOnlyDictionary<AItemInfo, int> _items;
         private ACharacter _owner;
 
-        public void UpdateContent(ACharacter owner, AItemInfo[] items, ItemType? filter)
+        public void UpdateContent(ACharacter owner, IReadOnlyDictionary<AItemInfo, int> items, ItemType? filter)
         {
             _owner = owner;
             _items = items;
@@ -28,13 +29,13 @@ namespace TouhouPrideGameJam4.Inventory
             for (var i = 0; i < _descriptionContainer.childCount; i++) Destroy(_descriptionContainer.GetChild(i).gameObject);
             for (var i = 0; i < _quantityContainer.childCount; i++) Destroy(_quantityContainer.GetChild(i).gameObject);
             for (var i = 0; i < _actionContainer.childCount; i++) Destroy(_actionContainer.GetChild(i).gameObject);
-            foreach (var item in items.Where(x => filter == null || x.Type == filter.Value))
+            foreach (var item in items.Where(x => filter == null || x.Key.Type == filter.Value))
             {
-                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Name;
-                Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Description;
-                Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = "1";
+                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Key.Name;
+                Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Key.Description;
+                Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = item.Value.ToString();
                 var button = Instantiate(_buttonPrefab, _actionContainer);
-                button.GetComponentInChildren<TMP_Text>().text = item.Type switch
+                button.GetComponentInChildren<TMP_Text>().text = item.Key.Type switch
                 {
                     ItemType.Weapon => "Equip",
                     ItemType.Consummable => "Use",
@@ -42,13 +43,13 @@ namespace TouhouPrideGameJam4.Inventory
                 };
                 button.GetComponent<Button>().onClick.AddListener(new(() =>
                 {
-                    switch (item.Type)
+                    switch (item.Key.Type)
                     {
                         case ItemType.Weapon:
                             break; // TODO
 
                         case ItemType.Consummable:
-                            var consumable = (ConsumableInfo)item;
+                            var consumable = (ConsumableInfo)item.Key;
                             switch (consumable.Effect)
                             {
                                 case EffectType.Heal:
@@ -58,6 +59,8 @@ namespace TouhouPrideGameJam4.Inventory
                                 default:
                                     throw new NotImplementedException();
                             }
+                            _owner.RemoveItem(consumable);
+                            _owner.ShowItems(this, filter);
                             break;
 
                         default:

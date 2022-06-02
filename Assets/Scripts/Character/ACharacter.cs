@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.SO.Item;
@@ -11,7 +12,7 @@ namespace TouhouPrideGameJam4.Character
         [SerializeField]
         private SO.CharacterInfo _info;
 
-        private List<AItemInfo> _items = new();
+        private Dictionary<AItemInfo, int> _items = new();
 
         private int _health;
 
@@ -29,19 +30,31 @@ namespace TouhouPrideGameJam4.Character
             }
         }
 
-        public void ShowItems(InventoryUI inventory)
+        public void RemoveItem(AItemInfo item)
         {
-            var items = new List<AItemInfo>(_info.StartingItems)
+            if (_items[item] == 1)
             {
-                _info.DefaultWeapon
+                _items.Remove(item);
+            }
+            else
+            {
+                _items[item]--;
+            }
+        }
+
+        public void ShowItems(InventoryUI inventory, ItemType? baseFilter)
+        {
+            var items = new Dictionary<AItemInfo, int>(_items)
+            {
+                { _info.DefaultWeapon, 1 }
             };
-            inventory.UpdateContent(this, items.ToArray(), null);
+            inventory.UpdateContent(this, items, baseFilter);
         }
 
         protected void Init()
         {
             _health = _info.BaseHealth;
-            _items.AddRange(_info.StartingItems);
+            _items = _info.StartingItems.ToDictionary(x => x, x => 1);
         }
 
         public void TakeDamage(int amount)

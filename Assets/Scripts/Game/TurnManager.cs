@@ -44,7 +44,7 @@ namespace TouhouPrideGameJam4.Game
             _inventory.gameObject.SetActive(!_inventory.gameObject.activeInHierarchy);
             if (_inventory.gameObject.activeInHierarchy)
             {
-                _player.ShowItems(_inventory);
+                _player.ShowItems(_inventory, null);
             }
         }
 
