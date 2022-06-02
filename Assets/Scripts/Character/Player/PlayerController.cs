@@ -29,5 +29,13 @@ namespace TouhouPrideGameJam4.Character.Player
                 }
             }
         }
+
+        public void OnInventory(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                TurnManager.Instance.ToggleInventory();
+            }
+        }
     }
 }

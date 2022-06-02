@@ -28,7 +28,6 @@ namespace TouhouPrideGameJam4.Game
             set
             {
                 _player = value;
-                _player.ShowItems(_inventory);
                 UpdateDebugText();
             }
             get => _player;
@@ -38,6 +37,15 @@ namespace TouhouPrideGameJam4.Game
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void ToggleInventory()
+        {
+            _inventory.gameObject.SetActive(!_inventory.gameObject.activeInHierarchy);
+            if (_inventory.gameObject.activeInHierarchy)
+            {
+                _player.ShowItems(_inventory);
+            }
         }
 
         /// <summary>
