@@ -42,6 +42,32 @@ namespace TouhouPrideGameJam4.Map
             DrawRoom(roomObj);
             _rooms.Add(roomObj);
 
+            // Place the next rooms
+            for (int c = 1; c > 0; c--)
+            {
+                for (int i = _rooms.Count - 1; i >= 0; i--)
+                {
+                    var r = _rooms[i];
+                    foreach (var d in GetFreeDoors(r, true))
+                    {
+                        if (d.Direction == Direction.Up)
+                        {
+                            var possibilities = GetRandomMatchingRoom(d);
+                            var randRoom = possibilities[Random.Range(0, possibilities.Length)];
+                            DrawRoom(randRoom);
+                            _rooms.Add(randRoom);
+                        }
+                    }
+                }
+            }
+            foreach (var r in _rooms)
+            {
+                foreach (var d in GetFreeDoors(r, true))
+                {
+                    _map[d.Y][d.X].Type = TileType.Breakpoint;
+                }
+            }
+
             // Spawn player
             List<Vector2Int> possibleSpawnPoints = new();
             for (int y = 0; y < _map.Length; y++)
@@ -58,29 +84,6 @@ namespace TouhouPrideGameJam4.Map
             var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
             _playerPos = new(currentSpawn.x, currentSpawn.y);
             Instantiate(_player, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity);
-
-            // DEBUG: Replace free doors by breakpoints
-            for (int i = _rooms.Count - 1; i >= 0; i--)
-            {
-                var r = _rooms[i];
-                foreach (var d in GetFreeDoors(r, true))
-                {
-                    if (d.Direction == Direction.Up)
-                    {
-                        var possibilities = GetRandomMatchingRoom(d);
-                        var randRoom = possibilities[Random.Range(0, possibilities.Length)];
-                        DrawRoom(randRoom);
-                        _rooms.Add(randRoom);
-                    }
-                }
-            }
-            foreach (var r in _rooms)
-            {
-                foreach (var d in GetFreeDoors(r, true))
-                {
-                    _map[d.Y][d.X].Type = TileType.Breakpoint;
-                }
-            }
         }
 
         /// <summary>
@@ -89,9 +92,11 @@ namespace TouhouPrideGameJam4.Map
         /// <param name="door">Door we are starting at</param>
         private Room[] GetRandomMatchingRoom(Door door)
         {
-            var testRoom = _info.Rooms[0]; // TODO
-            var data = GetRoom(testRoom);
-            return GetPlacementOffset(door, new(0, 0, data)).Select(o => new Room(o.x, o.y, data)).ToArray();
+            return _info.Rooms.SelectMany(r =>
+            {
+                var data = GetRoom(r);
+                return GetPlacementOffset(door, new(0, 0, data)).Select(o => new Room(o.x, o.y, data)).ToArray();
+            }).ToArray();
         }
 
         /// <summary>
