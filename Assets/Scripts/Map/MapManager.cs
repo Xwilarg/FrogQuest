@@ -104,7 +104,6 @@ namespace TouhouPrideGameJam4.Map
         /// </summary>
         /// <param name="door">Door we need to match</param>
         /// <param name="targetRoom">Information about our room</param>
-        /// <returns></returns>
         private Vector2Int[] GetPlacementOffset(Door door, Room targetRoom)
         {
             var doors = GetFreeDoors(targetRoom, false);
@@ -177,7 +176,8 @@ namespace TouhouPrideGameJam4.Map
                     if (room.Data[relativeY][relativeX] != ' ') // No need to check elements outside of the current room
                     {
                         // For a door to be around us, we need to be on a floor tile
-                        if (!validatePosOnMap || _map[yPos][xPos].Type == TileType.Empty)
+                        if ((validatePosOnMap && _map[yPos][xPos].Type == TileType.Empty) ||
+                            (!validatePosOnMap && LookupTileByChar(room.Data[relativeY][relativeX]).Type == TileType.Empty))
                         {
                             TileType? upType, downType, leftType, rightType;
 
@@ -191,9 +191,9 @@ namespace TouhouPrideGameJam4.Map
                             else // We only look for adjacent tiles on the object itself
                             {
                                 upType = relativeY > 0 ? LookupTileByChar(room.Data[relativeY - 1][relativeX])?.Type ?? null : null;
-                                downType = relativeY < room.Data.Length - 1 ? LookupTileByChar(room.Data[yPos + 1][xPos])?.Type ?? null : null;
-                                leftType = relativeX > 0 ? LookupTileByChar(room.Data[yPos][xPos - 1])?.Type ?? null : null;
-                                rightType = relativeX < room.Data[relativeY].Length - 1 ? LookupTileByChar(room.Data[yPos][xPos + 1])?.Type ?? null : null;
+                                downType = relativeY < room.Data.Length - 1 ? LookupTileByChar(room.Data[relativeY + 1][relativeX])?.Type ?? null : null;
+                                leftType = relativeX > 0 ? LookupTileByChar(room.Data[relativeY][relativeX - 1])?.Type ?? null : null;
+                                rightType = relativeX < room.Data[relativeY].Length - 1 ? LookupTileByChar(room.Data[relativeY][relativeX + 1])?.Type ?? null : null;
                             }
 
                             // A door need to be surrounded by 2 walls for the frame and then an empty tile and an unallocated one
