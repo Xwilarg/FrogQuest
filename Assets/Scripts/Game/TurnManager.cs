@@ -74,10 +74,11 @@ namespace TouhouPrideGameJam4.Game
         /// </summary>
         /// <param name="relX">Relative X position</param>
         /// <param name="relY">Relative Y position</param>
-        public void MovePlayer(int relX, int relY)
+        public bool MovePlayer(int relX, int relY)
         {
             var newX = Player.Position.x + relX;
             var newY = Player.Position.y + relY;
+            var didMove = false;
 
             var target = _enemies.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
             if (target != null) // Enemy on the way, we attack it
@@ -87,8 +88,11 @@ namespace TouhouPrideGameJam4.Game
             else if (MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
             {
                 Player.Position = new(newX, newY);
+                didMove = true;
             }
             PlayerEnemyTurn();
+
+            return didMove;
         }
 
         private void PlayerEnemyTurn()

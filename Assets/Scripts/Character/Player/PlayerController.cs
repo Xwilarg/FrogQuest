@@ -6,9 +6,15 @@ namespace TouhouPrideGameJam4.Character.Player
 {
     public class PlayerController : ACharacter
     {
+        [SerializeField]
+        private AudioClip _stepSound;
+
+        private AudioSource _source;
+
         private void Awake()
         {
             Init();
+            _source = GetComponent<AudioSource>();
         }
 
         public void OnMovement(InputAction.CallbackContext value)
@@ -20,11 +26,17 @@ namespace TouhouPrideGameJam4.Character.Player
                 {
                     if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
                     {
-                        TurnManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0);
+                        if (TurnManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0))
+                        {
+                            _source.PlayOneShot(_stepSound);
+                        }
                     }
                     else
                     {
-                        TurnManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1);
+                        if (TurnManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1))
+                        {
+                            _source.PlayOneShot(_stepSound);
+                        }
                     }
                 }
             }
