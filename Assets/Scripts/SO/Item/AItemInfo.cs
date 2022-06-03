@@ -9,6 +9,7 @@ namespace TouhouPrideGameJam4.SO.Item
         public abstract string Description { get; }
 
         public string Name;
+        public Sprite Sprite;
 
         public static bool operator ==(AItemInfo a, AItemInfo b)
         {

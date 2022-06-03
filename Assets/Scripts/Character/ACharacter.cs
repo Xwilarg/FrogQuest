@@ -12,11 +12,11 @@ namespace TouhouPrideGameJam4.Character
         [SerializeField]
         private SO.CharacterInfo _info;
 
-        private Dictionary<AItemInfo, int> _items = new();
+        protected Dictionary<AItemInfo, int> _items = new();
 
         private int _health;
 
-        private WeaponInfo _equipedWeapon;
+        protected WeaponInfo _equipedWeapon;
 
         private Vector2Int _position;
         public Vector2Int Position
@@ -31,6 +31,9 @@ namespace TouhouPrideGameJam4.Character
                 return _position;
             }
         }
+
+        protected virtual void UpdateInventoryDisplay()
+        { }
 
         public void RemoveItem(AItemInfo item)
         {
@@ -47,6 +50,7 @@ namespace TouhouPrideGameJam4.Character
             {
                 _items[item]--;
             }
+            UpdateInventoryDisplay();
         }
 
         public bool CanAttack() => _equipedWeapon != null;
@@ -54,6 +58,7 @@ namespace TouhouPrideGameJam4.Character
         public void Equip(WeaponInfo weapon)
         {
             _equipedWeapon = weapon;
+            UpdateInventoryDisplay();
         }
 
         public bool IsEquipped(WeaponInfo weapon) => _equipedWeapon == weapon;
@@ -69,6 +74,7 @@ namespace TouhouPrideGameJam4.Character
             _health = _info.BaseHealth;
             _items = _info.StartingItems.ToDictionary(x => x, x => 1);
             _equipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
+            UpdateInventoryDisplay();
         }
 
         public void TakeDamage(int amount)

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Gohei
   m_EditorClassIdentifier: 
   Name: Gohei
+  Sprite: {fileID: 21300000, guid: 9a71bafb799e3784fa9dcac55a481e15, type: 3}
   Damage: 4
