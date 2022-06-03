@@ -2792,6 +2792,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1879546539}
     m_Modifications:
+    - target: {fileID: 1534133215, guid: 5e0ccf3217c6cf945ac9ed2b13caa872, type: 3}
+      propertyPath: m_text
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 315567602686169684, guid: 5e0ccf3217c6cf945ac9ed2b13caa872, type: 3}
       propertyPath: m_Name
       value: ItemCase (7)

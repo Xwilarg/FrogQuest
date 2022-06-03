@@ -23,6 +23,7 @@ namespace TouhouPrideGameJam4.Map
         private GameObject _prefabTile;
 
         private Tile[][] _map;
+        private SpriteRenderer[][] _mapSprite;
         private readonly List<Room> _rooms = new();
 
         private void Awake()
@@ -36,9 +37,11 @@ namespace TouhouPrideGameJam4.Map
 
             // Init map
             _map = new Tile[_info.MapSize][];
+            _mapSprite = new SpriteRenderer[_info.MapSize][];
             for (int i = 0; i < _map.Length; i++)
             {
                 _map[i] = new Tile[_info.MapSize];
+                _mapSprite[i] = new SpriteRenderer[_info.MapSize];
             }
 
             // Spawn starting room
@@ -66,11 +69,12 @@ namespace TouhouPrideGameJam4.Map
             }
 
             // Replace empty spaces by walls so the player can't exit the map
+            var wall = LookupTileByType(TileType.Wall);
             foreach (var r in _rooms)
             {
                 foreach (var d in GetFreeDoors(r, true))
                 {
-                    _map[d.Y][d.X].Type = TileType.Wall;
+                    SetTile(d.X, d.Y, wall);
                 }
             }
 
@@ -178,10 +182,19 @@ namespace TouhouPrideGameJam4.Map
                 for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
                     var tile = LookupTileByChar(room.Data[yPos - room.Y][xPos - room.X]);
-                    _map[yPos][xPos] = new(tile.Type);
-                    Instantiate(_prefabTile, new(xPos, yPos), Quaternion.identity).GetComponent<SpriteRenderer>().sprite = tile.Sprite;
+                    SetTile(xPos, yPos, tile);
                 }
             }
+        }
+
+        private void SetTile(int x, int y, TileData tile)
+        {
+            _map[y][x] = new(tile.Type);
+            if (_mapSprite[y][x] == null)
+            {
+                _mapSprite[y][x] = Instantiate(_prefabTile, new(x, y), Quaternion.identity).GetComponent<SpriteRenderer>();
+            }
+            _mapSprite[y][x].sprite = tile.Sprite;
         }
 
         /// <summary>
