@@ -54,16 +54,21 @@ namespace TouhouPrideGameJam4.Map
             // Place the next rooms
             for (int c = 10; c > 0; c--)
             {
-                var r = _rooms[^1];
-                foreach (var d in GetFreeDoors(r, true))
+                for (int i = _rooms.Count - 1; i >= 0; i--)
                 {
-                    if (d.Direction == Direction.Down)
+                    var r = _rooms[i];
+                    foreach (var d in GetFreeDoors(r, true))
                     {
-                        var possibilities = GetRandomMatchingRoom(d);
-                        var randRoom = possibilities[Random.Range(0, possibilities.Length)];
-                        DrawRoom(randRoom);
-                        _rooms.Add(randRoom);
-                        break;
+                        if (d.Direction != Direction.Up)
+                        {
+                            var possibilities = GetRandomMatchingRoom(d);
+                            if (possibilities.Any())
+                            {
+                                var randRoom = possibilities[Random.Range(0, possibilities.Length)];
+                                DrawRoom(randRoom);
+                                _rooms.Add(randRoom);
+                            }
+                        }
                     }
                 }
             }
@@ -195,7 +200,14 @@ namespace TouhouPrideGameJam4.Map
             {
                 int xOffset = door.X;
                 int yOffset = door.Y;
-                positions.Add(new(xOffset - d.X, yOffset + d.Y));
+                if (d.Direction == Direction.Up || d.Direction == Direction.Down)
+                {
+                    positions.Add(new(xOffset - d.X, yOffset + d.Y));
+                }
+                else
+                {
+                    positions.Add(new(xOffset - d.X, yOffset - d.Y));
+                }
             }
             return positions.ToArray();
         }
