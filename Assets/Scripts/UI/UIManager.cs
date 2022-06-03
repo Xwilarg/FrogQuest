@@ -10,6 +10,7 @@ namespace TouhouPrideGameJam4.UI
         private void Awake()
         {
             Instance = this;
+            _source = GetComponent<AudioSource>();
         }
 
         /// <summary>
@@ -28,6 +29,10 @@ namespace TouhouPrideGameJam4.UI
             if (_shortcutTarget != null)
             {
                 _shortcutTarget.Use();
+            }
+            else
+            {
+                PlaySound(ClipNone);
             }
         }
 
@@ -53,11 +58,20 @@ namespace TouhouPrideGameJam4.UI
             }
             get => _shortcutTarget;
         }
+
+        public void PlaySound(AudioClip clip)
+        {
+            _source.PlayOneShot(clip);
+        }
+
         private ShortcutButton _shortcutTarget = null;
 
         public Image ShortcutEquipped;
         public ShortcutButton[] ShortcutInventory;
         public Image ShortcutAction;
         public Sprite ActionNone;
+        public AudioClip ClipNone;
+
+        private AudioSource _source;
     }
 }

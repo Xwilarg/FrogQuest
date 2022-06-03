@@ -36,12 +36,13 @@ namespace TouhouPrideGameJam4.UI
             _highlightImage = GetComponent<Image>();
         }
 
-        public Sprite ActionSprite => _content.ActionSprite;
+        public Sprite ActionSprite => _content.ActionType.ActionSprite;
 
         public void Use()
         {
             _content.DoAction(PlayerController.Instance);
             PlayerController.Instance.UpdateInventoryDisplay();
+            UIManager.Instance.PlaySound(_content.ActionType.ActionSound);
         }
 
         public void SetHighlight()

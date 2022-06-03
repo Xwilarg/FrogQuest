@@ -15,5 +15,5 @@ MonoBehaviour:
   UtilityDescription: Essancial tool to perform incantations and hit Youkais
   Name: Gohei
   Sprite: {fileID: 21300000, guid: 9a71bafb799e3784fa9dcac55a481e15, type: 3}
-  ActionSprite: {fileID: 21300000, guid: a408a9853d1fcae4987c6fbb7e732849, type: 3}
+  ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}
   Damage: 4
