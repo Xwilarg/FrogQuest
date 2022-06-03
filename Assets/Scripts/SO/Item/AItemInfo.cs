@@ -8,6 +8,9 @@ namespace TouhouPrideGameJam4.SO.Item
         public abstract ItemType Type { get; }
         public abstract string Description { get; }
 
+        [TextArea]
+        public string UtilityDescription;
+
         public string Name;
         public Sprite Sprite;
 
