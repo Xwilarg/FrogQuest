@@ -284,6 +284,40 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0b7a2d70-45b2-445d-b6b4-6154f0bad224
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 81047d01-637a-48bf-bb42-24f8fc17b450
+    m_ActionName: Player/Action[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnWait
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c8fbeb35-a293-4a35-b4fe-f78858455f02
+    m_ActionName: Player/Wait[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
