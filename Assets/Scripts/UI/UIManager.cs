@@ -23,6 +23,14 @@ namespace TouhouPrideGameJam4.UI
             }
         }
 
+        public void UseCurrent()
+        {
+            if (_shortcutTarget != null)
+            {
+                _shortcutTarget.Use();
+            }
+        }
+
         /// <summary>
         /// Element currently selected in the action bar
         /// </summary>
@@ -34,6 +42,11 @@ namespace TouhouPrideGameJam4.UI
                 if (value != null)
                 {
                     value.SetHighlight();
+                    ShortcutAction.sprite = value.ActionSprite;
+                }
+                else
+                {
+                    ShortcutAction.sprite = ActionNone;
                 }
                 _shortcutTarget = value;
             }
@@ -43,5 +56,7 @@ namespace TouhouPrideGameJam4.UI
 
         public Image ShortcutEquipped;
         public ShortcutButton[] ShortcutInventory;
+        public Image ShortcutAction;
+        public Sprite ActionNone;
     }
 }

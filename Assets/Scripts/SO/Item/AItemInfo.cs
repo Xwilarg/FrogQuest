@@ -45,6 +45,7 @@ namespace TouhouPrideGameJam4.SO.Item
         /// Tooltip explaning what the action will do
         /// </summary>
         public abstract string ActionTooltip { get; }
+        public Sprite ActionSprite;
 
         public static bool operator ==(AItemInfo a, AItemInfo b)
         {

@@ -7,6 +7,8 @@ namespace TouhouPrideGameJam4.Character.Player
 {
     public class PlayerController : ACharacter
     {
+        public static PlayerController Instance { get; private set; }
+
         [SerializeField]
         private AudioClip _stepSound;
 
@@ -14,6 +16,7 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void Awake()
         {
+            Instance = this;
             _source = GetComponent<AudioSource>();
         }
 
@@ -23,7 +26,7 @@ namespace TouhouPrideGameJam4.Character.Player
             TurnManager.Instance.UpdateDebugText();
         }
 
-        protected override void UpdateInventoryDisplay()
+        public override void UpdateInventoryDisplay()
         {
             UIManager.Instance.ShortcutEquipped.sprite = _equipedWeapon.Sprite;
             UIManager.Instance.ShortcutEquipped.color = UIManager.Instance.ShortcutEquipped.sprite == null ? new Color(0f, 0f, 0f, 0f) : Color.white;

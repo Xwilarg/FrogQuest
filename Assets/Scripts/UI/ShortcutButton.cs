@@ -1,4 +1,5 @@
-﻿using TouhouPrideGameJam4.SO.Item;
+﻿using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,10 @@ namespace TouhouPrideGameJam4.UI
     {
         public void OnClick()
         {
-            UIManager.Instance.ShortcutTarget = this;
+            if (_content != null)
+            {
+                UIManager.Instance.ShortcutTarget = this;
+            }
         }
 
         /// <summary>
@@ -28,6 +32,14 @@ namespace TouhouPrideGameJam4.UI
         {
             _contentImage = transform.GetChild(0).GetComponent<Image>();
             _highlightImage = GetComponent<Image>();
+        }
+
+        public Sprite ActionSprite => _content.ActionSprite;
+
+        public void Use()
+        {
+            _content.DoAction(PlayerController.Instance);
+            PlayerController.Instance.UpdateInventoryDisplay();
         }
 
         public void SetHighlight()

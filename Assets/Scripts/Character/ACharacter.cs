@@ -32,7 +32,7 @@ namespace TouhouPrideGameJam4.Character
             }
         }
 
-        protected virtual void UpdateInventoryDisplay()
+        public virtual void UpdateInventoryDisplay()
         { }
 
         public void RemoveItem(AItemInfo item)
