@@ -28,6 +28,8 @@ namespace TouhouPrideGameJam4.UI
         /// </summary>
         private AItemInfo _content;
 
+        public bool IsEmpty => _content == null;
+
         private void Awake()
         {
             _contentImage = transform.GetChild(0).GetComponent<Image>();

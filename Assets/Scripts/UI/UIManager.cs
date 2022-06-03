@@ -39,13 +39,14 @@ namespace TouhouPrideGameJam4.UI
             set
             {
                 ResetHighlight();
-                if (value != null)
+                if (value != null && !value.IsEmpty)
                 {
                     value.SetHighlight();
                     ShortcutAction.sprite = value.ActionSprite;
                 }
                 else
                 {
+                    value = null;
                     ShortcutAction.sprite = ActionNone;
                 }
                 _shortcutTarget = value;

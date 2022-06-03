@@ -318,6 +318,176 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c8fbeb35-a293-4a35-b4fe-f78858455f02
     m_ActionName: Player/Wait[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 02d5d9e6-3a77-44f3-b0a9-81e95485fe42
+    m_ActionName: Player/Shortcut 1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7151c4ab-6f06-4c75-8c38-4dff81d42175
+    m_ActionName: Player/Shortcut 2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2bdaf021-ab3d-48de-86ec-74c797fc57fe
+    m_ActionName: Player/Shortcut 3[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut4
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1d6486dd-37a1-4b39-a0ce-635ad66b460c
+    m_ActionName: Player/Shortcut 4[/Keyboard/4]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut5
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ac972e5f-46e6-4add-8a9b-22a6705a28ec
+    m_ActionName: Player/Shortcut 5[/Keyboard/5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut6
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 98d2894c-e225-4340-8eb7-46bccd6d77ed
+    m_ActionName: Player/Shortcut 6[/Keyboard/6]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut7
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 604f32bd-379e-4539-9e46-dea551639425
+    m_ActionName: Player/Shortcut 7[/Keyboard/7]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut8
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eeaeea53-fc25-4169-aa40-c1cf5e3a27b7
+    m_ActionName: Player/Shortcut 8[/Keyboard/8]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut9
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b75647d2-94dc-41c3-923a-7dc288f1413f
+    m_ActionName: Player/Shortcut 9[/Keyboard/9]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnShortcut10
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7acefa8d-b572-4b11-98e3-a25520158723
+    m_ActionName: Player/Shortcut 0[/Keyboard/0]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

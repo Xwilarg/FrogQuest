@@ -99,5 +99,24 @@ namespace TouhouPrideGameJam4.Character.Player
                 TurnManager.Instance.PlayEnemyTurn();
             }
         }
+
+        public void OnShortcut1(InputAction.CallbackContext value) => OnShortcut(value, 0);
+        public void OnShortcut2(InputAction.CallbackContext value) => OnShortcut(value, 1);
+        public void OnShortcut3(InputAction.CallbackContext value) => OnShortcut(value, 2);
+        public void OnShortcut4(InputAction.CallbackContext value) => OnShortcut(value, 3);
+        public void OnShortcut5(InputAction.CallbackContext value) => OnShortcut(value, 4);
+        public void OnShortcut6(InputAction.CallbackContext value) => OnShortcut(value, 5);
+        public void OnShortcut7(InputAction.CallbackContext value) => OnShortcut(value, 6);
+        public void OnShortcut8(InputAction.CallbackContext value) => OnShortcut(value, 7);
+        public void OnShortcut9(InputAction.CallbackContext value) => OnShortcut(value, 8);
+        public void OnShortcut10(InputAction.CallbackContext value) => OnShortcut(value, 9);
+
+        private void OnShortcut(InputAction.CallbackContext value, int index)
+        {
+            if (value.performed)
+            {
+                UIManager.Instance.ShortcutTarget = UIManager.Instance.ShortcutInventory[index];
+            }
+        }
     }
 }
