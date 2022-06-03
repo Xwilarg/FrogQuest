@@ -20,6 +20,7 @@ namespace TouhouPrideGameJam4.Character.Player
         private void Start()
         {
             Init();
+            TurnManager.Instance.UpdateDebugText();
         }
 
         protected override void UpdateInventoryDisplay()

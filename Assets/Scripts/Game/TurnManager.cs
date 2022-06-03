@@ -22,16 +22,7 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private InventoryUI _inventory;
 
-        private ACharacter _player;
-        public ACharacter Player
-        {
-            set
-            {
-                _player = value;
-                UpdateDebugText();
-            }
-            get => _player;
-        }
+        public ACharacter Player { set; get; }
         private readonly List<ACharacter> _enemies = new();
 
         private void Awake()
@@ -44,7 +35,7 @@ namespace TouhouPrideGameJam4.Game
             _inventory.gameObject.SetActive(!_inventory.gameObject.activeInHierarchy);
             if (_inventory.gameObject.activeInHierarchy)
             {
-                _player.ShowItems(_inventory, null);
+                Player.ShowItems(_inventory, null);
             }
         }
 
