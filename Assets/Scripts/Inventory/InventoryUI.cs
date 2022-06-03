@@ -35,39 +35,11 @@ namespace TouhouPrideGameJam4.Inventory
                 Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Key.Description;
                 Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = item.Value.ToString();
                 var button = Instantiate(_buttonPrefab, _actionContainer);
-                button.GetComponentInChildren<TMP_Text>().text = item.Key.Type switch
-                {
-                    ItemType.Weapon => "Equip",
-                    ItemType.Consummable => "Use",
-                    _ => throw new NotImplementedException()
-                };
+                button.GetComponentInChildren<TMP_Text>().text = item.Key.ActionName;
                 button.GetComponent<Button>().onClick.AddListener(new(() =>
                 {
-                    switch (item.Key.Type)
-                    {
-                        case ItemType.Weapon:
-                            _owner.Equip((WeaponInfo)item.Key);
-                            _owner.ShowItems(this, filter);
-                            break;
-
-                        case ItemType.Consummable:
-                            var consumable = (ConsumableInfo)item.Key;
-                            switch (consumable.Effect)
-                            {
-                                case EffectType.Heal:
-                                    _owner.TakeDamage(-consumable.Value);
-                                    break;
-
-                                default:
-                                    throw new NotImplementedException();
-                            }
-                            _owner.RemoveItem(consumable);
-                            _owner.ShowItems(this, filter);
-                            break;
-
-                        default:
-                            throw new NotImplementedException();
-                    }
+                    item.Key.DoAction(_owner);
+                    _owner.ShowItems(this, filter);
                 }));
             }
         }

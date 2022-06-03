@@ -1,4 +1,5 @@
-﻿using TouhouPrideGameJam4.Inventory;
+﻿using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Inventory;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO.Item
@@ -10,5 +11,14 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override ItemType Type => ItemType.Weapon;
         public override string Description => $"{Damage} damages";
+
+        public override string ActionName => "Equip";
+
+        public override string ActionTooltip => "Equip the item as your main weapon";
+
+        public override void DoAction(ACharacter owner)
+        {
+            owner.Equip(this);
+        }
     }
 }
