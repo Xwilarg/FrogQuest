@@ -33,7 +33,7 @@ namespace TouhouPrideGameJam4.Character.Player
             int index = 0;
             foreach (var btn in UIManager.Instance.ShortcutInventory)
             {
-                btn.ClearColor();
+                btn.Clear();
             }
             foreach (var item in _items)
             {

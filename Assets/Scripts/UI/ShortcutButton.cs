@@ -52,9 +52,9 @@ namespace TouhouPrideGameJam4.UI
             _highlightImage.color = new Color(1f, 1f, 1f, .4f);
         }
 
-        public void ClearColor()
+        public void Clear()
         {
-            _contentImage.color = new Color(0f, 0f, 0f, 0f);
+            SetContent(null);
         }
 
         public void SetContent(AItemInfo item)
