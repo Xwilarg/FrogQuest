@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using TouhouPrideGameJam4.Character;
-using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
@@ -20,8 +19,11 @@ namespace TouhouPrideGameJam4.Map
         [SerializeField]
         private GameObject _prefabPlayer, _prefabEnemy;
 
+        [SerializeField]
+        private GameObject _prefabTile;
+
         private Tile[][] _map;
-        private List<Room> _rooms = new();
+        private readonly List<Room> _rooms = new();
 
         private void Awake()
         {
@@ -175,7 +177,9 @@ namespace TouhouPrideGameJam4.Map
             {
                 for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
-                    _map[yPos][xPos] = new(LookupTileByChar(room.Data[yPos - room.Y][xPos - room.X]).Type);
+                    var tile = LookupTileByChar(room.Data[yPos - room.Y][xPos - room.X]);
+                    _map[yPos][xPos] = new(tile.Type);
+                    Instantiate(_prefabTile, new(xPos, yPos), Quaternion.identity).GetComponent<SpriteRenderer>().sprite = tile.Sprite;
                 }
             }
         }
@@ -288,11 +292,6 @@ namespace TouhouPrideGameJam4.Map
                         {
                             Gizmos.color = Color.red;
                             Gizmos.DrawSphere(new Vector2(x, y), .5f);
-                        }
-                        else
-                        {
-                            Gizmos.color = LookupTileByType(_map[y][x].Type).GizmoColor;
-                            Gizmos.DrawCube(new Vector2(x, y), Vector2.one);
                         }
                     }
                 }
