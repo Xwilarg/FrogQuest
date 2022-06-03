@@ -8,8 +8,6 @@ namespace TouhouPrideGameJam4.SO
     {
         public int BaseHealth;
 
-        public WeaponInfo DefaultWeapon;
-
         public AItemInfo[] StartingItems;
     }
 }

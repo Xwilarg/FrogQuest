@@ -93,12 +93,12 @@ namespace TouhouPrideGameJam4.Game
                 Player.Position = new(newX, newY);
                 didMove = true;
             }
-            PlayerEnemyTurn();
+            PlayEnemyTurn();
 
             return didMove;
         }
 
-        private void PlayerEnemyTurn()
+        public void PlayEnemyTurn()
         {
             Vector2Int[] directions = new[]
             {
