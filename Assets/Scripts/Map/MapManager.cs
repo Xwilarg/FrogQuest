@@ -132,11 +132,46 @@ namespace TouhouPrideGameJam4.Map
         /// <param name="door">Door we are starting at</param>
         private Room[] GetRandomMatchingRoom(Door door)
         {
-            return _info.Rooms.SelectMany(r =>
-            {
-                var data = GetRoom(r);
-                return GetPlacementOffset(door, new(0, 0, data)).Select(o => new Room(o.x, o.y, data)).ToArray();
-            }).ToArray();
+            return _info.Rooms
+                .SelectMany(r =>
+                {
+                    // Load information about the rooms and their offset to be placed properly
+                    var data = GetRoom(r);
+                    return GetPlacementOffset(door, new(0, 0, data)).Select(o => new Room(o.x, o.y, data)).ToArray();
+                })
+                .Where(room =>
+                {
+                    // Check if the room can go inside the map without being out of bounds
+
+                    // Check for out of bounds for Y
+                    if (room.Y < 0 || room.Y + room.Data.Length > _map.Length)
+                    {
+                        return false;
+                    }
+
+                    for (var yPos = room.Y; yPos < room.Y + room.Data.Length; yPos++)
+                    {
+                        var relativeY = yPos - room.Y;
+
+                        // Out of bounds for X
+                        if (room.X < 0 || room.X + room.Data[relativeY].Length > _map.Length)
+                        {
+                            return false;
+                        }
+
+                        for (var xPos = room.X; xPos < room.X + room.Data[relativeY].Length; xPos++)
+                        {
+                            var relativeX = xPos - room.X;
+                            if (_map[yPos][xPos] != null && _map[yPos][xPos].Type != TileType.Empty && _map[yPos][xPos].Type != LookupTileByChar(room.Data[relativeY][relativeX]).Type)
+                            {
+                                // For a room to be valid, we must either build it over an empty land or to all tiles to be on their matching counterpart
+                                // This is because we are building doorframe over an existing doorframe
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }).ToArray();
         }
 
         /// <summary>
