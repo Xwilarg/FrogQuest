@@ -13,6 +13,6 @@ namespace TouhouPrideGameJam4.UI
         }
 
         public Image ShortcutEquipped;
-        public Image[] ShortcutInventory;
+        public ShortcutButton[] ShortcutInventory;
     }
 }

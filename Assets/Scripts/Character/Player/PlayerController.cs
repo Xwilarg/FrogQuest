@@ -27,9 +27,9 @@ namespace TouhouPrideGameJam4.Character.Player
             UIManager.Instance.ShortcutEquipped.sprite = _equipedWeapon.Sprite;
             UIManager.Instance.ShortcutEquipped.color = UIManager.Instance.ShortcutEquipped.sprite == null ? new Color(0f, 0f, 0f, 0f) : Color.white;
             int index = 0;
-            foreach (var img in UIManager.Instance.ShortcutInventory)
+            foreach (var btn in UIManager.Instance.ShortcutInventory)
             {
-                img.color = new Color(0f, 0f, 0f, 0f);
+                btn.ClearColor();
             }
             foreach (var item in _items)
             {
@@ -38,8 +38,7 @@ namespace TouhouPrideGameJam4.Character.Player
                     continue;
                 }
 
-                UIManager.Instance.ShortcutInventory[index].sprite = item.Key.Sprite;
-                UIManager.Instance.ShortcutInventory[index].color = Color.white;
+                UIManager.Instance.ShortcutInventory[index].SetContent(item.Key);
                 index++;
                 if (index == UIManager.Instance.ShortcutInventory.Length)
                 {
