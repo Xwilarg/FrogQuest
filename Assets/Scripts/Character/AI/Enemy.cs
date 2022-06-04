@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace TouhouPrideGameJam4.Character.AI
+﻿namespace TouhouPrideGameJam4.Character.AI
 {
     public class Enemy : ACharacter
     {

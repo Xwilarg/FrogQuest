@@ -32,7 +32,6 @@ namespace TouhouPrideGameJam4.Character
 
         // Used for smooth movement
         public Vector2 OldPos { set; get; }
-        public Vector2 Objective { set; get; }
         private float _moveTimer = 0f;
 
         // Position
@@ -42,7 +41,6 @@ namespace TouhouPrideGameJam4.Character
             set
             {
                 OldPos = transform.position;
-                Objective = value;
                 _moveTimer = 0f;
                 _position = value;
             }
@@ -63,7 +61,7 @@ namespace TouhouPrideGameJam4.Character
         protected void UpdateC()
         {
             _moveTimer += Time.deltaTime * 10f;
-            transform.position = Vector2.Lerp(OldPos, Objective, Mathf.Clamp01(_moveTimer));
+            transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
         }
 
         /// <summary>
@@ -135,6 +133,15 @@ namespace TouhouPrideGameJam4.Character
             {
                 _health = _info.BaseHealth;
             }
+
+            // Display text with the damage done
+
+            Color color;
+            if (amount > 0) color = Color.red;
+            else if (amount < 0) color = Color.green;
+            else color = Color.yellow;
+            TurnManager.Instance.SpawnDamageText(amount, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
+
             TurnManager.Instance.UpdateDebugText();
         }
 

@@ -25,6 +25,9 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private TMP_Text _objectiveText;
 
+        [SerializeField]
+        private GameObject _damageIndicator;
+
         private string _baseObjectiveText;
 
         public ACharacter Player { set; get; }
@@ -43,6 +46,14 @@ namespace TouhouPrideGameJam4.Game
             {
                 Player.ShowItems(_inventory, null);
             }
+        }
+
+        public void SpawnDamageText(int amount, Color color, float x, float y)
+        {
+            var go = Instantiate(_damageIndicator, new(x, y), Quaternion.identity);
+            var text = go.GetComponent<TMP_Text>();
+            text.color = color;
+            text.text = amount.ToString();
         }
 
         /// <summary>

@@ -326,6 +326,7 @@ MonoBehaviour:
   _debugText: {fileID: 1867588247}
   _inventory: {fileID: 769236355}
   _objectiveText: {fileID: 378348100}
+  _damageIndicator: {fileID: 2174806505201314149, guid: fb0c20b8c162c6e43b6bcba0838f8c86, type: 3}
 --- !u!114 &39555389
 MonoBehaviour:
   m_ObjectHideFlags: 0
