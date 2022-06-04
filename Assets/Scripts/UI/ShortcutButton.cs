@@ -9,10 +9,7 @@ namespace TouhouPrideGameJam4.UI
     {
         public void OnClick()
         {
-            if (_content != null)
-            {
-                UIManager.Instance.ShortcutTarget = this;
-            }
+            UIManager.Instance.ShortcutTarget = this;
         }
 
         /// <summary>

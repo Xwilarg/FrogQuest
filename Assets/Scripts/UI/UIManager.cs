@@ -26,7 +26,7 @@ namespace TouhouPrideGameJam4.UI
 
         public void UseCurrent()
         {
-            if (_shortcutTarget != null)
+            if (_shortcutTarget != null && !_shortcutTarget.IsEmpty)
             {
                 _shortcutTarget.Use();
             }
@@ -44,15 +44,14 @@ namespace TouhouPrideGameJam4.UI
             set
             {
                 ResetHighlight();
-                if (value != null && !value.IsEmpty)
+                if (value == null)
                 {
-                    value.SetHighlight();
-                    ShortcutAction.sprite = value.ActionSprite;
+                    ShortcutAction.sprite = ActionNone;
                 }
                 else
                 {
-                    value = null;
-                    ShortcutAction.sprite = ActionNone;
+                    value.SetHighlight();
+                    ShortcutAction.sprite = value.IsEmpty ? ActionNone : value.ActionSprite;
                 }
                 _shortcutTarget = value;
             }
