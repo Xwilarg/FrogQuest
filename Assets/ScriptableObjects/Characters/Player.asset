@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   BaseHealth: 20
-  DefaultWeapon: {fileID: 11400000, guid: 5011ba77f5e75854a92837f748b89a06, type: 2}
   StartingItems:
   - {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
   - {fileID: 11400000, guid: de9f3cb585e44ad4d8c0e96982def4e2, type: 2}
+  - {fileID: 11400000, guid: d485c829922a40f4aadbe45220c42370, type: 2}

@@ -6,6 +6,7 @@ using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
+using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Game
 {
@@ -79,6 +80,31 @@ namespace TouhouPrideGameJam4.Game
             Destroy(character.gameObject);
         }
 
+        public void TryAttackCharacter(int x, int y, int damage)
+        {
+            if (Player.Position.x == x && Player.Position.y == y)
+            {
+                Player.TakeDamage(damage);
+            }
+            else
+            {
+                var target = _enemies.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
+                if (target != null)
+                {
+                    target.TakeDamage(damage);
+                }
+            }
+        }
+
+        public void SetDirection(ACharacter character, int x, int y)
+        {
+            if (x < 0) character.Direction = Direction.Left;
+            else if (x > 0) character.Direction = Direction.Right;
+            else if (y < 0) character.Direction = Direction.Down;
+            else if (y > 0) character.Direction = Direction.Up;
+            else throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// Move the player in the world
         /// </summary>
@@ -109,6 +135,7 @@ namespace TouhouPrideGameJam4.Game
                 Player.Position = new(newX, newY);
                 didMove = true;
             }
+            SetDirection(Player, relX, relY);
             PlayEnemyTurn();
 
             return didMove;
@@ -136,11 +163,13 @@ namespace TouhouPrideGameJam4.Game
                         {
                             enemy.Attack(Player);
                             UpdateDebugText();
+                            SetDirection(enemy, d.x, d.y);
                             break;
                         }
                         else if (MapManager.Instance.IsTileWalkable(enemy.Position.x + d.x, enemy.Position.y + d.y))
                         {
                             enemy.Position = new(enemy.Position.x + d.x, enemy.Position.y + d.y);
+                            SetDirection(enemy, d.x, d.y);
                             break;
                         }
                     }

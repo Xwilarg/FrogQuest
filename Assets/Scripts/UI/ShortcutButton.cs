@@ -40,9 +40,9 @@ namespace TouhouPrideGameJam4.UI
 
         public void Use()
         {
+            UIManager.Instance.PlaySound(_content.ActionType.ActionSound);
             _content.DoAction(PlayerController.Instance);
             PlayerController.Instance.UpdateInventoryDisplay();
-            UIManager.Instance.PlaySound(_content.ActionType.ActionSound);
         }
 
         public void SetHighlight()

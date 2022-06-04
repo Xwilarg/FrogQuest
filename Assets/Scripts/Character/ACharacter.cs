@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
+using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Character
 {
@@ -49,6 +51,8 @@ namespace TouhouPrideGameJam4.Character
                 return _position;
             }
         }
+
+        public Direction Direction { set; get; }
 
         protected void Init()
         {
