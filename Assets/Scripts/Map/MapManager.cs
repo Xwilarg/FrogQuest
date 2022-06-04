@@ -26,6 +26,8 @@ namespace TouhouPrideGameJam4.Map
         private SpriteRenderer[][] _mapSprite;
         private readonly List<Room> _rooms = new();
 
+        private GameObject _tileContainer;
+
         private void Awake()
         {
             Instance = this;
@@ -34,6 +36,8 @@ namespace TouhouPrideGameJam4.Map
         private void Start()
         {
             Assert.IsNotNull(_info, "MapInfo is not set");
+
+            _tileContainer = new("Map");
 
             // Init map
             _map = new Tile[_info.MapSize][];
@@ -239,7 +243,9 @@ namespace TouhouPrideGameJam4.Map
             _map[y][x] = new(tile.Type);
             if (_mapSprite[y][x] == null)
             {
-                _mapSprite[y][x] = Instantiate(_prefabTile, new(x, y), Quaternion.identity).GetComponent<SpriteRenderer>();
+                var t = Instantiate(_prefabTile, new(x, y), Quaternion.identity);
+                t.transform.parent = _tileContainer.transform;
+                _mapSprite[y][x] = t.GetComponent<SpriteRenderer>();
             }
             _mapSprite[y][x].sprite = tile.Sprite;
         }
