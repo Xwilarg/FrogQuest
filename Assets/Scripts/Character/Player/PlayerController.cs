@@ -23,7 +23,6 @@ namespace TouhouPrideGameJam4.Character.Player
         private void Start()
         {
             Init();
-            TurnManager.Instance.UpdateDebugText();
         }
 
         private void Update()
@@ -54,6 +53,13 @@ namespace TouhouPrideGameJam4.Character.Player
                     break;
                 }
             }
+        }
+
+        public override void TakeDamage(int amount)
+        {
+            base.TakeDamage(amount);
+
+            UIManager.Instance.SetHealth(_health / (float)_info.BaseHealth);
         }
 
         public void OnMovement(InputAction.CallbackContext value)

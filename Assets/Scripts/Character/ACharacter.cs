@@ -15,7 +15,7 @@ namespace TouhouPrideGameJam4.Character
         /// Information about the character
         /// </summary>
         [SerializeField]
-        private SO.CharacterInfo _info;
+        protected SO.CharacterInfo _info;
 
         /// <summary>
         /// Items that the character has
@@ -25,7 +25,7 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Current health of the character
         /// </summary>
-        private int _health;
+        protected int _health;
 
         /// <summary>
         /// Equipped weapon
@@ -126,7 +126,7 @@ namespace TouhouPrideGameJam4.Character
             inventory.UpdateContent(this, items, baseFilter);
         }
 
-        public void TakeDamage(int amount)
+        public virtual void TakeDamage(int amount)
         {
             _health -= amount;
             if (_health <= 0)
@@ -145,8 +145,6 @@ namespace TouhouPrideGameJam4.Character
             else if (amount < 0) color = Color.green;
             else color = Color.yellow;
             TurnManager.Instance.SpawnDamageText(amount, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
-
-            TurnManager.Instance.UpdateDebugText();
         }
 
         public void Attack(ACharacter target)

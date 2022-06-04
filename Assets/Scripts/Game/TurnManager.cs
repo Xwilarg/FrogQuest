@@ -18,9 +18,6 @@ namespace TouhouPrideGameJam4.Game
         private AIInfo _aiInfo;
 
         [SerializeField]
-        private TMP_Text _debugText;
-
-        [SerializeField]
         private InventoryUI _inventory;
 
         [SerializeField]
@@ -162,7 +159,6 @@ namespace TouhouPrideGameJam4.Game
                         if (Player.Position.x == enemy.Position.x + d.x && Player.Position.y == enemy.Position.y + d.y)
                         {
                             enemy.Attack(Player);
-                            UpdateDebugText();
                             SetDirection(enemy, d.x, d.y);
                             break;
                         }
@@ -179,10 +175,5 @@ namespace TouhouPrideGameJam4.Game
 
         public ACharacter GetEnemyAtPos(int x, int y)
             => _enemies.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
-
-        public void UpdateDebugText()
-        {
-            _debugText.text = Player.ToString();
-        }
     }
 }

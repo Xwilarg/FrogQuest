@@ -11,6 +11,12 @@ namespace TouhouPrideGameJam4.UI
         {
             Instance = this;
             _source = GetComponent<AudioSource>();
+            _baseHealth = _healthBar.rectTransform.sizeDelta.x;
+        }
+
+        public void SetHealth(float value)
+        {
+            _healthBar.rectTransform.sizeDelta = new Vector2(value * _baseHealth, _healthBar.rectTransform.sizeDelta.y);
         }
 
         /// <summary>
@@ -62,6 +68,10 @@ namespace TouhouPrideGameJam4.UI
         {
             _source.PlayOneShot(clip);
         }
+
+        private float _baseHealth;
+        [SerializeField]
+        private Image _healthBar;
 
         private ShortcutButton _shortcutTarget = null;
 
