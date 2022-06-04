@@ -45,6 +45,7 @@ namespace TouhouPrideGameJam4.Character
             set
             {
                 _anim?.SetBool("IsWalking", true);
+                _anim?.SetTrigger("StartWalking");
                 OldPos = transform.position;
                 _moveTimer = 0f;
                 _position = value;
@@ -79,7 +80,7 @@ namespace TouhouPrideGameJam4.Character
         {
             if (_moveTimer < 1f)
             {
-                _moveTimer += Time.deltaTime * 10f;
+                _moveTimer += Time.deltaTime * 2.5f;
                 transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
                 if (_moveTimer >= 1f)
                 {
