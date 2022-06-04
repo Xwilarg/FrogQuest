@@ -132,8 +132,52 @@ namespace TouhouPrideGameJam4.Map
                     enemy.Position = new(pos.x, pos.y);
                     TurnManager.Instance.AddEnemy(enemy);
                     enemy.transform.parent = enemyContainer.transform;
+                    enemy.gameObject.SetActive(false);
                 }
             }
+
+            // Show spawn room
+            DiscoverRoom(currentSpawn.x, currentSpawn.y);
+        }
+
+        private void DiscoverRoom(int x, int y)
+        {
+            // If object is out of bounds or already active in the hierarchy, we stop here
+            if (y < 0 || y >= _map.Length || x < 0 || x >= _map[y].Length ||
+                _map[y][x] == null || _map[y][x].SpriteRendererMain.gameObject.activeInHierarchy)
+            {
+                return;
+            }
+
+            _map[y][x].SpriteRendererMain.gameObject.SetActive(true);
+            if (_map[y][x].SpriteRendererSub != null)
+            {
+                _map[y][x].SpriteRendererSub.gameObject.SetActive(true);
+            }
+            var enemy = TurnManager.Instance.GetEnemyAtPos(x, y);
+            if (enemy != null)
+            {
+                enemy.gameObject.SetActive(true);
+            }
+
+            if (IsTileWalkable(x, y))
+            {
+                for (int i = -1; i <= 1; i++)
+                {
+                    for (int j = -1; j <= 1; j++)
+                    {
+                        DiscoverRoom(x + i, y + j);
+                    }
+                }
+            }
+        }
+
+        public void OpenDoor(int x, int y)
+        {
+            DiscoverRoom(x - 1, y);
+            DiscoverRoom(x + 1, y);
+            DiscoverRoom(x, y - 1);
+            DiscoverRoom(x, y + 1);
         }
 
         /// <summary>
@@ -256,6 +300,7 @@ namespace TouhouPrideGameJam4.Map
                 var t = Instantiate(_prefabTile, new(x, y), Quaternion.identity);
                 t.transform.parent = _tileContainer.transform;
                 _map[y][x] = new(tile.Type, t.GetComponent<SpriteRenderer>());
+                t.SetActive(false);
             }
             else
             {
@@ -274,6 +319,7 @@ namespace TouhouPrideGameJam4.Map
             t.transform.parent = _tileContainer.transform;
             _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
             _map[y][x].Content = content;
+            t.SetActive(false);
         }
 
         /// <summary>

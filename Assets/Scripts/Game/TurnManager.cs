@@ -82,6 +82,7 @@ namespace TouhouPrideGameJam4.Game
             }
             else if (content != TileContentType.None)
             {
+                MapManager.Instance.OpenDoor(newX, newY);
                 MapManager.Instance.ClearContent(newX, newY);
             }
             else if (MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
@@ -127,6 +128,9 @@ namespace TouhouPrideGameJam4.Game
                 }
             }
         }
+
+        public ACharacter GetEnemyAtPos(int x, int y)
+            => _enemies.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
 
         public void UpdateDebugText()
         {
