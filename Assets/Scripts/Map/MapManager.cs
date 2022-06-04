@@ -23,7 +23,6 @@ namespace TouhouPrideGameJam4.Map
         private GameObject _prefabTile;
 
         private Tile[][] _map;
-        private SpriteRenderer[][] _mapSprite;
         private readonly List<Room> _rooms = new();
 
         private GameObject _tileContainer;
@@ -41,11 +40,9 @@ namespace TouhouPrideGameJam4.Map
 
             // Init map
             _map = new Tile[_info.MapSize][];
-            _mapSprite = new SpriteRenderer[_info.MapSize][];
             for (int i = 0; i < _map.Length; i++)
             {
                 _map[i] = new Tile[_info.MapSize];
-                _mapSprite[i] = new SpriteRenderer[_info.MapSize];
             }
 
             // Spawn starting room
@@ -240,14 +237,17 @@ namespace TouhouPrideGameJam4.Map
 
         private void SetTile(int x, int y, TileData tile)
         {
-            _map[y][x] = new(tile.Type);
-            if (_mapSprite[y][x] == null)
+            if (_map[y][x] == null)
             {
                 var t = Instantiate(_prefabTile, new(x, y), Quaternion.identity);
                 t.transform.parent = _tileContainer.transform;
-                _mapSprite[y][x] = t.GetComponent<SpriteRenderer>();
+                _map[y][x] = new(tile.Type, t.GetComponent<SpriteRenderer>());
             }
-            _mapSprite[y][x].sprite = tile.Sprite;
+            else
+            {
+                _map[y][x].Type = tile.Type;
+            }
+            _map[y][x].SpriteRenderer.sprite = tile.Sprite;
         }
 
         /// <summary>
