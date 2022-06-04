@@ -22,12 +22,18 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private InventoryUI _inventory;
 
+        [SerializeField]
+        private TMP_Text _objectiveText;
+
+        private string _baseObjectiveText;
+
         public ACharacter Player { set; get; }
         private readonly List<ACharacter> _enemies = new();
 
         private void Awake()
         {
             Instance = this;
+            _baseObjectiveText = _objectiveText.text;
         }
 
         public void ToggleInventory()
@@ -45,6 +51,7 @@ namespace TouhouPrideGameJam4.Game
         public void AddEnemy(ACharacter character)
         {
             _enemies.Add(character);
+            _objectiveText.text = _baseObjectiveText.Replace("{0}", _enemies.Count.ToString());
         }
 
         public void RemoveCharacter(ACharacter character)
@@ -56,6 +63,7 @@ namespace TouhouPrideGameJam4.Game
             else
             {
                 _enemies.RemoveAll(x => x.GetInstanceID() == character.GetInstanceID());
+                _objectiveText.text = _baseObjectiveText.Replace("{0}", _enemies.Count.ToString());
             }
             Destroy(character.gameObject);
         }
