@@ -32,6 +32,8 @@ namespace TouhouPrideGameJam4.Character
         /// </summary>
         protected WeaponInfo _equipedWeapon;
 
+        private Animator _anim;
+
         // Used for smooth movement
         public Vector2 OldPos { set; get; }
         private float _moveTimer = 0f;
@@ -42,6 +44,7 @@ namespace TouhouPrideGameJam4.Character
         {
             set
             {
+                _anim?.SetBool("IsWalking", true);
                 OldPos = transform.position;
                 _moveTimer = 0f;
                 _position = value;
@@ -52,10 +55,20 @@ namespace TouhouPrideGameJam4.Character
             }
         }
 
-        public Direction Direction { set; get; }
+        private Direction _direction;
+        public Direction Direction
+        {
+            set
+            {
+                _direction = value;
+                _anim?.SetInteger("Direction", (int)value);
+            }
+            get => _direction;
+        }
 
         protected void Init()
         {
+            _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
             _items = _info.StartingItems.ToDictionary(x => x, x => 1);
             _equipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
@@ -64,8 +77,15 @@ namespace TouhouPrideGameJam4.Character
 
         protected void UpdateC()
         {
-            _moveTimer += Time.deltaTime * 10f;
-            transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
+            if (_moveTimer < 1f)
+            {
+                _moveTimer += Time.deltaTime * 10f;
+                transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
+                if (_moveTimer >= 1f)
+                {
+                    _anim?.SetBool("IsWalking", false);
+                }
+            }
         }
 
         /// <summary>
