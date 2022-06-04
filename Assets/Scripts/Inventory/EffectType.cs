@@ -4,6 +4,8 @@
     {
         Heal,
         Spell,
-        Invulnerability
+        Invulnerability,
+        BoostAttack,
+        BoostDefense
     }
 }

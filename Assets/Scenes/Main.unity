@@ -344,6 +344,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69406fb0ce1b9054b84c6e72d5888d0c, type: 2}
   - {fileID: 11400000, guid: c19f2a774f471b4429418f446e041873, type: 2}
   - {fileID: 11400000, guid: 8f6d547977e6f3b42a74823945905f1f, type: 2}
+  - {fileID: 11400000, guid: dcc1f98e5c1abaf449733fe0f7de9318, type: 2}
+  - {fileID: 11400000, guid: 1e18676731f9b6343820cb577a039081, type: 2}
   _healthBar: {fileID: 81286388}
   ShortcutEquipped: {fileID: 315567603857564832}
   ShortcutInventory:

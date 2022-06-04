@@ -4,6 +4,8 @@
     {
         Invicible,
         Frozen,
-        Stun
+        Stun,
+        BoostDefense,
+        BoostAttack
     }
 }

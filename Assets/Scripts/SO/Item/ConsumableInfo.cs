@@ -15,7 +15,9 @@ namespace TouhouPrideGameJam4.SO.Item
         public override string Description => Effect switch
         {
             EffectType.Heal => $"Heal {Value} HP",
-            EffectType.Invulnerability => $"Prevent you from taking damage for {Value} turns",
+            EffectType.Invulnerability => $"Make you invulnerable for {Value} turns",
+            EffectType.BoostAttack => $"Double your attack for {Value} turns",
+            EffectType.BoostDefense => $"Half incoming damage for {Value} turns",
             EffectType.Spell => $"Use a spell card", // TODO
             _ => throw new System.NotImplementedException()
         };
@@ -34,6 +36,14 @@ namespace TouhouPrideGameJam4.SO.Item
 
                 case EffectType.Invulnerability:
                     owner.AddStatus(StatusType.Invicible, Value);
+                    break;
+
+                case EffectType.BoostAttack:
+                    owner.AddStatus(StatusType.BoostAttack, Value);
+                    break;
+
+                case EffectType.BoostDefense:
+                    owner.AddStatus(StatusType.BoostDefense, Value);
                     break;
 
                 default:

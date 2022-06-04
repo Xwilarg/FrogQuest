@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 555fcd70c336a054087e554604b32e28, type: 3}
-  m_Name: HealthPotion
+  m_Name: FortitudePotion
   m_EditorClassIdentifier: 
-  UtilityDescription: It emits a warm red aura
-  Name: Health Potion
-  Sprite: {fileID: 21300000, guid: 8abc4904c3eeab744802c4308635ac07, type: 3}
+  UtilityDescription: It emits a cold blue aura
+  Name: Fortitude Potion
+  Sprite: {fileID: 21300000, guid: 12c7492a9d5b9c645b5d68ac2b9a2d2b, type: 3}
   ActionType: {fileID: 11400000, guid: afc2076df9c75d0408987849ccc34070, type: 2}
-  Effect: 0
-  Value: 20
+  Effect: 4
+  Value: 5

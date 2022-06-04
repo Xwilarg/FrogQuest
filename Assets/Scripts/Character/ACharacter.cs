@@ -184,9 +184,16 @@ namespace TouhouPrideGameJam4.Character
 
         public virtual void TakeDamage(int amount)
         {
-            if (_currentEffects.ContainsKey(StatusType.Invicible))
+            if (amount > 0)
             {
-                amount = 0;
+                if (_currentEffects.ContainsKey(StatusType.Invicible))
+                {
+                    amount = 0;
+                }
+                else if (_currentEffects.ContainsKey(StatusType.BoostDefense))
+                {
+                    amount /= 2;
+                }
             }
 
             _health -= amount;
@@ -210,7 +217,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(_equipedWeapon.Damage);
+            target.TakeDamage(_equipedWeapon.Damage * (_currentEffects.ContainsKey(StatusType.BoostAttack) ? 2 : 1));
         }
 
         public override string ToString()
