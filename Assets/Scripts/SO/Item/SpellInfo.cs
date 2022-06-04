@@ -7,7 +7,7 @@ using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.SO.Item
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/SpellInfo", fileName = "SpellInfo")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/SpellInfo", fileName = "SpellInfo")]
     public class SpellInfo : ConsumableInfo
     {
         /// <summary>

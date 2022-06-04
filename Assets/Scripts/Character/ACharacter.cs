@@ -4,6 +4,7 @@ using System.Linq;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
@@ -37,6 +38,8 @@ namespace TouhouPrideGameJam4.Character
         // Used for smooth movement
         public Vector2 OldPos { set; get; }
         private float _moveTimer = 0f;
+
+        protected readonly Dictionary<StatusType, int> _currentEffects = new();
 
         // Position
         private Vector2Int _position;
@@ -87,6 +90,38 @@ namespace TouhouPrideGameJam4.Character
                     _anim?.SetBool("IsWalking", false);
                 }
             }
+        }
+
+        /// <summary>
+        /// Called at the end of a turn
+        /// </summary>
+        public virtual void EndTurn()
+        {
+            for (int i = _currentEffects.Keys.Count - 1; i >= 0; i--)
+            {
+                var key = _currentEffects.Keys.ElementAt(i);
+                if (_currentEffects[key] == 1)
+                {
+                    _currentEffects.Remove(key);
+                }
+                else
+                {
+                    _currentEffects[key]--;
+                }
+            }
+        }
+
+        public void AddStatus(StatusType status, int duration)
+        {
+            if (_currentEffects.ContainsKey(status))
+            {
+                _currentEffects[status] += duration;
+            }
+            else
+            {
+                _currentEffects.Add(status, duration);
+            }
+            UIManager.Instance.UpdateStatus(_currentEffects);
         }
 
         /// <summary>
@@ -149,6 +184,11 @@ namespace TouhouPrideGameJam4.Character
 
         public virtual void TakeDamage(int amount)
         {
+            if (_currentEffects.ContainsKey(StatusType.Invicible))
+            {
+                amount = 0;
+            }
+
             _health -= amount;
             if (_health <= 0)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO.Item
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/WeaponInfo", fileName = "WeaponInfo")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/WeaponInfo", fileName = "WeaponInfo")]
     public class WeaponInfo : AItemInfo
     {
         public int Damage;

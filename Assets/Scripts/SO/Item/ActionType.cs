@@ -2,7 +2,7 @@
 
 namespace TouhouPrideGameJam4.SO.Item
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/ActionType", fileName = "ActionType")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/ActionType", fileName = "ActionType")]
     public class ActionType : ScriptableObject
     {
         public Sprite ActionSprite;

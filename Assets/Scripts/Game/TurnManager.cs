@@ -133,6 +133,7 @@ namespace TouhouPrideGameJam4.Game
                 didMove = true;
             }
             SetDirection(Player, relX, relY);
+            Player.EndTurn();
             PlayEnemyTurn();
 
             return didMove;
@@ -170,6 +171,7 @@ namespace TouhouPrideGameJam4.Game
                         }
                     }
                 }
+                enemy.EndTurn();
             }
         }
 

@@ -30,6 +30,12 @@ namespace TouhouPrideGameJam4.Character.Player
             UpdateC();
         }
 
+        public override void EndTurn()
+        {
+            base.EndTurn();
+            UIManager.Instance.UpdateStatus(_currentEffects);
+        }
+
         public override void UpdateInventoryDisplay()
         {
             UIManager.Instance.ShortcutEquipped.sprite = _equipedWeapon.Sprite;
