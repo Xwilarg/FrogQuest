@@ -10,10 +10,12 @@ namespace TouhouPrideGameJam4.Map
         public Tile(TileType type, SpriteRenderer sr)
         {
             Type = type;
-            SpriteRenderer = sr;
+            SpriteRendererMain = sr;
         }
 
         public TileType Type { set; get; }
-        public SpriteRenderer SpriteRenderer { set; get; }
+        public TileContentType Content { set; get; }
+        public SpriteRenderer SpriteRendererMain { set; get; }
+        public SpriteRenderer SpriteRendererSub { set; get; }
     }
 }

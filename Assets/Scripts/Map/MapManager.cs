@@ -20,7 +20,7 @@ namespace TouhouPrideGameJam4.Map
         private GameObject _prefabPlayer, _prefabEnemy;
 
         [SerializeField]
-        private GameObject _prefabTile;
+        private GameObject _prefabTile, _prefabDoor;
 
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
@@ -67,6 +67,10 @@ namespace TouhouPrideGameJam4.Map
                             {
                                 var randRoom = possibilities[Random.Range(0, possibilities.Length)];
                                 DrawRoom(randRoom);
+
+                                // Add doors to separate rooms
+                                SetTileContent(d.X, d.Y, TileContentType.Door);
+
                                 _rooms.Add(randRoom);
                             }
                         }
@@ -216,7 +220,8 @@ namespace TouhouPrideGameJam4.Map
         public bool IsTileWalkable(int x, int y)
             => x >= 0 && x < _info.MapSize && y >= 0 && y < _info.MapSize &&
                _map[y][x] != null &&
-               LookupTileByType(_map[y][x].Type).CanBeWalkedOn;
+               LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
+               _map[y][x].Content == TileContentType.None;
 
         /// <summary>
         /// Draw a room on the map
@@ -247,7 +252,19 @@ namespace TouhouPrideGameJam4.Map
             {
                 _map[y][x].Type = tile.Type;
             }
-            _map[y][x].SpriteRenderer.sprite = tile.Sprite;
+            _map[y][x].SpriteRendererMain.sprite = tile.Sprite;
+        }
+
+        private void SetTileContent(int x, int y, TileContentType content)
+        {
+            var t = Instantiate(content switch
+            {
+                TileContentType.Door => _prefabDoor,
+                _ => throw new System.NotImplementedException()
+            }, new(x, y), Quaternion.identity);
+            t.transform.parent = _tileContainer.transform;
+            _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
+            _map[y][x].Content = content;
         }
 
         /// <summary>

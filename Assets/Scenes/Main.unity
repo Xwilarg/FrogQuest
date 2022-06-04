@@ -309,6 +309,7 @@ MonoBehaviour:
   _prefabPlayer: {fileID: 56457190090914801, guid: 735aff12e80c8a84c832a0ef9c9b072a, type: 3}
   _prefabEnemy: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
   _prefabTile: {fileID: 1238779916511838880, guid: 07237fb06612c2a4cbad46cc36e50ca7, type: 3}
+  _prefabDoor: {fileID: 3346479765826390500, guid: 51e788aa06bc77a439b3c9a49b6fa214, type: 3}
 --- !u!114 &39555388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +351,7 @@ MonoBehaviour:
   - {fileID: 1944590984}
   ShortcutAction: {fileID: 315567603451741664}
   ActionNone: {fileID: 21300000, guid: cff1b5eaa5204494ba8244c9afc1479a, type: 3}
+  ClipNone: {fileID: 8300000, guid: bab8f730a78d8674099fbb2e449f7697, type: 3}
 --- !u!82 &39555390
 AudioSource:
   m_ObjectHideFlags: 0
