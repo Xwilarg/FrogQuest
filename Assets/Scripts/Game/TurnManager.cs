@@ -72,12 +72,17 @@ namespace TouhouPrideGameJam4.Game
             var didMove = false;
 
             var target = _enemies.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
+            var content = MapManager.Instance.GetContent(newX, newY);
             if (target != null) // Enemy on the way, we attack it
             {
                 if (Player.CanAttack())
                 {
                     Player.Attack(target);
                 }
+            }
+            else if (content != TileContentType.None)
+            {
+                MapManager.Instance.ClearContent(newX, newY);
             }
             else if (MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
             {

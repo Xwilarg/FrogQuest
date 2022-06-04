@@ -217,6 +217,15 @@ namespace TouhouPrideGameJam4.Map
             return positions.ToArray();
         }
 
+        public TileContentType GetContent(int x, int y)
+            => _map[y][x].Content;
+
+        public void ClearContent(int x, int y)
+        {
+            _map[y][x].Content = TileContentType.None;
+            _map[y][x].SpriteRendererSub.sprite = null;
+        }
+
         public bool IsTileWalkable(int x, int y)
             => x >= 0 && x < _info.MapSize && y >= 0 && y < _info.MapSize &&
                _map[y][x] != null &&
