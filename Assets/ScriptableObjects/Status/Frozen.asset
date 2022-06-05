@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: Frozen
   Sprite: {fileID: 21300000, guid: a95576aec06e27a49b1630b1ef6d2431, type: 3}
   Effect: 1
+  IsNegative: 1

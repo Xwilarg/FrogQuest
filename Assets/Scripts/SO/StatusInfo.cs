@@ -9,5 +9,6 @@ namespace TouhouPrideGameJam4.SO
         public string Name;
         public Sprite Sprite;
         public StatusType Effect;
+        public bool IsNegative;
     }
 }

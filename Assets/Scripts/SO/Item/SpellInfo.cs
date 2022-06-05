@@ -41,6 +41,8 @@ namespace TouhouPrideGameJam4.SO.Item
         /// </summary>
         public float XOffset, YOffset;
 
+        public override string Description => $"Launch {ProjectileCount} projectiles each doing {DamagePerProjectile} damages";
+
         public override void DoAction(ACharacter owner)
         {
             owner.RemoveItem(this);

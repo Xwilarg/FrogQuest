@@ -18,8 +18,7 @@ namespace TouhouPrideGameJam4.SO.Item
             EffectType.Invulnerability => $"Make you invulnerable for {Value} turns",
             EffectType.BoostAttack => $"Double your attack for {Value} turns",
             EffectType.BoostDefense => $"Half incoming damage for {Value} turns",
-            EffectType.Spell => $"Use a spell card", // TODO
-            _ => throw new System.NotImplementedException()
+            _ => throw new NotImplementedException()
         };
 
         public override string ActionName => "Use";

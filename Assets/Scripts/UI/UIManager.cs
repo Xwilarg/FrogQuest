@@ -111,6 +111,8 @@ namespace TouhouPrideGameJam4.UI
         public Sprite ActionNone;
         public AudioClip ClipNone;
 
+        public Tooltip Tooptip;
+
         private AudioSource _source;
     }
 }
