@@ -31,9 +31,9 @@ namespace TouhouPrideGameJam4.Character.Player
             UpdateC();
         }
 
-        public override void EndTurn()
+        public override void OnStatusChange()
         {
-            base.EndTurn();
+            base.OnStatusChange();
             UIManager.Instance.UpdateStatus(_currentEffects);
         }
 

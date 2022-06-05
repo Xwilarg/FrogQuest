@@ -119,7 +119,7 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Called at the end of a turn
         /// </summary>
-        public virtual void EndTurn()
+        public void EndTurn()
         {
             for (int i = _currentEffects.Keys.Count - 1; i >= 0; i--)
             {
@@ -133,6 +133,7 @@ namespace TouhouPrideGameJam4.Character
                     _currentEffects[key]--;
                 }
             }
+            OnStatusChange();
         }
 
         public void AddStatus(StatusType status, int duration)
@@ -145,13 +146,17 @@ namespace TouhouPrideGameJam4.Character
             {
                 _currentEffects.Add(status, duration);
             }
-            UIManager.Instance.UpdateStatus(_currentEffects);
+            OnStatusChange();
         }
 
         public void RemoveStatus(StatusType status)
         {
             _currentEffects.Remove(status);
+            OnStatusChange();
         }
+
+        public virtual void OnStatusChange()
+        { }
 
         public StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
 
