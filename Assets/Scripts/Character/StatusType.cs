@@ -4,8 +4,9 @@
     {
         Invicible,
         Frozen,
-        Stun,
-        BoostDefense,
-        BoostAttack
+        Stunned,
+        DefenseBoosted,
+        AttackBoosted,
+        Binded
     }
 }

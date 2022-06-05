@@ -38,11 +38,11 @@ namespace TouhouPrideGameJam4.SO.Item
                     break;
 
                 case EffectType.BoostAttack:
-                    owner.AddStatus(StatusType.BoostAttack, Value);
+                    owner.AddStatus(StatusType.AttackBoosted, Value);
                     break;
 
                 case EffectType.BoostDefense:
-                    owner.AddStatus(StatusType.BoostDefense, Value);
+                    owner.AddStatus(StatusType.DefenseBoosted, Value);
                     break;
 
                 default:

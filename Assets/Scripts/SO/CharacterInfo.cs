@@ -9,5 +9,7 @@ namespace TouhouPrideGameJam4.SO
         public int BaseHealth;
 
         public AItemInfo[] StartingItems;
+
+        public WeaponInfo DefaultWeapon;
     }
 }

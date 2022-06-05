@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 20
   StartingItems:
-  - {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
   - {fileID: 11400000, guid: de9f3cb585e44ad4d8c0e96982def4e2, type: 2}
-  - {fileID: 11400000, guid: d485c829922a40f4aadbe45220c42370, type: 2}
+  - {fileID: 11400000, guid: 0e3a054f833c3ef44ac4d02147a12e21, type: 2}
   - {fileID: 11400000, guid: 401c08a0014ab9c4698ab46b70b0da7e, type: 2}
-  - {fileID: 11400000, guid: 472be4bf91e4297408a137b94ceaeb78, type: 2}
   - {fileID: 11400000, guid: 5b074291bcfcaa44c86ddd94e47ee9bd, type: 2}
-  - {fileID: 11400000, guid: fd92ba4331b5b2645bcd011e11eb572e, type: 2}
+  - {fileID: 11400000, guid: 472be4bf91e4297408a137b94ceaeb78, type: 2}
+  DefaultWeapon: {fileID: 11400000, guid: e51a727081a2bba4fa24f371e1d1771e, type: 2}

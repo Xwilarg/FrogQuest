@@ -118,30 +118,30 @@ namespace TouhouPrideGameJam4.Game
         /// <param name="relY">Relative Y position</param>
         public bool MovePlayer(int relX, int relY)
         {
-            var newX = Player.Position.x + relX;
-            var newY = Player.Position.y + relY;
             var didMove = false;
-
-            var target = _characters.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
-            var content = MapManager.Instance.GetContent(newX, newY);
-            if (target != null) // Enemy on the way, we attack it
+            if (Player.CanDoSomething())
             {
-                if (target.Team == Team.Enemies && Player.CanAttack())
+                var newX = Player.Position.x + relX;
+                var newY = Player.Position.y + relY;
+
+                var target = _characters.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
+                var content = MapManager.Instance.GetContent(newX, newY);
+                if (target != null) // Enemy on the way, we attack it
                 {
                     Player.Attack(target);
                 }
+                else if (content != TileContentType.None)
+                {
+                    MapManager.Instance.OpenDoor(newX, newY);
+                    MapManager.Instance.ClearContent(newX, newY);
+                }
+                else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
+                {
+                    Player.Position = new(newX, newY);
+                    didMove = true;
+                }
+                SetDirection(Player, relX, relY);
             }
-            else if (content != TileContentType.None)
-            {
-                MapManager.Instance.OpenDoor(newX, newY);
-                MapManager.Instance.ClearContent(newX, newY);
-            }
-            else if (MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
-            {
-                Player.Position = new(newX, newY);
-                didMove = true;
-            }
-            SetDirection(Player, relX, relY);
             Player.EndTurn();
             PlayEnemyTurn();
 
@@ -154,16 +154,22 @@ namespace TouhouPrideGameJam4.Game
             {
                 Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down
             };
-            foreach (var c in _characters)
+            for (int i = _characters.Count - 1; i >= 0; i--)
             {
+                var c = _characters[i];
                 // We ignore player or if the current character is disabled
-                if (c.GetInstanceID() == Player.GetInstanceID() || !c.gameObject.activeInHierarchy)
+                if (c.GetInstanceID() == Player.GetInstanceID() || !c.gameObject.activeInHierarchy || !c.CanDoSomething())
                 {
                     continue;
                 }
 
                 // Our target is the closest character with a different team than ours
-                var target = _characters.Where(x => x.Team != c.Team).OrderBy(x => Vector2.Distance(c.Position, x.Position)).ElementAt(0);
+                var target = _characters.Where(x => x.Team != c.Team && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position)).FirstOrDefault();
+
+                if (target == null)
+                {
+                    continue;
+                }
 
                 // If the enemy is close enough
                 if (Vector2.Distance(c.Position, target.Position) < _aiInfo.MaxDistanceToMove)
@@ -184,7 +190,7 @@ namespace TouhouPrideGameJam4.Game
                     }
 
                     // Else we try to move towards its position
-                    if (!didPlay)
+                    if (!didPlay && c.CanMove())
                     {
                         foreach (var d in dirTarget)
                         {

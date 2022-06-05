@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90af469bbd7c00f4b919e306f3aa1ea5, type: 3}
-  m_Name: SampleEnemy
+  m_Script: {fileID: 11500000, guid: 7aa2e753f2d6f7b4eaabb0a0f594b20c, type: 3}
+  m_Name: Binded
   m_EditorClassIdentifier: 
-  BaseHealth: 4
-  StartingItems: []
-  DefaultWeapon: {fileID: 11400000, guid: e51a727081a2bba4fa24f371e1d1771e, type: 2}
+  Name: Binded
+  Sprite: {fileID: 21300000, guid: af67e01fb2c5ce24c871cf1700b2aedd, type: 3}
+  Effect: 5
+  IsNegative: 1

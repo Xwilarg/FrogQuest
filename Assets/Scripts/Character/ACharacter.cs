@@ -30,7 +30,18 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Equipped weapon
         /// </summary>
-        public WeaponInfo EquipedWeapon { protected set; get; }
+        private WeaponInfo _equipedWeapon;
+        public WeaponInfo EquipedWeapon
+        {
+            set
+            {
+                _equipedWeapon = value;
+            }
+            get
+            {
+                return _equipedWeapon != null ? _equipedWeapon : _info.DefaultWeapon;
+            }
+        }
 
         private Animator _anim;
 
@@ -60,7 +71,7 @@ namespace TouhouPrideGameJam4.Character
             }
         }
 
-        private Direction _direction;
+        private Direction _direction = Direction.Up;
         public Direction Direction
         {
             set
@@ -70,6 +81,15 @@ namespace TouhouPrideGameJam4.Character
             }
             get => _direction;
         }
+
+        public Vector2Int RelativeDirection => Direction switch
+        {
+            Direction.Up => Vector2Int.up,
+            Direction.Down => Vector2Int.down,
+            Direction.Left => Vector2Int.left,
+            Direction.Right => Vector2Int.right,
+            _ => throw new System.NotImplementedException()
+        };
 
         protected void Init(Team team)
         {
@@ -133,6 +153,8 @@ namespace TouhouPrideGameJam4.Character
 
         public StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
 
+        private bool Has(StatusType status) => _currentEffects.ContainsKey(status);
+
         /// <summary>
         /// Update action bar and inventory display
         /// </summary>
@@ -161,10 +183,8 @@ namespace TouhouPrideGameJam4.Character
             UpdateInventoryDisplay();
         }
 
-        /// <summary>
-        /// Is the character able to attack
-        /// </summary>
-        public bool CanAttack() => EquipedWeapon != null;
+        public bool CanDoSomething() => !Has(StatusType.Stunned);
+        public bool CanMove() => !Has(StatusType.Frozen) && !Has(StatusType.Binded);
 
         /// <summary>
         /// Change the currently equipped weapon to the one given in parameter
@@ -190,11 +210,11 @@ namespace TouhouPrideGameJam4.Character
         {
             if (amount > 0)
             {
-                if (_currentEffects.ContainsKey(StatusType.Invicible))
+                if (Has(StatusType.Invicible))
                 {
                     amount = 0;
                 }
-                else if (_currentEffects.ContainsKey(StatusType.BoostDefense))
+                else if (Has(StatusType.DefenseBoosted))
                 {
                     amount /= 2;
                 }
@@ -221,7 +241,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(EquipedWeapon.Damage * (_currentEffects.ContainsKey(StatusType.BoostAttack) ? 2 : 1));
+            target.TakeDamage(EquipedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
         }
 
         public override string ToString()

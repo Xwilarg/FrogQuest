@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,6 @@ namespace TouhouPrideGameJam4.UI
         private void Awake()
         {
             Instance = this;
-            _source = GetComponent<AudioSource>();
             _baseHealth = _healthBar.rectTransform.sizeDelta.x;
         }
 
@@ -49,7 +49,7 @@ namespace TouhouPrideGameJam4.UI
             }
             else
             {
-                PlaySound(ClipNone);
+                SoundManager.Instance.PlayError();
             }
         }
 
@@ -87,14 +87,6 @@ namespace TouhouPrideGameJam4.UI
             get => _shortcutTarget;
         }
 
-        public void PlaySound(AudioClip clip)
-        {
-            if (clip != null)
-            {
-                _source.PlayOneShot(clip);
-            }
-        }
-
         private float _baseHealth;
         [SerializeField]
         private Image _healthBar;
@@ -105,10 +97,7 @@ namespace TouhouPrideGameJam4.UI
         public ShortcutButton[] ShortcutInventory;
         public Image ShortcutAction;
         public Sprite ActionNone;
-        public AudioClip ClipNone;
 
         public Tooltip Tooptip;
-
-        private AudioSource _source;
     }
 }

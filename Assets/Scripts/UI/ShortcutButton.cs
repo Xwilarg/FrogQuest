@@ -1,5 +1,6 @@
 ﻿using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -38,9 +39,17 @@ namespace TouhouPrideGameJam4.UI
 
         public void Use()
         {
-            UIManager.Instance.PlaySound(_content.ActionType.ActionSound);
-            _content.DoAction(PlayerController.Instance);
-            PlayerController.Instance.UpdateInventoryDisplay();
+            try
+            {
+                var sound = _content.ActionType.ActionSound;
+                _content.DoAction(PlayerController.Instance);
+                SoundManager.Instance.PlayClip(sound);
+                PlayerController.Instance.UpdateInventoryDisplay();
+            }
+            catch (NoFreeSpaceException)
+            {
+                SoundManager.Instance.PlayError();
+            }
         }
 
         public void SetHighlight()
