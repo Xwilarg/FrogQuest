@@ -31,7 +31,7 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Equipped weapon
         /// </summary>
-        protected WeaponInfo _equipedWeapon;
+        public WeaponInfo EquipedWeapon { protected set; get; }
 
         private Animator _anim;
 
@@ -75,7 +75,7 @@ namespace TouhouPrideGameJam4.Character
             _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
             _items = _info.StartingItems.ToDictionary(x => x, x => 1);
-            _equipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
+            EquipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
             UpdateInventoryDisplay();
         }
 
@@ -140,7 +140,7 @@ namespace TouhouPrideGameJam4.Character
             {
                 _items.Remove(item);
                 // Our weapon was unequipped, we equip any other one we can
-                if (item is WeaponInfo weapon && IsEquipped(weapon))
+                if (item is WeaponInfo weapon && weapon == EquipedWeapon)
                 {
                     Equip((WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon));
                 }
@@ -155,21 +155,16 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Is the character able to attack
         /// </summary>
-        public bool CanAttack() => _equipedWeapon != null;
+        public bool CanAttack() => EquipedWeapon != null;
 
         /// <summary>
         /// Change the currently equipped weapon to the one given in parameter
         /// </summary>
         public void Equip(WeaponInfo weapon)
         {
-            _equipedWeapon = weapon;
+            EquipedWeapon = weapon;
             UpdateInventoryDisplay();
         }
-
-        /// <summary>
-        /// Is the weapon given in parameter the one equipped
-        /// </summary>
-        public bool IsEquipped(WeaponInfo weapon) => _equipedWeapon == weapon;
 
         /// <summary>
         /// Show intentory
@@ -217,7 +212,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(_equipedWeapon.Damage * (_currentEffects.ContainsKey(StatusType.BoostAttack) ? 2 : 1));
+            target.TakeDamage(EquipedWeapon.Damage * (_currentEffects.ContainsKey(StatusType.BoostAttack) ? 2 : 1));
         }
 
         public override string ToString()

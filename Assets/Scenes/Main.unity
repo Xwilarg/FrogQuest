@@ -5442,6 +5442,7 @@ GameObject:
   - component: {fileID: 315567603857564839}
   - component: {fileID: 315567603857564832}
   - component: {fileID: 8767693489508145410}
+  - component: {fileID: 8767693489508145411}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5665,10 +5666,10 @@ RectTransform:
   m_Father: {fileID: 6173789479232382160}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -26.76}
+  m_SizeDelta: {x: 180, y: 33.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6173789478918551304
 RectTransform:
@@ -5685,10 +5686,10 @@ RectTransform:
   m_Father: {fileID: 6173789479232382160}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -53.52}
+  m_SizeDelta: {x: 180, y: 22.35}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &6173789478918551305
 MonoBehaviour:
@@ -5825,7 +5826,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 85.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6173789479232382161
 MonoBehaviour:
@@ -5877,7 +5878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &6173789479232382166
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5938,7 +5939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
+  m_HorizontalFit: 0
   m_VerticalFit: 2
 --- !u!114 &8767693489508145410
 MonoBehaviour:
@@ -5984,3 +5985,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8767693489508145411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315567603857564834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a72668b59a491449004b7fadfd03b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -23,7 +23,7 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override string ActionName => "Use";
 
-        public override string ActionTooltip => "";
+        public override string ActionTooltip => "Consume the current item";
 
         public override void DoAction(ACharacter owner)
         {

@@ -38,7 +38,7 @@ namespace TouhouPrideGameJam4.Character.Player
 
         public override void UpdateInventoryDisplay()
         {
-            UIManager.Instance.ShortcutEquipped.sprite = _equipedWeapon.Sprite;
+            UIManager.Instance.ShortcutEquipped.sprite = EquipedWeapon.Sprite;
             UIManager.Instance.ShortcutEquipped.color = UIManager.Instance.ShortcutEquipped.sprite == null ? new Color(0f, 0f, 0f, 0f) : Color.white;
             int index = 0;
             foreach (var btn in UIManager.Instance.ShortcutInventory)
@@ -47,7 +47,7 @@ namespace TouhouPrideGameJam4.Character.Player
             }
             foreach (var item in _items)
             {
-                if (item.Key == _equipedWeapon)
+                if (item.Key == EquipedWeapon)
                 {
                     continue;
                 }

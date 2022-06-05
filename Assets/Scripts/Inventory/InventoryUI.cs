@@ -31,7 +31,7 @@ namespace TouhouPrideGameJam4.Inventory
             for (var i = 0; i < _actionContainer.childCount; i++) Destroy(_actionContainer.GetChild(i).gameObject);
             foreach (var item in items.Where(x => filter == null || x.Key.Type == filter.Value))
             {
-                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Key.Name + (item.Key.Type == ItemType.Weapon && _owner.IsEquipped((WeaponInfo)item.Key) ? " (Equiped)" : "");
+                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Key.Name + (item.Key.Type == ItemType.Weapon && _owner.EquipedWeapon == (WeaponInfo)item.Key ? " (Equiped)" : "");
                 Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Key.Description;
                 Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = item.Value.ToString();
                 var button = Instantiate(_buttonPrefab, _actionContainer);

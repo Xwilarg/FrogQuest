@@ -14,7 +14,7 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override string ActionName => "Equip";
 
-        public override string ActionTooltip => "Equip the item as your main weapon";
+        public override string ActionTooltip => "Set the item as your main weapon";
 
         public override void DoAction(ACharacter owner)
         {
