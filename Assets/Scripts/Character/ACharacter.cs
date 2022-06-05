@@ -124,6 +124,13 @@ namespace TouhouPrideGameJam4.Character
             UIManager.Instance.UpdateStatus(_currentEffects);
         }
 
+        public void RemoveStatus(StatusType status)
+        {
+            _currentEffects.Remove(status);
+        }
+
+        public StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
+
         /// <summary>
         /// Update action bar and inventory display
         /// </summary>

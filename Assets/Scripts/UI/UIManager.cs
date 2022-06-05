@@ -2,8 +2,7 @@
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
-using TouhouPrideGameJam4.Inventory;
-using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +17,6 @@ namespace TouhouPrideGameJam4.UI
 
         [SerializeField]
         private Transform _statusContainer;
-
-        [SerializeField]
-        private StatusInfo[] _status;
 
         private void Awake()
         {
@@ -64,7 +60,7 @@ namespace TouhouPrideGameJam4.UI
             foreach (var e in effects)
             {
                 var go = Instantiate(_statusPrefab, _statusContainer);
-                go.GetComponent<Image>().sprite = _status.FirstOrDefault(x => x.Effect == e.Key).Sprite;
+                go.GetComponent<Image>().sprite = GameManager.Instance.GetStatusFromType(e.Key).Sprite;
                 go.GetComponentInChildren<TMP_Text>().text = e.Value.ToString();
             }
         }

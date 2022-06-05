@@ -9,19 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547c29839983ff24e92044bae42b53fd, type: 3}
-  m_Name: SpellInfo
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: Miracle Miracle Fruit
+  m_EditorClassIdentifier: Assembly-CSharp:TouhouPrideGameJam4.SO.Item:RemedeInfo
   UtilityDescription: 
-  Name: Esoterica "Nine Syllable Stabs"
+  Name: 'Miracle "Miracle Fruit" '
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
   Effect: 1
   Value: 0
-  ProjectilePrefab: {fileID: 5741561768511771132, guid: fae32c60a1f48ee4e90fe237e7294dcd, type: 3}
-  Speed: 1000
-  ProjectileCount: 9
-  DamagePerProjectile: 2
-  DelayBetweenProjectiles: 0.1
-  XOffset: 0.5
-  YOffset: 0.5
+  Status: 0300000004000000
+  TurnCount: 5

@@ -267,6 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 39555386}
+  - component: {fileID: 39555391}
   - component: {fileID: 39555387}
   - component: {fileID: 39555388}
   - component: {fileID: 39555389}
@@ -340,12 +341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statusPrefab: {fileID: 8442503091932542190, guid: 1d38aa6f9d090564aa6e15e8b819a5e2, type: 3}
   _statusContainer: {fileID: 1126064339}
-  _status:
-  - {fileID: 11400000, guid: 69406fb0ce1b9054b84c6e72d5888d0c, type: 2}
-  - {fileID: 11400000, guid: c19f2a774f471b4429418f446e041873, type: 2}
-  - {fileID: 11400000, guid: 8f6d547977e6f3b42a74823945905f1f, type: 2}
-  - {fileID: 11400000, guid: dcc1f98e5c1abaf449733fe0f7de9318, type: 2}
-  - {fileID: 11400000, guid: 1e18676731f9b6343820cb577a039081, type: 2}
   _healthBar: {fileID: 81286388}
   ShortcutEquipped: {fileID: 315567603857564832}
   ShortcutInventory:
@@ -459,6 +454,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &39555391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39555385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e633d643bf9a195459e473860506b71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _status:
+  - {fileID: 11400000, guid: dcc1f98e5c1abaf449733fe0f7de9318, type: 2}
+  - {fileID: 11400000, guid: 1e18676731f9b6343820cb577a039081, type: 2}
+  - {fileID: 11400000, guid: 69406fb0ce1b9054b84c6e72d5888d0c, type: 2}
+  - {fileID: 11400000, guid: c19f2a774f471b4429418f446e041873, type: 2}
+  - {fileID: 11400000, guid: 8f6d547977e6f3b42a74823945905f1f, type: 2}
 --- !u!1 &81286386
 GameObject:
   m_ObjectHideFlags: 0
