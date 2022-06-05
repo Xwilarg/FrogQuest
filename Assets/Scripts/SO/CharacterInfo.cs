@@ -11,5 +11,7 @@ namespace TouhouPrideGameJam4.SO
         public AItemInfo[] StartingItems;
 
         public WeaponInfo DefaultWeapon;
+
+        public bool DoesDisappearAfterAttacking;
     }
 }

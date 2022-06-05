@@ -30,7 +30,7 @@ namespace TouhouPrideGameJam4.SO.Item
             switch (Effect)
             {
                 case EffectType.Heal:
-                    owner.TakeDamage(-Value);
+                    owner.TakeDamage(null, -Value);
                     break;
 
                 case EffectType.Invulnerability:

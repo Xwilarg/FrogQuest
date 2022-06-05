@@ -90,14 +90,14 @@ namespace TouhouPrideGameJam4.Game
         {
             if (Player.Position.x == x && Player.Position.y == y)
             {
-                Player.TakeDamage(damage);
+                Player.TakeDamage(null, damage);
             }
             else
             {
                 var target = _characters.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
                 if (target != null)
                 {
-                    target.TakeDamage(damage);
+                    target.TakeDamage(null, damage);
                 }
             }
         }
@@ -184,6 +184,10 @@ namespace TouhouPrideGameJam4.Game
                         {
                             c.Attack(target);
                             SetDirection(c, d.x, d.y);
+                            if (c.Info.DoesDisappearAfterAttacking)
+                            {
+                                RemoveCharacter(c);
+                            }
                             didPlay = true;
                             break;
                         }

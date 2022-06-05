@@ -17,6 +17,8 @@ namespace TouhouPrideGameJam4.Character
         [SerializeField]
         protected SO.CharacterInfo _info;
 
+        public SO.CharacterInfo Info => _info;
+
         /// <summary>
         /// Items that the character has
         /// </summary>
@@ -206,8 +208,16 @@ namespace TouhouPrideGameJam4.Character
             inventory.UpdateContent(this, items, baseFilter);
         }
 
-        public virtual void TakeDamage(int amount)
+        public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
+            if (weapon != null)
+            {
+                foreach (var status in weapon.HitEffects)
+                {
+                    AddStatus(status, 1000);
+                }
+            }
+
             if (amount > 0)
             {
                 if (Has(StatusType.Invicible))
@@ -241,7 +251,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(EquipedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
+            target.TakeDamage(EquipedWeapon, EquipedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
         }
 
         public override string ToString()

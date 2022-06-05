@@ -1,4 +1,5 @@
 ﻿using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -61,9 +62,9 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
-        public override void TakeDamage(int amount)
+        public override void TakeDamage(WeaponInfo weapon, int amount)
         {
-            base.TakeDamage(amount);
+            base.TakeDamage(weapon, amount);
 
             UIManager.Instance.SetHealth(_health / (float)_info.BaseHealth);
         }
