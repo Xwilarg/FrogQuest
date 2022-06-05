@@ -147,7 +147,8 @@ namespace TouhouPrideGameJam4.Game
             };
             foreach (var enemy in _enemies)
             {
-                if (Vector2.Distance(enemy.Position, Player.Position) < _aiInfo.MaxDistanceToMove)
+                // If the enemy is enabled and close enough
+                if (enemy.gameObject.activeInHierarchy && Vector2.Distance(enemy.Position, Player.Position) < _aiInfo.MaxDistanceToMove)
                 {
                     var dirTarget = directions.OrderBy(d => Vector2.Distance(enemy.Position + d, Player.Position));
                     foreach (var d in dirTarget)
