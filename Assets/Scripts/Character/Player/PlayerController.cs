@@ -22,7 +22,7 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void Start()
         {
-            Init();
+            Init(Team.Allies);
         }
 
         private void Update()

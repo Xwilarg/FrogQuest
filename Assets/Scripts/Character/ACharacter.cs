@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
@@ -41,6 +40,8 @@ namespace TouhouPrideGameJam4.Character
 
         protected readonly Dictionary<StatusType, int> _currentEffects = new();
 
+        public Team Team { set; get; }
+
         // Position
         private Vector2Int _position;
         public Vector2Int Position
@@ -70,8 +71,9 @@ namespace TouhouPrideGameJam4.Character
             get => _direction;
         }
 
-        protected void Init()
+        protected void Init(Team team)
         {
+            Team = team;
             _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
             _items = _info.StartingItems.ToDictionary(x => x, x => 1);

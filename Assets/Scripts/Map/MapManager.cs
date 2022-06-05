@@ -129,8 +129,9 @@ namespace TouhouPrideGameJam4.Map
                 foreach (var pos in spawnPos)
                 {
                     var enemy = Instantiate(_prefabEnemy, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
+                    enemy.Team = Team.Enemies;
                     enemy.Position = new(pos.x, pos.y);
-                    TurnManager.Instance.AddEnemy(enemy);
+                    TurnManager.Instance.AddCharacter(enemy);
                     enemy.transform.parent = enemyContainer.transform;
                     enemy.gameObject.SetActive(false);
                 }
@@ -154,7 +155,7 @@ namespace TouhouPrideGameJam4.Map
             {
                 _map[y][x].SpriteRendererSub.gameObject.SetActive(true);
             }
-            var enemy = TurnManager.Instance.GetEnemyAtPos(x, y);
+            var enemy = TurnManager.Instance.GetCharactertPos(x, y);
             if (enemy != null)
             {
                 enemy.gameObject.SetActive(true);

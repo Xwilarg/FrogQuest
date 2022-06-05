@@ -28,8 +28,17 @@ namespace TouhouPrideGameJam4.Game
 
         private string _baseObjectiveText;
 
-        public ACharacter Player { set; get; }
-        private readonly List<ACharacter> _enemies = new();
+        private ACharacter _player;
+        public ACharacter Player
+        {
+            set
+            {
+                _player = value;
+                _characters.Add(value);
+            }
+            get => _player;
+        }
+        private readonly List<ACharacter> _characters = new();
 
         private void Awake()
         {
@@ -57,10 +66,10 @@ namespace TouhouPrideGameJam4.Game
         /// <summary>
         /// Add a new enemy to the list of enemies
         /// </summary>
-        public void AddEnemy(ACharacter character)
+        public void AddCharacter(ACharacter character)
         {
-            _enemies.Add(character);
-            _objectiveText.text = _baseObjectiveText.Replace("{0}", _enemies.Count.ToString());
+            _characters.Add(character);
+            _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
         }
 
         public void RemoveCharacter(ACharacter character)
@@ -71,8 +80,8 @@ namespace TouhouPrideGameJam4.Game
             }
             else
             {
-                _enemies.RemoveAll(x => x.GetInstanceID() == character.GetInstanceID());
-                _objectiveText.text = _baseObjectiveText.Replace("{0}", _enemies.Count.ToString());
+                _characters.RemoveAll(x => x.GetInstanceID() == character.GetInstanceID());
+                _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
             }
             Destroy(character.gameObject);
         }
@@ -85,7 +94,7 @@ namespace TouhouPrideGameJam4.Game
             }
             else
             {
-                var target = _enemies.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
+                var target = _characters.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
                 if (target != null)
                 {
                     target.TakeDamage(damage);
@@ -113,11 +122,11 @@ namespace TouhouPrideGameJam4.Game
             var newY = Player.Position.y + relY;
             var didMove = false;
 
-            var target = _enemies.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
+            var target = _characters.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
             var content = MapManager.Instance.GetContent(newX, newY);
             if (target != null) // Enemy on the way, we attack it
             {
-                if (Player.CanAttack())
+                if (target.Team == Team.Enemies && Player.CanAttack())
                 {
                     Player.Attack(target);
                 }
@@ -145,38 +154,59 @@ namespace TouhouPrideGameJam4.Game
             {
                 Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down
             };
-            foreach (var enemy in _enemies)
+            foreach (var c in _characters)
             {
-                // If the enemy is enabled and close enough
-                if (enemy.gameObject.activeInHierarchy && Vector2.Distance(enemy.Position, Player.Position) < _aiInfo.MaxDistanceToMove)
+                // We ignore player or if the current character is disabled
+                if (c.GetInstanceID() == Player.GetInstanceID() || !c.gameObject.activeInHierarchy)
                 {
-                    var dirTarget = directions.OrderBy(d => Vector2.Distance(enemy.Position + d, Player.Position));
+                    continue;
+                }
+
+                // Our target is the closest character with a different team than ours
+                var target = _characters.Where(x => x.Team != c.Team).OrderBy(x => Vector2.Distance(c.Position, x.Position)).ElementAt(0);
+
+                // If the enemy is close enough
+                if (Vector2.Distance(c.Position, target.Position) < _aiInfo.MaxDistanceToMove)
+                {
+                    bool didPlay = false;
+                    var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position));
+
+                    // We try to attack him
                     foreach (var d in dirTarget)
                     {
-                        if (_enemies.FirstOrDefault(e => e.Position.x == enemy.Position.x + d.x && e.Position.y == enemy.Position.y + d.y))
+                        if (target.Position.x == c.Position.x + d.x && target.Position.y == c.Position.y + d.y)
                         {
-                            // An enemy is obstructing the way
-                            continue;
-                        }
-                        if (Player.Position.x == enemy.Position.x + d.x && Player.Position.y == enemy.Position.y + d.y)
-                        {
-                            enemy.Attack(Player);
-                            SetDirection(enemy, d.x, d.y);
-                            break;
-                        }
-                        else if (MapManager.Instance.IsTileWalkable(enemy.Position.x + d.x, enemy.Position.y + d.y))
-                        {
-                            enemy.Position = new(enemy.Position.x + d.x, enemy.Position.y + d.y);
-                            SetDirection(enemy, d.x, d.y);
+                            c.Attack(target);
+                            SetDirection(c, d.x, d.y);
+                            didPlay = true;
                             break;
                         }
                     }
+
+                    // Else we try to move towards its position
+                    if (!didPlay)
+                    {
+                        foreach (var d in dirTarget)
+                        {
+                            if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
+                            {
+                                // An enemy is obstructing the way
+                                continue;
+                            }
+                            else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
+                            {
+                                c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
+                                SetDirection(c, d.x, d.y);
+                                break;
+                            }
+                        }
+                    }
                 }
-                enemy.EndTurn();
+                c.EndTurn();
             }
         }
 
-        public ACharacter GetEnemyAtPos(int x, int y)
-            => _enemies.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
+        public ACharacter GetCharactertPos(int x, int y)
+            => _characters.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
     }
 }
