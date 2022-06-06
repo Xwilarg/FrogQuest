@@ -81,6 +81,7 @@ namespace TouhouPrideGameJam4.Character.Player
                         if (TurnManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0))
                         {
                             _source.PlayOneShot(_stepSound);
+                            UIManager.Instance.UpdateUIOnNewTile();
                         }
                     }
                     else
@@ -88,6 +89,7 @@ namespace TouhouPrideGameJam4.Character.Player
                         if (TurnManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1))
                         {
                             _source.PlayOneShot(_stepSound);
+                            UIManager.Instance.UpdateUIOnNewTile();
                         }
                     }
                 }

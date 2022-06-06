@@ -2,7 +2,9 @@
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using UnityEngine.UI;
@@ -59,6 +61,34 @@ namespace TouhouPrideGameJam4.UI
             {
                 SoundManager.Instance.PlayError();
             }
+            else
+            {
+
+            }
+        }
+
+        public void UpdateUIOnNewTile()
+        {
+            var pos = PlayerController.Instance.Position;
+            if (MapManager.Instance.IsAnythingOnFloor(pos.x, pos.y))
+            {
+                if (!ShortcutInventory.Any(x => x.IsEmpty))
+                {
+                    _takeDropImage.sprite = _spriteFull;
+                }
+                else
+                {
+                    _takeDropImage.sprite = _spriteTake;
+                }
+            }
+            else if (_shortcutTarget != null && !_shortcutTarget.IsEmpty)
+            {
+                _takeDropImage.sprite = _spriteDrop;
+            }
+            else
+            {
+                _takeDropImage.sprite = ActionNone;
+            }
         }
 
         public void UpdateStatus(IReadOnlyDictionary<StatusType, int> effects)
@@ -91,6 +121,7 @@ namespace TouhouPrideGameJam4.UI
                     ShortcutAction.sprite = value.IsEmpty ? ActionNone : value.ActionSprite;
                 }
                 _shortcutTarget = value;
+                UpdateUIOnNewTile();
             }
             get => _shortcutTarget;
         }
@@ -98,6 +129,12 @@ namespace TouhouPrideGameJam4.UI
         private float _baseHealth;
         [SerializeField]
         private Image _healthBar;
+
+        [SerializeField]
+        private Image _takeDropImage;
+
+        [SerializeField]
+        private Sprite _spriteTake, _spriteDrop, _spriteFull;
 
         private ShortcutButton _shortcutTarget = null;
 

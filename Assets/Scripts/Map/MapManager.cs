@@ -173,6 +173,8 @@ namespace TouhouPrideGameJam4.Map
             }
         }
 
+        public bool IsAnythingOnFloor(int x, int y) => _map[y][x].Content == TileContentType.Loot;
+
         public void OpenDoor(int x, int y)
         {
             ClearContent(x, y);

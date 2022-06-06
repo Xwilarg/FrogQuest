@@ -342,6 +342,10 @@ MonoBehaviour:
   _statusPrefab: {fileID: 8442503091932542190, guid: 1d38aa6f9d090564aa6e15e8b819a5e2, type: 3}
   _statusContainer: {fileID: 1126064339}
   _healthBar: {fileID: 81286388}
+  _takeDropImage: {fileID: 391935470}
+  _spriteTake: {fileID: 21300000, guid: f4c5bf4292e5d6143b21cc0271a29b02, type: 3}
+  _spriteDrop: {fileID: 21300000, guid: 1fef0225a15ae634cbe62f6f87318029, type: 3}
+  _spriteFull: {fileID: 21300000, guid: 9fa64038e53df394cba1377b5ac3b5da, type: 3}
   ShortcutEquipped: {fileID: 315567603857564832}
   ShortcutInventory:
   - {fileID: 1749633466}
