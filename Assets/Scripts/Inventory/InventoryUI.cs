@@ -17,10 +17,10 @@ namespace TouhouPrideGameJam4.Inventory
         [SerializeField]
         private GameObject _textPrefab, _buttonPrefab;
 
-        private IReadOnlyDictionary<AItemInfo, int> _items;
+        private IReadOnlyList<AItemInfo> _items;
         private ACharacter _owner;
 
-        public void UpdateContent(ACharacter owner, IReadOnlyDictionary<AItemInfo, int> items, ItemType? filter)
+        public void UpdateContent(ACharacter owner, IReadOnlyList<AItemInfo> items, ItemType? filter)
         {
             _owner = owner;
             _items = items;
@@ -29,16 +29,16 @@ namespace TouhouPrideGameJam4.Inventory
             for (var i = 0; i < _descriptionContainer.childCount; i++) Destroy(_descriptionContainer.GetChild(i).gameObject);
             for (var i = 0; i < _quantityContainer.childCount; i++) Destroy(_quantityContainer.GetChild(i).gameObject);
             for (var i = 0; i < _actionContainer.childCount; i++) Destroy(_actionContainer.GetChild(i).gameObject);
-            foreach (var item in items.Where(x => filter == null || x.Key.Type == filter.Value))
+            foreach (var item in items.Where(x => filter == null || x.Type == filter.Value))
             {
-                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Key.Name + (item.Key.Type == ItemType.Weapon && _owner.EquipedWeapon == (WeaponInfo)item.Key ? " (Equiped)" : "");
-                Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Key.Description;
-                Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = item.Value.ToString();
+                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Name + (item.Type == ItemType.Weapon && _owner.EquipedWeapon == (WeaponInfo)item ? " (Equiped)" : "");
+                Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Description;
+                //Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = item.Value.ToString();
                 var button = Instantiate(_buttonPrefab, _actionContainer);
-                button.GetComponentInChildren<TMP_Text>().text = item.Key.ActionName;
+                button.GetComponentInChildren<TMP_Text>().text = item.ActionName;
                 button.GetComponent<Button>().onClick.AddListener(new(() =>
                 {
-                    item.Key.DoAction(_owner);
+                    item.DoAction(_owner);
                     _owner.ShowItems(this, filter);
                 }));
             }

@@ -22,7 +22,7 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Items that the character has
         /// </summary>
-        protected Dictionary<AItemInfo, int> _items = new();
+        protected List<AItemInfo> _items = new();
 
         /// <summary>
         /// Current health of the character
@@ -98,7 +98,7 @@ namespace TouhouPrideGameJam4.Character
             Team = team;
             _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
-            _items = _info.StartingItems.ToDictionary(x => x, x => 1);
+            _items = _info.StartingItems.ToList();
             EquipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
             UpdateInventoryDisplay();
         }
@@ -174,18 +174,11 @@ namespace TouhouPrideGameJam4.Character
         /// <param name="item">Item to remove</param>
         public void RemoveItem(AItemInfo item)
         {
-            if (_items[item] == 1)
+            _items.Remove(item);
+            // Our weapon was unequipped, we equip any other one we can
+            if (item is WeaponInfo weapon && weapon == EquipedWeapon)
             {
-                _items.Remove(item);
-                // Our weapon was unequipped, we equip any other one we can
-                if (item is WeaponInfo weapon && weapon == EquipedWeapon)
-                {
-                    Equip((WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon));
-                }
-            }
-            else
-            {
-                _items[item]--;
+                Equip((WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon));
             }
             UpdateInventoryDisplay();
         }
@@ -209,8 +202,7 @@ namespace TouhouPrideGameJam4.Character
         /// <param name="baseFilter">Base filter to apply on items</param>
         public void ShowItems(InventoryUI inventory, ItemType? baseFilter)
         {
-            var items = new Dictionary<AItemInfo, int>(_items);
-            inventory.UpdateContent(this, items, baseFilter);
+            inventory.UpdateContent(this, _items, baseFilter);
         }
 
         public virtual void TakeDamage(WeaponInfo weapon, int amount)

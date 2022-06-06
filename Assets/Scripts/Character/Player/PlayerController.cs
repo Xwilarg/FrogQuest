@@ -48,12 +48,12 @@ namespace TouhouPrideGameJam4.Character.Player
             }
             foreach (var item in _items)
             {
-                if (item.Key == EquipedWeapon)
+                if (item == EquipedWeapon)
                 {
                     continue;
                 }
 
-                UIManager.Instance.ShortcutInventory[index].SetContent(item.Key);
+                UIManager.Instance.ShortcutInventory[index].SetContent(item);
                 index++;
                 if (index == UIManager.Instance.ShortcutInventory.Length)
                 {
