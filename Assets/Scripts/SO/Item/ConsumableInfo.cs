@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO.Item
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/ConsumableInfo", fileName = "ConsumableInfo")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/ConsumableInfo", fileName = "ConsumableInfo")]
     public class ConsumableInfo : AItemInfo
     {
         public EffectType Effect;
@@ -15,19 +15,34 @@ namespace TouhouPrideGameJam4.SO.Item
         public override string Description => Effect switch
         {
             EffectType.Heal => $"Heal {Value} HP",
-            _ => throw new System.NotImplementedException()
+            EffectType.Invulnerability => $"Make you invulnerable for {Value} turns",
+            EffectType.BoostAttack => $"Double your attack for {Value} turns",
+            EffectType.BoostDefense => $"Half incoming damage for {Value} turns",
+            _ => throw new NotImplementedException()
         };
 
         public override string ActionName => "Use";
 
-        public override string ActionTooltip => "";
+        public override string ActionTooltip => "Consume the current item";
 
         public override void DoAction(ACharacter owner)
         {
             switch (Effect)
             {
                 case EffectType.Heal:
-                    owner.TakeDamage(-Value);
+                    owner.TakeDamage(null, -Value);
+                    break;
+
+                case EffectType.Invulnerability:
+                    owner.AddStatus(StatusType.Invicible, Value);
+                    break;
+
+                case EffectType.BoostAttack:
+                    owner.AddStatus(StatusType.AttackBoosted, Value);
+                    break;
+
+                case EffectType.BoostDefense:
+                    owner.AddStatus(StatusType.DefenseBoosted, Value);
                     break;
 
                 default:

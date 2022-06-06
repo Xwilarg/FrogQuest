@@ -9,19 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547c29839983ff24e92044bae42b53fd, type: 3}
-  m_Name: SpellInfo
+  m_Script: {fileID: 11500000, guid: ebc4f8e13b6b1554f9e0b2a43ff60e69, type: 3}
+  m_Name: Snake Sign Bind Snake Come On
   m_EditorClassIdentifier: 
   UtilityDescription: 
-  Name: Esoterica "Nine Syllable Stabs"
+  Name: Snake Sign "Bind Snake Come On"
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
   Effect: 1
   Value: 0
-  ProjectilePrefab: {fileID: 5741561768511771132, guid: fae32c60a1f48ee4e90fe237e7294dcd, type: 3}
-  Speed: 1000
-  ProjectileCount: 9
-  DamagePerProjectile: 2
-  DelayBetweenProjectiles: 0.1
-  XOffset: 0.5
-  YOffset: 0.5
+  Prefab: {fileID: 5297207215834165471, guid: 666b98936da552644a4e1978982e1c45, type: 3}
+  Team: 0
+  SpawnedName: Bind Snake

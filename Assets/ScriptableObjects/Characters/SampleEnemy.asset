@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SampleEnemy
   m_EditorClassIdentifier: 
   BaseHealth: 4
-  StartingItems:
-  - {fileID: 11400000, guid: de9f3cb585e44ad4d8c0e96982def4e2, type: 2}
+  StartingItems: []
+  DefaultWeapon: {fileID: 11400000, guid: e51a727081a2bba4fa24f371e1d1771e, type: 2}

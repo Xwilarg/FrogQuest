@@ -7,7 +7,7 @@ using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.SO.Item
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/SpellInfo", fileName = "SpellInfo")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/SpellInfo", fileName = "SpellInfo")]
     public class SpellInfo : ConsumableInfo
     {
         /// <summary>
@@ -41,6 +41,8 @@ namespace TouhouPrideGameJam4.SO.Item
         /// </summary>
         public float XOffset, YOffset;
 
+        public override string Description => $"Launch {ProjectileCount} projectiles each doing {DamagePerProjectile} damages";
+
         public override void DoAction(ACharacter owner)
         {
             owner.RemoveItem(this);
@@ -52,14 +54,7 @@ namespace TouhouPrideGameJam4.SO.Item
             for (int i = 0; i < ProjectileCount; i++)
             {
                 var go = Instantiate(ProjectilePrefab, (Vector2)owner.Position + new Vector2(Random.Range(-XOffset, XOffset), Random.Range(-YOffset, YOffset)), Quaternion.identity);
-                var direction = owner.Direction switch
-                {
-                    Direction.Left => Vector2Int.left,
-                    Direction.Right => Vector2Int.right,
-                    Direction.Up => Vector2Int.up,
-                    Direction.Down => Vector2Int.down,
-                    _ => throw new System.NotImplementedException()
-                };
+                var direction = owner.RelativeDirection;
                 int currX = owner.Position.x, currY = owner.Position.y;
                 do
                 {

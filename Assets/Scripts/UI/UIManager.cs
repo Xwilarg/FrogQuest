@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Sound;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace TouhouPrideGameJam4.UI
@@ -7,10 +13,21 @@ namespace TouhouPrideGameJam4.UI
     {
         public static UIManager Instance { get; private set; }
 
+        [SerializeField]
+        private GameObject _statusPrefab;
+
+        [SerializeField]
+        private Transform _statusContainer;
+
         private void Awake()
         {
             Instance = this;
-            _source = GetComponent<AudioSource>();
+            _baseHealth = _healthBar.rectTransform.sizeDelta.x;
+        }
+
+        public void SetHealth(float value)
+        {
+            _healthBar.rectTransform.sizeDelta = new Vector2(value * _baseHealth, _healthBar.rectTransform.sizeDelta.y);
         }
 
         /// <summary>
@@ -32,7 +49,19 @@ namespace TouhouPrideGameJam4.UI
             }
             else
             {
-                PlaySound(ClipNone);
+                SoundManager.Instance.PlayError();
+            }
+        }
+
+        public void UpdateStatus(IReadOnlyDictionary<StatusType, int> effects)
+        {
+            for (int i = 0; i < _statusContainer.childCount; i++) Destroy(_statusContainer.GetChild(i).gameObject);
+
+            foreach (var e in effects)
+            {
+                var go = Instantiate(_statusPrefab, _statusContainer);
+                go.GetComponent<Image>().sprite = GameManager.Instance.GetStatusFromType(e.Key).Sprite;
+                go.GetComponentInChildren<TMP_Text>().text = e.Value.ToString();
             }
         }
 
@@ -58,10 +87,9 @@ namespace TouhouPrideGameJam4.UI
             get => _shortcutTarget;
         }
 
-        public void PlaySound(AudioClip clip)
-        {
-            _source.PlayOneShot(clip);
-        }
+        private float _baseHealth;
+        [SerializeField]
+        private Image _healthBar;
 
         private ShortcutButton _shortcutTarget = null;
 
@@ -69,8 +97,7 @@ namespace TouhouPrideGameJam4.UI
         public ShortcutButton[] ShortcutInventory;
         public Image ShortcutAction;
         public Sprite ActionNone;
-        public AudioClip ClipNone;
 
-        private AudioSource _source;
+        public Tooltip Tooptip;
     }
 }

@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
@@ -15,7 +15,9 @@ namespace TouhouPrideGameJam4.Character
         /// Information about the character
         /// </summary>
         [SerializeField]
-        private SO.CharacterInfo _info;
+        protected SO.CharacterInfo _info;
+
+        public SO.CharacterInfo Info => _info;
 
         /// <summary>
         /// Items that the character has
@@ -25,16 +27,33 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Current health of the character
         /// </summary>
-        private int _health;
+        protected int _health;
 
         /// <summary>
         /// Equipped weapon
         /// </summary>
-        protected WeaponInfo _equipedWeapon;
+        private WeaponInfo _equipedWeapon;
+        public WeaponInfo EquipedWeapon
+        {
+            set
+            {
+                _equipedWeapon = value;
+            }
+            get
+            {
+                return _equipedWeapon != null ? _equipedWeapon : _info.DefaultWeapon;
+            }
+        }
+
+        private Animator _anim;
 
         // Used for smooth movement
         public Vector2 OldPos { set; get; }
         private float _moveTimer = 0f;
+
+        protected readonly Dictionary<StatusType, int> _currentEffects = new();
+
+        public Team Team { set; get; }
 
         // Position
         private Vector2Int _position;
@@ -42,6 +61,8 @@ namespace TouhouPrideGameJam4.Character
         {
             set
             {
+                _anim?.SetBool("IsWalking", true);
+                _anim?.SetTrigger("StartWalking");
                 OldPos = transform.position;
                 _moveTimer = 0f;
                 _position = value;
@@ -52,21 +73,94 @@ namespace TouhouPrideGameJam4.Character
             }
         }
 
-        public Direction Direction { set; get; }
-
-        protected void Init()
+        private Direction _direction = Direction.Up;
+        public Direction Direction
         {
+            set
+            {
+                _direction = value;
+                _anim?.SetInteger("Direction", (int)value);
+            }
+            get => _direction;
+        }
+
+        public Vector2Int RelativeDirection => Direction switch
+        {
+            Direction.Up => Vector2Int.up,
+            Direction.Down => Vector2Int.down,
+            Direction.Left => Vector2Int.left,
+            Direction.Right => Vector2Int.right,
+            _ => throw new System.NotImplementedException()
+        };
+
+        protected void Init(Team team)
+        {
+            Team = team;
+            _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
             _items = _info.StartingItems.ToDictionary(x => x, x => 1);
-            _equipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
+            EquipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
             UpdateInventoryDisplay();
         }
 
         protected void UpdateC()
         {
-            _moveTimer += Time.deltaTime * 10f;
-            transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
+            if (_moveTimer < 1f)
+            {
+                _moveTimer += Time.deltaTime * 2.5f;
+                transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
+                if (_moveTimer >= 1f)
+                {
+                    _anim?.SetBool("IsWalking", false);
+                }
+            }
         }
+
+        /// <summary>
+        /// Called at the end of a turn
+        /// </summary>
+        public void EndTurn()
+        {
+            for (int i = _currentEffects.Keys.Count - 1; i >= 0; i--)
+            {
+                var key = _currentEffects.Keys.ElementAt(i);
+                if (_currentEffects[key] == 1)
+                {
+                    _currentEffects.Remove(key);
+                }
+                else
+                {
+                    _currentEffects[key]--;
+                }
+            }
+            OnStatusChange();
+        }
+
+        public void AddStatus(StatusType status, int duration)
+        {
+            if (_currentEffects.ContainsKey(status))
+            {
+                _currentEffects[status] += duration;
+            }
+            else
+            {
+                _currentEffects.Add(status, duration);
+            }
+            OnStatusChange();
+        }
+
+        public void RemoveStatus(StatusType status)
+        {
+            _currentEffects.Remove(status);
+            OnStatusChange();
+        }
+
+        public virtual void OnStatusChange()
+        { }
+
+        public StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
+
+        private bool Has(StatusType status) => _currentEffects.ContainsKey(status);
 
         /// <summary>
         /// Update action bar and inventory display
@@ -84,7 +178,7 @@ namespace TouhouPrideGameJam4.Character
             {
                 _items.Remove(item);
                 // Our weapon was unequipped, we equip any other one we can
-                if (item is WeaponInfo weapon && IsEquipped(weapon))
+                if (item is WeaponInfo weapon && weapon == EquipedWeapon)
                 {
                     Equip((WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon));
                 }
@@ -96,24 +190,17 @@ namespace TouhouPrideGameJam4.Character
             UpdateInventoryDisplay();
         }
 
-        /// <summary>
-        /// Is the character able to attack
-        /// </summary>
-        public bool CanAttack() => _equipedWeapon != null;
+        public bool CanDoSomething() => !Has(StatusType.Stunned);
+        public bool CanMove() => !Has(StatusType.Frozen) && !Has(StatusType.Binded);
 
         /// <summary>
         /// Change the currently equipped weapon to the one given in parameter
         /// </summary>
         public void Equip(WeaponInfo weapon)
         {
-            _equipedWeapon = weapon;
+            EquipedWeapon = weapon;
             UpdateInventoryDisplay();
         }
-
-        /// <summary>
-        /// Is the weapon given in parameter the one equipped
-        /// </summary>
-        public bool IsEquipped(WeaponInfo weapon) => _equipedWeapon == weapon;
 
         /// <summary>
         /// Show intentory
@@ -126,8 +213,28 @@ namespace TouhouPrideGameJam4.Character
             inventory.UpdateContent(this, items, baseFilter);
         }
 
-        public void TakeDamage(int amount)
+        public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
+            if (weapon != null)
+            {
+                foreach (var status in weapon.HitEffects)
+                {
+                    AddStatus(status, 1000);
+                }
+            }
+
+            if (amount > 0)
+            {
+                if (Has(StatusType.Invicible))
+                {
+                    amount = 0;
+                }
+                else if (Has(StatusType.DefenseBoosted))
+                {
+                    amount /= 2;
+                }
+            }
+
             _health -= amount;
             if (_health <= 0)
             {
@@ -145,13 +252,11 @@ namespace TouhouPrideGameJam4.Character
             else if (amount < 0) color = Color.green;
             else color = Color.yellow;
             TurnManager.Instance.SpawnDamageText(amount, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
-
-            TurnManager.Instance.UpdateDebugText();
         }
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(_equipedWeapon.Damage);
+            target.TakeDamage(EquipedWeapon, EquipedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
         }
 
         public override string ToString()

@@ -3,6 +3,9 @@
     public enum EffectType
     {
         Heal,
-        Spell
+        Spell,
+        Invulnerability,
+        BoostAttack,
+        BoostDefense
     }
 }

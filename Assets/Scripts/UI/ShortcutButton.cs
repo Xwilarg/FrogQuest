@@ -1,11 +1,13 @@
 ﻿using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace TouhouPrideGameJam4.UI
 {
-    public class ShortcutButton : MonoBehaviour
+    public class ShortcutButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public void OnClick()
         {
@@ -37,9 +39,17 @@ namespace TouhouPrideGameJam4.UI
 
         public void Use()
         {
-            UIManager.Instance.PlaySound(_content.ActionType.ActionSound);
-            _content.DoAction(PlayerController.Instance);
-            PlayerController.Instance.UpdateInventoryDisplay();
+            try
+            {
+                var sound = _content.ActionType.ActionSound;
+                _content.DoAction(PlayerController.Instance);
+                SoundManager.Instance.PlayClip(sound);
+                PlayerController.Instance.UpdateInventoryDisplay();
+            }
+            catch (NoFreeSpaceException)
+            {
+                SoundManager.Instance.PlayError();
+            }
         }
 
         public void SetHighlight()
@@ -66,6 +76,22 @@ namespace TouhouPrideGameJam4.UI
             _content = item;
             _contentImage.sprite = item != null ? item.Sprite : null;
             _contentImage.color = item == null ? new Color(0f, 0f, 0f, 0f) : Color.white;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            UIManager.Instance.Tooptip.gameObject.SetActive(false);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!IsEmpty)
+            {
+                UIManager.Instance.Tooptip.gameObject.SetActive(true);
+                UIManager.Instance.Tooptip.transform.position = transform.position - Vector3.down * ((RectTransform)UIManager.Instance.Tooptip.transform).sizeDelta.y;
+                UIManager.Instance.Tooptip.Title.text = _content.Name;
+                UIManager.Instance.Tooptip.Description.text = $"{_content.Description}\n\n<color=#555>{_content.UtilityDescription}";
+            }
         }
     }
 }
