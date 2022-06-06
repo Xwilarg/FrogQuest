@@ -175,6 +175,7 @@ namespace TouhouPrideGameJam4.Map
 
         public void OpenDoor(int x, int y)
         {
+            ClearContent(x, y);
             DiscoverRoom(x - 1, y);
             DiscoverRoom(x + 1, y);
             DiscoverRoom(x, y - 1);
@@ -265,7 +266,7 @@ namespace TouhouPrideGameJam4.Map
         public TileContentType GetContent(int x, int y)
             => _map[y][x].Content;
 
-        public void ClearContent(int x, int y)
+        private void ClearContent(int x, int y)
         {
             _map[y][x].Content = TileContentType.None;
             _map[y][x].SpriteRendererSub.sprite = null;

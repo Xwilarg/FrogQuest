@@ -130,10 +130,9 @@ namespace TouhouPrideGameJam4.Game
                 {
                     Player.Attack(target);
                 }
-                else if (content != TileContentType.None)
+                else if (content == TileContentType.Door)
                 {
                     MapManager.Instance.OpenDoor(newX, newY);
-                    MapManager.Instance.ClearContent(newX, newY);
                 }
                 else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
                 {
