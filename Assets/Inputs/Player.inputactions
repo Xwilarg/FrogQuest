@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "DropTake",
+                    "type": "Button",
+                    "id": "c0a5c2f8-b898-4bf3-8526-3f520d7568ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Shortcut 1",
                     "type": "Button",
                     "id": "02d5d9e6-3a77-44f3-b0a9-81e95485fe42",
@@ -416,6 +425,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Shortcut 0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01a9343e-524b-48c7-b15e-d60712178629",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DropTake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "085c0e78-e267-4134-bebf-b1eb1d87f8ba",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DropTake",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

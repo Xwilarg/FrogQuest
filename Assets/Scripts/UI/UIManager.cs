@@ -53,6 +53,14 @@ namespace TouhouPrideGameJam4.UI
             }
         }
 
+        public void DropTake()
+        {
+            if (_shortcutTarget == null || _shortcutTarget.IsEmpty)
+            {
+                SoundManager.Instance.PlayError();
+            }
+        }
+
         public void UpdateStatus(IReadOnlyDictionary<StatusType, int> effects)
         {
             for (int i = 0; i < _statusContainer.childCount; i++) Destroy(_statusContainer.GetChild(i).gameObject);

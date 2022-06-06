@@ -118,6 +118,14 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
+        public void OnDropTake(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                UIManager.Instance.DropTake();
+            }
+        }
+
         public void OnShortcut1(InputAction.CallbackContext value) => OnShortcut(value, 0);
         public void OnShortcut2(InputAction.CallbackContext value) => OnShortcut(value, 1);
         public void OnShortcut3(InputAction.CallbackContext value) => OnShortcut(value, 2);
