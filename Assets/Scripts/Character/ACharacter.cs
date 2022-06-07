@@ -168,6 +168,16 @@ namespace TouhouPrideGameJam4.Character
         public virtual void UpdateInventoryDisplay()
         { }
 
+        public void AddItem(AItemInfo item)
+        {
+            _items.Add(item);
+            if (_equipedWeapon == null && item is WeaponInfo weapon)
+            {
+                Equip(weapon);
+            }
+            UpdateInventoryDisplay();
+        }
+
         /// <summary>
         /// Remove an item from the character inventory
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TouhouPrideGameJam4.SO.Item;
+using UnityEngine;
 
 namespace TouhouPrideGameJam4.Map
 {
@@ -15,7 +16,10 @@ namespace TouhouPrideGameJam4.Map
 
         public TileType Type { set; get; }
         public TileContentType Content { set; get; }
+
+        public AItemInfo ItemDropped;
         public SpriteRenderer SpriteRendererMain { set; get; }
         public SpriteRenderer SpriteRendererSub { set; get; }
+        public SpriteRenderer SpriteRendererItem { set; get; }
     }
 }

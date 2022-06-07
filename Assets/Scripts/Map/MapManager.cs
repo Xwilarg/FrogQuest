@@ -3,6 +3,7 @@ using System.Linq;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
 using UnityEngine.Assertions;
 using static UnityEngine.UIElements.NavigationMoveEvent;
@@ -20,7 +21,7 @@ namespace TouhouPrideGameJam4.Map
         private GameObject _prefabPlayer, _prefabEnemy;
 
         [SerializeField]
-        private GameObject _prefabTile, _prefabDoor;
+        private GameObject _prefabTile, _prefabDoor, _prefabItemFloor;
 
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
@@ -155,6 +156,10 @@ namespace TouhouPrideGameJam4.Map
             {
                 _map[y][x].SpriteRendererSub.gameObject.SetActive(true);
             }
+            if (_map[y][x].SpriteRendererItem != null)
+            {
+                _map[y][x].SpriteRendererItem.gameObject.SetActive(true);
+            }
             var enemy = TurnManager.Instance.GetCharactertPos(x, y);
             if (enemy != null)
             {
@@ -173,7 +178,7 @@ namespace TouhouPrideGameJam4.Map
             }
         }
 
-        public bool IsAnythingOnFloor(int x, int y) => _map[y][x].Content == TileContentType.Loot;
+        public bool IsAnythingOnFloor(int x, int y) => _map[y][x].ItemDropped != null;
 
         public void OpenDoor(int x, int y)
         {
@@ -313,6 +318,24 @@ namespace TouhouPrideGameJam4.Map
             _map[y][x].SpriteRendererMain.sprite = tile.Sprite;
         }
 
+        public void SetItemOnFloor(int x, int y, AItemInfo item)
+        {
+            if (_map[y][x].SpriteRendererItem == null)
+            {
+                _map[y][x].SpriteRendererItem = Instantiate(_prefabItemFloor, new(x, y), Quaternion.identity).GetComponent<SpriteRenderer>();
+            }
+            _map[y][x].SpriteRendererItem.sprite = item.Sprite;
+            _map[y][x].ItemDropped = item;
+        }
+
+        public AItemInfo TakeItemFromFloor(int x, int y)
+        {
+            var item = _map[y][x].ItemDropped;
+            _map[y][x].SpriteRendererItem.sprite = null;
+            _map[y][x].ItemDropped = null;
+            return item;
+        }
+
         private void SetTileContent(int x, int y, TileContentType content)
         {
             var t = Instantiate(content switch
@@ -325,6 +348,7 @@ namespace TouhouPrideGameJam4.Map
             _map[y][x].Content = content;
             t.SetActive(false);
         }
+
 
         /// <summary>
         /// Get all the doors that lead nowhere

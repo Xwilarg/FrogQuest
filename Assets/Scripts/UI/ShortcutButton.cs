@@ -25,9 +25,9 @@ namespace TouhouPrideGameJam4.UI
         /// <summary>
         /// Item that is contained there
         /// </summary>
-        private AItemInfo _content;
+        public AItemInfo Content { private set; get; }
 
-        public bool IsEmpty => _content == null;
+        public bool IsEmpty => Content == null;
 
         private void Awake()
         {
@@ -35,14 +35,14 @@ namespace TouhouPrideGameJam4.UI
             _highlightImage = GetComponent<Image>();
         }
 
-        public Sprite ActionSprite => _content.ActionType.ActionSprite;
+        public Sprite ActionSprite => Content.ActionType.ActionSprite;
 
         public void Use()
         {
             try
             {
-                var sound = _content.ActionType.ActionSound;
-                _content.DoAction(PlayerController.Instance);
+                var sound = Content.ActionType.ActionSound;
+                Content.DoAction(PlayerController.Instance);
                 SoundManager.Instance.PlayClip(sound);
                 PlayerController.Instance.UpdateInventoryDisplay();
             }
@@ -69,11 +69,11 @@ namespace TouhouPrideGameJam4.UI
 
         public void SetContent(AItemInfo item)
         {
-            if (item != _content)
+            if (item != Content)
             {
                 UIManager.Instance.ShortcutTarget = null;
             }
-            _content = item;
+            Content = item;
             _contentImage.sprite = item != null ? item.Sprite : null;
             _contentImage.color = item == null ? new Color(0f, 0f, 0f, 0f) : Color.white;
         }
@@ -89,8 +89,8 @@ namespace TouhouPrideGameJam4.UI
             {
                 UIManager.Instance.Tooptip.gameObject.SetActive(true);
                 UIManager.Instance.Tooptip.transform.position = transform.position - Vector3.down * ((RectTransform)UIManager.Instance.Tooptip.transform).sizeDelta.y;
-                UIManager.Instance.Tooptip.Title.text = _content.Name;
-                UIManager.Instance.Tooptip.Description.text = $"{_content.Description}\n\n<color=#555>{_content.UtilityDescription}";
+                UIManager.Instance.Tooptip.Title.text = Content.Name;
+                UIManager.Instance.Tooptip.Description.text = $"{Content.Description}\n\n<color=#555>{Content.UtilityDescription}";
             }
         }
     }

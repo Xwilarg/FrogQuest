@@ -57,13 +57,28 @@ namespace TouhouPrideGameJam4.UI
 
         public void DropTake()
         {
-            if (_shortcutTarget == null || _shortcutTarget.IsEmpty)
+            var pos = PlayerController.Instance.Position;
+            if (MapManager.Instance.IsAnythingOnFloor(pos.x, pos.y))
             {
-                SoundManager.Instance.PlayError();
+                if (!ShortcutInventory.Any(x => x.IsEmpty))
+                {
+                    SoundManager.Instance.PlayError();
+                }
+                else
+                {
+                    PlayerController.Instance.AddItem(MapManager.Instance.TakeItemFromFloor(pos.x, pos.y));
+                    UpdateUIOnNewTile();
+                }
+            }
+            else if (_shortcutTarget != null && !_shortcutTarget.IsEmpty)
+            {
+                MapManager.Instance.SetItemOnFloor(pos.x, pos.y, _shortcutTarget.Content);
+                PlayerController.Instance.RemoveItem(_shortcutTarget.Content);
+                UpdateUIOnNewTile();
             }
             else
             {
-
+                SoundManager.Instance.PlayError();
             }
         }
 

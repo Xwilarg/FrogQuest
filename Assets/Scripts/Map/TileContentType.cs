@@ -3,7 +3,6 @@
     public enum TileContentType
     {
         None,
-        Door,
-        Loot
+        Door
     }
 }
