@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace TouhouPrideGameJam4.Inventory
 {
+    /// <summary>
+    /// NOT USED ANYMORE
+    /// </summary>
     public class InventoryUI : MonoBehaviour
     {
         [SerializeField]
