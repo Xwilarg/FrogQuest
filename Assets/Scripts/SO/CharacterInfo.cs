@@ -1,4 +1,5 @@
-﻿using TouhouPrideGameJam4.SO.Item;
+﻿using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO
@@ -8,7 +9,7 @@ namespace TouhouPrideGameJam4.SO
     {
         public int BaseHealth;
 
-        public AItemInfo[] StartingItems;
+        public DropItemRate[] StartingItems;
 
         public WeaponInfo DefaultWeapon;
 

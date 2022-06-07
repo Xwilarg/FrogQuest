@@ -2,6 +2,7 @@
 using System.Linq;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
+using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
@@ -98,8 +99,8 @@ namespace TouhouPrideGameJam4.Character
             Team = team;
             _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
-            _items = _info.StartingItems.ToList();
-            EquipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon);
+            _items = _info.StartingItems.Where(x => x.Item != null).Select(x => x.Item).ToList();
+            EquipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Item != null && x.Item.Type == ItemType.Weapon)?.Item;
             UpdateInventoryDisplay();
         }
 
@@ -188,7 +189,7 @@ namespace TouhouPrideGameJam4.Character
             // Our weapon was unequipped, we equip any other one we can
             if (item is WeaponInfo weapon && weapon == EquipedWeapon)
             {
-                Equip((WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Type == ItemType.Weapon));
+                Equip((WeaponInfo)_items.FirstOrDefault(x => x.Type == ItemType.Weapon));
             }
             UpdateInventoryDisplay();
         }
@@ -240,6 +241,23 @@ namespace TouhouPrideGameJam4.Character
             _health -= amount;
             if (_health <= 0)
             {
+                if (_info.StartingItems.Any() && !MapManager.Instance.IsAnythingOnFloor(Position.x, Position.y)) // TODO: Put object on the next tile?
+                {
+                    var sumDrop = _info.StartingItems.Sum(x => x.Weight);
+                    var targetWeight = Random.Range(0, sumDrop);
+                    var index = 0;
+                    while (targetWeight > 0) // TODO: Check rates
+                    {
+                        targetWeight -= _info.StartingItems[index].Weight;
+                        index++;
+                    }
+                    var target = _info.StartingItems[index];
+                    if (target.Item != null)
+                    {
+                        MapManager.Instance.SetItemOnFloor(Position.x, Position.y, target.Item);
+                        UIManager.Instance.UpdateUIOnNewTile();
+                    }
+                }
                 TurnManager.Instance.RemoveCharacter(this);
             }
             else if (_health > _info.BaseHealth)
