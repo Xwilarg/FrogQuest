@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TouhouPrideGameJam4.Map
 {
     /// <summary>
-    /// Instancied tile in the world
+    /// Instantiated tile in the world
     /// </summary>
     public class Tile
     {

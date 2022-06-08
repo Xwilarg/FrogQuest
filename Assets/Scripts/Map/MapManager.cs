@@ -160,7 +160,7 @@ namespace TouhouPrideGameJam4.Map
             {
                 _map[y][x].SpriteRendererItem.gameObject.SetActive(true);
             }
-            var enemy = TurnManager.Instance.GetCharactertPos(x, y);
+            var enemy = TurnManager.Instance.GetCharacterPos(x, y);
             if (enemy != null)
             {
                 enemy.gameObject.SetActive(true);

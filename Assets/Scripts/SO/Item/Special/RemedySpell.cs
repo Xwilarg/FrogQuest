@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO.Item
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/Item/Special/RemedeSpell", fileName = "RemedeSpell")]
-    public class RemedeSpell : ConsumableInfo
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/Special/RemedySpell", fileName = "RemedySpell")]
+    public class RemedySpell : ConsumableInfo
     {
         public StatusType[] Status;
         public int TurnCount;

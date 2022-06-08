@@ -158,6 +158,6 @@ namespace TouhouPrideGameJam4.UI
         public Image ShortcutAction;
         public Sprite ActionNone;
 
-        public Tooltip Tooptip;
+        public Tooltip Tooltip;
     }
 }

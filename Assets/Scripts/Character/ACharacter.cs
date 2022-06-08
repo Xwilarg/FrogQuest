@@ -33,16 +33,16 @@ namespace TouhouPrideGameJam4.Character
         /// <summary>
         /// Equipped weapon
         /// </summary>
-        private WeaponInfo _equipedWeapon;
-        public WeaponInfo EquipedWeapon
+        private WeaponInfo _equippedWeapon;
+        public WeaponInfo EquippedWeapon
         {
             set
             {
-                _equipedWeapon = value;
+                _equippedWeapon = value;
             }
             get
             {
-                return _equipedWeapon != null ? _equipedWeapon : _info.DefaultWeapon;
+                return _equippedWeapon != null ? _equippedWeapon : _info.DefaultWeapon;
             }
         }
 
@@ -100,7 +100,7 @@ namespace TouhouPrideGameJam4.Character
             _anim = GetComponent<Animator>();
             _health = _info.BaseHealth;
             _items = _info.StartingItems.Where(x => x.Item != null).Select(x => x.Item).ToList();
-            EquipedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Item != null && x.Item.Type == ItemType.Weapon)?.Item;
+            EquippedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Item != null && x.Item.Type == ItemType.Weapon)?.Item;
             UpdateInventoryDisplay();
         }
 
@@ -172,7 +172,7 @@ namespace TouhouPrideGameJam4.Character
         public void AddItem(AItemInfo item)
         {
             _items.Add(item);
-            if (_equipedWeapon == null && item is WeaponInfo weapon)
+            if (_equippedWeapon == null && item is WeaponInfo weapon)
             {
                 Equip(weapon);
             }
@@ -187,7 +187,7 @@ namespace TouhouPrideGameJam4.Character
         {
             _items.Remove(item);
             // Our weapon was unequipped, we equip any other one we can
-            if (item is WeaponInfo weapon && weapon == EquipedWeapon)
+            if (item is WeaponInfo weapon && weapon == EquippedWeapon)
             {
                 Equip((WeaponInfo)_items.FirstOrDefault(x => x.Type == ItemType.Weapon));
             }
@@ -202,14 +202,14 @@ namespace TouhouPrideGameJam4.Character
         /// </summary>
         public void Equip(WeaponInfo weapon)
         {
-            EquipedWeapon = weapon;
+            EquippedWeapon = weapon;
             UpdateInventoryDisplay();
         }
 
         /// <summary>
-        /// Show intentory
+        /// Show inventory
         /// </summary>
-        /// <param name="inventory">Inentory script</param>
+        /// <param name="inventory">Inventory script</param>
         /// <param name="baseFilter">Base filter to apply on items</param>
         public void ShowItems(InventoryUI inventory, ItemType? baseFilter)
         {
@@ -228,7 +228,7 @@ namespace TouhouPrideGameJam4.Character
 
             if (amount > 0)
             {
-                if (Has(StatusType.Invicible))
+                if (Has(StatusType.Invincible))
                 {
                     amount = 0;
                 }
@@ -276,7 +276,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(EquipedWeapon, EquipedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
+            target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
         }
 
         public override string ToString()

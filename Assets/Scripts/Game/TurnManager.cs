@@ -215,7 +215,7 @@ namespace TouhouPrideGameJam4.Game
             }
         }
 
-        public ACharacter GetCharactertPos(int x, int y)
+        public ACharacter GetCharacterPos(int x, int y)
             => _characters.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
     }
 }

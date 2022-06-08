@@ -11,7 +11,7 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override ItemType Type => ItemType.Weapon;
         public StatusType[] HitEffects;
-        public override string Description => $"{Damage} damages";
+        public override string Description => $"{Damage} damage";
 
         public override string ActionName => "Equip";
 

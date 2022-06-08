@@ -34,7 +34,7 @@ namespace TouhouPrideGameJam4.Inventory
             for (var i = 0; i < _actionContainer.childCount; i++) Destroy(_actionContainer.GetChild(i).gameObject);
             foreach (var item in items.Where(x => filter == null || x.Type == filter.Value))
             {
-                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Name + (item.Type == ItemType.Weapon && _owner.EquipedWeapon == (WeaponInfo)item ? " (Equiped)" : "");
+                Instantiate(_textPrefab, _nameContainer).GetComponent<TMP_Text>().text = item.Name + (item.Type == ItemType.Weapon && _owner.EquippedWeapon == (WeaponInfo)item ? " (Equipped)" : "");
                 Instantiate(_textPrefab, _descriptionContainer).GetComponent<TMP_Text>().text = item.Description;
                 //Instantiate(_textPrefab, _quantityContainer).GetComponent<TMP_Text>().text = item.Value.ToString();
                 var button = Instantiate(_buttonPrefab, _actionContainer);
@@ -49,6 +49,6 @@ namespace TouhouPrideGameJam4.Inventory
 
         public void FilterAll() => UpdateContent(_owner, _items, null);
         public void FilterWeapons() => UpdateContent(_owner, _items, ItemType.Weapon);
-        public void FilterConsumables() => UpdateContent(_owner, _items, ItemType.Consummable);
+        public void FilterConsumables() => UpdateContent(_owner, _items, ItemType.Consumable);
     }
 }

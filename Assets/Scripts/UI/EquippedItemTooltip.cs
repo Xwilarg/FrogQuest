@@ -8,15 +8,15 @@ namespace TouhouPrideGameJam4.UI
     {
         public void OnPointerEnter(PointerEventData eventData)
         {
-            UIManager.Instance.Tooptip.gameObject.SetActive(true);
-            UIManager.Instance.Tooptip.transform.position = transform.position - Vector3.down * ((RectTransform)UIManager.Instance.Tooptip.transform).sizeDelta.y;
-            UIManager.Instance.Tooptip.Title.text = PlayerController.Instance.EquipedWeapon.Name;
-            UIManager.Instance.Tooptip.Description.text = $"{PlayerController.Instance.EquipedWeapon.Description}\n\n<color=#555>{PlayerController.Instance.EquipedWeapon.UtilityDescription}";
+            UIManager.Instance.Tooltip.gameObject.SetActive(true);
+            UIManager.Instance.Tooltip.transform.position = transform.position - Vector3.down * ((RectTransform)UIManager.Instance.Tooltip.transform).sizeDelta.y;
+            UIManager.Instance.Tooltip.Title.text = PlayerController.Instance.EquippedWeapon.Name;
+            UIManager.Instance.Tooltip.Description.text = $"{PlayerController.Instance.EquippedWeapon.Description}\n\n<color=#555>{PlayerController.Instance.EquippedWeapon.UtilityDescription}";
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            UIManager.Instance.Tooptip.gameObject.SetActive(false);
+            UIManager.Instance.Tooltip.gameObject.SetActive(false);
         }
     }
 }

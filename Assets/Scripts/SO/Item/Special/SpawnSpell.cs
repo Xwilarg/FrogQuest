@@ -33,7 +33,7 @@ namespace TouhouPrideGameJam4.SO.Item
             var forward = owner.Position + owner.RelativeDirection;
 
             // We first try to look for the forward position
-            if (MapManager.Instance.IsTileWalkable(forward.x, forward.y) && TurnManager.Instance.GetCharactertPos(forward.x, forward.y) == null)
+            if (MapManager.Instance.IsTileWalkable(forward.x, forward.y) && TurnManager.Instance.GetCharacterPos(forward.x, forward.y) == null)
             {
                 return forward;
             }
@@ -44,7 +44,7 @@ namespace TouhouPrideGameJam4.SO.Item
                 for (int j = -1; j <= 1; j++)
                 {
                     var pos = owner.Position + new Vector2Int(i, j);
-                    if (MapManager.Instance.IsTileWalkable(pos.x, pos.y) && TurnManager.Instance.GetCharactertPos(pos.x, pos.y) == null)
+                    if (MapManager.Instance.IsTileWalkable(pos.x, pos.y) && TurnManager.Instance.GetCharacterPos(pos.x, pos.y) == null)
                     {
                         return pos;
                     }

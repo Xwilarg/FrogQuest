@@ -2,7 +2,7 @@
 {
     public enum StatusType
     {
-        Invicible,
+        Invincible,
         Frozen,
         Stunned,
         DefenseBoosted,
