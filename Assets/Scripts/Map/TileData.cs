@@ -27,5 +27,7 @@ namespace TouhouPrideGameJam4.Map
         /// Is the player allowed to walk on this
         /// </summary>
         public bool CanBeWalkedOn;
+
+        public Sprite Sprite;
     }
 }

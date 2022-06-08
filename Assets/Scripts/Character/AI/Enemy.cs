@@ -2,9 +2,14 @@
 {
     public class Enemy : ACharacter
     {
-        private void Awake()
+        private void Start()
         {
-            Init();
+            Init(Team);
+        }
+
+        private void Update()
+        {
+            UpdateC();
         }
     }
 }
