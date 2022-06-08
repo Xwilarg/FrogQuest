@@ -187,8 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 451afdc1dc1533a4b96f79e8e4bf67cc, type: 2}
   _stepSound:
-  - {fileID: 8300000, guid: f58e0ff729552234a8cb307e6adfdffa, type: 3}
-  - {fileID: 8300000, guid: 184e19d45b8fe174ca56d111885c210f, type: 3}
+  - {fileID: 8300000, guid: 7728d35b45f100e47bf708a246c98af2, type: 3}
+  - {fileID: 8300000, guid: 0a4a8ea346910a54cb30d6f027731462, type: 3}
 --- !u!114 &5189357856578569923
 MonoBehaviour:
   m_ObjectHideFlags: 0

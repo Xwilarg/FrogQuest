@@ -134,6 +134,7 @@ namespace TouhouPrideGameJam4.UI
                 {
                     value.SetHighlight();
                     ShortcutAction.sprite = value.IsEmpty ? ActionNone : value.ActionSprite;
+                    SoundManager.Instance.PlaySelectBip();
                 }
                 _shortcutTarget = value;
                 UpdateUIOnNewTile();
