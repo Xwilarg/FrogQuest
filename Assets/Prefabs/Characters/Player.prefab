@@ -186,7 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 451afdc1dc1533a4b96f79e8e4bf67cc, type: 2}
-  _stepSound: {fileID: 8300000, guid: 47d7763ba9f6c434fa915b7fb19d73cf, type: 3}
+  _stepSound:
+  - {fileID: 8300000, guid: f58e0ff729552234a8cb307e6adfdffa, type: 3}
+  - {fileID: 8300000, guid: 184e19d45b8fe174ca56d111885c210f, type: 3}
 --- !u!114 &5189357856578569923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,23 +230,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a2b38a07-c9f2-4424-864e-e3c4f269b95d
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3300334960745762687}
-        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
-          Assembly-CSharp
-        m_MethodName: OnInventory
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 99f4aa4d-ad17-43c0-9cc0-3c20d683c70d
-    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 66aaafd6-133b-4bf4-9f21-15b0a6ae464a
