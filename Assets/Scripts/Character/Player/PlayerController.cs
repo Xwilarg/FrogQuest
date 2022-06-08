@@ -11,7 +11,8 @@ namespace TouhouPrideGameJam4.Character.Player
         public static PlayerController Instance { get; private set; }
 
         [SerializeField]
-        private AudioClip _stepSound;
+        private AudioClip[] _stepSound;
+        private int _stepIndex;
 
         private AudioSource _source;
 
@@ -80,20 +81,29 @@ namespace TouhouPrideGameJam4.Character.Player
                     {
                         if (TurnManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0))
                         {
-                            _source.PlayOneShot(_stepSound);
-                            UIManager.Instance.UpdateUIOnNewTile();
+                            OnDoneWalking();
                         }
                     }
                     else
                     {
                         if (TurnManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1))
                         {
-                            _source.PlayOneShot(_stepSound);
-                            UIManager.Instance.UpdateUIOnNewTile();
+                            OnDoneWalking();
                         }
                     }
                 }
             }
+        }
+
+        private void OnDoneWalking()
+        {
+            _stepIndex++;
+            if (_stepIndex == _stepSound.Length)
+            {
+                _stepIndex = 0;
+            }
+            _source.PlayOneShot(_stepSound[_stepIndex]);
+            UIManager.Instance.UpdateUIOnNewTile();
         }
 
         public void OnAction(InputAction.CallbackContext value)
