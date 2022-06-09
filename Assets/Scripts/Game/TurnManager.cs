@@ -163,7 +163,7 @@ namespace TouhouPrideGameJam4.Game
                 }
 
                 // Our target is the closest character with a different team than ours
-                var targets = _characters.Where(x => x.Team != c.Team && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position));
+                var targets = _characters.Where(x => (c.EquippedWeapon.IsHeal ? x.Team == c.Team : x.Team != c.Team) && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position));
 
                 if (!targets.Any())
                 {
@@ -185,7 +185,7 @@ namespace TouhouPrideGameJam4.Game
                             var y = c.Position.y + (d.y * r);
                             if (MapManager.Instance.IsTileWalkable(x, y))
                             {
-                                var target = _characters.FirstOrDefault(o => o.Team != c.Team && o.Position.x == x && o.Position.y == y);
+                                var target = _characters.FirstOrDefault(o => (c.EquippedWeapon.IsHeal ? o.Team == c.Team : o.Team != c.Team) && o.Position.x == x && o.Position.y == y);
                                 if (target != null)
                                 {
                                     c.Attack(target);
@@ -204,7 +204,7 @@ namespace TouhouPrideGameJam4.Game
                     // Else we try to move towards its position
                     if (!didPlay && c.CanMove())
                     {
-                        foreach (var d in directions)
+                        foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
                         {
                             if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
                             {

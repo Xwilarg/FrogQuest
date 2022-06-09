@@ -14,6 +14,8 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public int Range = 1;
 
+        public bool IsHeal;
+
         public override string Description => $"{Damage} damage";
 
         public override string ActionName => "Equip";
