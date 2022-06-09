@@ -163,7 +163,20 @@ namespace TouhouPrideGameJam4.Game
                 }
 
                 // Our target is the closest character with a different team than ours
-                var targets = _characters.Where(x => (c.EquippedWeapon.IsHeal ? x.Team == c.Team : x.Team != c.Team) && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position));
+                var targets = _characters
+                    .Where(x => (c.EquippedWeapon.IsHeal ? (x.Team == c.Team && x.GetInstanceID() != c.GetInstanceID()) : x.Team != c.Team) && x.gameObject.activeInHierarchy)
+                    .OrderBy(x =>
+                    {
+                        if (x.EquippedWeapon.IsHeal)
+                        {
+                            if (c.IsHealthFull != x.IsHealthFull)
+                            {
+                                if (c.IsHealthFull) return -1;
+                                return 1;
+                            }
+                        }
+                        return Vector2.Distance(c.Position, x.Position);
+                    });
 
                 if (!targets.Any())
                 {
@@ -185,8 +198,8 @@ namespace TouhouPrideGameJam4.Game
                             var y = c.Position.y + (d.y * r);
                             if (MapManager.Instance.IsTileWalkable(x, y))
                             {
-                                var target = _characters.FirstOrDefault(o => (c.EquippedWeapon.IsHeal ? o.Team == c.Team : o.Team != c.Team) && o.Position.x == x && o.Position.y == y);
-                                if (target != null)
+                                var target = targets.FirstOrDefault(o => o.Position.x == x && o.Position.y == y);
+                                if (target != null && (!c.EquippedWeapon.IsHeal || !target.IsHealthFull)) // We found a target and either it's an enemy, or an allie with health not full
                                 {
                                     c.Attack(target);
                                     SetDirection(c, d.x, d.y);
@@ -213,6 +226,10 @@ namespace TouhouPrideGameJam4.Game
                             }
                             else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
                             {
+                                if (c.EquippedWeapon.IsHeal)
+                                {
+                                    Debug.Log($"Moving toward target {targets.First()}");
+                                }
                                 c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
                                 SetDirection(c, d.x, d.y);
                                 break;

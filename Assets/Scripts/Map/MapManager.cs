@@ -130,13 +130,14 @@ namespace TouhouPrideGameJam4.Map
                 foreach (var pos in spawnPos)
                 {
                     var sumDrop = _info.EnemiesSpawn.Sum(x => x.Weight);
-                    var targetWeight = Random.Range(0, sumDrop);
+                    var targetWeight = Random.Range(0, sumDrop) + 1;
                     var index = 0;
-                    while (targetWeight > 0)
+                    do
                     {
                         targetWeight -= _info.EnemiesSpawn[index].Weight;
                         index++;
-                    }
+                    } while (targetWeight > 0);
+                    index--;
                     var target = _info.EnemiesSpawn[index];
                     var enemy = Instantiate(target.Item, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
                     enemy.Team = Team.Enemies;
