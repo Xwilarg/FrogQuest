@@ -246,7 +246,7 @@ namespace TouhouPrideGameJam4.Character
                 if (_info.StartingItems.Any() && !MapManager.Instance.IsAnythingOnFloor(Position.x, Position.y)) // TODO: Put object on the next tile?
                 {
                     var sumDrop = _info.StartingItems.Sum(x => x.Weight);
-                    var targetWeight = Random.Range(0, sumDrop) + 1;
+                    var targetWeight = Random.Range(0, sumDrop);
                     var index = 0;
                     do
                     {

@@ -17,4 +17,7 @@ MonoBehaviour:
   Name: Fists
   Sprite: {fileID: 21300000, guid: 12d4fcec8053d624dbbd320b2619a2d5, type: 3}
   ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}
-  Damage: 1
+  Damage: 3
+  HitEffects: 
+  Range: 1
+  IsHeal: 0
