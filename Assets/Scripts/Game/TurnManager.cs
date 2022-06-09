@@ -165,7 +165,7 @@ namespace TouhouPrideGameJam4.Game
                 // Our target is the closest character with a different team than ours
                 var targets = _characters.Where(x => x.Team != c.Team && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position));
 
-                if (targets.Any())
+                if (!targets.Any())
                 {
                     continue;
                 }
