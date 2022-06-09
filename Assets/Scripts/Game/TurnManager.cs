@@ -163,39 +163,48 @@ namespace TouhouPrideGameJam4.Game
                 }
 
                 // Our target is the closest character with a different team than ours
-                var target = _characters.Where(x => x.Team != c.Team && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position)).FirstOrDefault();
+                var targets = _characters.Where(x => x.Team != c.Team && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position));
 
-                if (target == null)
+                if (targets.Any())
                 {
                     continue;
                 }
 
                 // If the enemy is close enough
-                if (Vector2.Distance(c.Position, target.Position) < _aiInfo.MaxDistanceToMove)
+                if (Vector2.Distance(c.Position, targets.First().Position) < _aiInfo.MaxDistanceToMove)
                 {
                     bool didPlay = false;
-                    var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position));
+                    //var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position)); // TODO: ???
 
                     // We try to attack him
-                    foreach (var d in dirTarget)
+                    foreach (var d in directions)
                     {
-                        if (target.Position.x == c.Position.x + d.x && target.Position.y == c.Position.y + d.y)
+                        for (int r = 1; r <= c.EquippedWeapon.Range; r++)
                         {
-                            c.Attack(target);
-                            SetDirection(c, d.x, d.y);
-                            if (c.Info.DoesDisappearAfterAttacking)
+                            var x = c.Position.x + (d.x * r);
+                            var y = c.Position.y + (d.y * r);
+                            if (MapManager.Instance.IsTileWalkable(x, y))
                             {
-                                RemoveCharacter(c);
+                                var target = _characters.FirstOrDefault(o => o.Team != c.Team && o.Position.x == x && o.Position.y == y);
+                                if (target != null)
+                                {
+                                    c.Attack(target);
+                                    SetDirection(c, d.x, d.y);
+                                    if (c.Info.DoesDisappearAfterAttacking)
+                                    {
+                                        RemoveCharacter(c);
+                                    }
+                                    didPlay = true;
+                                    break;
+                                }
                             }
-                            didPlay = true;
-                            break;
                         }
                     }
 
                     // Else we try to move towards its position
                     if (!didPlay && c.CanMove())
                     {
-                        foreach (var d in dirTarget)
+                        foreach (var d in directions)
                         {
                             if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
                             {
