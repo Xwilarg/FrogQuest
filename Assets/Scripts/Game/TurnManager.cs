@@ -226,10 +226,6 @@ namespace TouhouPrideGameJam4.Game
                             }
                             else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
                             {
-                                if (c.EquippedWeapon.IsHeal)
-                                {
-                                    Debug.Log($"Moving toward target {targets.First()}");
-                                }
                                 c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
                                 SetDirection(c, d.x, d.y);
                                 break;

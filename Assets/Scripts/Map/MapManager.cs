@@ -54,7 +54,7 @@ namespace TouhouPrideGameJam4.Map
             _rooms.Add(roomObj);
 
             // Place the next rooms
-            for (int c = 10; c > 0; c--)
+            for (int c = _info.IterationCount; c > 0; c--)
             {
                 for (int i = _rooms.Count - 1; i >= 0; i--)
                 {
@@ -109,7 +109,7 @@ namespace TouhouPrideGameJam4.Map
 
             // Spawn enemies
             var enemyContainer = new GameObject("Enemies");
-            foreach (var room in _rooms.Skip(1)) // We check each 
+            foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
             {
                 var nbEnemies = Random.Range(0, _info.MaxEnemiesPerRoom + 1);
                 List<Vector2Int> spawnPos = new();
@@ -119,9 +119,9 @@ namespace TouhouPrideGameJam4.Map
                     var y = Random.Range(1, room.Data.Length - 1);
                     var x = Random.Range(1, room.Data[y].Length - 1);
                     var pos = new Vector2Int(x, y);
-                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn;
+                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(x, y) == null;
 
-                    if (!spawnPos.Contains(pos) && tileOk == true)
+                    if (!spawnPos.Contains(pos) && tileOk)
                     {
                         spawnPos.Add(new(room.X + x, room.Y + y));
                     }
