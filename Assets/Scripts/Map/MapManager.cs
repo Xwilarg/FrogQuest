@@ -18,7 +18,7 @@ namespace TouhouPrideGameJam4.Map
         private MapInfo _info;
 
         [SerializeField]
-        private GameObject _prefabPlayer, _prefabEnemy;
+        private GameObject _prefabPlayer;
 
         [SerializeField]
         private GameObject _prefabTile, _prefabDoor, _prefabItemFloor;
@@ -129,7 +129,16 @@ namespace TouhouPrideGameJam4.Map
 
                 foreach (var pos in spawnPos)
                 {
-                    var enemy = Instantiate(_prefabEnemy, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
+                    var sumDrop = _info.EnemiesSpawn.Sum(x => x.Weight);
+                    var targetWeight = Random.Range(0, sumDrop);
+                    var index = 0;
+                    while (targetWeight > 0)
+                    {
+                        targetWeight -= _info.EnemiesSpawn[index].Weight;
+                        index++;
+                    }
+                    var target = _info.EnemiesSpawn[index];
+                    var enemy = Instantiate(target.Item, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
                     enemy.Team = Team.Enemies;
                     enemy.Position = new(pos.x, pos.y);
                     TurnManager.Instance.AddCharacter(enemy);

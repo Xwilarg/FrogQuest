@@ -1,4 +1,5 @@
-﻿using TouhouPrideGameJam4.Map;
+﻿using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO
@@ -16,5 +17,8 @@ namespace TouhouPrideGameJam4.SO
 
         [Header("Parsing data")]
         public TileData[] ParsingData;
+
+        [Header("Enemies")]
+        public DropRate<GameObject>[] EnemiesSpawn;
     }
 }

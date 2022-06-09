@@ -173,7 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 27b18ae8cc1d38248885fc54aa0aded1, type: 2}
   _prefabPlayer: {fileID: 56457190090914801, guid: 735aff12e80c8a84c832a0ef9c9b072a, type: 3}
-  _prefabEnemy: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
   _prefabTile: {fileID: 1238779916511838880, guid: 07237fb06612c2a4cbad46cc36e50ca7, type: 3}
   _prefabDoor: {fileID: 3346479765826390500, guid: 51e788aa06bc77a439b3c9a49b6fa214, type: 3}
   _prefabItemFloor: {fileID: 7984739664320039825, guid: bfbfbc5cd592a5e4abcef25900e41dc8, type: 3}

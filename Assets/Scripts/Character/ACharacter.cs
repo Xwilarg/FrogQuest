@@ -276,7 +276,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
+            target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1) * (EquippedWeapon.IsHeal ? -1 : 1));
         }
 
         public override string ToString()

@@ -9,7 +9,7 @@ namespace TouhouPrideGameJam4.SO
     {
         public int BaseHealth;
 
-        public DropItemRate[] StartingItems;
+        public DropRate<AItemInfo>[] StartingItems;
 
         public WeaponInfo DefaultWeapon;
 
