@@ -76,7 +76,7 @@ namespace TouhouPrideGameJam4.Game
         {
             if (character.GetInstanceID() == Player.GetInstanceID()) // The player died, gameover
             {
-                throw new System.NotImplementedException("Player died");
+                Debug.Break();
             }
             else
             {
@@ -167,13 +167,9 @@ namespace TouhouPrideGameJam4.Game
                     .Where(x => (c.EquippedWeapon.IsHeal ? (x.Team == c.Team && x.GetInstanceID() != c.GetInstanceID()) : x.Team != c.Team) && x.gameObject.activeInHierarchy)
                     .OrderBy(x =>
                     {
-                        if (x.EquippedWeapon.IsHeal)
+                        if (x.EquippedWeapon.IsHeal && x.IsHealthFull)
                         {
-                            if (c.IsHealthFull != x.IsHealthFull)
-                            {
-                                if (c.IsHealthFull) return -1;
-                                return 1;
-                            }
+                            return Vector2.Distance(c.Position, x.Position) * 100f;
                         }
                         return Vector2.Distance(c.Position, x.Position);
                     });
