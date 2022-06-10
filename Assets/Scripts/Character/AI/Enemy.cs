@@ -4,7 +4,12 @@
     {
         private void Start()
         {
-            Init();
+            Init(Team);
+        }
+
+        private void Update()
+        {
+            UpdateC();
         }
     }
 }

@@ -41,6 +41,12 @@ TagManager:
   - name: Tile
     uniqueID: 1676378713
     locked: 0
+  - name: DecoFloor
+    uniqueID: 997668941
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effect
+    uniqueID: 1077320431
     locked: 0

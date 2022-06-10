@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "99f4aa4d-ad17-43c0-9cc0-3c20d683c70d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Action",
                     "type": "Button",
                     "id": "81047d01-637a-48bf-bb42-24f8fc17b450",
@@ -36,6 +27,15 @@
                     "name": "Wait",
                     "type": "Button",
                     "id": "c8fbeb35-a293-4a35-b4fe-f78858455f02",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DropTake",
+                    "type": "Button",
+                    "id": "c0a5c2f8-b898-4bf3-8526-3f520d7568ed",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -245,28 +245,6 @@
                 },
                 {
                     "name": "",
-                    "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "94a9d655-dbda-41c4-a812-6271d4d7c281",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -416,6 +394,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Shortcut 0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01a9343e-524b-48c7-b15e-d60712178629",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DropTake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "085c0e78-e267-4134-bebf-b1eb1d87f8ba",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DropTake",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

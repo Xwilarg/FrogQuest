@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc4f8e13b6b1554f9e0b2a43ff60e69, type: 3}
+  m_Name: Snake Sign Green Snake Come On
+  m_EditorClassIdentifier: 
+  UtilityDescription: 
+  Name: Snake Sign "Green Snake Come On"
+  Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
+  ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
+  Effect: 1
+  Value: 0
+  Prefab: {fileID: 6109682699214613380, guid: 26d659ff054a75b4fa3e14c818143950, type: 3}
+  Team: 0
+  SpawnedName: Green Snake

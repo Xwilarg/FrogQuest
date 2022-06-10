@@ -1,4 +1,5 @@
 ﻿using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +11,8 @@ namespace TouhouPrideGameJam4.Character.Player
         public static PlayerController Instance { get; private set; }
 
         [SerializeField]
-        private AudioClip _stepSound;
+        private AudioClip[] _stepSound;
+        private int _stepIndex;
 
         private AudioSource _source;
 
@@ -22,13 +24,23 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void Start()
         {
-            Init();
-            TurnManager.Instance.UpdateDebugText();
+            Init(Team.Allies);
+        }
+
+        private void Update()
+        {
+            UpdateC();
+        }
+
+        public override void OnStatusChange()
+        {
+            base.OnStatusChange();
+            UIManager.Instance.UpdateStatus(_currentEffects);
         }
 
         public override void UpdateInventoryDisplay()
         {
-            UIManager.Instance.ShortcutEquipped.sprite = _equipedWeapon.Sprite;
+            UIManager.Instance.ShortcutEquipped.sprite = EquippedWeapon.Sprite;
             UIManager.Instance.ShortcutEquipped.color = UIManager.Instance.ShortcutEquipped.sprite == null ? new Color(0f, 0f, 0f, 0f) : Color.white;
             int index = 0;
             foreach (var btn in UIManager.Instance.ShortcutInventory)
@@ -37,18 +49,25 @@ namespace TouhouPrideGameJam4.Character.Player
             }
             foreach (var item in _items)
             {
-                if (item.Key == _equipedWeapon)
+                if (item == EquippedWeapon)
                 {
                     continue;
                 }
 
-                UIManager.Instance.ShortcutInventory[index].SetContent(item.Key);
+                UIManager.Instance.ShortcutInventory[index].SetContent(item);
                 index++;
                 if (index == UIManager.Instance.ShortcutInventory.Length)
                 {
                     break;
                 }
             }
+        }
+
+        public override void TakeDamage(WeaponInfo weapon, int amount)
+        {
+            base.TakeDamage(weapon, amount);
+
+            UIManager.Instance.SetHealth(_health / (float)_info.BaseHealth);
         }
 
         public void OnMovement(InputAction.CallbackContext value)
@@ -62,26 +81,29 @@ namespace TouhouPrideGameJam4.Character.Player
                     {
                         if (TurnManager.Instance.MovePlayer(mov.x > 0 ? 1 : -1, 0))
                         {
-                            _source.PlayOneShot(_stepSound);
+                            OnDoneWalking();
                         }
                     }
                     else
                     {
                         if (TurnManager.Instance.MovePlayer(0, mov.y > 0 ? 1 : -1))
                         {
-                            _source.PlayOneShot(_stepSound);
+                            OnDoneWalking();
                         }
                     }
                 }
             }
         }
 
-        public void OnInventory(InputAction.CallbackContext value)
+        private void OnDoneWalking()
         {
-            if (value.performed)
+            _stepIndex++;
+            if (_stepIndex == _stepSound.Length)
             {
-                TurnManager.Instance.ToggleInventory();
+                _stepIndex = 0;
             }
+            _source.PlayOneShot(_stepSound[_stepIndex]);
+            UIManager.Instance.UpdateUIOnNewTile();
         }
 
         public void OnAction(InputAction.CallbackContext value)
@@ -97,6 +119,14 @@ namespace TouhouPrideGameJam4.Character.Player
             if (value.performed)
             {
                 TurnManager.Instance.PlayEnemyTurn();
+            }
+        }
+
+        public void OnDropTake(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                UIManager.Instance.DropTake();
             }
         }
 

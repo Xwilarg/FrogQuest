@@ -1,18 +1,17 @@
 ﻿using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace TouhouPrideGameJam4.UI
 {
-    public class ShortcutButton : MonoBehaviour
+    public class ShortcutButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public void OnClick()
         {
-            if (_content != null)
-            {
-                UIManager.Instance.ShortcutTarget = this;
-            }
+            UIManager.Instance.ShortcutTarget = this;
         }
 
         /// <summary>
@@ -26,9 +25,9 @@ namespace TouhouPrideGameJam4.UI
         /// <summary>
         /// Item that is contained there
         /// </summary>
-        private AItemInfo _content;
+        public AItemInfo Content { private set; get; }
 
-        public bool IsEmpty => _content == null;
+        public bool IsEmpty => Content == null;
 
         private void Awake()
         {
@@ -36,13 +35,21 @@ namespace TouhouPrideGameJam4.UI
             _highlightImage = GetComponent<Image>();
         }
 
-        public Sprite ActionSprite => _content.ActionType.ActionSprite;
+        public Sprite ActionSprite => Content.ActionType.ActionSprite;
 
         public void Use()
         {
-            _content.DoAction(PlayerController.Instance);
-            PlayerController.Instance.UpdateInventoryDisplay();
-            UIManager.Instance.PlaySound(_content.ActionType.ActionSound);
+            try
+            {
+                var sound = Content.ActionType.ActionSound;
+                Content.DoAction(PlayerController.Instance);
+                SoundManager.Instance.PlayClip(sound);
+                PlayerController.Instance.UpdateInventoryDisplay();
+            }
+            catch (NoFreeSpaceException)
+            {
+                SoundManager.Instance.PlayError();
+            }
         }
 
         public void SetHighlight()
@@ -62,13 +69,29 @@ namespace TouhouPrideGameJam4.UI
 
         public void SetContent(AItemInfo item)
         {
-            if (item != _content)
+            if (item != Content)
             {
                 UIManager.Instance.ShortcutTarget = null;
             }
-            _content = item;
+            Content = item;
             _contentImage.sprite = item != null ? item.Sprite : null;
             _contentImage.color = item == null ? new Color(0f, 0f, 0f, 0f) : Color.white;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            UIManager.Instance.Tooltip.gameObject.SetActive(false);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!IsEmpty)
+            {
+                UIManager.Instance.Tooltip.gameObject.SetActive(true);
+                UIManager.Instance.Tooltip.transform.position = transform.position - Vector3.down * ((RectTransform)UIManager.Instance.Tooltip.transform).sizeDelta.y;
+                UIManager.Instance.Tooltip.Title.text = Content.Name;
+                UIManager.Instance.Tooltip.Description.text = $"{Content.Description}\n\n<color=#555>{Content.UtilityDescription}";
+            }
         }
     }
 }
