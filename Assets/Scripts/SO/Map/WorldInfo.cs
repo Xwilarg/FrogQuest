@@ -8,5 +8,6 @@ namespace TouhouPrideGameJam4.SO.Map
         public string Name;
         public MapInfo MapInfo;
         public int StageCount;
+        public Sprite Image;
     }
 }

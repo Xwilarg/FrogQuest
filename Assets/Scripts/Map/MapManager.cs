@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.SO.Map;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Map
@@ -27,6 +29,12 @@ namespace TouhouPrideGameJam4.Map
         [SerializeField]
         private GameObject _prefabTile, _prefabDoor, _prefabItemFloor;
 
+        [SerializeField]
+        private Image _mapImage;
+
+        [SerializeField]
+        private TMP_Text _mapText;
+
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
 
@@ -44,7 +52,8 @@ namespace TouhouPrideGameJam4.Map
 
         private void InitMap()
         {
-            Assert.IsNotNull(_info, "MapInfo is not set");
+            _mapImage.sprite = _info[_currentWorld].Image;
+            _mapText.text = $"{_info[_currentWorld].Name}\n\n{_currentLevel + 1}/{_info[_currentWorld].StageCount}";
 
             _tileContainer = new("Map");
 

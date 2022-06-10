@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: The Great Youkai Forest
   MapInfo: {fileID: 11400000, guid: 27b18ae8cc1d38248885fc54aa0aded1, type: 2}
   StageCount: 4
+  Image: {fileID: 21300000, guid: 8ee2ed36c8ce937448da5a44ed156c9f, type: 3}
