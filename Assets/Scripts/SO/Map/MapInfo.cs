@@ -2,9 +2,9 @@
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
-namespace TouhouPrideGameJam4.SO
+namespace TouhouPrideGameJam4.SO.Map
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/MapInfo", fileName = "MapInfo")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Map/MapInfo", fileName = "MapInfo")]
     public class MapInfo : ScriptableObject
     {
         [Header("Configuration")]

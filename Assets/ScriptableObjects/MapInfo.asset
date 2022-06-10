@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa11fbc1090ad448a0a38038cbf8695, type: 3}
+  m_Script: {fileID: 11500000, guid: bf0b53024c9c5d248b66a607185cb4fa, type: 3}
   m_Name: MapInfo
   m_EditorClassIdentifier: 
   MapSize: 200

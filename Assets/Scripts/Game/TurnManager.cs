@@ -2,7 +2,6 @@
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
-using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
@@ -16,9 +15,6 @@ namespace TouhouPrideGameJam4.Game
 
         [SerializeField]
         private AIInfo _aiInfo;
-
-        [SerializeField]
-        private InventoryUI _inventory;
 
         [SerializeField]
         private TMP_Text _objectiveText;
@@ -46,14 +42,14 @@ namespace TouhouPrideGameJam4.Game
             _baseObjectiveText = _objectiveText.text;
         }
 
-        public void ToggleInventory()
+        /*public void ToggleInventory()
         {
             _inventory.gameObject.SetActive(!_inventory.gameObject.activeInHierarchy);
             if (_inventory.gameObject.activeInHierarchy)
             {
                 Player.ShowItems(_inventory, null);
             }
-        }
+        }*/
 
         public void SpawnDamageText(int amount, Color color, float x, float y)
         {
