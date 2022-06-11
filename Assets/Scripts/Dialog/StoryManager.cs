@@ -40,8 +40,11 @@ namespace TouhouPrideGameJam4.Dialog
             string dialogue = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var match in Regex.Matches(file.text, "\\w+|\"[\\w\\s]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
+                var match = m;
+                if (m.StartsWith("\"")) match = match[1..];
+                if (m.EndsWith("\"") && !m.EndsWith("\\\"")) match = match[..1];
                 if (match == "\n")
                 {
                     if (exp == ParsingExpectation.NewLine)
