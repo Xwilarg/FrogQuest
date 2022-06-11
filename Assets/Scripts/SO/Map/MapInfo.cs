@@ -21,5 +21,9 @@ namespace TouhouPrideGameJam4.SO.Map
 
         [Header("Enemies")]
         public DropRate<GameObject>[] EnemiesSpawn;
+
+        [Header("Tiles")]
+        public Sprite DoorSprite;
+        public Sprite EntranceSprite, ExitDisabledSprite, ExitEnabledSprite;
     }
 }

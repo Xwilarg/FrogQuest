@@ -27,7 +27,7 @@ namespace TouhouPrideGameJam4.Map
         private GameObject _prefabPlayer;
 
         [SerializeField]
-        private GameObject _prefabTile, _prefabDoor, _prefabItemFloor;
+        private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
 
         [SerializeField]
         private Image _mapImage;
@@ -145,6 +145,7 @@ namespace TouhouPrideGameJam4.Map
                 {
                     if (_map[y][x] != null && _map[y][x].Type == TileType.StartingPos)
                     {
+                        SetTileContent(x, y, TileContentType.Entrance);
                         possibleSpawnPoints.Add(new(x, y));
                     }
                 }
@@ -342,7 +343,7 @@ namespace TouhouPrideGameJam4.Map
             => x >= 0 && x < CurrMap.MapSize && y >= 0 && y < CurrMap.MapSize &&
                _map[y][x] != null &&
                LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
-               _map[y][x].Content == TileContentType.None;
+               _map[y][x].Content != TileContentType.Door;
 
         /// <summary>
         /// Draw a room on the map
@@ -400,15 +401,22 @@ namespace TouhouPrideGameJam4.Map
 
         private void SetTileContent(int x, int y, TileContentType content)
         {
-            var t = Instantiate(content switch
+            if (_map[y][x].Content == TileContentType.None)
             {
-                TileContentType.Door => _prefabDoor,
+                var t = Instantiate(_prefabItemTopFloor, new(x, y), Quaternion.identity);
+                t.transform.parent = _tileContainer.transform;
+                _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
+                t.SetActive(false);
+            }
+            _map[y][x].SpriteRendererSub.sprite = content switch
+            {
+                TileContentType.Door => CurrMap.DoorSprite,
+                TileContentType.Entrance => CurrMap.EntranceSprite,
+                TileContentType.ExitEnabled => CurrMap.ExitEnabledSprite,
+                TileContentType.ExitDisabled => CurrMap.ExitDisabledSprite,
                 _ => throw new System.NotImplementedException()
-            }, new(x, y), Quaternion.identity);
-            t.transform.parent = _tileContainer.transform;
-            _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
+            };
             _map[y][x].Content = content;
-            t.SetActive(false);
         }
 
 
