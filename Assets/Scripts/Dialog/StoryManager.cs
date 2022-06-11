@@ -47,7 +47,7 @@ namespace TouhouPrideGameJam4.Dialog
                 if (m.EndsWith("\"") && !m.EndsWith("\\\"")) match = match[..1];
                 if (match == "\n")
                 {
-                    if (exp == ParsingExpectation.NewLine)
+                    if (exp == ParsingExpectation.NewLine || exp == ParsingExpectation.Start)
                     {
                         exp = ParsingExpectation.Start;
                     }
