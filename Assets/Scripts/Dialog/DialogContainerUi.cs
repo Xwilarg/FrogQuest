@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DialogContainerUi : MonoBehaviour
+namespace TouhouPrideGameJam4.Dialog
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DialogContainerUi : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private TMP_Text Name, Content;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        private Image Image;
     }
 }

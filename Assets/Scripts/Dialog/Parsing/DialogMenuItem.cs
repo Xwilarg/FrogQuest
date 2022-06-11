@@ -1,12 +1,8 @@
-using UnityEngine.UI;
-using UnityEngine;
-using System;
-namespace TouhouPrideGameJam4.VisualNovel
+namespace TouhouPrideGameJam4.Dialog.Parsing
 {
     /// <summary>
     /// an item in a menu in the dialog
     /// </summary>
-    [Serializable]
     public record DialogMenuItem
     {
         /// <summary> The next dialog label to jump to </summary> 

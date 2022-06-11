@@ -1,9 +1,5 @@
-using UnityEngine.UI;
-using UnityEngine;
-using System;
-namespace TouhouPrideGameJam4.VisualNovel
+namespace TouhouPrideGameJam4.Dialog.Parsing
 {
-    [Serializable]
     public record DialogStatement
     {
         public string ImageName { get; set; }
