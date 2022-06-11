@@ -47,7 +47,7 @@ namespace TouhouPrideGameJam4.Dialog
 
         public void ShowNextDialogue()
         {
-            if (_index == _current.Length - 1 || _current == null) // End of VN part
+            if (_index == _current.Length || _current == null) // End of VN part
             {
                 _vnContainer.SetActive(false);
                 PlayerController.Instance.EnableRPGController();
@@ -97,7 +97,7 @@ namespace TouhouPrideGameJam4.Dialog
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];
-                if (m.EndsWith("\"") && !m.EndsWith("\\\"")) match = match[..1];
+                if (m.EndsWith("\"") && !m.EndsWith("\\\"")) match = match[..^1];
                 if (match == "\n")
                 {
                     if (exp == ParsingExpectation.NewLine || exp == ParsingExpectation.Start)
@@ -117,7 +117,7 @@ namespace TouhouPrideGameJam4.Dialog
                         currentCharacter = null;
                         exp = ParsingExpectation.Dialogue;
                     }
-                    if (character != null && exp == ParsingExpectation.Start) // We are at the start and found a character info
+                    else if (character != null && exp == ParsingExpectation.Start) // We are at the start and found a character info
                     {
                         currentCharacter = character;
                         exp = ParsingExpectation.Mood;
