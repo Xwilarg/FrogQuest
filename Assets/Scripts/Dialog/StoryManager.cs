@@ -26,11 +26,11 @@ namespace TouhouPrideGameJam4.Dialog
 
             while (text.Any())
             {
-                var match = Regex.Match(text, "\\w+|\"[\\w\\s]*\"|\\n");
+                var match = Regex.Match(text, "(\\w+|\"[\\w\\s]*\"|\\n) *");
                 if (match.Success)
                 {
-                    var next = match.Value;
-                    text = text[..next.Length];
+                    var next = match.Groups[1].Value;
+                    text = text[next.Length..];
                     Debug.Log(next);
                 }
                 else
