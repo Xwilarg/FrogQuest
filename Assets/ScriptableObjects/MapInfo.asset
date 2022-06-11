@@ -17,10 +17,13 @@ MonoBehaviour:
   IterationCount: 2
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
   Rooms:
-  - {fileID: 4900000, guid: 3b9a479da647164489ce246c51358df5, type: 3}
-  - {fileID: 4900000, guid: cf15dba9beaf05041bc20f4f0c2c9e04, type: 3}
-  - {fileID: 4900000, guid: 62d5df6e9bfe15a46b416b86e9e1a767, type: 3}
-  - {fileID: 4900000, guid: 4e70e6b8137d6404b8fab6570fb4daf3, type: 3}
+  - {fileID: 4900000, guid: 6d52ab48bedf16545abc4332a17ce619, type: 3}
+  - {fileID: 4900000, guid: bf4e8120dccf8c94ebd3e8743ce04243, type: 3}
+  - {fileID: 4900000, guid: 17e19f6c3cbdc0f489b42f0781991f55, type: 3}
+  - {fileID: 4900000, guid: c6e25a2188fc3ce42b1bd86dbaa2d555, type: 3}
+  - {fileID: 4900000, guid: 4c0d62b3d684a6a448a11283795f5c80, type: 3}
+  - {fileID: 4900000, guid: cd333b3abf7f8b44eb46d9fff516343a, type: 3}
+  - {fileID: 4900000, guid: 69645b255eb891a46b3e8f574dc1dba9, type: 3}
   ParsingData:
   - Character: 46
     Type: 0

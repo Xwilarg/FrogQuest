@@ -107,6 +107,36 @@ namespace TouhouPrideGameJam4.Map
                 }
             }
 
+            // Clean walls
+            for (int y = 0; y < _map.Length; y++)
+            {
+                for (int x = 0; x < _map[y].Length; x++)
+                {
+                    if (_map[y][x] != null && _map[y][x].Type == TileType.Empty)
+                    {
+                        var adjacentFloor = 0;
+                        for (int i = -1; i <= 1; i++)
+                        {
+                            for (int j = -1; j <= 1; j++)
+                            {
+                                if (_map[y + j][x + i] == null)
+                                {
+                                    SetTile(x + i, y + j, wall); // Floor need to be surrounded by something
+                                }
+                                else if ((i == 0 || j == 0) && i + j != 0 && _map[y + j][x + i].Type == TileType.Empty)
+                                {
+                                    adjacentFloor++;
+                                }
+                            }
+                        }
+                        if (_map[y][x].Content == TileContentType.None && adjacentFloor < 2) // Remove dead ends
+                        {
+                            SetTile(x, y, wall);
+                        }
+                    }
+                }
+            }
+
             // Spawn player
             List<Vector2Int> possibleSpawnPoints = new();
             for (int y = 0; y < _map.Length; y++)
@@ -253,7 +283,8 @@ namespace TouhouPrideGameJam4.Map
                         for (var xPos = room.X; xPos < room.X + room.Data[relativeY].Length; xPos++)
                         {
                             var relativeX = xPos - room.X;
-                            if (_map[yPos][xPos] != null && _map[yPos][xPos].Type != TileType.Empty && _map[yPos][xPos].Type != LookupTileByChar(room.Data[relativeY][relativeX]).Type)
+                            var tile = LookupTileByChar(room.Data[relativeY][relativeX]);
+                            if (_map[yPos][xPos] != null && _map[yPos][xPos].Type != TileType.Empty && tile != null && _map[yPos][xPos].Type != tile.Type)
                             {
                                 // For a room to be valid, we must either build it over an empty land or to all tiles to be on their matching counterpart
                                 // This is because we are building doorframe over an existing doorframe
@@ -325,7 +356,10 @@ namespace TouhouPrideGameJam4.Map
                 for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
                     var tile = LookupTileByChar(room.Data[yPos - room.Y][xPos - room.X]);
-                    SetTile(xPos, yPos, tile);
+                    if (tile != null)
+                    {
+                        SetTile(xPos, yPos, tile);
+                    }
                 }
             }
         }
