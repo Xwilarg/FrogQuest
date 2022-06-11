@@ -2,7 +2,6 @@
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
-using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
@@ -16,9 +15,6 @@ namespace TouhouPrideGameJam4.Game
 
         [SerializeField]
         private AIInfo _aiInfo;
-
-        [SerializeField]
-        private InventoryUI _inventory;
 
         [SerializeField]
         private TMP_Text _objectiveText;
@@ -46,14 +42,14 @@ namespace TouhouPrideGameJam4.Game
             _baseObjectiveText = _objectiveText.text;
         }
 
-        public void ToggleInventory()
+        /*public void ToggleInventory()
         {
             _inventory.gameObject.SetActive(!_inventory.gameObject.activeInHierarchy);
             if (_inventory.gameObject.activeInHierarchy)
             {
                 Player.ShowItems(_inventory, null);
             }
-        }
+        }*/
 
         public void SpawnDamageText(int amount, Color color, float x, float y)
         {
@@ -76,7 +72,7 @@ namespace TouhouPrideGameJam4.Game
         {
             if (character.GetInstanceID() == Player.GetInstanceID()) // The player died, gameover
             {
-                throw new System.NotImplementedException("Player died");
+                Debug.Break();
             }
             else
             {
@@ -163,39 +159,57 @@ namespace TouhouPrideGameJam4.Game
                 }
 
                 // Our target is the closest character with a different team than ours
-                var target = _characters.Where(x => x.Team != c.Team && x.gameObject.activeInHierarchy).OrderBy(x => Vector2.Distance(c.Position, x.Position)).FirstOrDefault();
+                var targets = _characters
+                    .Where(x => (c.EquippedWeapon.IsHeal ? (x.Team == c.Team && x.GetInstanceID() != c.GetInstanceID()) : x.Team != c.Team) && x.gameObject.activeInHierarchy)
+                    .OrderBy(x =>
+                    {
+                        if (x.EquippedWeapon.IsHeal && x.IsHealthFull)
+                        {
+                            return Vector2.Distance(c.Position, x.Position) * 100f;
+                        }
+                        return Vector2.Distance(c.Position, x.Position);
+                    });
 
-                if (target == null)
+                if (!targets.Any())
                 {
                     continue;
                 }
 
                 // If the enemy is close enough
-                if (Vector2.Distance(c.Position, target.Position) < _aiInfo.MaxDistanceToMove)
+                if (Vector2.Distance(c.Position, targets.First().Position) < _aiInfo.MaxDistanceToMove)
                 {
                     bool didPlay = false;
-                    var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position));
+                    //var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position)); // TODO: ???
 
                     // We try to attack him
-                    foreach (var d in dirTarget)
+                    foreach (var d in directions)
                     {
-                        if (target.Position.x == c.Position.x + d.x && target.Position.y == c.Position.y + d.y)
+                        for (int r = 1; r <= c.EquippedWeapon.Range; r++)
                         {
-                            c.Attack(target);
-                            SetDirection(c, d.x, d.y);
-                            if (c.Info.DoesDisappearAfterAttacking)
+                            var x = c.Position.x + (d.x * r);
+                            var y = c.Position.y + (d.y * r);
+                            if (MapManager.Instance.IsTileWalkable(x, y))
                             {
-                                RemoveCharacter(c);
+                                var target = targets.FirstOrDefault(o => o.Position.x == x && o.Position.y == y);
+                                if (target != null && (!c.EquippedWeapon.IsHeal || !target.IsHealthFull)) // We found a target and either it's an enemy, or an allie with health not full
+                                {
+                                    c.Attack(target);
+                                    SetDirection(c, d.x, d.y);
+                                    if (c.Info.DoesDisappearAfterAttacking)
+                                    {
+                                        RemoveCharacter(c);
+                                    }
+                                    didPlay = true;
+                                    break;
+                                }
                             }
-                            didPlay = true;
-                            break;
                         }
                     }
 
                     // Else we try to move towards its position
                     if (!didPlay && c.CanMove())
                     {
-                        foreach (var d in dirTarget)
+                        foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
                         {
                             if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
                             {

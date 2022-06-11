@@ -21,6 +21,25 @@ namespace TouhouPrideGameJam4.UI
         [SerializeField]
         private Transform _statusContainer;
 
+        private float _baseHealth;
+        [SerializeField]
+        private Image _healthBar;
+
+        [SerializeField]
+        private Image _takeDropImage;
+
+        [SerializeField]
+        private Sprite _spriteTake, _spriteDrop, _spriteFull;
+
+        public Image ShortcutEquipped;
+        public ShortcutButton[] ShortcutInventory;
+        public Image ShortcutAction;
+        public Sprite ActionNone;
+
+        public Tooltip Tooltip;
+
+        private ShortcutButton _shortcutTarget = null;
+
         private void Awake()
         {
             Instance = this;
@@ -134,30 +153,12 @@ namespace TouhouPrideGameJam4.UI
                 {
                     value.SetHighlight();
                     ShortcutAction.sprite = value.IsEmpty ? ActionNone : value.ActionSprite;
+                    SoundManager.Instance.PlaySelectBip();
                 }
                 _shortcutTarget = value;
                 UpdateUIOnNewTile();
             }
             get => _shortcutTarget;
         }
-
-        private float _baseHealth;
-        [SerializeField]
-        private Image _healthBar;
-
-        [SerializeField]
-        private Image _takeDropImage;
-
-        [SerializeField]
-        private Sprite _spriteTake, _spriteDrop, _spriteFull;
-
-        private ShortcutButton _shortcutTarget = null;
-
-        public Image ShortcutEquipped;
-        public ShortcutButton[] ShortcutInventory;
-        public Image ShortcutAction;
-        public Sprite ActionNone;
-
-        public Tooltip Tooltip;
     }
 }

@@ -216,6 +216,8 @@ namespace TouhouPrideGameJam4.Character
             inventory.UpdateContent(this, _items, baseFilter);
         }
 
+        public bool IsHealthFull => _health == _info.BaseHealth;
+
         public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
             if (weapon != null)
@@ -246,11 +248,12 @@ namespace TouhouPrideGameJam4.Character
                     var sumDrop = _info.StartingItems.Sum(x => x.Weight);
                     var targetWeight = Random.Range(0, sumDrop);
                     var index = 0;
-                    while (targetWeight > 0) // TODO: Check rates
+                    do
                     {
                         targetWeight -= _info.StartingItems[index].Weight;
                         index++;
-                    }
+                    } while (targetWeight > 0);
+                    index--;
                     var target = _info.StartingItems[index];
                     if (target.Item != null)
                     {
@@ -276,7 +279,7 @@ namespace TouhouPrideGameJam4.Character
 
         public void Attack(ACharacter target)
         {
-            target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1));
+            target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1) * (EquippedWeapon.IsHeal ? -1 : 1));
         }
 
         public override string ToString()

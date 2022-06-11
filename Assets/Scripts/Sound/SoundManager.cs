@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TouhouPrideGameJam4.Sound
 {
@@ -20,7 +15,7 @@ namespace TouhouPrideGameJam4.Sound
         private AudioSource _source;
 
         [SerializeField]
-        private AudioClip _errorBip;
+        private AudioClip _errorBip, _selectBip;
 
         public void PlayClip(AudioClip clip)
         {
@@ -30,6 +25,11 @@ namespace TouhouPrideGameJam4.Sound
         public void PlayError()
         {
             _source.PlayOneShot(_errorBip);
+        }
+
+        public void PlaySelectBip()
+        {
+            _source.PlayOneShot(_selectBip);
         }
     }
 }
