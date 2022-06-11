@@ -510,7 +510,7 @@ MonoBehaviour:
     m_ActionName: VN/Action[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 5f693e17-997a-4693-a93d-9528acd2c673
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!82 &6771723754569713765
