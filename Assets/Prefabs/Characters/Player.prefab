@@ -491,6 +491,23 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c0a5c2f8-b898-4bf3-8526-3f520d7568ed
     m_ActionName: Player/DropTake[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3300334960745762687}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          Assembly-CSharp
+        m_MethodName: OnNextDialog
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a70067e0-72bd-450e-8e6c-8032f7d72228
+    m_ActionName: VN/Action[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

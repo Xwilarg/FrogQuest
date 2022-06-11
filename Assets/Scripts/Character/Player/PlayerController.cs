@@ -1,4 +1,5 @@
-﻿using TouhouPrideGameJam4.Game;
+﻿using TouhouPrideGameJam4.Dialog;
+using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
@@ -15,11 +16,13 @@ namespace TouhouPrideGameJam4.Character.Player
         private int _stepIndex;
 
         private AudioSource _source;
+        private PlayerInput _input;
 
         private void Awake()
         {
             Instance = this;
             _source = GetComponent<AudioSource>();
+            _input = GetComponent<PlayerInput>();
         }
 
         private void Start()
@@ -70,6 +73,35 @@ namespace TouhouPrideGameJam4.Character.Player
             UIManager.Instance.SetHealth(_health / (float)_info.BaseHealth);
         }
 
+        private void OnDoneWalking()
+        {
+            _stepIndex++;
+            if (_stepIndex == _stepSound.Length)
+            {
+                _stepIndex = 0;
+            }
+            _source.PlayOneShot(_stepSound[_stepIndex]);
+            UIManager.Instance.UpdateUIOnNewTile();
+        }
+
+        public void EnableVNController()
+        {
+            _input.SwitchCurrentActionMap("VN");
+        }
+
+        public void EnableRPGController()
+        {
+            _input.SwitchCurrentActionMap("RPG");
+        }
+
+        public void OnNextDialog(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                StoryManager.Instance.ShowNextDialogue();
+            }
+        }
+
         public void OnMovement(InputAction.CallbackContext value)
         {
             if (value.performed)
@@ -93,17 +125,6 @@ namespace TouhouPrideGameJam4.Character.Player
                     }
                 }
             }
-        }
-
-        private void OnDoneWalking()
-        {
-            _stepIndex++;
-            if (_stepIndex == _stepSound.Length)
-            {
-                _stepIndex = 0;
-            }
-            _source.PlayOneShot(_stepSound[_stepIndex]);
-            UIManager.Instance.UpdateUIOnNewTile();
         }
 
         public void OnAction(InputAction.CallbackContext value)

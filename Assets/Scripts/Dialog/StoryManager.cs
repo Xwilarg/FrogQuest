@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using TMPro;
+using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
 using TouhouPrideGameJam4.SO;
 using UnityEngine;
@@ -10,16 +12,68 @@ namespace TouhouPrideGameJam4.Dialog
 {
     public class StoryManager : MonoBehaviour
     {
+        public static StoryManager Instance { get; private set; }
+
+        [SerializeField]
+        private TMP_Text _vnName, _vnContent;
+
+        [SerializeField]
+        private Image _vnImage;
+
+        [SerializeField]
+        private GameObject _vnContainer;
+
         [SerializeField]
         private TextAsset _introDialog;
         private DialogStatement[] _introStatement;
 
+        private DialogStatement[] _current;
+        private int _index;
+
         [SerializeField]
         private VNCharacterInfo[] _characters;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
             _introStatement = Parse(_introDialog);
+
+            ReadIntroduction();
+        }
+
+        public void ShowNextDialogue()
+        {
+            if (_index == _current.Length - 1 || _current == null) // End of VN part
+            {
+                _vnContainer.SetActive(false);
+                PlayerController.Instance.EnableRPGController();
+                _current = null;
+            }
+            else
+            {
+                _vnName.text = _current[_index].Name;
+                _vnContent.text = _current[_index].Content;
+                _vnImage.sprite = _current[_index].Image;
+                _index++;
+            }
+        }
+
+        private void ReadDialogues(DialogStatement[] toRead)
+        {
+            PlayerController.Instance.EnableVNController();
+            _vnContainer.SetActive(true);
+            _current = toRead;
+            _index = 0;
+            ShowNextDialogue();
+        }
+
+        public void ReadIntroduction()
+        {
+            ReadDialogues(_introStatement);
         }
 
         private enum ParsingExpectation
@@ -37,7 +91,6 @@ namespace TouhouPrideGameJam4.Dialog
             List<DialogStatement> lines = new();
             Sprite targetMood = null;
             VNCharacterInfo currentCharacter = null;
-            string dialogue = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
             foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s]*\"|\\n").Cast<Match>().Select(x => x.Value))

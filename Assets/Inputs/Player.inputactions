@@ -2,7 +2,7 @@
     "name": "Player",
     "maps": [
         {
-            "name": "Player",
+            "name": "RPG",
             "id": "5f693e17-997a-4693-a93d-9528acd2c673",
             "actions": [
                 {
@@ -416,6 +416,45 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "DropTake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "VN",
+            "id": "edc189d5-8be2-45f5-a523-a8ed7a380271",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "a70067e0-72bd-450e-8e6c-8032f7d72228",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd082247-fad8-4445-811e-d2035803c015",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "770b0273-c4fa-4443-a31f-48265eacda91",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -275,6 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49f5c63d8d37194dad65f306f4709a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vnName: {fileID: 7971231906135348584}
+  _vnContent: {fileID: 7971231905805178074}
+  _vnImage: {fileID: 7971231905423973170}
+  _vnContainer: {fileID: 7971231905108285151}
   _introDialog: {fileID: 4900000, guid: 0db5ec0adef33bb4681166f3640dc112, type: 3}
   _characters:
   - {fileID: 11400000, guid: f32ab0a85806856428b682f76700eac1, type: 2}
@@ -4957,7 +4961,6 @@ GameObject:
   - component: {fileID: 7971231905108285136}
   - component: {fileID: 7971231905108285138}
   - component: {fileID: 7971231905108285137}
-  - component: {fileID: 7971231905108285152}
   m_Layer: 5
   m_Name: DialogContainer
   m_TagString: Untagged
@@ -4965,21 +4968,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &7971231905108285152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7971231905108285151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be0879ae29bf584698491488f718b2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: {fileID: 7971231906135348584}
-  Content: {fileID: 7971231905805178074}
-  Image: {fileID: 7971231905423973170}
 --- !u!1 &7971231905423973168
 GameObject:
   m_ObjectHideFlags: 0
