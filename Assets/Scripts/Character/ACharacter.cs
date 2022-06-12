@@ -4,6 +4,7 @@ using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using static UnityEngine.UIElements.NavigationMoveEvent;
@@ -226,6 +227,11 @@ namespace TouhouPrideGameJam4.Character
                 {
                     AddStatus(status, 1000);
                 }
+            }
+
+            if (weapon.SoundOverride != null)
+            {
+                SoundManager.Instance.PlayClip(weapon.SoundOverride);
             }
 
             if (amount > 0)
