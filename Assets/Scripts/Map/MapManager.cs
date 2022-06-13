@@ -79,9 +79,9 @@ namespace TouhouPrideGameJam4.Map
                     var r = _rooms[i];
                     foreach (var d in GetFreeDoors(r, true))
                     {
-                        if (d.Direction != Direction.Up)
+                        if (d.Direction != Direction.Up) // TODO: Somehow up doors break the generation
                         {
-                            var possibilities = GetRandomMatchingRoom(d);
+                            var possibilities = GetRandomMatchingRoom(CurrMap.Rooms, d);
                             if (possibilities.Any())
                             {
                                 var randRoom = possibilities[Random.Range(0, possibilities.Length)];
@@ -94,6 +94,35 @@ namespace TouhouPrideGameJam4.Map
                             }
                         }
                     }
+                }
+            }
+
+            // Place exit room
+            bool didPlaceExit = false;
+            foreach (var room in _rooms.OrderBy(x => Random.value))
+            {
+                foreach (var d in GetFreeDoors(room, true))
+                {
+                    if (d.Direction != Direction.Up)
+                    {
+                        var possibilities = GetRandomMatchingRoom(new[] { CurrMap.StartingRoom }, d);
+                        if (possibilities.Any())
+                        {
+                            DrawRoom(possibilities[0]);
+
+                            // Add doors to separate rooms
+                            SetTileContent(d.X, d.Y, TileContentType.Door);
+
+                            _rooms.Add(possibilities[0]);
+
+                            didPlaceExit = true;
+                            break;
+                        }
+                    }
+                }
+                if (didPlaceExit)
+                {
+                    break;
                 }
             }
 
@@ -145,13 +174,13 @@ namespace TouhouPrideGameJam4.Map
                 {
                     if (_map[y][x] != null && _map[y][x].Type == TileType.StartingPos)
                     {
-                        SetTileContent(x, y, TileContentType.Entrance);
+                        SetTileContent(x, y, possibleSpawnPoints.Any() ? TileContentType.ExitDisabled : TileContentType.Entrance);
                         possibleSpawnPoints.Add(new(x, y));
                     }
                 }
             }
             Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
-            var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
+            var currentSpawn = possibleSpawnPoints[0];
             var character = Instantiate(_prefabPlayer, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity).GetComponent<ACharacter>();
             character.Position = new(currentSpawn.x, currentSpawn.y);
             TurnManager.Instance.Player = character;
@@ -252,9 +281,9 @@ namespace TouhouPrideGameJam4.Map
         /// Get a random room that fit in the map
         /// </summary>
         /// <param name="door">Door we are starting at</param>
-        private Room[] GetRandomMatchingRoom(Door door)
+        private Room[] GetRandomMatchingRoom(TextAsset[] rooms, Door door)
         {
-            return CurrMap.Rooms
+            return rooms
                 .SelectMany(r =>
                 {
                     // Load information about the rooms and their offset to be placed properly
