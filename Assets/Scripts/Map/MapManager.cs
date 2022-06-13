@@ -38,7 +38,7 @@ namespace TouhouPrideGameJam4.Map
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
 
-        private GameObject _tileContainer;
+        private GameObject _enemiesParent, _roomsParent;
 
         private void Awake()
         {
@@ -47,15 +47,18 @@ namespace TouhouPrideGameJam4.Map
 
         private void Start()
         {
+            _enemiesParent = new("Enemies");
+            _roomsParent = new("Rooms");
             InitMap();
         }
 
         private void InitMap()
         {
+            for (int i = 0; i < _enemiesParent.transform.childCount; i++) Destroy(_enemiesParent.transform.GetChild(i));
+            for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i));
+
             _mapImage.sprite = _info[_currentWorld].Image;
             _mapText.text = $"{_info[_currentWorld].Name}\n\n{_currentLevel + 1}/{_info[_currentWorld].StageCount}";
-
-            _tileContainer = new("Map");
 
             // Init map
             _map = new Tile[CurrMap.MapSize][];
@@ -125,6 +128,11 @@ namespace TouhouPrideGameJam4.Map
                     break;
                 }
             }
+            if (!didPlaceExit)
+            {
+                InitMap();
+                return;
+            }
 
             // Replace empty spaces by walls so the player can't exit the map
             var wall = LookupTileByType(TileType.Wall);
@@ -186,7 +194,6 @@ namespace TouhouPrideGameJam4.Map
             TurnManager.Instance.Player = character;
 
             // Spawn enemies
-            var enemyContainer = new GameObject("Enemies");
             foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
             {
                 var nbEnemies = Random.Range(0, CurrMap.MaxEnemiesPerRoom + 1);
@@ -221,7 +228,7 @@ namespace TouhouPrideGameJam4.Map
                     enemy.Team = Team.Enemies;
                     enemy.Position = new(pos.x, pos.y);
                     TurnManager.Instance.AddCharacter(enemy);
-                    enemy.transform.parent = enemyContainer.transform;
+                    enemy.transform.parent = _enemiesParent.transform;
                     enemy.gameObject.SetActive(false);
                 }
             }
@@ -399,7 +406,7 @@ namespace TouhouPrideGameJam4.Map
             if (_map[y][x] == null)
             {
                 var t = Instantiate(_prefabTile, new(x, y), Quaternion.identity);
-                t.transform.parent = _tileContainer.transform;
+                t.transform.parent = _roomsParent.transform;
                 _map[y][x] = new(tile.Type, t.GetComponent<SpriteRenderer>());
                 t.SetActive(false);
             }
@@ -433,7 +440,7 @@ namespace TouhouPrideGameJam4.Map
             if (_map[y][x].Content == TileContentType.None)
             {
                 var t = Instantiate(_prefabItemTopFloor, new(x, y), Quaternion.identity);
-                t.transform.parent = _tileContainer.transform;
+                t.transform.parent = _roomsParent.transform;
                 _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
                 t.SetActive(false);
             }
