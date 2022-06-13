@@ -174,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info:
   - {fileID: 11400000, guid: f5207b45f1d33fe4b8c5bf9aa6e05950, type: 2}
-  _prefabPlayer: {fileID: 56457190090914801, guid: 735aff12e80c8a84c832a0ef9c9b072a, type: 3}
   _prefabTile: {fileID: 1238779916511838880, guid: 07237fb06612c2a4cbad46cc36e50ca7, type: 3}
   _prefabItemFloor: {fileID: 7984739664320039825, guid: bfbfbc5cd592a5e4abcef25900e41dc8, type: 3}
   _prefabItemTopFloor: {fileID: 3346479765826390500, guid: 51e788aa06bc77a439b3c9a49b6fa214, type: 3}
@@ -195,6 +194,7 @@ MonoBehaviour:
   _aiInfo: {fileID: 11400000, guid: 4bf26983ba809f24f97d0655109b1722, type: 2}
   _objectiveText: {fileID: 378348100}
   _damageIndicator: {fileID: 2174806505201314149, guid: fb0c20b8c162c6e43b6bcba0838f8c86, type: 3}
+  _playerPrefab: {fileID: 56457190090914801, guid: 735aff12e80c8a84c832a0ef9c9b072a, type: 3}
 --- !u!114 &39555389
 MonoBehaviour:
   m_ObjectHideFlags: 0

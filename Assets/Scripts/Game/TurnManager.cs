@@ -22,6 +22,9 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private GameObject _damageIndicator;
 
+        [SerializeField]
+        private GameObject _playerPrefab;
+
         private string _baseObjectiveText;
 
         private ACharacter _player;
@@ -40,6 +43,8 @@ namespace TouhouPrideGameJam4.Game
         {
             Instance = this;
             _baseObjectiveText = _objectiveText.text;
+
+            Player = Instantiate(_playerPrefab).GetComponent<ACharacter>();
         }
 
         /*public void ToggleInventory()
@@ -77,7 +82,20 @@ namespace TouhouPrideGameJam4.Game
             else
             {
                 _characters.RemoveAll(x => x.GetInstanceID() == character.GetInstanceID());
-                _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+                var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
+                if (enemyCount == 0)
+                {
+                    _objectiveText.text = "Find the exit!";
+                    MapManager.Instance.EnableGoal();
+                    if (MapManager.Instance.GetContent(Player.Position.x, Player.Position.y) == TileContentType.ExitEnabled)
+                    {
+                        MapManager.Instance.GoToNextZone();
+                    }
+                }
+                else
+                {
+                    _objectiveText.text =  _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+                }
             }
             Destroy(character.gameObject);
         }
@@ -133,6 +151,10 @@ namespace TouhouPrideGameJam4.Game
                 else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
                 {
                     Player.Position = new(newX, newY);
+                    if (MapManager.Instance.GetContent(newX, newY) == TileContentType.ExitEnabled)
+                    {
+                        MapManager.Instance.GoToNextZone();
+                    }
                     didMove = true;
                 }
                 SetDirection(Player, relX, relY);

@@ -24,9 +24,6 @@ namespace TouhouPrideGameJam4.Map
         private MapInfo CurrMap => _info[_currentWorld].MapInfo;
 
         [SerializeField]
-        private GameObject _prefabPlayer;
-
-        [SerializeField]
         private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
 
         [SerializeField]
@@ -52,10 +49,25 @@ namespace TouhouPrideGameJam4.Map
             InitMap();
         }
 
+        public void GoToNextZone()
+        {
+            if (_currentLevel + 1 == _info[_currentWorld].StageCount)
+            {
+                _currentWorld++;
+                _currentLevel = 0;
+            }
+            else
+            {
+                _currentLevel++;
+            }
+            InitMap();
+        }
+
         private void InitMap()
         {
-            for (int i = 0; i < _enemiesParent.transform.childCount; i++) Destroy(_enemiesParent.transform.GetChild(i));
-            for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i));
+            for (int i = 0; i < _enemiesParent.transform.childCount; i++) Destroy(_enemiesParent.transform.GetChild(i).gameObject);
+            for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i).gameObject);
+            _rooms.Clear();
 
             _mapImage.sprite = _info[_currentWorld].Image;
             _mapText.text = $"{_info[_currentWorld].Name}\n\n{_currentLevel + 1}/{_info[_currentWorld].StageCount}";
@@ -189,9 +201,8 @@ namespace TouhouPrideGameJam4.Map
             }
             Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
             var currentSpawn = possibleSpawnPoints[0];
-            var character = Instantiate(_prefabPlayer, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity).GetComponent<ACharacter>();
-            character.Position = new(currentSpawn.x, currentSpawn.y);
-            TurnManager.Instance.Player = character;
+            TurnManager.Instance.Player.transform.position = new(currentSpawn.x, currentSpawn.y);
+            TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
 
             // Spawn enemies
             foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
@@ -204,9 +215,9 @@ namespace TouhouPrideGameJam4.Map
                     var y = Random.Range(1, room.Data.Length - 1);
                     var x = Random.Range(1, room.Data[y].Length - 1);
                     var pos = new Vector2Int(x, y);
-                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(x, y) == null;
+                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true;
 
-                    if (!spawnPos.Contains(pos) && tileOk)
+                    if (!spawnPos.Contains(new(room.X + x, room.Y + y)) && tileOk)
                     {
                         spawnPos.Add(new(room.X + x, room.Y + y));
                     }
@@ -235,6 +246,20 @@ namespace TouhouPrideGameJam4.Map
 
             // Show spawn room
             DiscoverRoom(currentSpawn.x, currentSpawn.y);
+        }
+
+        public void EnableGoal()
+        {
+            for (int y = 0; y < _map.Length; y++)
+            {
+                for (int x = 0; x < _map[y].Length; x++)
+                {
+                    if (_map[y][x] != null && _map[y][x].Content == TileContentType.ExitDisabled)
+                    {
+                        SetTileContent(x, y, TileContentType.ExitEnabled);
+                    }
+                }
+            }
         }
 
         private void DiscoverRoom(int x, int y)
