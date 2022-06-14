@@ -244,6 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e633d643bf9a195459e473860506b71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buyableItems: {fileID: 11400000, guid: 179e99ec213dadd4b99880e167f1f7de, type: 2}
+  _defaultUnlocked:
+  - {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
   _status:
   - {fileID: 11400000, guid: dcc1f98e5c1abaf449733fe0f7de9318, type: 2}
   - {fileID: 11400000, guid: 1e18676731f9b6343820cb577a039081, type: 2}

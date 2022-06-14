@@ -153,6 +153,11 @@ namespace TouhouPrideGameJam4.Game
                     MapManager.Instance.OpenDoor(newX, newY);
                     SoundManager.Instance.PlayClip(_openDoor);
                 }
+                else if (content == TileContentType.Chest)
+                {
+                    MapManager.Instance.OpenChest(newX, newY);
+                    SoundManager.Instance.PlayClip(_openDoor);
+                }
                 else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
                 {
                     Player.Position = new(newX, newY);

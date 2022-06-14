@@ -318,6 +318,12 @@ namespace TouhouPrideGameJam4.Map
 
         public bool IsAnythingOnFloor(int x, int y) => _map[y][x].ItemDropped != null;
 
+        public void OpenChest(int x, int y)
+        {
+            ClearContent(x, y);
+            SetItemOnFloor(x, y, GameManager.Instance.RandomUnlockedItem);
+        }
+
         public void OpenDoor(int x, int y)
         {
             ClearContent(x, y);
