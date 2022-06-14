@@ -10,7 +10,8 @@ namespace TouhouPrideGameJam4.SO.Map
         [Header("Configuration")]
         public int MapSize;
         public int MaxEnemiesPerRoom;
-        public int ChanceChestSpawn;
+        [Range(0f, 1f)]
+        public float ChestPerRoom;
         public int IterationCount;
 
         [Header("Rooms")]

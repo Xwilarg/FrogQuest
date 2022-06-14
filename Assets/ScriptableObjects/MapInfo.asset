@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapSize: 200
   MaxEnemiesPerRoom: 2
-  ChanceChestSpawn: 10
+  ChestPerRoom: 0.1
   IterationCount: 2
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
   Rooms:

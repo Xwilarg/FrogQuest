@@ -204,27 +204,6 @@ namespace TouhouPrideGameJam4.Map
             TurnManager.Instance.Player.transform.position = new(currentSpawn.x, currentSpawn.y);
             TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
 
-
-            // Spawn chest
-            foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
-            {
-                if (Random.Range(0, 100) < CurrMap.ChanceChestSpawn)
-                {
-                    while (true)
-                    {
-                        var y = Random.Range(1, room.Data.Length - 1);
-                        var x = Random.Range(1, room.Data[y].Length - 1);
-                        var pos = new Vector2Int(x, y);
-
-                        if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
-                        {
-                            SetTileContent(room.X + x, room.Y + y, TileContentType.Chest);
-                            break;
-                        }
-                    }
-                }
-            }
-
             // Spawn enemies
             foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
             {
@@ -262,6 +241,24 @@ namespace TouhouPrideGameJam4.Map
                     TurnManager.Instance.AddCharacter(enemy);
                     enemy.transform.parent = _enemiesParent.transform;
                     enemy.gameObject.SetActive(false);
+                }
+            }
+
+            // Spawn chest
+            var chestCount = Mathf.FloorToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom);
+            foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(chestCount))
+            {
+                while (true)
+                {
+                    var y = Random.Range(1, room.Data.Length - 1);
+                    var x = Random.Range(1, room.Data[y].Length - 1);
+                    var pos = new Vector2Int(x, y);
+
+                    if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
+                    {
+                        SetTileContent(room.X + x, room.Y + y, TileContentType.Chest);
+                        break;
+                    }
                 }
             }
 
