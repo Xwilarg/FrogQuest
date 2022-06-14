@@ -4,6 +4,7 @@ using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
@@ -24,6 +25,9 @@ namespace TouhouPrideGameJam4.Game
 
         [SerializeField]
         private GameObject _playerPrefab;
+
+        [SerializeField]
+        private AudioClip _openDoor;
 
         private string _baseObjectiveText;
 
@@ -147,6 +151,7 @@ namespace TouhouPrideGameJam4.Game
                 else if (content == TileContentType.Door)
                 {
                     MapManager.Instance.OpenDoor(newX, newY);
+                    SoundManager.Instance.PlayClip(_openDoor);
                 }
                 else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
                 {

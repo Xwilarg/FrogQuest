@@ -195,6 +195,7 @@ MonoBehaviour:
   _objectiveText: {fileID: 378348100}
   _damageIndicator: {fileID: 2174806505201314149, guid: fb0c20b8c162c6e43b6bcba0838f8c86, type: 3}
   _playerPrefab: {fileID: 56457190090914801, guid: 735aff12e80c8a84c832a0ef9c9b072a, type: 3}
+  _openDoor: {fileID: 8300000, guid: 1d5e2f82082185f449993cf77eb28f6b, type: 3}
 --- !u!114 &39555389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4250,6 +4251,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 39555392}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: beae6a930f18f254795b3235491f452f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
