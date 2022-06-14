@@ -1,5 +1,7 @@
-﻿using TouhouPrideGameJam4.Dialog;
+﻿using System.Collections.Generic;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
@@ -18,6 +20,8 @@ namespace TouhouPrideGameJam4.Character.Player
         private AudioSource _source;
         private PlayerInput _input;
 
+        private FollowerInfo _followerInfo;
+
         private void Awake()
         {
             Instance = this;
@@ -28,6 +32,7 @@ namespace TouhouPrideGameJam4.Character.Player
         private void Start()
         {
             Init(Team.Allies);
+            SetFollower(GameManager.Instance.FollowerAya);
         }
 
         private void Update()
@@ -35,10 +40,32 @@ namespace TouhouPrideGameJam4.Character.Player
             UpdateC();
         }
 
+        private void SetFollower(FollowerInfo follower)
+        {
+            _followerInfo = follower;
+            UIManager.Instance.SetFollower(follower.Sprite);
+        }
+
         public override void OnStatusChange()
         {
             base.OnStatusChange();
             UIManager.Instance.UpdateStatus(_currentEffects);
+        }
+
+        public override StatusType[] CurrentEffects
+        {
+            get
+            {
+                var effects = base.CurrentEffects;
+                if (_followerInfo != null)
+                {
+                    return new List<StatusType>(effects)
+                    {
+                        _followerInfo.Status
+                    }.ToArray();
+                }
+                return effects;
+            }
         }
 
         public override void UpdateInventoryDisplay()

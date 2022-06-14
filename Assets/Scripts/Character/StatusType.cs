@@ -7,6 +7,10 @@
         Stunned,
         DefenseBoosted,
         AttackBoosted,
-        Binded
+        Binded,
+
+        // Given by followers
+        LootUp,
+        AvoidUp
     }
 }

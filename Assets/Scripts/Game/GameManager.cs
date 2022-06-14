@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.Game
@@ -17,7 +18,13 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private StatusInfo[] _status;
 
+        [SerializeField]
+        private FollowerInfo _reimu, _aya;
+
         public StatusInfo GetStatusFromType(StatusType type)
             => _status.FirstOrDefault(x => x.Effect == type);
+
+        public FollowerInfo FollowerReimu => _reimu;
+        public FollowerInfo FollowerAya => _aya;
     }
 }

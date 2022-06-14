@@ -60,12 +60,12 @@ namespace TouhouPrideGameJam4.Game
             }
         }*/
 
-        public void SpawnDamageText(int amount, Color color, float x, float y)
+        public void SpawnDamageText(string amount, Color color, float x, float y)
         {
             var go = Instantiate(_damageIndicator, new(x, y), Quaternion.identity);
             var text = go.GetComponent<TMP_Text>();
             text.color = color;
-            text.text = amount.ToString();
+            text.text = amount;
         }
 
         /// <summary>

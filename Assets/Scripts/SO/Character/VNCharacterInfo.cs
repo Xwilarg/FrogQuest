@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace TouhouPrideGameJam4.SO
+namespace TouhouPrideGameJam4.SO.Character
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/VNCharacterInfo", fileName = "VNCharacterInfo")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Character/VNCharacterInfo", fileName = "VNCharacterInfo")]
     public class VNCharacterInfo : ScriptableObject
     {
         public string Key;

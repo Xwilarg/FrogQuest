@@ -17,9 +17,9 @@ namespace TouhouPrideGameJam4.Character
         /// Information about the character
         /// </summary>
         [SerializeField]
-        protected SO.CharacterInfo _info;
+        protected SO.Character.CharacterInfo _info;
 
-        public SO.CharacterInfo Info => _info;
+        public SO.Character.CharacterInfo Info => _info;
 
         /// <summary>
         /// Items that the character has
@@ -160,7 +160,7 @@ namespace TouhouPrideGameJam4.Character
         public virtual void OnStatusChange()
         { }
 
-        public StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
+        public virtual StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
 
         private bool Has(StatusType status) => _currentEffects.ContainsKey(status);
 
@@ -221,6 +221,13 @@ namespace TouhouPrideGameJam4.Character
 
         public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
+            string damageText = null;
+            if (CurrentEffects.Contains(StatusType.AvoidUp) && Random.Range(1, 100) < 10)
+            {
+                amount = 0;
+                damageText = "MISS";
+            }
+
             if (weapon != null)
             {
                 foreach (var status in weapon.HitEffects)
@@ -280,7 +287,11 @@ namespace TouhouPrideGameJam4.Character
             if (amount > 0) color = Color.red;
             else if (amount < 0) color = Color.green;
             else color = Color.yellow;
-            TurnManager.Instance.SpawnDamageText(amount, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
+            if (damageText == null)
+            {
+                damageText = amount.ToString();
+            }
+            TurnManager.Instance.SpawnDamageText(damageText, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
         }
 
         public void Attack(ACharacter target)

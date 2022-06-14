@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
-using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
 using UnityEngine.UI;
 

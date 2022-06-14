@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20c223a2adffa9b4f81632831997a83e, type: 3}
-  m_Name: GreenSnake
+  m_Script: {fileID: 11500000, guid: 1a5858fb23a72b9458da2cb6b6d43125, type: 3}
+  m_Name: Aya
   m_EditorClassIdentifier: 
-  BaseHealth: 5
-  StartingItems: []
-  DefaultWeapon: {fileID: 11400000, guid: f3559ecc65651d941b455af9c4ae2756, type: 2}
-  DoesDisappearAfterAttacking: 0
+  Status: 7
+  Sprite: {fileID: 21300000, guid: 18ecf3ede1f8a0b46b24d786c997bbd0, type: 3}

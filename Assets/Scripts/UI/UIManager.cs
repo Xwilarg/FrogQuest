@@ -52,7 +52,7 @@ namespace TouhouPrideGameJam4.UI
             _baseHealth = _healthBar.rectTransform.sizeDelta.x;
         }
 
-        private void SetFollower(Sprite image)
+        public void SetFollower(Sprite image)
         {
             _followerContainer.SetActive(true);
             _followerImage.sprite = image;
