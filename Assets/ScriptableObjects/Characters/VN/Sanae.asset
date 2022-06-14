@@ -15,4 +15,7 @@ MonoBehaviour:
   Key: sanae
   Name: Sanae
   NeutralExpression: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}
-  HappyExpression: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}
+  JoyfulExpression: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}
+  EyesClosedExpression: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}
+  SadExpression: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}
+  AngryExpression: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}

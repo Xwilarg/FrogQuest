@@ -93,7 +93,7 @@ namespace TouhouPrideGameJam4.Dialog
             VNCharacterInfo currentCharacter = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'…,.]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];
@@ -126,8 +126,12 @@ namespace TouhouPrideGameJam4.Dialog
                     {
                         targetMood = match.ToLowerInvariant() switch
                         {
-                            "happy" => currentCharacter.HappyExpression,
+                            "joyful" => currentCharacter.JoyfulExpression,
                             "neutral" => currentCharacter.NeutralExpression,
+                            "eyesclosed" => currentCharacter.EyesClosedExpression,
+                            "angry" => currentCharacter.AngryExpression,
+                            "surprised" => currentCharacter.SurprisedExpression,
+                            "sad" => currentCharacter.SadExpression,
                             _ => throw new System.InvalidOperationException($"Invalid expression {match}")
                         };
                         exp = ParsingExpectation.Dialogue;
