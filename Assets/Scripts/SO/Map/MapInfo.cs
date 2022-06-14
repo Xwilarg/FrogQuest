@@ -10,6 +10,7 @@ namespace TouhouPrideGameJam4.SO.Map
         [Header("Configuration")]
         public int MapSize;
         public int MaxEnemiesPerRoom;
+        public int ChanceChestSpawn;
         public int IterationCount;
 
         [Header("Rooms")]
@@ -24,6 +25,7 @@ namespace TouhouPrideGameJam4.SO.Map
 
         [Header("Tiles")]
         public Sprite DoorSprite;
+        public Sprite ChestSprite;
         public Sprite EntranceSprite, ExitDisabledSprite, ExitEnabledSprite;
     }
 }

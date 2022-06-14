@@ -204,6 +204,27 @@ namespace TouhouPrideGameJam4.Map
             TurnManager.Instance.Player.transform.position = new(currentSpawn.x, currentSpawn.y);
             TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
 
+
+            // Spawn chest
+            foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
+            {
+                if (Random.Range(0, 100) < CurrMap.ChanceChestSpawn)
+                {
+                    while (true)
+                    {
+                        var y = Random.Range(1, room.Data.Length - 1);
+                        var x = Random.Range(1, room.Data[y].Length - 1);
+                        var pos = new Vector2Int(x, y);
+
+                        if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
+                        {
+                            SetTileContent(room.X + x, room.Y + y, TileContentType.Chest);
+                            break;
+                        }
+                    }
+                }
+            }
+
             // Spawn enemies
             foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
             {
@@ -286,7 +307,7 @@ namespace TouhouPrideGameJam4.Map
                 enemy.gameObject.SetActive(true);
             }
 
-            if (IsTileWalkable(x, y))
+            if (DoesTileNotBlockLoS(x, y))
             {
                 for (int i = -1; i <= 1; i++)
                 {
@@ -401,10 +422,15 @@ namespace TouhouPrideGameJam4.Map
         }
 
         public bool IsTileWalkable(int x, int y)
+            => DoesTileNotBlockLoS(x, y) &&
+                _map[y][x].Content != TileContentType.Chest;
+
+        public bool DoesTileNotBlockLoS(int x, int y)
             => x >= 0 && x < CurrMap.MapSize && y >= 0 && y < CurrMap.MapSize &&
-               _map[y][x] != null &&
-               LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
-               _map[y][x].Content != TileContentType.Door;
+                _map[y][x] != null &&
+                LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
+                _map[y][x].Content != TileContentType.Door;
+
 
         /// <summary>
         /// Draw a room on the map
@@ -475,6 +501,7 @@ namespace TouhouPrideGameJam4.Map
                 TileContentType.Entrance => CurrMap.EntranceSprite,
                 TileContentType.ExitEnabled => CurrMap.ExitEnabledSprite,
                 TileContentType.ExitDisabled => CurrMap.ExitDisabledSprite,
+                TileContentType.Chest => CurrMap.ChestSprite,
                 _ => throw new System.NotImplementedException()
             };
             _map[y][x].Content = content;
