@@ -31,6 +31,12 @@ namespace TouhouPrideGameJam4.UI
         [SerializeField]
         private Sprite _spriteTake, _spriteDrop, _spriteFull;
 
+        [SerializeField]
+        private GameObject _followerContainer;
+
+        [SerializeField]
+        private Image _followerImage;
+
         public Image ShortcutEquipped;
         public ShortcutButton[] ShortcutInventory;
         public Image ShortcutAction;
@@ -44,6 +50,12 @@ namespace TouhouPrideGameJam4.UI
         {
             Instance = this;
             _baseHealth = _healthBar.rectTransform.sizeDelta.x;
+        }
+
+        private void SetFollower(Sprite image)
+        {
+            _followerContainer.SetActive(true);
+            _followerImage.sprite = image;
         }
 
         public void SetHealth(float value)
