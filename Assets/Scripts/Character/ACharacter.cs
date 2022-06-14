@@ -162,7 +162,7 @@ namespace TouhouPrideGameJam4.Character
 
         public virtual StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
 
-        private bool Has(StatusType status) => _currentEffects.ContainsKey(status);
+        private bool Has(StatusType status) => CurrentEffects.Contains(status);
 
         /// <summary>
         /// Update action bar and inventory display
@@ -222,7 +222,7 @@ namespace TouhouPrideGameJam4.Character
         public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
             string damageText = null;
-            if (CurrentEffects.Contains(StatusType.AvoidUp) && Random.Range(1, 100) < 10)
+            if (Has(StatusType.AvoidUp) && Random.Range(0, 100) < 10)
             {
                 amount = 0;
                 damageText = "MISS";
@@ -258,6 +258,11 @@ namespace TouhouPrideGameJam4.Character
             {
                 if (_info.StartingItems.Any() && !MapManager.Instance.IsAnythingOnFloor(Position.x, Position.y)) // TODO: Put object on the next tile?
                 {
+                    var items = _info.StartingItems;
+                    if (Has(StatusType.LootUp) && Random.Range(0, 100) < 10)
+                    {
+                        items = items.Where(x => x.Item != null).ToArray(); // Ensure that we will loot something
+                    }
                     var sumDrop = _info.StartingItems.Sum(x => x.Weight);
                     var targetWeight = Random.Range(0, sumDrop);
                     var index = 0;
