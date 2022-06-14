@@ -57,7 +57,15 @@ namespace TouhouPrideGameJam4.Dialog
             {
                 _vnName.text = _current[_index].Name;
                 _vnContent.text = _current[_index].Content;
-                _vnImage.sprite = _current[_index].Image;
+                if (_current[_index].Image == null)
+                {
+                    _vnImage.gameObject.SetActive(false);
+                }
+                else
+                {
+                    _vnImage.gameObject.SetActive(true);
+                    _vnImage.sprite = _current[_index].Image;
+                }
                 _index++;
             }
         }
