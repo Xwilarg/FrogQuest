@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5858fb23a72b9458da2cb6b6d43125, type: 3}
   m_Name: Aya
   m_EditorClassIdentifier: 
+  Type: 1
   Status: 7
   Sprite: {fileID: 21300000, guid: 18ecf3ede1f8a0b46b24d786c997bbd0, type: 3}

@@ -18,7 +18,7 @@ namespace TouhouPrideGameJam4.Game
         [SerializeField]
         private AItemInfo[] _defaultUnlocked;
 
-        private List<AItemInfo> _findableInChest = new();
+        private readonly List<AItemInfo> _findableInChest = new();
 
         private void Awake()
         {

@@ -43,7 +43,18 @@ namespace TouhouPrideGameJam4.Character.Player
         private void SetFollower(FollowerInfo follower)
         {
             _followerInfo = follower;
-            UIManager.Instance.SetFollower(follower.Sprite);
+            if (follower.Type == FollowerType.Aya)
+            {
+                UIManager.Instance.SetFollowerAya();
+            }
+            else if (follower.Type == FollowerType.Reimu)
+            {
+                UIManager.Instance.SetFollowerReimu();
+            }
+            else
+            {
+                throw new System.NotImplementedException($"Unknown character {follower.Type}");
+            }
         }
 
         public override void OnStatusChange()
