@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: FairyRanged
   m_EditorClassIdentifier: 
   BaseHealth: 5
-  StartingItems:
-  - Item: {fileID: 0}
-    Weight: 2
-  - Item: {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
-    Weight: 1
+  StartingItems: []
   DefaultWeapon: {fileID: 11400000, guid: 140b85dd00b9cae4586e653bdd520e81, type: 2}
   DoesDisappearAfterAttacking: 0

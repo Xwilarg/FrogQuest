@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: FairyHeal
   m_EditorClassIdentifier: 
   BaseHealth: 5
-  StartingItems:
-  - Item: {fileID: 0}
-    Weight: 2
-  - Item: {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
-    Weight: 1
+  StartingItems: []
   DefaultWeapon: {fileID: 11400000, guid: 6146218f6f9f72242aa7fcc8ce33391b, type: 2}
   DoesDisappearAfterAttacking: 0

@@ -142,7 +142,16 @@ namespace TouhouPrideGameJam4.Game
                 var newX = Player.Position.x + relX;
                 var newY = Player.Position.y + relY;
 
-                var target = _characters.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
+                ACharacter target = null;
+
+                for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
+                {
+                    target = _characters.FirstOrDefault(e => e.Position.x == Player.Position.x + relX * r && e.Position.y == Player.Position.y + relY * r);
+                    if (target != null)
+                    {
+                        break;
+                    }
+                }
                 var content = MapManager.Instance.GetContent(newX, newY);
                 if (target != null) // Enemy on the way, we attack it
                 {
