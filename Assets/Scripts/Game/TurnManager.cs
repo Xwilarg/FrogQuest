@@ -3,7 +3,7 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Map;
-using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using static UnityEngine.UIElements.NavigationMoveEvent;
