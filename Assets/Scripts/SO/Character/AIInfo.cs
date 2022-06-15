@@ -7,8 +7,5 @@ namespace TouhouPrideGameJam4.SO.Character
     {
         [Tooltip("If the enemy is further than this distance from the target, it doesn't go towards him")]
         public int MaxDistanceToMove;
-
-        [Tooltip("Number of turn the enemy takes to prepare his attack")]
-        public int TimeBeforeAttack;
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AIInfo
   m_EditorClassIdentifier: 
   MaxDistanceToMove: 10
+  TimeBeforeAttack: 1
