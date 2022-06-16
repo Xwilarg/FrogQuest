@@ -17,5 +17,7 @@ namespace TouhouPrideGameJam4.SO.Character
 
         [Tooltip("Number of turn the enemy takes to prepare his attack")]
         public int TimeBeforeAttack;
+
+        public int MinEnergyOnDeath, MaxEnergyOnDeath;
     }
 }

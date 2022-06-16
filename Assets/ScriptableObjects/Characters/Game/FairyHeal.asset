@@ -17,3 +17,5 @@ MonoBehaviour:
   DefaultWeapon: {fileID: 11400000, guid: 6146218f6f9f72242aa7fcc8ce33391b, type: 2}
   DoesDisappearAfterAttacking: 0
   TimeBeforeAttack: 0
+  MinEnergyOnDeath: 5
+  MaxEnergyOnDeath: 10

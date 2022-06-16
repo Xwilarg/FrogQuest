@@ -34,6 +34,9 @@ namespace TouhouPrideGameJam4.UI
         [SerializeField]
         private GameObject _followerContainer;
 
+        [SerializeField]
+        private TMP_Text _energyText;
+
         public Image ShortcutEquipped;
         public ShortcutButton[] ShortcutInventory;
         public Image ShortcutAction;
@@ -50,6 +53,11 @@ namespace TouhouPrideGameJam4.UI
         {
             Instance = this;
             _baseHealth = _healthBar.rectTransform.sizeDelta.x;
+        }
+
+        public void SetEnergyText(int energy)
+        {
+            _energyText.text = $"{energy} energy";
         }
 
         public void SetFollowerAya()

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
@@ -256,6 +257,7 @@ namespace TouhouPrideGameJam4.Character
             _health -= amount;
             if (_health <= 0)
             {
+                PlayerController.Instance.IncreaseEnergy(Random.Range(Info.MinEnergyOnDeath, Info.MaxEnergyOnDeath + 1));
                 if (_info.StartingItems.Any() && !MapManager.Instance.IsAnythingOnFloor(Position.x, Position.y)) // TODO: Put object on the next tile?
                 {
                     var items = _info.StartingItems;
