@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using static UnityEngine.UIElements.NavigationMoveEvent;
@@ -16,9 +18,9 @@ namespace TouhouPrideGameJam4.Character
         /// Information about the character
         /// </summary>
         [SerializeField]
-        protected SO.CharacterInfo _info;
+        protected SO.Character.CharacterInfo _info;
 
-        public SO.CharacterInfo Info => _info;
+        public SO.Character.CharacterInfo Info => _info;
 
         /// <summary>
         /// Items that the character has
@@ -159,9 +161,9 @@ namespace TouhouPrideGameJam4.Character
         public virtual void OnStatusChange()
         { }
 
-        public StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
+        public virtual StatusType[] CurrentEffects => _currentEffects.Keys.ToArray();
 
-        private bool Has(StatusType status) => _currentEffects.ContainsKey(status);
+        private bool Has(StatusType status) => CurrentEffects.Contains(status);
 
         /// <summary>
         /// Update action bar and inventory display
@@ -220,12 +222,24 @@ namespace TouhouPrideGameJam4.Character
 
         public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
+            string damageText = null;
+            if (Has(StatusType.AvoidUp) && Random.Range(0, 100) < 10)
+            {
+                amount = 0;
+                damageText = "MISS";
+            }
+
             if (weapon != null)
             {
                 foreach (var status in weapon.HitEffects)
                 {
                     AddStatus(status, 1000);
                 }
+            }
+
+            if (weapon.SoundOverride != null)
+            {
+                SoundManager.Instance.PlayClip(weapon.SoundOverride);
             }
 
             if (amount > 0)
@@ -243,8 +257,14 @@ namespace TouhouPrideGameJam4.Character
             _health -= amount;
             if (_health <= 0)
             {
+                PlayerController.Instance.IncreaseEnergy(Random.Range(Info.MinEnergyOnDeath, Info.MaxEnergyOnDeath + 1));
                 if (_info.StartingItems.Any() && !MapManager.Instance.IsAnythingOnFloor(Position.x, Position.y)) // TODO: Put object on the next tile?
                 {
+                    var items = _info.StartingItems;
+                    if (Has(StatusType.LootUp) && Random.Range(0, 100) < 10)
+                    {
+                        items = items.Where(x => x.Item != null).ToArray(); // Ensure that we will loot something
+                    }
                     var sumDrop = _info.StartingItems.Sum(x => x.Weight);
                     var targetWeight = Random.Range(0, sumDrop);
                     var index = 0;
@@ -274,7 +294,11 @@ namespace TouhouPrideGameJam4.Character
             if (amount > 0) color = Color.red;
             else if (amount < 0) color = Color.green;
             else color = Color.yellow;
-            TurnManager.Instance.SpawnDamageText(amount, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
+            if (damageText == null)
+            {
+                damageText = amount.ToString();
+            }
+            TurnManager.Instance.SpawnDamageText(damageText, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
         }
 
         public void Attack(ACharacter target)

@@ -32,6 +32,8 @@ namespace TouhouPrideGameJam4.SO.Item
 
         // When trying to use the item
 
+        public AudioClip SoundOverride;
+
         /// <summary>
         /// Callback when the item is used
         /// </summary>

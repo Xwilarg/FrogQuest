@@ -41,6 +41,9 @@ TagManager:
   - name: Tile
     uniqueID: 1676378713
     locked: 0
+  - name: TileTop
+    uniqueID: 3947747233
+    locked: 0
   - name: DecoFloor
     uniqueID: 997668941
     locked: 0

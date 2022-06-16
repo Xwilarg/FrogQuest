@@ -10,6 +10,8 @@ namespace TouhouPrideGameJam4.SO.Map
         [Header("Configuration")]
         public int MapSize;
         public int MaxEnemiesPerRoom;
+        [Range(0f, 1f)]
+        public float ChestPerRoom;
         public int IterationCount;
 
         [Header("Rooms")]
@@ -21,5 +23,10 @@ namespace TouhouPrideGameJam4.SO.Map
 
         [Header("Enemies")]
         public DropRate<GameObject>[] EnemiesSpawn;
+
+        [Header("Tiles")]
+        public Sprite DoorSprite;
+        public Sprite ChestSprite;
+        public Sprite EntranceSprite, ExitDisabledSprite, ExitEnabledSprite;
     }
 }

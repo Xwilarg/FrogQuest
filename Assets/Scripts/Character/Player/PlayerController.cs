@@ -1,9 +1,12 @@
-﻿using TouhouPrideGameJam4.Dialog;
+﻿using System.Collections.Generic;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace TouhouPrideGameJam4.Character.Player
 {
@@ -18,6 +21,10 @@ namespace TouhouPrideGameJam4.Character.Player
         private AudioSource _source;
         private PlayerInput _input;
 
+        private FollowerInfo _followerInfo;
+
+        public int Energy { private set; get; }
+
         private void Awake()
         {
             Instance = this;
@@ -27,18 +34,63 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void Start()
         {
-            Init(Team.Allies);
+            if (SceneManager.GetActiveScene().name == "Main") // Outside of main scene we only use this object for the VN controls
+            { // TODO: Move into separate class?
+                Init(Team.Allies);
+            }
         }
 
         private void Update()
         {
-            UpdateC();
+            if (SceneManager.GetActiveScene().name == "Main")
+            {
+                UpdateC();
+            }
+        }
+
+        public void IncreaseEnergy(int value)
+        {
+            Energy += value;
+            UIManager.Instance.SetEnergyText(Energy);
+        }
+
+        private void SetFollower(FollowerInfo follower)
+        {
+            _followerInfo = follower;
+            if (follower.Type == FollowerType.Aya)
+            {
+                UIManager.Instance.SetFollowerAya();
+            }
+            else if (follower.Type == FollowerType.Reimu)
+            {
+                UIManager.Instance.SetFollowerReimu();
+            }
+            else
+            {
+                throw new System.NotImplementedException($"Unknown character {follower.Type}");
+            }
         }
 
         public override void OnStatusChange()
         {
             base.OnStatusChange();
             UIManager.Instance.UpdateStatus(_currentEffects);
+        }
+
+        public override StatusType[] CurrentEffects
+        {
+            get
+            {
+                var effects = base.CurrentEffects;
+                if (_followerInfo != null)
+                {
+                    return new List<StatusType>(effects)
+                    {
+                        _followerInfo.Status
+                    }.ToArray();
+                }
+                return effects;
+            }
         }
 
         public override void UpdateInventoryDisplay()

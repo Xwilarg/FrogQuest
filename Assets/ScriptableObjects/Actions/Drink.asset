@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Drink
   m_EditorClassIdentifier: 
   ActionSprite: {fileID: 21300000, guid: c7c727e1ca570a149897a2a707a2d715, type: 3}
-  ActionSound: {fileID: 8300000, guid: 6de10a9cfa83fee47b872aabb90b62d2, type: 3}
+  ActionSound: {fileID: 8300000, guid: 2ac31c6e3581ca2418c922d6e3f6625f, type: 3}

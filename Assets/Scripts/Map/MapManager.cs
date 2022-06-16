@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.SO.Map;
 using UnityEngine;
@@ -24,10 +25,7 @@ namespace TouhouPrideGameJam4.Map
         private MapInfo CurrMap => _info[_currentWorld].MapInfo;
 
         [SerializeField]
-        private GameObject _prefabPlayer;
-
-        [SerializeField]
-        private GameObject _prefabTile, _prefabDoor, _prefabItemFloor;
+        private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
 
         [SerializeField]
         private Image _mapImage;
@@ -38,7 +36,7 @@ namespace TouhouPrideGameJam4.Map
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
 
-        private GameObject _tileContainer;
+        private GameObject _enemiesParent, _roomsParent;
 
         private void Awake()
         {
@@ -47,15 +45,33 @@ namespace TouhouPrideGameJam4.Map
 
         private void Start()
         {
+            _enemiesParent = new("Enemies");
+            _roomsParent = new("Rooms");
+            InitMap();
+        }
+
+        public void GoToNextZone()
+        {
+            if (_currentLevel + 1 == _info[_currentWorld].StageCount)
+            {
+                _currentWorld++;
+                _currentLevel = 0;
+            }
+            else
+            {
+                _currentLevel++;
+            }
             InitMap();
         }
 
         private void InitMap()
         {
+            for (int i = 0; i < _enemiesParent.transform.childCount; i++) Destroy(_enemiesParent.transform.GetChild(i).gameObject);
+            for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i).gameObject);
+            _rooms.Clear();
+
             _mapImage.sprite = _info[_currentWorld].Image;
             _mapText.text = $"{_info[_currentWorld].Name}\n\n{_currentLevel + 1}/{_info[_currentWorld].StageCount}";
-
-            _tileContainer = new("Map");
 
             // Init map
             _map = new Tile[CurrMap.MapSize][];
@@ -79,9 +95,9 @@ namespace TouhouPrideGameJam4.Map
                     var r = _rooms[i];
                     foreach (var d in GetFreeDoors(r, true))
                     {
-                        if (d.Direction != Direction.Up)
+                        if (d.Direction != Direction.Up) // TODO: Somehow up doors break the generation
                         {
-                            var possibilities = GetRandomMatchingRoom(d);
+                            var possibilities = GetRandomMatchingRoom(CurrMap.Rooms, d);
                             if (possibilities.Any())
                             {
                                 var randRoom = possibilities[Random.Range(0, possibilities.Length)];
@@ -97,6 +113,40 @@ namespace TouhouPrideGameJam4.Map
                 }
             }
 
+            // Place exit room
+            bool didPlaceExit = false;
+            foreach (var room in _rooms.OrderBy(x => Random.value))
+            {
+                foreach (var d in GetFreeDoors(room, true))
+                {
+                    if (d.Direction != Direction.Up)
+                    {
+                        var possibilities = GetRandomMatchingRoom(new[] { CurrMap.StartingRoom }, d);
+                        if (possibilities.Any())
+                        {
+                            DrawRoom(possibilities[0]);
+
+                            // Add doors to separate rooms
+                            SetTileContent(d.X, d.Y, TileContentType.Door);
+
+                            _rooms.Add(possibilities[0]);
+
+                            didPlaceExit = true;
+                            break;
+                        }
+                    }
+                }
+                if (didPlaceExit)
+                {
+                    break;
+                }
+            }
+            if (!didPlaceExit)
+            {
+                InitMap();
+                return;
+            }
+
             // Replace empty spaces by walls so the player can't exit the map
             var wall = LookupTileByType(TileType.Wall);
             foreach (var r in _rooms)
@@ -104,6 +154,36 @@ namespace TouhouPrideGameJam4.Map
                 foreach (var d in GetFreeDoors(r, true))
                 {
                     SetTile(d.X, d.Y, wall);
+                }
+            }
+
+            // Clean walls
+            for (int y = 0; y < _map.Length; y++)
+            {
+                for (int x = 0; x < _map[y].Length; x++)
+                {
+                    if (_map[y][x] != null && _map[y][x].Type == TileType.Empty)
+                    {
+                        var adjacentFloor = 0;
+                        for (int i = -1; i <= 1; i++)
+                        {
+                            for (int j = -1; j <= 1; j++)
+                            {
+                                if (_map[y + j][x + i] == null)
+                                {
+                                    SetTile(x + i, y + j, wall); // Floor need to be surrounded by something
+                                }
+                                else if ((i == 0 || j == 0) && i + j != 0 && _map[y + j][x + i].Type == TileType.Empty)
+                                {
+                                    adjacentFloor++;
+                                }
+                            }
+                        }
+                        if (_map[y][x].Content == TileContentType.None && adjacentFloor < 2) // Remove dead ends
+                        {
+                            SetTile(x, y, wall);
+                        }
+                    }
                 }
             }
 
@@ -115,18 +195,17 @@ namespace TouhouPrideGameJam4.Map
                 {
                     if (_map[y][x] != null && _map[y][x].Type == TileType.StartingPos)
                     {
+                        SetTileContent(x, y, possibleSpawnPoints.Any() ? TileContentType.ExitDisabled : TileContentType.Entrance);
                         possibleSpawnPoints.Add(new(x, y));
                     }
                 }
             }
             Assert.IsTrue(possibleSpawnPoints.Any(), "No spawn point found");
-            var currentSpawn = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
-            var character = Instantiate(_prefabPlayer, new Vector3(currentSpawn.x, currentSpawn.y), Quaternion.identity).GetComponent<ACharacter>();
-            character.Position = new(currentSpawn.x, currentSpawn.y);
-            TurnManager.Instance.Player = character;
+            var currentSpawn = possibleSpawnPoints[0];
+            TurnManager.Instance.Player.transform.position = new(currentSpawn.x, currentSpawn.y);
+            TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
 
             // Spawn enemies
-            var enemyContainer = new GameObject("Enemies");
             foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
             {
                 var nbEnemies = Random.Range(0, CurrMap.MaxEnemiesPerRoom + 1);
@@ -137,9 +216,9 @@ namespace TouhouPrideGameJam4.Map
                     var y = Random.Range(1, room.Data.Length - 1);
                     var x = Random.Range(1, room.Data[y].Length - 1);
                     var pos = new Vector2Int(x, y);
-                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(x, y) == null;
+                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true;
 
-                    if (!spawnPos.Contains(pos) && tileOk)
+                    if (!spawnPos.Contains(new(room.X + x, room.Y + y)) && tileOk)
                     {
                         spawnPos.Add(new(room.X + x, room.Y + y));
                     }
@@ -161,13 +240,45 @@ namespace TouhouPrideGameJam4.Map
                     enemy.Team = Team.Enemies;
                     enemy.Position = new(pos.x, pos.y);
                     TurnManager.Instance.AddCharacter(enemy);
-                    enemy.transform.parent = enemyContainer.transform;
+                    enemy.transform.parent = _enemiesParent.transform;
                     enemy.gameObject.SetActive(false);
+                }
+            }
+
+            // Spawn chest
+            var chestCount = Mathf.FloorToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom);
+            foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(chestCount))
+            {
+                while (true)
+                {
+                    var y = Random.Range(1, room.Data.Length - 1);
+                    var x = Random.Range(1, room.Data[y].Length - 1);
+                    var pos = new Vector2Int(x, y);
+
+                    if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
+                    {
+                        SetTileContent(room.X + x, room.Y + y, TileContentType.Chest);
+                        break;
+                    }
                 }
             }
 
             // Show spawn room
             DiscoverRoom(currentSpawn.x, currentSpawn.y);
+        }
+
+        public void EnableGoal()
+        {
+            for (int y = 0; y < _map.Length; y++)
+            {
+                for (int x = 0; x < _map[y].Length; x++)
+                {
+                    if (_map[y][x] != null && _map[y][x].Content == TileContentType.ExitDisabled)
+                    {
+                        SetTileContent(x, y, TileContentType.ExitEnabled);
+                    }
+                }
+            }
         }
 
         private void DiscoverRoom(int x, int y)
@@ -194,7 +305,7 @@ namespace TouhouPrideGameJam4.Map
                 enemy.gameObject.SetActive(true);
             }
 
-            if (IsTileWalkable(x, y))
+            if (DoesTileNotBlockLoS(x, y))
             {
                 for (int i = -1; i <= 1; i++)
                 {
@@ -207,6 +318,12 @@ namespace TouhouPrideGameJam4.Map
         }
 
         public bool IsAnythingOnFloor(int x, int y) => _map[y][x].ItemDropped != null;
+
+        public void OpenChest(int x, int y)
+        {
+            ClearContent(x, y);
+            SetItemOnFloor(x, y, PersistencyManager.Instance.RandomUnlockedItem);
+        }
 
         public void OpenDoor(int x, int y)
         {
@@ -221,9 +338,9 @@ namespace TouhouPrideGameJam4.Map
         /// Get a random room that fit in the map
         /// </summary>
         /// <param name="door">Door we are starting at</param>
-        private Room[] GetRandomMatchingRoom(Door door)
+        private Room[] GetRandomMatchingRoom(TextAsset[] rooms, Door door)
         {
-            return CurrMap.Rooms
+            return rooms
                 .SelectMany(r =>
                 {
                     // Load information about the rooms and their offset to be placed properly
@@ -253,7 +370,8 @@ namespace TouhouPrideGameJam4.Map
                         for (var xPos = room.X; xPos < room.X + room.Data[relativeY].Length; xPos++)
                         {
                             var relativeX = xPos - room.X;
-                            if (_map[yPos][xPos] != null && _map[yPos][xPos].Type != TileType.Empty && _map[yPos][xPos].Type != LookupTileByChar(room.Data[relativeY][relativeX]).Type)
+                            var tile = LookupTileByChar(room.Data[relativeY][relativeX]);
+                            if (_map[yPos][xPos] != null && _map[yPos][xPos].Type != TileType.Empty && tile != null && _map[yPos][xPos].Type != tile.Type)
                             {
                                 // For a room to be valid, we must either build it over an empty land or to all tiles to be on their matching counterpart
                                 // This is because we are building doorframe over an existing doorframe
@@ -308,10 +426,15 @@ namespace TouhouPrideGameJam4.Map
         }
 
         public bool IsTileWalkable(int x, int y)
+            => DoesTileNotBlockLoS(x, y) &&
+                _map[y][x].Content != TileContentType.Chest;
+
+        public bool DoesTileNotBlockLoS(int x, int y)
             => x >= 0 && x < CurrMap.MapSize && y >= 0 && y < CurrMap.MapSize &&
-               _map[y][x] != null &&
-               LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
-               _map[y][x].Content == TileContentType.None;
+                _map[y][x] != null &&
+                LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
+                _map[y][x].Content != TileContentType.Door;
+
 
         /// <summary>
         /// Draw a room on the map
@@ -325,7 +448,10 @@ namespace TouhouPrideGameJam4.Map
                 for (var xPos = room.X; xPos < room.X + room.Data[yPos - room.Y].Length; xPos++)
                 {
                     var tile = LookupTileByChar(room.Data[yPos - room.Y][xPos - room.X]);
-                    SetTile(xPos, yPos, tile);
+                    if (tile != null)
+                    {
+                        SetTile(xPos, yPos, tile);
+                    }
                 }
             }
         }
@@ -335,7 +461,7 @@ namespace TouhouPrideGameJam4.Map
             if (_map[y][x] == null)
             {
                 var t = Instantiate(_prefabTile, new(x, y), Quaternion.identity);
-                t.transform.parent = _tileContainer.transform;
+                t.transform.parent = _roomsParent.transform;
                 _map[y][x] = new(tile.Type, t.GetComponent<SpriteRenderer>());
                 t.SetActive(false);
             }
@@ -366,15 +492,23 @@ namespace TouhouPrideGameJam4.Map
 
         private void SetTileContent(int x, int y, TileContentType content)
         {
-            var t = Instantiate(content switch
+            if (_map[y][x].Content == TileContentType.None)
             {
-                TileContentType.Door => _prefabDoor,
+                var t = Instantiate(_prefabItemTopFloor, new(x, y), Quaternion.identity);
+                t.transform.parent = _roomsParent.transform;
+                _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
+                t.SetActive(false);
+            }
+            _map[y][x].SpriteRendererSub.sprite = content switch
+            {
+                TileContentType.Door => CurrMap.DoorSprite,
+                TileContentType.Entrance => CurrMap.EntranceSprite,
+                TileContentType.ExitEnabled => CurrMap.ExitEnabledSprite,
+                TileContentType.ExitDisabled => CurrMap.ExitDisabledSprite,
+                TileContentType.Chest => CurrMap.ChestSprite,
                 _ => throw new System.NotImplementedException()
-            }, new(x, y), Quaternion.identity);
-            t.transform.parent = _tileContainer.transform;
-            _map[y][x].SpriteRendererSub = t.GetComponent<SpriteRenderer>();
+            };
             _map[y][x].Content = content;
-            t.SetActive(false);
         }
 
 

@@ -4,7 +4,8 @@ using System.Text.RegularExpressions;
 using TMPro;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
-using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.Game.Persistency;
+using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,24 +41,40 @@ namespace TouhouPrideGameJam4.Dialog
 
         private void Start()
         {
-            _introStatement = Parse(_introDialog);
+            if (PersistencyManager.Instance.StoryProgress == StoryProgress.Intro)
+            {
+                _introStatement = Parse(_introDialog);
+                PersistencyManager.Instance.IncreaseStory();
+            }
 
             ReadIntroduction();
         }
 
         public void ShowNextDialogue()
         {
-            if (_index == _current.Length || _current == null) // End of VN part
+            if (_current == null || _index == _current.Length) // End of VN part
             {
                 _vnContainer.SetActive(false);
                 PlayerController.Instance.EnableRPGController();
                 _current = null;
+                foreach (var button in GameObject.FindGameObjectsWithTag("MenuButton").Select(x => x.GetComponent<Button>()))
+                {
+                    button.interactable = true;
+                }
             }
             else
             {
                 _vnName.text = _current[_index].Name;
                 _vnContent.text = _current[_index].Content;
-                _vnImage.sprite = _current[_index].Image;
+                if (_current[_index].Image == null)
+                {
+                    _vnImage.gameObject.SetActive(false);
+                }
+                else
+                {
+                    _vnImage.gameObject.SetActive(true);
+                    _vnImage.sprite = _current[_index].Image;
+                }
                 _index++;
             }
         }
@@ -69,6 +86,10 @@ namespace TouhouPrideGameJam4.Dialog
             _current = toRead;
             _index = 0;
             ShowNextDialogue();
+            foreach (var button in GameObject.FindGameObjectsWithTag("MenuButton").Select(x => x.GetComponent<Button>()))
+            {
+                button.interactable = false;
+            }
         }
 
         public void ReadIntroduction()
@@ -93,7 +114,7 @@ namespace TouhouPrideGameJam4.Dialog
             VNCharacterInfo currentCharacter = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'…,.]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];
@@ -126,8 +147,12 @@ namespace TouhouPrideGameJam4.Dialog
                     {
                         targetMood = match.ToLowerInvariant() switch
                         {
-                            "happy" => currentCharacter.HappyExpression,
+                            "joyful" => currentCharacter.JoyfulExpression,
                             "neutral" => currentCharacter.NeutralExpression,
+                            "eyesclosed" => currentCharacter.EyesClosedExpression,
+                            "angry" => currentCharacter.AngryExpression,
+                            "surprised" => currentCharacter.SurprisedExpression,
+                            "sad" => currentCharacter.SadExpression,
                             _ => throw new System.InvalidOperationException($"Invalid expression {match}")
                         };
                         exp = ParsingExpectation.Dialogue;

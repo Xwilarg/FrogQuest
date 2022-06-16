@@ -3,7 +3,6 @@ using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
-using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.SO.Item
 {

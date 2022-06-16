@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90af469bbd7c00f4b919e306f3aa1ea5, type: 3}
+  m_Script: {fileID: 11500000, guid: 20c223a2adffa9b4f81632831997a83e, type: 3}
   m_Name: GreenSnake
   m_EditorClassIdentifier: 
-  BaseHealth: 4
+  BaseHealth: 5
   StartingItems: []
   DefaultWeapon: {fileID: 11400000, guid: f3559ecc65651d941b455af9c4ae2756, type: 2}
+  DoesDisappearAfterAttacking: 0

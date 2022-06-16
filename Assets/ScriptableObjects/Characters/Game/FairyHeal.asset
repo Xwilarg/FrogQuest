@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90af469bbd7c00f4b919e306f3aa1ea5, type: 3}
+  m_Script: {fileID: 11500000, guid: 20c223a2adffa9b4f81632831997a83e, type: 3}
   m_Name: FairyHeal
   m_EditorClassIdentifier: 
   BaseHealth: 5
-  StartingItems:
-  - Item: {fileID: 0}
-    Weight: 2
-  - Item: {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
-    Weight: 1
+  StartingItems: []
   DefaultWeapon: {fileID: 11400000, guid: 6146218f6f9f72242aa7fcc8ce33391b, type: 2}
   DoesDisappearAfterAttacking: 0
+  TimeBeforeAttack: 0
+  MinEnergyOnDeath: 5
+  MaxEnergyOnDeath: 10

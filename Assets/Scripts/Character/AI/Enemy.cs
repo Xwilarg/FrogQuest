@@ -11,5 +11,7 @@
         {
             UpdateC();
         }
+
+        public int AttackCharge = 0;
     }
 }

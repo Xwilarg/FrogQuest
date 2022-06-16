@@ -41,7 +41,7 @@ namespace TouhouPrideGameJam4.UI
         {
             try
             {
-                var sound = Content.ActionType.ActionSound;
+                var sound = Content.SoundOverride == null ? Content.ActionType.ActionSound : Content.SoundOverride;
                 Content.DoAction(PlayerController.Instance);
                 SoundManager.Instance.PlayClip(sound);
                 PlayerController.Instance.UpdateInventoryDisplay();

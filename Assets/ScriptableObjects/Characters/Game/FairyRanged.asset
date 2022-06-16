@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90af469bbd7c00f4b919e306f3aa1ea5, type: 3}
+  m_Script: {fileID: 11500000, guid: 20c223a2adffa9b4f81632831997a83e, type: 3}
   m_Name: FairyRanged
   m_EditorClassIdentifier: 
   BaseHealth: 5
-  StartingItems:
-  - Item: {fileID: 0}
-    Weight: 2
-  - Item: {fileID: 11400000, guid: b3e2b8a700d6176479776dc79b31dba4, type: 2}
-    Weight: 1
+  StartingItems: []
   DefaultWeapon: {fileID: 11400000, guid: 140b85dd00b9cae4586e653bdd520e81, type: 2}
   DoesDisappearAfterAttacking: 0
+  TimeBeforeAttack: 1
+  MinEnergyOnDeath: 5
+  MaxEnergyOnDeath: 10
