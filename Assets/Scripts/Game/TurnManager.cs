@@ -260,21 +260,27 @@ namespace TouhouPrideGameJam4.Game
                     // Else we try to move towards its position
                     if (!didPlay)
                     {
-                        enemy.AttackCharge = 0;
-                        if (c.CanMove())
+                        if (enemy.AttackCharge > 0)
                         {
-                            foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
+                            enemy.AttackCharge = 0;
+                        }
+                        else
+                        {
+                            if (c.CanMove())
                             {
-                                if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
+                                foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
                                 {
-                                    // An enemy is obstructing the way
-                                    continue;
-                                }
-                                else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
-                                {
-                                    c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
-                                    SetDirection(c, d.x, d.y);
-                                    break;
+                                    if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
+                                    {
+                                        // An enemy is obstructing the way
+                                        continue;
+                                    }
+                                    else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
+                                    {
+                                        c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
+                                        SetDirection(c, d.x, d.y);
+                                        break;
+                                    }
                                 }
                             }
                         }
