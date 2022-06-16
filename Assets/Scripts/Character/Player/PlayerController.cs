@@ -22,7 +22,7 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private FollowerInfo _followerInfo;
 
-        private int _energy;
+        public int Energy { private set; get; }
 
         private void Awake()
         {
@@ -44,8 +44,8 @@ namespace TouhouPrideGameJam4.Character.Player
 
         public void IncreaseEnergy(int value)
         {
-            _energy += value;
-            UIManager.Instance.SetEnergyText(_energy);
+            Energy += value;
+            UIManager.Instance.SetEnergyText(Energy);
         }
 
         private void SetFollower(FollowerInfo follower)

@@ -3,10 +3,13 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Character.AI;
+using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.Sound;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Game
@@ -82,7 +85,8 @@ namespace TouhouPrideGameJam4.Game
         {
             if (character.GetInstanceID() == Player.GetInstanceID()) // The player died, gameover
             {
-                Debug.Break();
+                PersistencyManager.Instance.TotalEnergy += ((PlayerController)Player).Energy;
+                SceneManager.LoadScene("MenuRuns");
             }
             else
             {

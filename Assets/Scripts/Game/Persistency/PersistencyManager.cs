@@ -9,6 +9,8 @@ namespace TouhouPrideGameJam4.Game.Persistency
     {
         public static PersistencyManager Instance { get; private set; }
 
+        public int TotalEnergy { set; get; }
+
         private void Awake()
         {
             Instance = this;
