@@ -6,6 +6,7 @@ using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace TouhouPrideGameJam4.Character.Player
 {
@@ -33,13 +34,18 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void Start()
         {
-            Init(Team.Allies);
-            SetFollower(GameManager.Instance.FollowerAya);
+            if (SceneManager.GetActiveScene().name == "Main") // Outside of main scene we only use this object for the VN controls
+            { // TODO: Move into separate class?
+                Init(Team.Allies);
+            }
         }
 
         private void Update()
         {
-            UpdateC();
+            if (SceneManager.GetActiveScene().name == "Main")
+            {
+                UpdateC();
+            }
         }
 
         public void IncreaseEnergy(int value)

@@ -52,7 +52,7 @@ namespace TouhouPrideGameJam4.Dialog
 
         public void ShowNextDialogue()
         {
-            if (_index == _current.Length || _current == null) // End of VN part
+            if (_current == null || _index == _current.Length) // End of VN part
             {
                 _vnContainer.SetActive(false);
                 PlayerController.Instance.EnableRPGController();

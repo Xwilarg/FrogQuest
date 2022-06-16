@@ -2,6 +2,7 @@
 using TouhouPrideGameJam4.SO;
 using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TouhouPrideGameJam4.Game.Persistency
 {
@@ -16,6 +17,10 @@ namespace TouhouPrideGameJam4.Game.Persistency
         private void Awake()
         {
             Instance = this;
+            SceneManager.activeSceneChanged += (_, _2) =>
+            {
+                SceneManager.LoadScene("VNUI", LoadSceneMode.Additive);
+            };
         }
 
         public void IncreaseStory()
