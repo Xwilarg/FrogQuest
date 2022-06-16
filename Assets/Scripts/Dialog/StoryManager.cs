@@ -57,6 +57,10 @@ namespace TouhouPrideGameJam4.Dialog
                 _vnContainer.SetActive(false);
                 PlayerController.Instance.EnableRPGController();
                 _current = null;
+                foreach (var button in GameObject.FindGameObjectsWithTag("MenuButton").Select(x => x.GetComponent<Button>()))
+                {
+                    button.interactable = true;
+                }
             }
             else
             {
@@ -82,6 +86,10 @@ namespace TouhouPrideGameJam4.Dialog
             _current = toRead;
             _index = 0;
             ShowNextDialogue();
+            foreach (var button in GameObject.FindGameObjectsWithTag("MenuButton").Select(x => x.GetComponent<Button>()))
+            {
+                button.interactable = false;
+            }
         }
 
         public void ReadIntroduction()
