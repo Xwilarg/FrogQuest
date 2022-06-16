@@ -32,6 +32,12 @@ namespace TouhouPrideGameJam4.Game.Persistency
         public List<BuyableItem> BuyableItems { get; } = new();
         private readonly List<AItemInfo> _unlocked = new();
 
+        public void UnlockItem(AItemInfo item)
+        {
+            _unlocked.Add(item);
+            BuyableItems.RemoveAll(x => x.Item.Name == item.Name);
+        }
+
         public AItemInfo RandomUnlockedItem => _unlocked[Random.Range(0, _unlocked.Count)];
 
         public void Init(ShopInfo buyableItems, AItemInfo[] defaultUnlocked)

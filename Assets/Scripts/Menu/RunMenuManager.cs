@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Game.Persistency;
-using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.Inventory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,26 +28,41 @@ namespace TouhouPrideGameJam4.Menu
         {
             for (int i = 0; i < _shopContainer.childCount; i++) Destroy(_shopContainer.GetChild(i).gameObject);
 
-            var items = PersistencyManager.Instance.BuyableItems;
-            AddButton(items.Where(x => x.Item.Type == Inventory.ItemType.Potion), "potion");
-            AddButton(items.Where(x => x.Item.Type == Inventory.ItemType.Spell), "spell");
-            AddButton(items.Where(x => x.Item.Type == Inventory.ItemType.Weapon), "weapon");
+            AddButton(ItemType.Potion);
+            AddButton(ItemType.Spell);
+            AddButton(ItemType.Weapon);
 
             _energyText.text = $"Current energy: {PersistencyManager.Instance.TotalEnergy}";
         }
 
-        private void AddButton(IEnumerable<BuyableItem> items, string name)
+        private void AddButton(ItemType type)
         {
-            if (!items.Any())
+            const int price = 200;
+            if (!PersistencyManager.Instance.BuyableItems.Any(x => x.Item.Type == type))
             {
                 return;
             }
             var go = Instantiate(_shopButtonPrefab, _shopContainer);
-            if (PersistencyManager.Instance.TotalEnergy < 200)
+            if (PersistencyManager.Instance.TotalEnergy < price)
             {
                 go.GetComponent<Button>().interactable = false;
             }
-            go.GetComponentInChildren<TMP_Text>().text = $"Random {name}\n\n200 energy";
+            else
+            {
+                go.GetComponent<Button>().onClick.AddListener(new(() =>
+                {
+                    PersistencyManager.Instance.TotalEnergy -= price;
+                    var list = PersistencyManager.Instance.BuyableItems.Where(x => x.Item.Type == type).ToArray();
+                    var item = list[Random.Range(0, list.Length)];
+                    PersistencyManager.Instance.UnlockItem(item.Item);
+                    if (!PersistencyManager.Instance.BuyableItems.Any(x => x.Item.Type == type))
+                    {
+                        Destroy(go);
+                    }
+
+                }));
+            }
+            go.GetComponentInChildren<TMP_Text>().text = $"Random {type.ToString().ToLowerInvariant()}\n\n{price} energy";
         }
     }
 }
