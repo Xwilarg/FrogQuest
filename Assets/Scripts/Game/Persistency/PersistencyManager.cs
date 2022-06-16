@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TouhouPrideGameJam4.SO;
 using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
@@ -28,14 +29,14 @@ namespace TouhouPrideGameJam4.Game.Persistency
             StoryProgress++;
         }
 
-        private ShopInfo _buyableItems;
+        public List<BuyableItem> BuyableItems { get; } = new();
         private readonly List<AItemInfo> _unlocked = new();
 
         public AItemInfo RandomUnlockedItem => _unlocked[Random.Range(0, _unlocked.Count)];
 
         public void Init(ShopInfo buyableItems, AItemInfo[] defaultUnlocked)
         {
-            _buyableItems = buyableItems;
+            BuyableItems.AddRange(buyableItems.Items.ToList());
             _unlocked.AddRange(defaultUnlocked);
         }
     }

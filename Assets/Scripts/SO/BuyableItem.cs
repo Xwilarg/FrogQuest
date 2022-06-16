@@ -7,6 +7,6 @@ namespace TouhouPrideGameJam4.SO
     public class BuyableItem
     {
         public AItemInfo Item;
-        public int Price;
+        // public int Price;
     }
 }

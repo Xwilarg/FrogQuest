@@ -46,9 +46,5 @@ namespace TouhouPrideGameJam4.Inventory
                 }));
             }
         }
-
-        public void FilterAll() => UpdateContent(_owner, _items, null);
-        public void FilterWeapons() => UpdateContent(_owner, _items, ItemType.Weapon);
-        public void FilterConsumables() => UpdateContent(_owner, _items, ItemType.Consumable);
     }
 }

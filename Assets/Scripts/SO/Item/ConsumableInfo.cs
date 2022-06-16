@@ -11,7 +11,6 @@ namespace TouhouPrideGameJam4.SO.Item
         public EffectType Effect;
         public int Value;
 
-        public override ItemType Type => ItemType.Consumable;
         public override string Description => Effect switch
         {
             EffectType.Heal => $"Heal {Value} HP",
@@ -24,6 +23,8 @@ namespace TouhouPrideGameJam4.SO.Item
         public override string ActionName => "Use";
 
         public override string ActionTooltip => "Consume the current item";
+
+        public override ItemType Type => ItemType.Potion;
 
         public override void DoAction(ACharacter owner)
         {

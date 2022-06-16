@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
@@ -39,6 +40,8 @@ namespace TouhouPrideGameJam4.SO.Item
         /// Random offset applied to spawn position
         /// </summary>
         public float XOffset, YOffset;
+
+        public override ItemType Type => ItemType.Spell;
 
         public override string Description => $"Launch {ProjectileCount} projectiles each doing {DamagePerProjectile} damage";
 
