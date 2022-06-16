@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.SO;
 using TouhouPrideGameJam4.SO.Character;
-using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.Game
@@ -12,21 +10,10 @@ namespace TouhouPrideGameJam4.Game
     {
         public static GameManager Instance { get; private set; }
 
-        [SerializeField]
-        private ShopInfo _buyableItems;
-
-        [SerializeField]
-        private AItemInfo[] _defaultUnlocked;
-
-        private readonly List<AItemInfo> _findableInChest = new();
-
         private void Awake()
         {
             Instance = this;
-            _findableInChest.AddRange(_defaultUnlocked);
         }
-
-        public AItemInfo RandomUnlockedItem => _defaultUnlocked[Random.Range(0, _defaultUnlocked.Length)];
 
         [SerializeField]
         private StatusInfo[] _status;

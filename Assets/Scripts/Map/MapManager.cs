@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.SO.Map;
 using UnityEngine;
@@ -321,7 +322,7 @@ namespace TouhouPrideGameJam4.Map
         public void OpenChest(int x, int y)
         {
             ClearContent(x, y);
-            SetItemOnFloor(x, y, GameManager.Instance.RandomUnlockedItem);
+            SetItemOnFloor(x, y, PersistencyManager.Instance.RandomUnlockedItem);
         }
 
         public void OpenDoor(int x, int y)
