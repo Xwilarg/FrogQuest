@@ -11,9 +11,16 @@ namespace TouhouPrideGameJam4.Game.Persistency
 
         public int TotalEnergy { set; get; }
 
+        public StoryProgress StoryProgress { private set; get; }
+
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void IncreaseStory()
+        {
+            StoryProgress++;
         }
 
         private ShopInfo _buyableItems;

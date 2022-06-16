@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +41,11 @@ namespace TouhouPrideGameJam4.Dialog
 
         private void Start()
         {
-            _introStatement = Parse(_introDialog);
+            if (PersistencyManager.Instance.StoryProgress == StoryProgress.Intro)
+            {
+                _introStatement = Parse(_introDialog);
+                PersistencyManager.Instance.IncreaseStory();
+            }
 
             ReadIntroduction();
         }
