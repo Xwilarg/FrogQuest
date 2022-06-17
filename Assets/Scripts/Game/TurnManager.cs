@@ -109,22 +109,6 @@ namespace TouhouPrideGameJam4.Game
             Destroy(character.gameObject);
         }
 
-        public void TryAttackCharacter(int x, int y, int damage)
-        {
-            if (Player.Position.x == x && Player.Position.y == y)
-            {
-                Player.TakeDamage(null, damage);
-            }
-            else
-            {
-                var target = _characters.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
-                if (target != null)
-                {
-                    target.TakeDamage(null, damage);
-                }
-            }
-        }
-
         public void SetDirection(ACharacter character, int x, int y)
         {
             if (x < 0) character.Direction = Direction.Left;

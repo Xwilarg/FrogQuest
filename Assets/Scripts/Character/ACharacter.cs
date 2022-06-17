@@ -229,7 +229,7 @@ namespace TouhouPrideGameJam4.Character
                 damageText = "MISS";
             }
 
-            if (weapon != null)
+            if (weapon != null && weapon.HitEffects != null)
             {
                 foreach (var status in weapon.HitEffects)
                 {
@@ -240,7 +240,7 @@ namespace TouhouPrideGameJam4.Character
                 }
             }
 
-            if (weapon.SoundOverride != null)
+            if (weapon != null && weapon.SoundOverride != null)
             {
                 SoundManager.Instance.PlayClip(weapon.SoundOverride);
             }
