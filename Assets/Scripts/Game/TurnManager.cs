@@ -123,14 +123,17 @@ namespace TouhouPrideGameJam4.Game
         /// </summary>
         /// <param name="relX">Relative X position</param>
         /// <param name="relY">Relative Y position</param>
-        public bool MovePlayer(int relX, int relY)
+        public bool MovePlayer(int relX, int relY, bool moveOnly)
         {
+            var newX = Player.Position.x + relX;
+            var newY = Player.Position.y + relY;
+            if (moveOnly)
+            {
+                return TryMove(newX, newY);
+            }
             var didMove = false;
             if (Player.CanDoSomething())
             {
-                var newX = Player.Position.x + relX;
-                var newY = Player.Position.y + relY;
-
                 ACharacter target = null;
 
                 for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
@@ -156,14 +159,9 @@ namespace TouhouPrideGameJam4.Game
                     MapManager.Instance.OpenChest(newX, newY);
                     SoundManager.Instance.PlayClip(_openDoor);
                 }
-                else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
+                else
                 {
-                    Player.Position = new(newX, newY);
-                    if (MapManager.Instance.GetContent(newX, newY) == TileContentType.ExitEnabled)
-                    {
-                        MapManager.Instance.GoToNextZone();
-                    }
-                    didMove = true;
+                    didMove = TryMove(newX, newY);
                 }
                 SetDirection(Player, relX, relY);
             }
@@ -171,6 +169,20 @@ namespace TouhouPrideGameJam4.Game
             PlayEnemyTurn();
 
             return didMove;
+        }
+
+        private bool TryMove(int newX, int newY)
+        {
+            if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
+            {
+                Player.Position = new(newX, newY);
+                if (MapManager.Instance.GetContent(newX, newY) == TileContentType.ExitEnabled)
+                {
+                    MapManager.Instance.GoToNextZone();
+                }
+                return true;
+            }
+            return false;
         }
 
         public void PlayEnemyTurn()

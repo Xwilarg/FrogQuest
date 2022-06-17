@@ -58,6 +58,8 @@ namespace TouhouPrideGameJam4.Character
 
         public Team Team { set; get; }
 
+        protected bool _didReachPosition = true; // When character is done moving where it needed to
+
         // Position
         private Vector2Int _position;
         public Vector2Int Position
@@ -111,7 +113,9 @@ namespace TouhouPrideGameJam4.Character
             if (_moveTimer < 1f)
             {
                 _moveTimer += Time.deltaTime * 2.5f;
-                transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
+                var t = Mathf.Clamp01(_moveTimer);
+                transform.position = Vector2.Lerp(OldPos, Position, t);
+                _didReachPosition = t == 1f;
                 if (_moveTimer >= 1f)
                 {
                     _anim?.SetBool("IsWalking", false);
