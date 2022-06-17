@@ -13,7 +13,7 @@ namespace TouhouPrideGameJam4.Game.Persistency
 
         public int TotalEnergy { set; get; }
 
-        public StoryProgress StoryProgress { private set; get; }
+        public StoryProgress StoryProgress { set; get; }
 
         private void Awake()
         {
