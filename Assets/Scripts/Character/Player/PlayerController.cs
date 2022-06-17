@@ -25,7 +25,7 @@ namespace TouhouPrideGameJam4.Character.Player
 
         public int Energy { private set; get; }
 
-        private Vector2Int _direction;
+        private Vector2Int _walkDirection;
 
         private void Awake()
         {
@@ -47,9 +47,9 @@ namespace TouhouPrideGameJam4.Character.Player
             if (SceneManager.GetActiveScene().name == "Main")
             {
                 UpdateC();
-                if (_didReachPosition && _direction != Vector2Int.zero)
+                if (_didReachPosition && _walkDirection != Vector2Int.zero)
                 {
-                    if (TurnManager.Instance.MovePlayer(_direction.x, _direction.y, true))
+                    if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, true))
                     {
                         OnDoneWalking();
                     }
@@ -170,8 +170,8 @@ namespace TouhouPrideGameJam4.Character.Player
             {
                 if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
                 {
-                    _direction = new(mov.x > 0 ? 1 : -1, 0);
-                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_direction.x, _direction.y, false))
+                    _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
+                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
                     {
                         _didReachPosition = false;
                         OnDoneWalking();
@@ -179,8 +179,8 @@ namespace TouhouPrideGameJam4.Character.Player
                 }
                 else
                 {
-                    _direction = new(0, mov.y > 0 ? 1 : -1);
-                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_direction.x, _direction.y, false))
+                    _walkDirection = new(0, mov.y > 0 ? 1 : -1);
+                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
                     {
                         _didReachPosition = false;
                         OnDoneWalking();
@@ -189,7 +189,7 @@ namespace TouhouPrideGameJam4.Character.Player
             }
             else
             {
-                _direction = Vector2Int.zero;
+                _walkDirection = Vector2Int.zero;
             }
         }
 

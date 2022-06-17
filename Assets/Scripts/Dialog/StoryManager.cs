@@ -49,6 +49,11 @@ namespace TouhouPrideGameJam4.Dialog
             }
         }
 
+        public void ParseAllStories()
+        {
+            _introStatement = Parse(_introDialog);
+        }
+
         public void ShowNextDialogue()
         {
             if (_current == null || _index == _current.Length) // End of VN part
