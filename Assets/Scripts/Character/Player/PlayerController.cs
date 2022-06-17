@@ -53,6 +53,10 @@ namespace TouhouPrideGameJam4.Character.Player
                     {
                         OnDoneWalking();
                     }
+                    else
+                    {
+                        _walkDirection = Vector2Int.zero;
+                    }
                 }
             }
         }
