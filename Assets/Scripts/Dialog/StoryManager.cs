@@ -44,10 +44,9 @@ namespace TouhouPrideGameJam4.Dialog
             if (PersistencyManager.Instance.StoryProgress == StoryProgress.Intro)
             {
                 _introStatement = Parse(_introDialog);
+                ReadIntroduction();
                 PersistencyManager.Instance.IncreaseStory();
             }
-
-            ReadIntroduction();
         }
 
         public void ShowNextDialogue()
