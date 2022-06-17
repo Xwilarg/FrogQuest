@@ -130,44 +130,45 @@ namespace TouhouPrideGameJam4.Game
             var didMove = false;
             if (Player.CanDoSomething())
             {
-                if (moveOnly)
-                {
-                    didMove = TryMove(newX, newY);
-                    SetDirection(Player, relX, relY);
-                }
-                else
-                {
-                    ACharacter target = null;
+                ACharacter target = null;
 
-                    for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
+                for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
+                {
+                    target = _characters.FirstOrDefault(e => e.Position.x == Player.Position.x + relX * r && e.Position.y == Player.Position.y + relY * r);
+                    if (target != null)
                     {
-                        target = _characters.FirstOrDefault(e => e.Position.x == Player.Position.x + relX * r && e.Position.y == Player.Position.y + relY * r);
-                        if (target != null)
-                        {
-                            break;
-                        }
+                        break;
                     }
-                    var content = MapManager.Instance.GetContent(newX, newY);
-                    if (target != null) // Enemy on the way, we attack it
+                }
+                var content = MapManager.Instance.GetContent(newX, newY);
+                if (target != null) // Enemy on the way, we attack it
+                {
+                    if (!moveOnly)
                     {
                         Player.Attack(target);
                     }
-                    else if (content == TileContentType.Door)
+                }
+                else if (content == TileContentType.Door)
+                {
+                    if (!moveOnly)
                     {
                         MapManager.Instance.OpenDoor(newX, newY);
                         SoundManager.Instance.PlayClip(_openDoor);
                     }
-                    else if (content == TileContentType.Chest)
+                }
+                else if (content == TileContentType.Chest)
+                {
+                    if (!moveOnly)
                     {
                         MapManager.Instance.OpenChest(newX, newY);
                         SoundManager.Instance.PlayClip(_openDoor);
                     }
-                    else
-                    {
-                        didMove = TryMove(newX, newY);
-                    }
-                    SetDirection(Player, relX, relY);
                 }
+                else
+                {
+                    didMove = TryMove(newX, newY);
+                }
+                SetDirection(Player, relX, relY);
             }
             Player.EndTurn();
             PlayEnemyTurn();
