@@ -127,43 +127,47 @@ namespace TouhouPrideGameJam4.Game
         {
             var newX = Player.Position.x + relX;
             var newY = Player.Position.y + relY;
-            if (moveOnly)
-            {
-                return TryMove(newX, newY);
-            }
             var didMove = false;
             if (Player.CanDoSomething())
             {
-                ACharacter target = null;
-
-                for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
+                if (moveOnly)
                 {
-                    target = _characters.FirstOrDefault(e => e.Position.x == Player.Position.x + relX * r && e.Position.y == Player.Position.y + relY * r);
-                    if (target != null)
-                    {
-                        break;
-                    }
-                }
-                var content = MapManager.Instance.GetContent(newX, newY);
-                if (target != null) // Enemy on the way, we attack it
-                {
-                    Player.Attack(target);
-                }
-                else if (content == TileContentType.Door)
-                {
-                    MapManager.Instance.OpenDoor(newX, newY);
-                    SoundManager.Instance.PlayClip(_openDoor);
-                }
-                else if (content == TileContentType.Chest)
-                {
-                    MapManager.Instance.OpenChest(newX, newY);
-                    SoundManager.Instance.PlayClip(_openDoor);
+                    didMove = TryMove(newX, newY);
+                    SetDirection(Player, relX, relY);
                 }
                 else
                 {
-                    didMove = TryMove(newX, newY);
+                    ACharacter target = null;
+
+                    for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
+                    {
+                        target = _characters.FirstOrDefault(e => e.Position.x == Player.Position.x + relX * r && e.Position.y == Player.Position.y + relY * r);
+                        if (target != null)
+                        {
+                            break;
+                        }
+                    }
+                    var content = MapManager.Instance.GetContent(newX, newY);
+                    if (target != null) // Enemy on the way, we attack it
+                    {
+                        Player.Attack(target);
+                    }
+                    else if (content == TileContentType.Door)
+                    {
+                        MapManager.Instance.OpenDoor(newX, newY);
+                        SoundManager.Instance.PlayClip(_openDoor);
+                    }
+                    else if (content == TileContentType.Chest)
+                    {
+                        MapManager.Instance.OpenChest(newX, newY);
+                        SoundManager.Instance.PlayClip(_openDoor);
+                    }
+                    else
+                    {
+                        didMove = TryMove(newX, newY);
+                    }
+                    SetDirection(Player, relX, relY);
                 }
-                SetDirection(Player, relX, relY);
             }
             Player.EndTurn();
             PlayEnemyTurn();
