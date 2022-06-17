@@ -136,6 +136,7 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void OnDoneWalking()
         {
+            _didReachPosition = false;
             _stepIndex++;
             if (_stepIndex == _stepSound.Length)
             {
@@ -165,31 +166,43 @@ namespace TouhouPrideGameJam4.Character.Player
 
         public void OnMovement(InputAction.CallbackContext value)
         {
-            var mov = value.ReadValue<Vector2>();
-            if (mov.x != 0f || mov.y != 0f)
+            if (value.phase == InputActionPhase.Started || value.phase == InputActionPhase.Canceled)
             {
-                if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
+                var mov = value.ReadValue<Vector2>();
+                if (mov.x != 0f || mov.y != 0f)
                 {
-                    _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
-                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                    if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
                     {
-                        _didReachPosition = false;
-                        OnDoneWalking();
+                        _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
+                        if (_didReachPosition)
+                        {
+                            if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                            {
+                                OnDoneWalking();
+                            }
+                            else
+                            {
+                                _walkDirection = Vector2Int.zero;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        _walkDirection = new(0, mov.y > 0 ? 1 : -1);
+                        if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                        {
+                            OnDoneWalking();
+                        }
+                        else
+                        {
+                            _walkDirection = Vector2Int.zero;
+                        }
                     }
                 }
                 else
                 {
-                    _walkDirection = new(0, mov.y > 0 ? 1 : -1);
-                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
-                    {
-                        _didReachPosition = false;
-                        OnDoneWalking();
-                    }
+                    _walkDirection = Vector2Int.zero;
                 }
-            }
-            else
-            {
-                _walkDirection = Vector2Int.zero;
             }
         }
 
