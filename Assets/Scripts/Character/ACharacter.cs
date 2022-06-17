@@ -233,7 +233,10 @@ namespace TouhouPrideGameJam4.Character
             {
                 foreach (var status in weapon.HitEffects)
                 {
-                    AddStatus(status, 1000);
+                    if (Random.Range(0, 100) < status.Chance)
+                    {
+                        AddStatus(status.Effect, status.TurnCount);
+                    }
                 }
             }
 

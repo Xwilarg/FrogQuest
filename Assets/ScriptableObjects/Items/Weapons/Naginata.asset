@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb9ea308d5f314042bb8ff7f630593ae, type: 3}
-  m_Name: Yari
+  m_Name: Naginata
   m_EditorClassIdentifier: 
   UtilityDescription: 
-  Name: Yari
+  Name: Naginata
   Sprite: {fileID: 21300000, guid: ffc213999bba9e04e9b19a035e4661d8, type: 3}
   SoundOverride: {fileID: 0}
   ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}

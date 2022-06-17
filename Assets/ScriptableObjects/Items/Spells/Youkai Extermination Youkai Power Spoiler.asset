@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 547c29839983ff24e92044bae42b53fd, type: 3}
-  m_Name: Esoterica Nine Syllable Stabs
+  m_Name: Youkai Extermination Youkai Power Spoiler
   m_EditorClassIdentifier: 
   UtilityDescription: 
-  Name: Esoterica "Nine Syllable Stabs"
+  Name: Youkai Extermination "Youkai Power Spoiler"
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
   SoundOverride: {fileID: 0}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
@@ -21,9 +21,8 @@ MonoBehaviour:
   Value: 0
   ProjectilePrefab: {fileID: 5741561768511771132, guid: fae32c60a1f48ee4e90fe237e7294dcd, type: 3}
   Speed: 1000
-  ProjectileCount: 9
-  DamagePerProjectile: 2
-  DelayBetweenProjectiles: 0.1
-  XOffset: 0.5
-  YOffset: 0.5
-  Piercing: 1
+  ProjectileCount: 1
+  DamagePerProjectile: 999
+  DelayBetweenProjectiles: 0
+  XOffset: 0
+  YOffset: 0

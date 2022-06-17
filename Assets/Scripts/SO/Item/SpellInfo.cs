@@ -41,6 +41,8 @@ namespace TouhouPrideGameJam4.SO.Item
         /// </summary>
         public float XOffset, YOffset;
 
+        public bool Piercing;
+
         public override ItemType Type => ItemType.Spell;
 
         public override string Description => $"Launch {ProjectileCount} projectiles each doing {DamagePerProjectile} damage";

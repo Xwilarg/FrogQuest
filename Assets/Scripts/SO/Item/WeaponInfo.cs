@@ -10,7 +10,7 @@ namespace TouhouPrideGameJam4.SO.Item
         public int Damage;
 
         public override ItemType Type => ItemType.Weapon;
-        public StatusType[] HitEffects;
+        public WeaponEffectInfo[] HitEffects;
 
         public int Range = 1;
 

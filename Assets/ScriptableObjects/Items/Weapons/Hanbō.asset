@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb9ea308d5f314042bb8ff7f630593ae, type: 3}
-  m_Name: SnakeBind
+  m_Name: "Hanb\u014D"
   m_EditorClassIdentifier: 
   UtilityDescription: 
-  Name: Snake Bind
-  Sprite: {fileID: 21300000, guid: af67e01fb2c5ce24c871cf1700b2aedd, type: 3}
-  SoundOverride: {fileID: 0}
+  Name: "Hanb\u014D"
+  Sprite: {fileID: 21300000, guid: 998d652699aff8e44ae3b2bb5c90f300, type: 3}
+  SoundOverride: {fileID: 8300000, guid: 7dda035c7fc9ece4cb462a0de06f5b76, type: 3}
   ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}
-  Damage: 0
+  Damage: 5
   HitEffects:
-  - Effect: 5
-    TurnCount: 10
-    Chance: 100
+  - Effect: 2
+    TurnCount: 1
+    Chance: 50
   Range: 1
   IsHeal: 0
