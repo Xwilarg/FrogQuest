@@ -1,0 +1,88 @@
+sanae neutral “Hey, Reimu.”
+reimu neutral “Hm?”
+sanae neutral “Uhm, what’cha doin’?”
+reimu surprised “Ah, I’m just looking around, I guess. I don’t think I’ve ever been to this area of the forest before.”
+reimu neutral “But, then again, I guess it all kind of looks the same.”
+sanae neutral “Ah, if you look closely, I’m sure there are some differences.”
+reimu neutral “Well, when you’re always running around solving incidents, I guess you don’t have much time to take in the scenery.”
+sanae surprised “Oh, right…”
+sanae neutral “Wanna take a look around? Y’know, while Cirno is ‘conserving her power.’”
+reimu neutral “I guess there’s not much else to do.”
+“Not much to look at except some trees and bushes.”
+“Wait a minute, is there something in that bush?”
+sanae surprised “?”
+reimu surprised “There is! Did someone just leave this here?”
+sanae surprised “What is it?”
+reimu surprised “Did someone just dump their wallet’s contents into this bush?!”
+reimu neutral “Wait, somehow I feel like Yukari could be responsible for this…”
+sanae neutral “Ah, you think so?”
+reimu neutral “Maybe. It could be a prank, but…”
+reimu joyful “Oh, well! Finders keepers!”
+sanae shocked “Are you really taking it?”
+reimu joyful “Yeah, why not? It’s not like anyone else is here.”
+“Besides, if Yukari transported some poor fool’s money into this forest, it’s not like they would be able to find it afterwards.”
+sanae shocked “What if it’s your money she took?”
+reimu angry “Hey! It’s not like I have much to steal anyway.”
+reimu neutral “Besides, if it is mine, then I’m here to take it back now!”
+sanae neutral “Uhm… I guess.”
+reimu neutral “Oh, you think there’s any more around?”
+sanae shocked “Why would there be more?!”
+reimu joyful “Hey, it doesn’t hurt to check.”
+sanae neutral “Fine, let’s keep looking.”
+
+none “Check bushes and trees for coins.”
+
+(Collect x amount of coins)
+
+sanae neutral “I’m sure we’ve collected everything by now.”
+reimu neutral “Yeah, that was like a whole month’s worth of donations right there!”
+sanae shocked “Ah, for real?”
+reimu joyful “Yeah, you’ve always reminded me how many more visitors you get at your shrine than I get at mine.”
+reimu neutral “While I do have a lot of people who practically live at the shrine, it’s not like they pull their weight or anything.”
+“I still have to make sure things don’t start falling apart around me.”
+“And, you know, eat and stuff.”
+sanae neutral “I didn’t think it was that bad. Are you the only one left who has faith in your god?”
+reimu angry “The situation’s not that bad! Some day, things will get better.”
+sanae joyful “I mean, I would offer to show you what it takes to run a shrine the right way.”
+reimu angry “!!!”
+sanae eyesclosed “But I don’t think Kanako would like me helping out the rival shrine.”
+reimu angry “I don’t need your help!”
+sanae angry “But I just helped you find the coins that you’ll use for your shrine!”
+reimu joyful “Huh! I thought you weren’t gonna help out the rival shrine!”
+sanae shocked “Ah!”
+sanae angry “Well, what happened to not needing my help?!”
+reimu angry “I could have done it myself!”
+reimu neutral “But I guess it wouldn’t have been as fun…”
+sanae neutral “You think so?”
+reimu joyful “Yeah. I mean, I’d be lying if I said I didn’t enjoy hanging out with you.”
+“I know Kanako’s not happy I foiled her plans that one time, and she would probably be overjoyed if my shine went away…”
+“But you’ve helped solve some incidents in the past, and I guess we’re solving this one together, too!”
+sanae neutral “That’s true.”
+sanae joyful “I mean, I suppose I have done a few favors for you and the shrine in the past without Kanako knowing.”
+reimu joyful “I thought you were supposed to be a good girl, Sanae.”
+sanae angry “I have my own free will! And don’t forget that I’m also a living god!”
+reimu joyful “Yeah, yeah. You say that all the time. How could I forget?”
+sanae eyesclosed “Do I?”
+reimu neutral “Yeah, probably at least once everytime I see you.”
+sanae neutral “Well, I guess you’ve heard it a lot then.”
+reimu joyful “Yeah, it does seem like we’re together often. I’ve probably heard you say it a hundred times!”
+sanae eyesclosed “Hmm, Reimu?”
+reimu neutral “Huh?”
+sanae neutral “Did you mean what you said before?”
+reimu neutral “About what?”
+sanae neutral “That you like spending time with me?”
+reimu shy “Uh, well yeah! Of course, b-but don’t let it go to your head or anything!”
+sanae shy “Would you like to spend more time together?”
+reimu shy “Just us two, like this?”
+sanae shy “Yeah…”
+reimu shy “I would enjoy that.”
+aya joyful “Are you guys ready to go?”
+sanae shocked “Ah, Aya! (Talk about bad timing…)”
+reimu shocked “O-Of course we’re ready to go! But I thought we were waiting on Cirno.”
+cirno joyful “Nope! I can feel my fairy strength going off the charts!”
+sanae neutral “Right.”
+“Okay, well there’s no time to waste!”
+aya joyful “Well, it seems like you and Reimu had a lot of time to waste doing whatever you were-”
+reimu angry “Shut up, Aya!”
+aya joyful “Ayaya, okay! Let’s go.”
+cirno joyful “Hooray!”

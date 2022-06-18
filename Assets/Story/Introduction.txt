@@ -1,3 +1,0 @@
-"Sample sentence to explain game stuff"
-sanae neutral "Sample Sanae dialogue"
-none "End of explanations"

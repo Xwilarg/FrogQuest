@@ -1,0 +1,27 @@
+sanae neutral “Where could Suwako have gone?”
+“I wonder if there’s anyone around here who might know something!” 
+
+(Switch to walking gameplay, find Aya at some point)
+
+sanae neutral “(Ah, those tengu always seem to spread news quickly.)”
+aya neutral “Well, if it isn’t the shrine maiden whose god is always giving us tengu a hard time!”
+aya joyful “Seen anything interesting lately?”
+sanae neutral “Actually, I was hoping to ask you that myself.”
+aya surprised “Oh, really?”
+sanae sad “Suwako has been missing for quite some time, so I was wondering if you’ve seen her. Or maybe you’ve seen anything unusual?”
+aya angry “Ayaya, you haven’t been reading my newspaper lately, huh?”
+aya eyes closed “Well, I did happen to catch a glimpse of a certain vampire’s servants lurking around the top of Youkai Mountain yesterday.”
+aya joyful “Unusual enough for you?”
+sanae surprised “You mean servants from the Scarlet Devil Mansion were here?”
+aya neutral “Yep, but I’m not sure what they were up to.”
+aya joyful “I mean, I’m fast, but I guess the Scarlet Devil always has a few tricks up her sleeve! I couldn’t find them after awhile.”
+sanae surprised “What business do they have here? I wonder if they have something to do with Suwako’s disappearance.”
+aya neutral “I couldn’t say for sure, but one thing’s for certain:”
+aya angry “That vampire is always up to something”
+sanae angry “I guess that’s a good enough reason to go and investigate!”
+sanae sad “What do they want with Suwako, though?”
+aya neutral “I don’t know. But if they do have something to do with it, we’d better leave quickly.”
+aya joyful “I can see the headlines now! ‘Green shrine maiden saves frog goddess from the wicked Scarlet Devil!’”
+sanae angry “She is not the frog god! And why do I have to just be the green shrine maiden? I’m Moriya Shrine’s living god!”
+aya joyful “Yeah, yeah. Whatever, it’s just a working title. I’ll work out the kinks once I get the full story!”
+sanae eyesclosed “Ah, what does it matter? Let’s just go already! Lady Kanako is counting on me!”
