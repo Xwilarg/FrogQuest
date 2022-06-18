@@ -281,9 +281,8 @@ namespace TouhouPrideGameJam4.Map
             }
         }
 
-        private Vector2Int[] FindPath(Vector2Int start, Vector2Int stop)
+        public Vector2Int[] FindPath(Vector2Int start, Vector2Int stop)
         {
-            List<List<Vector2Int>> allPaths = new();
             var directions = new[]
             {
                 Vector2Int.left, Vector2Int.right,
@@ -311,9 +310,10 @@ namespace TouhouPrideGameJam4.Map
                 if (next == stop)
                 {
                     best = curr;
+                    current.Add(stop);
                     return current;
                 }
-                else if (!current.Contains(next))
+                else if (!current.Contains(next) && IsTileWalkable(next.x, next.y))
                 {
                     current.Add(next);
                     allPaths.Add(FindPathInternal(stop, curr + 1, ref best, new(current), directions));

@@ -273,19 +273,13 @@ namespace TouhouPrideGameJam4.Game
                         {
                             if (c.CanMove())
                             {
-                                foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
+                                var path = MapManager.Instance.FindPath(c.Position, targets.First().Position);
+                                var next = path != null ? path[1] : default;
+                                if (path != null && GetCharacterPos(next.x, next.y) == null)
                                 {
-                                    if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
-                                    {
-                                        // An enemy is obstructing the way
-                                        continue;
-                                    }
-                                    else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
-                                    {
-                                        c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
-                                        SetDirection(c, d.x, d.y);
-                                        break;
-                                    }
+                                    Debug.Log($"I'm at {c.Position}, target is at {targets.First().Position} and enemy is going {string.Join(", ", path)}");
+                                    SetDirection(c, next.x - c.Position.x, next.y - c.Position.y);
+                                    c.Position = new(next.x, next.y);
                                 }
                             }
                         }
