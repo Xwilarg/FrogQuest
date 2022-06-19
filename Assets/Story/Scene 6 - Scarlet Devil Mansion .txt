@@ -1,0 +1,9 @@
+sanae neutral “You two weren’t lying about that lazy gatekeeper.”
+reimu joyful “Ahaha, yeah. She’s usually too sleepy to notice anyone who tries to break in.”
+aya joyful “It makes things easier for us!”
+sanae joyful “Yeah!”
+sanae neutral “Oh, but this place is so big… It seems even bigger on the inside than I had imagined!”
+reimu joyful “Ha, that’s what I said!”
+sanae neutral “How are we going to figure out where to go? I have no idea where Remilia could be.”
+aya neutral “Maybe we could split up and look around?” 
+sanae joyful “Good idea! Let’s go in two groups.”
