@@ -785,7 +785,9 @@ MonoBehaviour:
     Audio:
 
     Chloe
-    Snow - Sounds & RPG music
+    Snow - Sounds
+
+    Nephetheus - Musics
 
 
     Programming:
@@ -798,9 +800,9 @@ MonoBehaviour:
     Colorfulkitten
     - CGs
 
-    [Lever] - Character sprites (Visual Novel)
+    Lever - Character sprites (Visual Novel)
 
-    [loge0] - World sprites
+    loge0 - World sprites
 
 
     (TODO)
@@ -1511,7 +1513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1310358455
 RectTransform:
   m_ObjectHideFlags: 0
