@@ -37,7 +37,7 @@ namespace TouhouPrideGameJam4.Menu
 
         private void AddButton(ItemType type)
         {
-            const int price = 200;
+            int price = PersistencyManager.Instance.GetPrice(type);
             if (!PersistencyManager.Instance.BuyableItems.Any(x => x.Item.Type == type))
             {
                 return;
@@ -55,11 +55,7 @@ namespace TouhouPrideGameJam4.Menu
                     var list = PersistencyManager.Instance.BuyableItems.Where(x => x.Item.Type == type).ToArray();
                     var item = list[Random.Range(0, list.Length)];
                     PersistencyManager.Instance.UnlockItem(item.Item);
-                    if (!PersistencyManager.Instance.BuyableItems.Any(x => x.Item.Type == type))
-                    {
-                        Destroy(go);
-                    }
-
+                    DisplayShop();
                 }));
             }
             go.GetComponentInChildren<TMP_Text>().text = $"Random {type.ToString().ToLowerInvariant()}\n\n{price} energy";
