@@ -246,7 +246,7 @@ namespace TouhouPrideGameJam4.Map
             }
 
             // Spawn chest
-            var chestCount = Mathf.CeilToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom);
+            var chestCount = Mathf.CeilToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom) + PersistencyManager.Instance.BonusChestCount;
             foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(chestCount))
             {
                 while (true)

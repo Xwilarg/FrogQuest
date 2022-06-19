@@ -31,6 +31,7 @@ namespace TouhouPrideGameJam4.Menu
             AddButton(ItemType.Potion);
             AddButton(ItemType.Spell);
             AddButton(ItemType.Weapon);
+            AddButton(ItemType.BonusChest);
 
             _energyText.text = $"Current energy: {PersistencyManager.Instance.TotalEnergy}";
         }
@@ -38,7 +39,7 @@ namespace TouhouPrideGameJam4.Menu
         private void AddButton(ItemType type)
         {
             int price = PersistencyManager.Instance.GetPrice(type);
-            if (!PersistencyManager.Instance.BuyableItems.Any(x => x.Item.Type == type))
+            if (type != ItemType.BonusChest && !PersistencyManager.Instance.BuyableItems.Any(x => x.Item.Type == type))
             {
                 return;
             }
@@ -52,13 +53,27 @@ namespace TouhouPrideGameJam4.Menu
                 go.GetComponent<Button>().onClick.AddListener(new(() =>
                 {
                     PersistencyManager.Instance.TotalEnergy -= price;
-                    var list = PersistencyManager.Instance.BuyableItems.Where(x => x.Item.Type == type).ToArray();
-                    var item = list[Random.Range(0, list.Length)];
-                    PersistencyManager.Instance.UnlockItem(item.Item);
+                    if (type == ItemType.BonusChest)
+                    {
+                        PersistencyManager.Instance.BonusChestCount++;
+                    }
+                    else
+                    {
+                        var list = PersistencyManager.Instance.BuyableItems.Where(x => x.Item.Type == type).ToArray();
+                        var item = list[Random.Range(0, list.Length)];
+                        PersistencyManager.Instance.UnlockItem(item.Item);
+                    }
                     DisplayShop();
                 }));
             }
-            go.GetComponentInChildren<TMP_Text>().text = $"Random {type.ToString().ToLowerInvariant()}\n\n{price} energy";
+            if (type == ItemType.BonusChest)
+            {
+                go.GetComponentInChildren<TMP_Text>().text = $"+1 chest per level\n\n{price} energy";
+            }
+            else
+            {
+                go.GetComponentInChildren<TMP_Text>().text = $"Random {type.ToString().ToLowerInvariant()}\n\n{price} energy";
+            }
         }
     }
 }
