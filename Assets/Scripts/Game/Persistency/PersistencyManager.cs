@@ -52,6 +52,10 @@ namespace TouhouPrideGameJam4.Game.Persistency
         public int GetPrice(ItemType type)
         {
             const int basePrice = 100;
+            if (type == ItemType.BonusChest)
+            {
+                return basePrice * (int)Mathf.Pow(2, BonusChestCount);
+            }
             if (!_countUnlocked.ContainsKey(type))
             {
                 return basePrice;

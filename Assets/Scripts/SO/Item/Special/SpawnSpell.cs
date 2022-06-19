@@ -1,5 +1,6 @@
 ﻿using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
@@ -53,5 +54,7 @@ namespace TouhouPrideGameJam4.SO.Item
 
             throw new NoFreeSpaceException();
         }
+
+        public override ItemType Type => ItemType.Spell;
     }
 }
