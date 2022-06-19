@@ -311,6 +311,10 @@ namespace TouhouPrideGameJam4.Character
         public void Attack(ACharacter target)
         {
             target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1) * (EquippedWeapon.IsHeal ? -1 : 1));
+            if (EquippedWeapon.IsSingleUse)
+            {
+                RemoveItem(EquippedWeapon);
+            }
         }
 
         public override string ToString()
