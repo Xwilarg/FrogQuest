@@ -18,15 +18,15 @@ reimu neutral “Wait, somehow I feel like Yukari could be responsible for this�
 sanae neutral “Ah, you think so?”
 reimu neutral “Maybe. It could be a prank, but…”
 reimu joyful “Oh, well! Finders keepers!”
-sanae shocked “Are you really taking it?”
+sanae surprised “Are you really taking it?”
 reimu joyful “Yeah, why not? It’s not like anyone else is here.”
 “Besides, if Yukari transported some poor fool’s money into this forest, it’s not like they would be able to find it afterwards.”
-sanae shocked “What if it’s your money she took?”
+sanae surprised “What if it’s your money she took?”
 reimu angry “Hey! It’s not like I have much to steal anyway.”
 reimu neutral “Besides, if it is mine, then I’m here to take it back now!”
 sanae neutral “Uhm… I guess.”
 reimu neutral “Oh, you think there’s any more around?”
-sanae shocked “Why would there be more?!”
+sanae surprised “Why would there be more?!”
 reimu joyful “Hey, it doesn’t hurt to check.”
 sanae neutral “Fine, let’s keep looking.”
 
@@ -36,7 +36,7 @@ none “Check bushes and trees for coins.”
 
 sanae neutral “I’m sure we’ve collected everything by now.”
 reimu neutral “Yeah, that was like a whole month’s worth of donations right there!”
-sanae shocked “Ah, for real?”
+sanae surprised “Ah, for real?”
 reimu joyful “Yeah, you’ve always reminded me how many more visitors you get at your shrine than I get at mine.”
 reimu neutral “While I do have a lot of people who practically live at the shrine, it’s not like they pull their weight or anything.”
 “I still have to make sure things don’t start falling apart around me.”
@@ -49,7 +49,7 @@ sanae eyesclosed “But I don’t think Kanako would like me helping out the riv
 reimu angry “I don’t need your help!”
 sanae angry “But I just helped you find the coins that you’ll use for your shrine!”
 reimu joyful “Huh! I thought you weren’t gonna help out the rival shrine!”
-sanae shocked “Ah!”
+sanae surprised “Ah!”
 sanae angry “Well, what happened to not needing my help?!”
 reimu angry “I could have done it myself!”
 reimu neutral “But I guess it wouldn’t have been as fun…”
@@ -77,8 +77,8 @@ reimu shy “Just us two, like this?”
 sanae shy “Yeah…”
 reimu shy “I would enjoy that.”
 aya joyful “Are you guys ready to go?”
-sanae shocked “Ah, Aya! (Talk about bad timing…)”
-reimu shocked “O-Of course we’re ready to go! But I thought we were waiting on Cirno.”
+sanae surprised “Ah, Aya! (Talk about bad timing…)”
+reimu surprised “O-Of course we’re ready to go! But I thought we were waiting on Cirno.”
 cirno joyful “Nope! I can feel my fairy strength going off the charts!”
 sanae neutral “Right.”
 “Okay, well there’s no time to waste!”

@@ -4,7 +4,7 @@ sanae neutral “Aya and Cirno, please go and search, as well.”
 aya eyesclosed “Ah, fine. Cirno, try to keep up!”
 cirno joyful “Hooray!”
 reimu neutral “Okay, I think we should start by checking some of the doors.”
-sanae shocked “Ah, but there are so many! How are we going to get through them all?”
+sanae surprised “Ah, but there are so many! How are we going to get through them all?”
 reimu neutral “Don’t worry. I found Remilia once before in her mansion and I’m sure I can do it again.”
 “I’m not alone this time, either.”
 sanae joyful “I suppose having a team will make things easier.”
@@ -18,9 +18,9 @@ sanae neutral “Yeah, but no Suwako or Scarlet Devil…”
 
 (Walking, door 2)
 sanae neutral “Ah, a kitchen!”
-reimu shocked “How much space does one need to cook?!”
+reimu surprised “How much space does one need to cook?!”
 “This is practically the size of my entire living space…”
-sanae shocked “Oh, wow.”
+sanae surprised “Oh, wow.”
 sanae neutral “But no sign of either of them still.”
 
 (Walking, door 3)
@@ -39,7 +39,7 @@ reimu joyful “Ah, it’s become sort of a job for me, I guess, and a part of m
 “I’m used to it now.”
 sanae eyesclosed “...”
 sanae neutral “Reimu, how do you always stay strong and keep going when things are against you?”
-reimu shocked “What do you mean?”
+reimu surprised “What do you mean?”
 sanae neutral “Well, you’ve mentioned facing a lot of hardships and difficulties.”
 “You don’t always have a lot of visitors at the Hakurei Shrine or receive enough donations to keep everything up.”
 “I know it’s easy for others to underestimate a simple shrine maiden. You’re also a human living as a minority in a world of youkai and other beings.”
@@ -54,9 +54,9 @@ reimu joyful “Ah, who cares about that? I’m happy knowing things are fixed a
 sanae neutral “I have a lot of respect for you, Reimu. I want to make a difference, too. But I’d be lying if I said I wasn’t looking forward to Lady Kanako telling me ‘good job’ each time I’ve solved a problem.”
 reimu joyful “Haha, I guess a few people thank me, but it doesn’t really matter if anyone does or not.”
 sanae sad “Isn’t that somewhat lonely, though?”
-reimu shocked “Huh?”
+reimu surprised “Huh?”
 sanae eyesclosed “I know you have a lot of friends, but you’re always so busy and going off to fight for Gensokyo!”
-reimu shocked “Ah… I mean, I do always have friends around.”
+reimu surprised “Ah… I mean, I do always have friends around.”
 reimu sad “But I suppose it is lonely sometimes.”
 “I think only a few others could understand my life.”
 reimu neutral “Marisa does, but we’re two very different people. She’s a pretty chaotic person, anyway.”
@@ -78,14 +78,14 @@ sanae joyful “I’ll try my best to convince Kanako that you’re not there to
 reimu joyful “Sure, why not?”
 sanae joyful “Then it’s a date!”
 reimu shy “A date?”
-sanae shocked “Oh!”
+sanae surprised “Oh!”
 “I mean, we can pick a date!”
 sanae shy “You know… To meet.”
 reimu shy “Yeah…”
 “Anyway, we need to keep searching.”
-sanae shocked “Oh, why am I so easily distracted?”
+sanae surprised “Oh, why am I so easily distracted?”
 reimu neutral “Let’s just look at this next door.”
-sanae shocked “Ah, this looks like the way into the back of the mansion!”
+sanae surprised “Ah, this looks like the way into the back of the mansion!”
 “Somehow, I feel like this is the right way!”
 reimu neutral “I think so, too.”
 “Aya and Cirno are coming this way!”
