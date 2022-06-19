@@ -94,5 +94,4 @@ sanae joyful “Yes, I trust that this is the way! Have faith in me that this is
 reimu neutral “Then, lead the way!”
 none “My heart is pounding out of my chest! But I can’t give up now.”
 “Everyone is counting on me to lead them to the end!”
-“I’m praying for a miracle to occur, that I will defeat the Scarlet Devil!”
 “Lady Kanako, may your blessings be upon me!’

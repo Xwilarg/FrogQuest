@@ -21,7 +21,7 @@ aya joyful “Sure, why not?”
 sanae surprised “But why would you trust me with your camera?”
 aya joyful “I have a feeling you’d be careful with it. Besides, don’t you have the power to cause miracles to occur?”
 aya neutral “Maybe you could miraculously fix my camera if you happen to break it.”
-sanae neutral “That’s pretty specific, but I guess so.”
+sanae neutral “Uhm, that's not how it works.”
 aya joyful “Well, if you do break it for good, I guess I’ll just send a bill to the Moriya Shrine!”
 sanae angry “Hey, have more faith in me! I’m not that careless!”
 aya joyful “Fine, fine! Anyway, how about I give you a few things to take photos of?” 

@@ -15,7 +15,6 @@ sanae joyful “But I don’t want to brag…”
 sanae eyesclosed “Anyway, I need to find out where Suwako has gone!”
 sanae sad “Hopefully she hasn’t gotten herself into too much trouble.”
 sanae angry “But I know Kanako is counting on me, so I can’t fail!” 
-sanae joyful “Even if things go wrong, I’ve got the power of miracles on my side!”
 sanae neutral “But where can I look for clues? I have no idea where she could be.”
 sanae sad “What if someone is responsible for her disappearance?”
 sanae eyesclosed “No… Suwako wouldn’t be so easily apprehended by someone with ill intentions.”
