@@ -191,13 +191,16 @@ namespace TouhouPrideGameJam4.Character.Player
                 else
                 {
                     _walkDirection = new(0, mov.y > 0 ? 1 : -1);
-                    if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                    if (_didReachPosition)
                     {
-                        OnDoneWalking();
-                    }
-                    else
-                    {
-                        _walkDirection = Vector2Int.zero;
+                        if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                        {
+                            OnDoneWalking();
+                        }
+                        else
+                        {
+                            _walkDirection = Vector2Int.zero;
+                        }
                     }
                 }
             }
