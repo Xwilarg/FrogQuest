@@ -64,10 +64,10 @@ sanae joyful “Starting now, allow me to lead you all on this journey to find S
 “I know I can’t fail!”
 reimu angry “Ugh, fine! This is going to be a long day…”
 aya joyful “Upset that you won’t be the star of the show this time, Reimu?”
-reimu surprised “What’s that supposed to mean?!“
+reimu surprised “What’s THAT supposed to mean?!“
 sanae joyful “Let’s find our way through the forest. I know we’ll make it to our destination in no time!”
 cirno joyful “Hooray!”
-none (Sanae speaking) “With that, I gathered a group to assist me on my quest to find my ancestor!”
+none “With that, I gathered a group to assist me on my quest to find my ancestor!”
 “I know I’ll be able to lead the way!”
 “But something keeps bothering me…”
 “How did the Scarlet Devil Mansion manage to capture Suwako, if they’re the ones responsible for her disappearance?”

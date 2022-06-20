@@ -2,9 +2,9 @@ sanae neutral “Please let this be it!”
 cirno joyful “Are we going to see the scary vampire lady?”
 reimu angry “Cirno, be more serious for once!”
 sanae neutral “This is the end of the mansion. If this isn’t it, then…”
-none “I see you have finally arrived.”
+none “???: I see you have finally arrived.”
 sanae surprised “!!!”
-none “It appears I have more than one pesky shrine maiden to deal with this time around.”
+none “???: It appears I have more than one pesky shrine maiden to deal with this time around.”
 reimu angry “It’s time you come out, Remilia.”
 remilia neutral “Ah, you expect me to greet you all when you’ve so rudely invaded my castle?”
 remilia eyesclosed “This isn’t a first for you, Miss Hakurei. I thought you would have learned some manners by now.” 
@@ -33,7 +33,7 @@ suwako joyful “Yeah! A bunch of people from the Scarlet Devil Mansion visited 
 suwako neutral “They were like, ‘You need to come with us.’” 
 suwako joyful “And I thought, ‘Wow! I’m finally getting invited to the Scarlet Devil’s home? What an honor!’”
 suwako neutral “I mean, it’s not like I was busy or anything. Kanako never lets me have any fun and I was SO BORED!”
-“So now I’m here for tea!”
+suwako joyful “So now I’m here for tea!”
 sanae shocked “...”
 “Suwako, it’s been over a week since you’ve left the shrine!”
 suwako neutral “Oh, really? Well, I guess I thought it was kind of a weekend trip or a sleepover sort of thing, you know?”
@@ -64,7 +64,7 @@ remilia eyesclosed “It’s not easy being a vampire, you know.”
 sanae surprised “...”
 reimu surprised cirno surprised “...”
 aya surprised “She can’t be serious!”
-remilia neutral “I am very serious. I always get what I want, even if it means taking extra steps.”
+remilia neutral “I am very serious. I ALWAYS get what I want, even if it means taking extra steps.”
 remilia eyesclosed “How would you feel if you had to worry about perishing each time you left your home?”
 sanae angry “We understand! But this is going too far! You’re speaking as if you’re going to force me to become one of your servants.”
 reimu angry “Well, that’s certainly not happening.”

@@ -11,7 +11,7 @@ sanae eyesclosed “We need to get back on track as soon as possible.”
 sanae neutral “But what should I do until then?”
 cirno joyful “Oh, I could tell you my super secret master plan for how I’m gonna-!”
 sanae angry “No!”
-sanae surprised “Er, I mean… If it’s really such an important secret, you shouldn’t tell me about it!”
+sanae surprised “Er, I mean… If it’s really such an important secret, you shouldn’t tell ME about it!”
 cirno surprised “Oh, you’re right! Good thinking!”
 cirno neutral “Well, maybe someone else has something that they want to talk about.”
 sanae neutral “Maybe…”

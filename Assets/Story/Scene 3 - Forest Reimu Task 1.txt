@@ -23,7 +23,7 @@ reimu joyful “Yeah, why not? It’s not like anyone else is here.”
 “Besides, if Yukari transported some poor fool’s money into this forest, it’s not like they would be able to find it afterwards.”
 sanae surprised “What if it’s your money she took?”
 reimu angry “Hey! It’s not like I have much to steal anyway.”
-reimu neutral “Besides, if it is mine, then I’m here to take it back now!”
+reimu neutral “Besides, if it IS mine, then I’m here to take it back now!”
 sanae neutral “Uhm… I guess.”
 reimu neutral “Oh, you think there’s any more around?”
 sanae surprised “Why would there be more?!”
@@ -70,7 +70,7 @@ sanae eyesclosed “Hmm, Reimu?”
 reimu neutral “Huh?”
 sanae neutral “Did you mean what you said before?”
 reimu neutral “About what?”
-sanae neutral “That you like spending time with me?”
+sanae shy “That you like hanging out with me?”
 reimu shy “Uh, well yeah! Of course, b-but don’t let it go to your head or anything!”
 sanae shy “Would you like to spend more time together?”
 reimu shy “Just us two, like this?”

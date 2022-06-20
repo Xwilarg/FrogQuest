@@ -5,7 +5,7 @@ sanae angry “I never said I wasn’t used to it!”
 reimu surprised “What do you mean ‘main character?’”
 sanae neutral “Ah, nothing! Let’s just go.”
 sanae joyful “You’re not gonna make me do everything myself, though. Right?”
-reimu neutral “Oh, I have to?”
+reimu neutral “Oh, I have to help?”
 sanae angry “Hey, don’t make me do all the work!”
 reimu angry “Ugh, fine! (How come I never get a break?)”
 none “Select Reimu’s blessing ability from the skill menu to regain HP.

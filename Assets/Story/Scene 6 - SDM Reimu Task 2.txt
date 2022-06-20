@@ -27,7 +27,7 @@ sanae neutral “But no sign of either of them still.”
 sanae neutral “It looks like someone’s room, but it’s not very fancy.”
 “This definitely isn’t Remilia’s.”
 reimu joyful “Not fancy? Even some servant’s room at this mansion would make anyone using it feel like royalty!”
-sanae neutral “Yeah, I guess I mean to say that it’s fancy, but not rich vampire fancy.”
+sanae neutral “Yeah, I guess I mean to say that it’s fancy, but not 'rich vampire' fancy.”
 reimu eyesclosed “Now that makes more sense. Either way, seeing such a comfy room reminds me how much I need a nap.”
 sanae joyful “Yeah, you do work hard Reimu. I hope you can rest after all of this.”
 reimu joyful “Ah, thank you. I guess someone has to keep track of all the incidents in Gensokyo.”
@@ -47,7 +47,7 @@ sanae sad “And despite all of that, you still manage to put Gensokyo first by 
 reimu neutral “Well, yeah… I do get stressed. Things are always so busy for me in my life.”
 “I sometimes wish I could have a break, but things must be balanced in Gensokyo.”
 sanae neutral “Why do you burden yourself with these unending tasks?”
-reimu joyful “You’re acting as if everyone wouldn’t blame me if I left an incident unsolved!”
+reimu joyful “You’re acting as if everyone wouldn’t blame me if I left an incident unresolved!”
 reimu neutral “Besides, Gensokyo is my home. I can’t have people running around like they own the place and causing problems for everyone.”
 sanae neutral “Even if people don’t always acknowledge your efforts?”
 reimu joyful “Ah, who cares about that? I’m happy knowing things are fixed at the end of the day, especially if people were in danger at the beginning.”
@@ -64,7 +64,7 @@ reimu neutral “Marisa does, but we’re two very different people. She’s a p
 “Oh well, I guess there’s no use in complaining.”
 sanae sad “Reimu, it’s okay. I think I’m someone who could understand, as well.”
 sanae neutral “When I first began solving incidents, it wasn’t easy. And you know what I’m capable of!”
-sanae neutral “We’ve known each other for quite some time, and back when you challenged Kanako and I for the first time, I knew you were a force to be reckoned with. Now, knowing how much you do everyday, I have way more respect for you.”
+“We’ve known each other for quite some time, and back when you challenged Kanako and I for the first time, I knew you were a force to be reckoned with. Now, knowing how much you do everyday, I have way more respect for you.”
 sanae joyful “That’s why I admire how strong and dedicated you are. You deserve way more recognition.”
 reimu shy “Don’t talk like that! It’s nothing, really.”
 “But thanks.”
@@ -86,7 +86,7 @@ reimu shy “Yeah…”
 sanae surprised “Oh, why am I so easily distracted?”
 reimu neutral “Let’s just look at this next door.”
 sanae surprised “Ah, this looks like the way into the back of the mansion!”
-“Somehow, I feel like this is the right way!”
+“Somehow, I feel like this is the right door!”
 reimu neutral “I think so, too.”
 “Aya and Cirno are coming this way!”
 aya neutral “We didn’t find anything, but it looks like you both did!”
@@ -94,4 +94,4 @@ sanae joyful “Yes, I trust that this is the way! Have faith in me that this is
 reimu neutral “Then, lead the way!”
 none “My heart is pounding out of my chest! But I can’t give up now.”
 “Everyone is counting on me to lead them to the end!”
-“Lady Kanako, may your blessings be upon me!’
+“Lady Kanako, may your blessings be upon me!"

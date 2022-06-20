@@ -13,7 +13,7 @@ sanae joyful “Oh, you guys must not have that here.”
 sanae neutral “Anyway, what were you trying to get a photo of?”
 aya neutral “Eh, just a few things in the forest, but it’s nothing important.”
 “Have you ever been interested in taking up photography?”
-sanae neutral “Well, it is pretty cool, but I don’t always have time for hobbies.”
+sanae neutral “Well, it IS pretty cool, but I don’t always have time for hobbies.”
 aya neutral “Hmm…”
 aya joyful “Want to try your hand at it?”
 sanae surprised “Ah, right now?”

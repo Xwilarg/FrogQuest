@@ -2,7 +2,7 @@ sanae joyful “Ah, we finally made it!”
 reimu angry “Jeez, I didn’t have such a hard time going to the Scarlet Devil Mansion whenever I went alone.”
 aya joyful “Sometimes you’ve gotta enjoy the scenery along the way!”
 reimu angry “As if you ever do that!”
-sanae neutral “Oh, now that we’re about to go inside, I do feel a little nervous.”
+sanae neutral “Oh, now that we’re about to go to the mansion, I do feel a little nervous.”
 reimu neutral “How about we take some time to prepare before we enter?”
 sanae neutral “Yeah, that sounds good.”
 cirno joyful “I always need time to save my strength, anyway!”
@@ -59,7 +59,7 @@ sanae neutral “Well, of course I don’t want Suwako to be in danger. She’s 
 “The residents of the Scarlet Devil Mansion are powerful, but Suwako is powerful, too.”
 cirno surprised “Maybe she was distracted by the frogs!”
 sanae neutral “I really don’t know, but it seems like we’ll find out soon enough.”
-cirno joyful “I know we have a rivalry, but I know Suwako is also really strong!”
+cirno joyful “We have a rivalry, but I know Suwako is also really strong!”
 “She’s not allowed to get defeated by anyone but me! I know she’ll be okay until I take her down myself!”
 sanae sad “Yeah. I think I just have a lot to be worried about right now.”
 sanae eyesclosed “I guess it’s not important for the time being.”
@@ -73,7 +73,7 @@ cirno joyful “I told you, don’t underestimate me! Not only do I have strengt
 sanae neutral “I see. So, you don’t mind me talking about it?”
 cirno neutral “Nope! I’m here to help, like I said!”
 sanae neutral “Okay, if you insist.”
-sanae eyesclosed “(Oh my goddess, I never imagined I’d be talking about such things with someone like Cirno!)”
+sanae eyesclosed “(Oh my Goddess, I never imagined I’d be talking about such things with someone like Cirno!)”
 sanae shy “Cirno, have you ever liked someone before?”
 cirno shocked “Like..?”
 sanae neutral “Yes.”
@@ -90,7 +90,7 @@ sanae eyesclosed “Maybe you don’t understand that sort of stuff.”
 cirno neutral “What sort of stuff?”
 sanae neutral “Relationships and love.”
 cirno neutral “Hmm… You mean like when people get married?”
-sanae joyful “Yeah! But before that, when their love is just growing.”
+sanae joyful “Yeah! But before that, when their love is just beginning.”
 sanae neutral “So instead of ‘love,’ you say you ‘like’ someone.”
 cirno neutral “Oh, I understand.”
 “No, I’ve never thought about anything like that before.”
