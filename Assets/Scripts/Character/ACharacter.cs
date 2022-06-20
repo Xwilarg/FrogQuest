@@ -182,6 +182,7 @@ namespace TouhouPrideGameJam4.Character
             {
                 Equip(weapon);
             }
+            Debug.Log(item.Name);
             UpdateInventoryDisplay();
         }
 

@@ -176,7 +176,6 @@ namespace TouhouPrideGameJam4.Character.Player
                 if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
                 {
                     _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
-                    Debug.Log(_walkDirection);
                     if (_didReachPosition)
                     {
                         if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
@@ -192,7 +191,6 @@ namespace TouhouPrideGameJam4.Character.Player
                 else
                 {
                     _walkDirection = new(0, mov.y > 0 ? 1 : -1);
-                    Debug.Log(_walkDirection);
                     if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
                     {
                         OnDoneWalking();
