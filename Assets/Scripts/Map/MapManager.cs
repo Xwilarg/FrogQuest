@@ -22,7 +22,7 @@ namespace TouhouPrideGameJam4.Map
 
         private int _currentWorld, _currentLevel;
 
-        private MapInfo CurrMap => CurrMap;
+        private MapInfo CurrMap => _info[_currentWorld];
 
         [SerializeField]
         private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
