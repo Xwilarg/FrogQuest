@@ -167,11 +167,16 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
+        private bool _waitingForNextPress;
         public void OnMovement(InputAction.CallbackContext value)
         {
             var mov = value.ReadValue<Vector2>();
             if (mov.x != 0f || mov.y != 0f)
             {
+                if (value.phase != InputActionPhase.Started && _waitingForNextPress)
+                {
+                    return;
+                }
                 if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
                 {
                     _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
@@ -183,6 +188,7 @@ namespace TouhouPrideGameJam4.Character.Player
                         }
                         else
                         {
+                            _waitingForNextPress = true;
                             _walkDirection = Vector2Int.zero;
                         }
                     }
@@ -198,6 +204,7 @@ namespace TouhouPrideGameJam4.Character.Player
                         }
                         else
                         {
+                            _waitingForNextPress = true;
                             _walkDirection = Vector2Int.zero;
                         }
                     }
