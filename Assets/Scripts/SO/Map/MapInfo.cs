@@ -33,5 +33,9 @@ namespace TouhouPrideGameJam4.SO.Map
         public string Name;
         public int StageCount;
         public Sprite Image;
+
+        [Header("Audio")]
+        public AudioClip IntroSong;
+        public AudioClip MainSong;
     }
 }

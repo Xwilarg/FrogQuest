@@ -56,3 +56,5 @@ MonoBehaviour:
   Name: Scarlet Devil Mansion
   StageCount: 4
   Image: {fileID: 21300000, guid: 8ee2ed36c8ce937448da5a44ed156c9f, type: 3}
+  IntroSong: {fileID: 0}
+  MainSong: {fileID: 8300000, guid: e3d8fb37fc5b93e45a57f895091afdd6, type: 3}

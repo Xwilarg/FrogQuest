@@ -172,6 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info:
   - {fileID: 11400000, guid: 27b18ae8cc1d38248885fc54aa0aded1, type: 2}
+  - {fileID: 11400000, guid: a4906e5c15422f848a831af3ae229015, type: 2}
+  - {fileID: 11400000, guid: 55bef9d83269b374aadb8a789b80a5dd, type: 2}
   _prefabTile: {fileID: 1238779916511838880, guid: 07237fb06612c2a4cbad46cc36e50ca7, type: 3}
   _prefabItemFloor: {fileID: 7984739664320039825, guid: bfbfbc5cd592a5e4abcef25900e41dc8, type: 3}
   _prefabItemTopFloor: {fileID: 3346479765826390500, guid: 51e788aa06bc77a439b3c9a49b6fa214, type: 3}
@@ -2478,8 +2480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f38888dd2616646ad639dcf04ba361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _intro: {fileID: 8300000, guid: 0732f8323704fe14ab0c81bfd57e9d04, type: 3}
-  _loop: {fileID: 8300000, guid: a2306b09b06b00a479a8c0f0c89418f1, type: 3}
 --- !u!1 &692243065
 GameObject:
   m_ObjectHideFlags: 0

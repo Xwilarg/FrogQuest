@@ -6,6 +6,7 @@ using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.SO.Map;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -48,6 +49,7 @@ namespace TouhouPrideGameJam4.Map
             _enemiesParent = new("Enemies");
             _roomsParent = new("Rooms");
             InitMap();
+            BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
         }
 
         public void GoToNextZone()
@@ -56,6 +58,7 @@ namespace TouhouPrideGameJam4.Map
             {
                 _currentWorld++;
                 _currentLevel = 0;
+                BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
             }
             else
             {

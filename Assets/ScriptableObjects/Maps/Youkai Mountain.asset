@@ -56,3 +56,5 @@ MonoBehaviour:
   Name: Youkai Mountain
   StageCount: 4
   Image: {fileID: 21300000, guid: 8ee2ed36c8ce937448da5a44ed156c9f, type: 3}
+  IntroSong: {fileID: 8300000, guid: 0732f8323704fe14ab0c81bfd57e9d04, type: 3}
+  MainSong: {fileID: 8300000, guid: a2306b09b06b00a479a8c0f0c89418f1, type: 3}
