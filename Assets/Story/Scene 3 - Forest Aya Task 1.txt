@@ -1,0 +1,82 @@
+sanae neutral “Hey, Aya.”
+aya neutral “Hold on! I think I’ve got the perfect shot of-!”
+sanae surprised “Huh?”
+aya neutral “Aaaand it’s gone.”
+aya joyful “Ayaya, well I guess I can’t get them all!”
+“You did distract me there for a moment, though.”
+sanae sad “Oh, I’m sorry.” 
+aya neutral “No worries! When you’re a pro like me, I guess a lot of photos could be considered the ‘perfect shot!’ I’ll be sure to find another opportunity soon!”
+sanae neutral “I guess you’ve got the eye for it.”
+sanae joyful “Your photos are so good that you don’t even need to retouch them in Photoshop!”
+aya surprised “Photo huh?!”
+sanae joyful “Oh, you guys must not have that here.”
+sanae neutral “Anyway, what were you trying to get a photo of?”
+aya neutral “Eh, just a few things in the forest, but it’s nothing important.”
+“Have you ever been interested in taking up photography?”
+sanae neutral “Well, it IS pretty cool, but I don’t always have time for hobbies.”
+aya neutral “Hmm…”
+aya joyful “Want to try your hand at it?”
+sanae surprised “Ah, right now?”
+aya joyful “Sure, why not?”
+sanae surprised “But why would you trust me with your camera?”
+aya joyful “I have a feeling you’d be careful with it. Besides, don’t you have the power to cause miracles to occur?”
+aya neutral “Maybe you could miraculously fix my camera if you happen to break it.”
+sanae neutral “Uhm, that's not how it works.”
+aya joyful “Well, if you do break it for good, I guess I’ll just send a bill to the Moriya Shrine!”
+sanae angry “Hey, have more faith in me! I’m not that careless!”
+aya joyful “Fine, fine! Anyway, how about I give you a few things to take photos of?” 
+sanae neutral “Okay, what did you have in mind?”
+aya eyesclosed “Hmm, let’s go with something simple.”
+aya neutral “How about something green, and then something brown…”
+aya joyful “And, why not? Something cute!”
+sanae neutral “Those seem easy enough. (But ‘cute’ sounds pretty subjective…)”
+aya joyful “I believe in you!”
+
+none “TUTORIAL”
+
+(Take green and brown photo)
+
+sanae neutral “Hmm… I wonder if these are good enough? I should show them to Aya.”
+aya joyful “Not bad! I guess the composition could use some work, but not too shabby for a newbie!”
+aya surprised “Ah, wasn’t there something else I asked for though?”
+sanae surprised “Oh, you said something cute, right? Ah, I’m not sure…”
+aya neutral “Don’t think too much about it!”
+sanae neutral “Hmm…”
+sanae joyful “Oh, I know!”
+aya neutral “?”
+none *snap!*
+aya surprised “...”
+“What was that?”
+sanae neutral “Oh, uhm.”
+sanae shy “I took a picture of you.”
+aya shy “Huh?!”
+sanae shy “...”
+aya shy “...”
+aya eyesclosed “Ah, s-so anyway!”
+sanae shy “Yeah!”
+aya shy “Nice photos!”
+aya joyful “I’m happy to have you as my apprentice!”
+sanae surprised “Apprentice, huh?”
+sanae joyful “Well, I’m happy to be learning from a pro.”
+“Thank you, Aya.”
+reimu neutral “What are you two doing?”
+aya joyful “I’ve taken Sanae under my wing as my apprentice in photography!”
+reimu angry “Are you really taking photos at a time like this?”
+aya angry “Well, it’s not like we could go anywhere with Cirno holding us up.”
+cirno neutral “Cirno did what now?”
+sanae neutral “Ah, Cirno. Are you finally ready to go?”
+cirno joyful “Yup! My power’s all charged up, and I’m ready to take on the…”
+cirno surprised “The…”
+reimu neutral “Scarlet Devil?”
+cirno joyful “Yeah, that!”
+sanae angry “Okay, well let’s hurry! We don’t have time to waste.”
+reimu neutral “I’m way ahead of you!”
+aya joyful “Ah, you all are such slowpokes! Let’s get a move on!”
+sanae neutral “Hey, Aya?”
+aya neutral “Hm?”
+sanae shy “Before I forget… Do you think you could show me more photography stuff sometime?”
+aya surprised “Oh, you liked it that much?”
+aya joyful “Of course I-”
+reimu angry “Hey! You both just said we needed to leave!”
+aya shy “Oh, right.”
+reimu angry “Calling us slowpokes…”

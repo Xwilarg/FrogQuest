@@ -1,0 +1,17 @@
+sanae neutral “I wonder how much further we have to go.”
+aya neutral “I’m sure we’re almost to the mansion, but I could check above the trees, if need be!”
+reimu neutral “Couldn’t we all do that?”
+cirno angry “I don’t wanna fly right now! I’m too tired…”
+sanae surprised “(But she’s hardly even done a thing!)”
+sanae neutral “We need to keep going! We can’t just stop now.”
+cirno neutral “But being the strongest means you need to conserve your energy for when you really need it!”
+sanae angry “Ugh, fine! But only for a little bit.”
+cirno joyful “Hooray! After this, I know I’m gonna be EXTRA strong!”
+sanae eyesclosed “We need to get back on track as soon as possible.”
+sanae neutral “But what should I do until then?”
+cirno joyful “Oh, I could tell you my super secret master plan for how I’m gonna-!”
+sanae angry “No!”
+sanae surprised “Er, I mean… If it’s really such an important secret, you shouldn’t tell ME about it!”
+cirno surprised “Oh, you’re right! Good thinking!”
+cirno neutral “Well, maybe someone else has something that they want to talk about.”
+sanae neutral “Maybe…”
