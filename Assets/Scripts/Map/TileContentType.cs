@@ -4,6 +4,7 @@
     {
         None,
         Door,
+        Chest,
         Entrance,
         ExitDisabled,
         ExitEnabled

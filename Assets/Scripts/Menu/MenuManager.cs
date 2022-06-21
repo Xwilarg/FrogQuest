@@ -19,7 +19,7 @@ namespace TouhouPrideGameJam4.Menu
 
         public void Play()
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("MenuRuns");
         }
 
         public void Exit()

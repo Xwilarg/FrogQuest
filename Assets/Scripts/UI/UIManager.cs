@@ -35,7 +35,7 @@ namespace TouhouPrideGameJam4.UI
         private GameObject _followerContainer;
 
         [SerializeField]
-        private Image _followerImage;
+        private TMP_Text _energyText;
 
         public Image ShortcutEquipped;
         public ShortcutButton[] ShortcutInventory;
@@ -46,16 +46,30 @@ namespace TouhouPrideGameJam4.UI
 
         private ShortcutButton _shortcutTarget = null;
 
+        [SerializeField]
+        private Image _profileAya, _profileReimu;
+
         private void Awake()
         {
             Instance = this;
             _baseHealth = _healthBar.rectTransform.sizeDelta.x;
         }
 
-        public void SetFollower(Sprite image)
+        public void SetEnergyText(int energy)
+        {
+            _energyText.text = $"{energy} energy";
+        }
+
+        public void SetFollowerAya()
         {
             _followerContainer.SetActive(true);
-            _followerImage.sprite = image;
+            _profileAya.gameObject.SetActive(true);
+        }
+
+        public void SetFollowerReimu()
+        {
+            _followerContainer.SetActive(true);
+            _profileAya.gameObject.SetActive(true);
         }
 
         public void SetHealth(float value)

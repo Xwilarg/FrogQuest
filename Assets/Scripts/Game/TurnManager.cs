@@ -2,10 +2,14 @@
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Character.AI;
+using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
-using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.Sound;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Game
@@ -81,7 +85,8 @@ namespace TouhouPrideGameJam4.Game
         {
             if (character.GetInstanceID() == Player.GetInstanceID()) // The player died, gameover
             {
-                Debug.Break();
+                PersistencyManager.Instance.TotalEnergy += ((PlayerController)Player).Energy;
+                SceneManager.LoadScene("MenuRuns");
             }
             else
             {
@@ -142,7 +147,16 @@ namespace TouhouPrideGameJam4.Game
                 var newX = Player.Position.x + relX;
                 var newY = Player.Position.y + relY;
 
-                var target = _characters.FirstOrDefault(e => e.Position.x == newX && e.Position.y == newY);
+                ACharacter target = null;
+
+                for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
+                {
+                    target = _characters.FirstOrDefault(e => e.Position.x == Player.Position.x + relX * r && e.Position.y == Player.Position.y + relY * r);
+                    if (target != null)
+                    {
+                        break;
+                    }
+                }
                 var content = MapManager.Instance.GetContent(newX, newY);
                 if (target != null) // Enemy on the way, we attack it
                 {
@@ -151,6 +165,11 @@ namespace TouhouPrideGameJam4.Game
                 else if (content == TileContentType.Door)
                 {
                     MapManager.Instance.OpenDoor(newX, newY);
+                    SoundManager.Instance.PlayClip(_openDoor);
+                }
+                else if (content == TileContentType.Chest)
+                {
+                    MapManager.Instance.OpenChest(newX, newY);
                     SoundManager.Instance.PlayClip(_openDoor);
                 }
                 else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
@@ -180,7 +199,7 @@ namespace TouhouPrideGameJam4.Game
             {
                 var c = _characters[i];
                 // We ignore player or if the current character is disabled
-                if (c.GetInstanceID() == Player.GetInstanceID() || !c.gameObject.activeInHierarchy || !c.CanDoSomething())
+                if (c is not Enemy enemy || !c.gameObject.activeInHierarchy || !c.CanDoSomething())
                 {
                     continue;
                 }
@@ -199,6 +218,7 @@ namespace TouhouPrideGameJam4.Game
 
                 if (!targets.Any())
                 {
+                    enemy.AttackCharge = 0;
                     continue;
                 }
 
@@ -220,11 +240,19 @@ namespace TouhouPrideGameJam4.Game
                                 var target = targets.FirstOrDefault(o => o.Position.x == x && o.Position.y == y);
                                 if (target != null && (!c.EquippedWeapon.IsHeal || !target.IsHealthFull)) // We found a target and either it's an enemy, or an allie with health not full
                                 {
-                                    c.Attack(target);
-                                    SetDirection(c, d.x, d.y);
-                                    if (c.Info.DoesDisappearAfterAttacking)
+                                    if (enemy.AttackCharge < c.Info.TimeBeforeAttack)
                                     {
-                                        RemoveCharacter(c);
+                                        enemy.AttackCharge++;
+                                    }
+                                    else
+                                    {
+                                        c.Attack(target);
+                                        SetDirection(c, d.x, d.y);
+                                        if (c.Info.DoesDisappearAfterAttacking)
+                                        {
+                                            RemoveCharacter(c);
+                                        }
+                                        enemy.AttackCharge = 0;
                                     }
                                     didPlay = true;
                                     break;
@@ -234,20 +262,30 @@ namespace TouhouPrideGameJam4.Game
                     }
 
                     // Else we try to move towards its position
-                    if (!didPlay && c.CanMove())
+                    if (!didPlay)
                     {
-                        foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
+                        if (enemy.AttackCharge > 0)
                         {
-                            if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
+                            enemy.AttackCharge = 0;
+                        }
+                        else
+                        {
+                            if (c.CanMove())
                             {
-                                // An enemy is obstructing the way
-                                continue;
-                            }
-                            else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
-                            {
-                                c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
-                                SetDirection(c, d.x, d.y);
-                                break;
+                                foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
+                                {
+                                    if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
+                                    {
+                                        // An enemy is obstructing the way
+                                        continue;
+                                    }
+                                    else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
+                                    {
+                                        c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
+                                        SetDirection(c, d.x, d.y);
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }

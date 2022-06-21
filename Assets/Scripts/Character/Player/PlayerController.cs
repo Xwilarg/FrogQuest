@@ -6,6 +6,7 @@ using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace TouhouPrideGameJam4.Character.Player
 {
@@ -22,6 +23,8 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private FollowerInfo _followerInfo;
 
+        public int Energy { private set; get; }
+
         private void Awake()
         {
             Instance = this;
@@ -31,19 +34,41 @@ namespace TouhouPrideGameJam4.Character.Player
 
         private void Start()
         {
-            Init(Team.Allies);
-            SetFollower(GameManager.Instance.FollowerAya);
+            if (SceneManager.GetActiveScene().name == "Main") // Outside of main scene we only use this object for the VN controls
+            { // TODO: Move into separate class?
+                Init(Team.Allies);
+            }
         }
 
         private void Update()
         {
-            UpdateC();
+            if (SceneManager.GetActiveScene().name == "Main")
+            {
+                UpdateC();
+            }
+        }
+
+        public void IncreaseEnergy(int value)
+        {
+            Energy += value;
+            UIManager.Instance.SetEnergyText(Energy);
         }
 
         private void SetFollower(FollowerInfo follower)
         {
             _followerInfo = follower;
-            UIManager.Instance.SetFollower(follower.Sprite);
+            if (follower.Type == FollowerType.Aya)
+            {
+                UIManager.Instance.SetFollowerAya();
+            }
+            else if (follower.Type == FollowerType.Reimu)
+            {
+                UIManager.Instance.SetFollowerReimu();
+            }
+            else
+            {
+                throw new System.NotImplementedException($"Unknown character {follower.Type}");
+            }
         }
 
         public override void OnStatusChange()

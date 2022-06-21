@@ -15,7 +15,7 @@ MonoBehaviour:
   UtilityDescription: If you are reading this, it means a developer didn't do his
     job properly
   Name: Developer Potion
-  Sprite: {fileID: 21300000, guid: 13cb559f1e2733c47a283841f3ab6c6c, type: 3}
+  Sprite: {fileID: 21300000, guid: 5eac12df78189404ea6956630ece4147, type: 3}
   SoundOverride: {fileID: 8300000, guid: e8c3eae3e20e6004db2e2ae9209dee32, type: 3}
   ActionType: {fileID: 11400000, guid: afc2076df9c75d0408987849ccc34070, type: 2}
   Effect: 2

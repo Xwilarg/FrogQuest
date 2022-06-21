@@ -18,5 +18,7 @@ MonoBehaviour:
     Weight: 0
   - Item: {fileID: 11400000, guid: 974e17539b6c7934e94b0b66435785bc, type: 2}
     Weight: 0
+  - Item: {fileID: 11400000, guid: 9b0a6036bc9b5a14b963112716caa774, type: 2}
+    Weight: 0
   DefaultWeapon: {fileID: 11400000, guid: e51a727081a2bba4fa24f371e1d1771e, type: 2}
   DoesDisappearAfterAttacking: 0
