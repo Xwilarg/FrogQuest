@@ -15,9 +15,9 @@ MonoBehaviour:
   UtilityDescription: 
   Name: Youkai Extermination "Youkai Power Spoiler"
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
-  SoundOverride: {fileID: 0}
+  SoundOverride: {fileID: 8300000, guid: df9885567aa707e49be507ed357661ce, type: 3}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
-  Effect: 1
+  Effect: 
   Value: 0
   ProjectilePrefab: {fileID: 5741561768511771132, guid: fae32c60a1f48ee4e90fe237e7294dcd, type: 3}
   Speed: 1000
@@ -26,3 +26,4 @@ MonoBehaviour:
   DelayBetweenProjectiles: 0
   XOffset: 0
   YOffset: 0
+  Piercing: 0
