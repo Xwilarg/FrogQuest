@@ -3,6 +3,9 @@ namespace TouhouPrideGameJam4.Inventory
     public enum ItemType
     {
         Weapon,
-        Consumable
+        Potion,
+        Spell,
+
+        BonusChest // Only used in shop
     }
 }

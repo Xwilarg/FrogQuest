@@ -1,0 +1,132 @@
+sanae joyful “Ah, we finally made it!”
+reimu angry “Jeez, I didn’t have such a hard time going to the Scarlet Devil Mansion whenever I went alone.”
+aya joyful “Sometimes you’ve gotta enjoy the scenery along the way!”
+reimu angry “As if you ever do that!”
+sanae neutral “Oh, now that we’re about to go to the mansion, I do feel a little nervous.”
+reimu neutral “How about we take some time to prepare before we enter?”
+sanae neutral “Yeah, that sounds good.”
+cirno joyful “I always need time to save my strength, anyway!”
+sanae eyesclosed “Ah, right…”
+sanae neutral “I guess I just have to build up my courage!”
+sanae joyful “Oh, what am I worried about? I’ve taken on much bigger enemies than this!”
+sanae sad “But I guess no one has ever done something like this to my family before.”
+aya neutral “I’m gonna fly above the trees to see what we’ve got ahead of us!”
+reimu joyful “Ah, it’s probably just that lazy gatekeeper again. Odds are, she’s asleep!”
+aya joyful “I guess we won’t have trouble getting in, then!”
+aya neutral “I’m still gonna take a peek, though.”
+reimu neutral “I suppose I can come, as well.”
+“What about you, Sanae?”
+sanae eyesclosed “I think I’m going to stay here, for now.”
+cirno joyful “Oh, can I come?!”
+reimu neutral “Uhm-”
+aya neutral “You should keep saving your energy for our biggest enemy!”
+aya joyful “Also, keep Sanae company!”
+cirno joyful “Oh, that’s right! I need extra power saved up to fight the evil vampire lady!”
+cirno neutral “And I won’t let you down, Sanae! I’m the best at keeping people company!”
+sanae eyesclosed “It’s fine, Cirno.”
+cirno joyful “I wanna know about your grandma, though!” 
+“Like why is she so uptight? And why does she get mad when I freeze the frogs? And-”
+sanae angry “First of all, she is not my grandma!”
+sanae neutral “And she’s probably mad at you for freezing the frogs because they’re her favorite animal.”
+“Being frozen isn’t good for them, after all.”
+cirno surprised “Oh, yeah. I guess she is the frog goddess!”
+sanae angry “No, she’s not! She just so happens to center her whole personality, style, and hobbies around frogs.”
+sanae neutral “Ah, I guess I could see why it’s confusing.”
+cirno neutral “Yeah, even I got it mixed up! And I’m super smart.”
+sanae neutral “...”
+sanae eyesclosed “Anyway, you aren’t scared to meet Remilia Scarlet?”
+cirno neutral “The Starlet Bevel?”
+sanae neutral “That’s not her name, but yes.”
+cirno joyful “Nope!”
+sanae surprised “(She’s really that delusional?!)”
+cirno joyful “I know she’s some super old vampire, but I’m great at fighting!”
+“Did you know that I took on a god before? And I’m not talking about Suwako!”
+sanae surprised “A god?! (That can’t be true…)”
+cirno joyful “Yup! With that, my journey to become the strongest came to an end!”
+cirno eyesclosed “Now, no one can doubt me ever again.”
+sanae neutral “Is that true, Cirno?”
+cirno angry “Why do you guys never have faith in me?!”
+“I’m great at fighting, too! All the other fairies know how good I am!”
+“Have you ever heard of a fairy taking on a god and winning?”
+sanae neutral “Well, I haven’t, so I suppose that’s why it’s hard to believe.”
+sanae eyesclosed “I apologize, Cirno. I guess I underestimated how much it meant to you.”
+cirno joyful “It’s okay! Just so long as you know what a powerful companion you’ve got by your side!”
+sanae joyful “I won’t forget. I think we all make a pretty good team.”
+cirno joyful “Yeah! We’re totally gonna save Suwako, easy peasy!”
+sanae sad “I hope so. I think she’ll be okay, but I can’t help but worry.”
+cirno neutral “Don’t worry! Tell Cirno your problems!”
+sanae neutral “Well, of course I don’t want Suwako to be in danger. She’s a god, but I still have no idea how someone could have been able to take her on and overpower her.”
+“The residents of the Scarlet Devil Mansion are powerful, but Suwako is powerful, too.”
+cirno surprised “Maybe she was distracted by the frogs!”
+sanae neutral “I really don’t know, but it seems like we’ll find out soon enough.”
+cirno joyful “We have a rivalry, but I know Suwako is also really strong!”
+“She’s not allowed to get defeated by anyone but me! I know she’ll be okay until I take her down myself!”
+sanae sad “Yeah. I think I just have a lot to be worried about right now.”
+sanae eyesclosed “I guess it’s not important for the time being.”
+cirno neutral “What do you mean? Your feelings are always important!”
+sanae sad “But I feel like I’m being weak and ignoring the situation at hand.”
+“I need to focus for the sake of Suwako and Lady Kanako.”
+cirno sad “But you can’t focus on that if you have other things bothering you, right?”
+sanae shocked “Ah, I guess so.”
+“Cirno, you actually said something insightful!”
+cirno joyful “I told you, don’t underestimate me! Not only do I have strength, but I’ve also got the brains!”
+sanae neutral “I see. So, you don’t mind me talking about it?”
+cirno neutral “Nope! I’m here to help, like I said!”
+sanae neutral “Okay, if you insist.”
+sanae eyesclosed “(Oh my Goddess, I never imagined I’d be talking about such things with someone like Cirno!)”
+sanae shy “Cirno, have you ever liked someone before?”
+cirno shocked “Like..?”
+sanae neutral “Yes.”
+cirno joyful “Of course I have!”
+“I like Daiyousei, and Lily White, and Luna Child, and Star Sapphire, and Sunny Milk (even though they destroyed my house that one time.)”
+sanae shocked “...”
+cirno joyful “And Clownpiece and Reimu and Marisa and you, of course!”
+sanae shocked “I don’t mean ‘like’ as in friends! I mean ‘like’ as in, well…”
+sanae neutral “Having a crush on someone?”
+cirno neutral “A crush?”
+cirno joyful “Yeah, I love to crush my enemies when they underestimate me!”
+sanae angry “No, not like that, either!”
+sanae eyesclosed “Maybe you don’t understand that sort of stuff.”
+cirno neutral “What sort of stuff?”
+sanae neutral “Relationships and love.”
+cirno neutral “Hmm… You mean like when people get married?”
+sanae joyful “Yeah! But before that, when their love is just beginning.”
+sanae neutral “So instead of ‘love,’ you say you ‘like’ someone.”
+cirno neutral “Oh, I understand.”
+“No, I’ve never thought about anything like that before.”
+“We fairies don’t focus on that kind of thing.”
+cirno joyful “Building our friendships and having fun is our priority!”
+“Besides, I’m the strongest! No one would be able to handle someone like me!”
+sanae neutral “I see. So the fairies aren’t interested in anything like that?”
+cirno neutral “Nope!”
+cirno shocked “Why? Was there a reason you were asking?”
+sanae eyesclosed “I guess it’s just been on my mind, despite everything else that’s been going on.”
+sanae neutral “I don’t have much experience with that sort of thing, to be honest.”
+cirno neutral “Well, I know about a lot of things, but I think that’s my weak point!”
+“Hmm… What to do when you ‘like’ someone? It’s all a bit confusing to me!”
+cirno joyful “Oh, don’t you need to talk to them a lot? Or maybe give them something they like?”
+“Personally, I would recommend a frozen frog!”
+cirno angry “Oh, wait… Suwako wouldn’t like it if you gave someone that.”
+sanae joyful “Ahaha, no she wouldn’t. But I guess you’re thinking about things that you like.”
+sanae neutral “You’re right, though. I think building a relationship requires a lot of interaction.”
+“Well, even if you don’t know what I’m feeling, I think I feel better now that we’ve talked about it.”
+cirno shocked “You do?”
+sanae joyful “Yes, I appreciate it. Thank you, Cirno.”
+cirno joyful “Hooray!”
+“And thank you for teaching me more about ‘liking’ someone.”
+“Now that I’ve succeeded in becoming the strongest, I’m going to become the smartest next!”
+sanae joyful “Good luck with that, Cirno.”
+aya joyful “You two seem in good spirits!”
+reimu joyful “Feel any better?”
+sanae joyful “Yes! I think I’m ready to continue on our path.”
+reimu neutral “I’m surprised Cirno was able to cheer you up a bit, Sanae.”
+cirno angry “Hey, I said not to doubt me.”
+sanae neutral “That’s right. Cirno has been surprisingly helpful!”
+aya neutral “Huh, who would have guessed?”
+cirno joyful “Yay! I’m the best helper!”
+reimu neutral “Alright, now that we’re feeling better and we’ve got a good idea of how to get in, I think things should go smoothly.”
+“That is, until we find Remilia.”
+sanae angry “Ah, well let’s go! She’s never going to see us coming!”
+aya joyful “That’s right!”
+none “I suppose it’s time for us to meet the one behind this mess!”
+“The road ahead looks frightening, but with this group of friends I’ve made, I know I can’t lose!”

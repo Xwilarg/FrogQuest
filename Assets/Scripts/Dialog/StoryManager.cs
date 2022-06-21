@@ -44,10 +44,14 @@ namespace TouhouPrideGameJam4.Dialog
             if (PersistencyManager.Instance.StoryProgress == StoryProgress.Intro)
             {
                 _introStatement = Parse(_introDialog);
+                ReadIntroduction();
                 PersistencyManager.Instance.IncreaseStory();
             }
+        }
 
-            ReadIntroduction();
+        public void ParseAllStories()
+        {
+            _introStatement = Parse(_introDialog);
         }
 
         public void ShowNextDialogue()
@@ -114,7 +118,7 @@ namespace TouhouPrideGameJam4.Dialog
             VNCharacterInfo currentCharacter = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'…,.]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'’…,.]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];

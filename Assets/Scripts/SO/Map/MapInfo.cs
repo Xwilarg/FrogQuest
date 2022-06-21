@@ -28,5 +28,10 @@ namespace TouhouPrideGameJam4.SO.Map
         public Sprite DoorSprite;
         public Sprite ChestSprite;
         public Sprite EntranceSprite, ExitDisabledSprite, ExitEnabledSprite;
+
+        [Header("Metadata")]
+        public string Name;
+        public int StageCount;
+        public Sprite Image;
     }
 }

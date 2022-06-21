@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0b53024c9c5d248b66a607185cb4fa, type: 3}
+  m_Name: The Great Youkai Forest
+  m_EditorClassIdentifier: 
+  MapSize: 200
+  MaxEnemiesPerRoom: 3
+  ChestPerRoom: 0.1
+  IterationCount: 4
+  StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
+  Rooms:
+  - {fileID: 4900000, guid: 6d52ab48bedf16545abc4332a17ce619, type: 3}
+  - {fileID: 4900000, guid: bf4e8120dccf8c94ebd3e8743ce04243, type: 3}
+  - {fileID: 4900000, guid: 17e19f6c3cbdc0f489b42f0781991f55, type: 3}
+  - {fileID: 4900000, guid: c6e25a2188fc3ce42b1bd86dbaa2d555, type: 3}
+  - {fileID: 4900000, guid: 4c0d62b3d684a6a448a11283795f5c80, type: 3}
+  - {fileID: 4900000, guid: cd333b3abf7f8b44eb46d9fff516343a, type: 3}
+  - {fileID: 4900000, guid: 69645b255eb891a46b3e8f574dc1dba9, type: 3}
+  ParsingData:
+  - Character: 46
+    Type: 0
+    GizmoColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.5372549}
+    CanBeWalkedOn: 1
+    Sprite: {fileID: 1963268225, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
+  - Character: 88
+    Type: 1
+    GizmoColor: {r: 0, g: 0, b: 0, a: 1}
+    CanBeWalkedOn: 0
+    Sprite: {fileID: 21300000, guid: 53343436cef5ccd4fb55f584dfb39191, type: 3}
+  - Character: 83
+    Type: 2
+    GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
+    CanBeWalkedOn: 1
+    Sprite: {fileID: 1125702012, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
+  EnemiesSpawn:
+  - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
+    Weight: 4
+  - Item: {fileID: 5137943778351867792, guid: 0f08927b4ac4b2a46b2aa4be2c1d5883, type: 3}
+    Weight: 2
+  - Item: {fileID: 2667938933725469384, guid: 8ce888d4954a1904b91856b88bc428a2, type: 3}
+    Weight: 1
+  DoorSprite: {fileID: 21300000, guid: 91b9003a4ee672442ba44ebf1e7ad108, type: 3}
+  ChestSprite: {fileID: 21300000, guid: 1e22c0c65cead7444b375215b9d5b651, type: 3}
+  EntranceSprite: {fileID: 21300000, guid: 86a2ae68809abd74d839830a9efa7315, type: 3}
+  ExitDisabledSprite: {fileID: 21300000, guid: ef3212f031a939448a1fc4de5378dee3, type: 3}
+  ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}
+  Name: The Great Youkai Forest
+  StageCount: 4
+  Image: {fileID: 21300000, guid: 8ee2ed36c8ce937448da5a44ed156c9f, type: 3}

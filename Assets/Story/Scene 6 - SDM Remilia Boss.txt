@@ -1,0 +1,81 @@
+sanae neutral “Please let this be it!”
+cirno joyful “Are we going to see the scary vampire lady?”
+reimu angry “Cirno, be more serious for once!”
+sanae neutral “This is the end of the mansion. If this isn’t it, then…”
+none “???: I see you have finally arrived.”
+sanae surprised “!!!”
+none “???: It appears I have more than one pesky shrine maiden to deal with this time around.”
+reimu angry “It’s time you come out, Remilia.”
+remilia neutral “Ah, you expect me to greet you all when you’ve so rudely invaded my castle?”
+remilia eyesclosed “This isn’t a first for you, Miss Hakurei. I thought you would have learned some manners by now.” 
+remilia neutral “You are very lucky Sakuya has been so busy and away from this residence, or she surely would have struck you down as you entered.”
+“But I don’t need anyone to protect me, as you already know. I am well aware how I must deal with uninvited guests who so foolishly refuse to leave.”
+reimu angry “Don’t play dumb, Remilia. You know exactly why we’re here as ‘uninvited guests!’”
+remilia eyesclosed “Oh, do I?”
+sanae angry “Tell us what you’ve done with Suwako!”
+remilia joyful “Ah, I see I shouldn’t have underestimated you either, Miss Kochiya. I suppose I have to watch out for all kinds of shrine maidens from now on.”
+remilia eyesclosed “But you would like to know where your ancestor is?”
+sanae angry “What have you done with her?”
+remilia neutral “Nothing.”
+“In fact, I haven’t laid a finger on her at all.”
+sanae angry “That’s a lie! How else would you have gotten her here?!”
+remilia eyesclosed “She came here of her own free will.”
+sanae surprised “But why?”
+remilia neutral “Why don’t you ask her, yourself?”
+sanae surprised “Suwako!”
+cirno joyful “Suwako!”
+suwako neutral “Ah, Sanae! You’re here, too? (And Cirno..?)”
+sanae surprised “Why wouldn’t I be?!”
+suwako neutral “Oh, I guess Remilia invited the entire Moriya Shrine for tea, then?”
+sanae surprised “Tea?!” 
+reimu angry “What..?”
+suwako joyful “Yeah! A bunch of people from the Scarlet Devil Mansion visited the shrine.”
+suwako neutral “They were like, ‘You need to come with us.’” 
+suwako joyful “And I thought, ‘Wow! I’m finally getting invited to the Scarlet Devil’s home? What an honor!’”
+suwako neutral “I mean, it’s not like I was busy or anything. Kanako never lets me have any fun and I was SO BORED!”
+suwako joyful “So now I’m here for tea!”
+sanae surprised “...”
+“Suwako, it’s been over a week since you’ve left the shrine!”
+suwako neutral “Oh, really? Well, I guess I thought it was kind of a weekend trip or a sleepover sort of thing, you know?”
+reimu angry “Remilia, enough of this! Tell us the real reason you lured Suwako here.”
+remilia eyesclosed “Haha, of course you see through this facade.”
+remilia neutral “Suwako, you have been an excellent guest, but I didn’t bring you into my residence to merely socialize with you.”
+remilia eyesclosed “In fact, if you hadn’t assumed my servants were extending a friendly invitation to you, they would have taken you here by force.”
+suwako surprised “Huh?! And here I thought a lovely friendship was blooming.”
+“But what have I ever done to you?”
+remilia eyesclosed “I apologize for leading you on, but you were a very important part in making sure my most recent plans would be successful.”
+remilia neutral “While you’ve committed no transgressions against me, I did what needed to be done. You were merely a stepping stone as a means to an end.”
+sanae angry “Enough with all of this vague speech! Explain what these plans are.”
+remilia eyesclosed “I promise I won’t lay a finger on your ancestor, Miss Kochiya.” 
+“While she is a very powerful god, she cannot aid me in any way or help me achieve the things that I want.” 
+sanae surprised “Then what purpose did you have in bringing her here?”
+remilia neutral “Ah, you haven’t figured it out yet?”
+“In bringing Suwako to my mansion, I knew eventually you would come looking for her, Sanae.”
+remilia eyesclosed “I know how quickly those tengu spread information around Youkai Mountain. You were bound to hear about my servants’ visit one way or another.”
+aya angry “Damn it! I knew something seemed off!”
+cirno surprised “So the vampire wants to have tea with Sanae instead of Suwako?”
+remilia eyesclosed “Hm, I guess you could put it that way.”
+sanae surprised “What the heck do you want with me?!”
+remilia neutral “You see, I’ve heard many stories about your powers and your pride in being Moriya Shrine’s living god.”
+“Is it true you can cause miracles to occur, Miss Kochiya? Miracles mostly pertaining to the weather?”
+reimu angry “Oh come on, are you still hung up about Marisa and I getting rid of your mist?!”
+remilia eyesclosed “It’s not easy being a vampire, you know.”
+“Sakuya’s been so busy that I’ve been having to carry my own parasol to go outside since the Saigyou Ayakashi incident.”
+sanae surprised “...”
+reimu surprised cirno surprised “...”
+aya surprised “She can’t be serious!”
+remilia neutral “I am very serious. I ALWAYS get what I want, even if it means taking extra steps.”
+remilia eyesclosed “How would you feel if you had to worry about perishing each time you left your home?”
+sanae angry “We understand! But this is going too far! You’re speaking as if you’re going to force me to become one of your servants.”
+reimu angry “Well, that’s certainly not happening.”
+aya angry “Even Cirno understands how ridiculous this all is!”
+cirno angry “Yeah!”
+remilia eyesclosed “You won’t change my mind.”
+remilia neutral “My servants have already taken Suwako away, again.”
+“Either you do as I ask, or you’re going to have trouble.”
+sanae angry “There’s no way I’ll help with your ridiculous plan! Free Suwako now!”
+remilia eyesclosed “I see you’ve made the wrong choice.”
+remilia neutral “Then let’s settle this now.”
+sanae angry “I can’t lose!”
+“Everyone, back me up!”
+reimu angry “Sanae, we won’t let you down!”

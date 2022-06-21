@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Projectile;
+using System.Collections;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
@@ -40,6 +42,10 @@ namespace TouhouPrideGameJam4.SO.Item
         /// </summary>
         public float XOffset, YOffset;
 
+        public bool Piercing;
+
+        public override ItemType Type => ItemType.Spell;
+
         public override string Description => $"Launch {ProjectileCount} projectiles each doing {DamagePerProjectile} damage";
 
         public override void DoAction(ACharacter owner)
@@ -53,15 +59,11 @@ namespace TouhouPrideGameJam4.SO.Item
             for (int i = 0; i < ProjectileCount; i++)
             {
                 var go = Instantiate(ProjectilePrefab, (Vector2)owner.Position + new Vector2(Random.Range(-XOffset, XOffset), Random.Range(-YOffset, YOffset)), Quaternion.identity);
+                var proj = go.GetComponent<DamageProjectile>();
+                proj.Damage = DamagePerProjectile;
+                proj.CurrentPos = owner.Position;
+                proj.DestroyAfterFirstHit = !Piercing;
                 var direction = owner.RelativeDirection;
-                int currX = owner.Position.x, currY = owner.Position.y;
-                do
-                {
-                    currX += direction.x;
-                    currY += direction.y;
-
-                    TurnManager.Instance.TryAttackCharacter(currX, currY, DamagePerProjectile);
-                } while (MapManager.Instance.IsTileWalkable(currX, currY));
                 go.GetComponent<Rigidbody2D>().AddForce((Vector2)direction * Speed);
                 Destroy(go, 10f);
                 yield return new WaitForSeconds(DelayBetweenProjectiles);

@@ -15,6 +15,12 @@ MonoBehaviour:
   UtilityDescription: 
   Name: Snake Bind
   Sprite: {fileID: 21300000, guid: af67e01fb2c5ce24c871cf1700b2aedd, type: 3}
+  SoundOverride: {fileID: 0}
   ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}
   Damage: 0
-  HitEffects: 05000000
+  HitEffects:
+  - Effect: 5
+    TurnCount: 10
+    Chance: 100
+  Range: 1
+  IsHeal: 0

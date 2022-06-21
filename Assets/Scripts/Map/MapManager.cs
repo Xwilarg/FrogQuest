@@ -18,11 +18,11 @@ namespace TouhouPrideGameJam4.Map
         public static MapManager Instance { get; private set; }
 
         [SerializeField]
-        private WorldInfo[] _info;
+        private MapInfo[] _info;
 
         private int _currentWorld, _currentLevel;
 
-        private MapInfo CurrMap => _info[_currentWorld].MapInfo;
+        private MapInfo CurrMap => _info[_currentWorld];
 
         [SerializeField]
         private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
@@ -52,7 +52,7 @@ namespace TouhouPrideGameJam4.Map
 
         public void GoToNextZone()
         {
-            if (_currentLevel + 1 == _info[_currentWorld].StageCount)
+            if (_currentLevel + 1 == CurrMap.StageCount)
             {
                 _currentWorld++;
                 _currentLevel = 0;
@@ -70,8 +70,8 @@ namespace TouhouPrideGameJam4.Map
             for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i).gameObject);
             _rooms.Clear();
 
-            _mapImage.sprite = _info[_currentWorld].Image;
-            _mapText.text = $"{_info[_currentWorld].Name}\n\n{_currentLevel + 1}/{_info[_currentWorld].StageCount}";
+            _mapImage.sprite = CurrMap.Image;
+            _mapText.text = $"{CurrMap.Name}\n\n{_currentLevel + 1}/{CurrMap.StageCount}";
 
             // Init map
             _map = new Tile[CurrMap.MapSize][];
@@ -246,7 +246,7 @@ namespace TouhouPrideGameJam4.Map
             }
 
             // Spawn chest
-            var chestCount = Mathf.FloorToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom);
+            var chestCount = Mathf.CeilToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom) + PersistencyManager.Instance.BonusChestCount;
             foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(chestCount))
             {
                 while (true)

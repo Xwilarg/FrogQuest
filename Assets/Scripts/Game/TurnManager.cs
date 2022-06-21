@@ -109,22 +109,6 @@ namespace TouhouPrideGameJam4.Game
             Destroy(character.gameObject);
         }
 
-        public void TryAttackCharacter(int x, int y, int damage)
-        {
-            if (Player.Position.x == x && Player.Position.y == y)
-            {
-                Player.TakeDamage(null, damage);
-            }
-            else
-            {
-                var target = _characters.FirstOrDefault(e => e.Position.x == x && e.Position.y == y);
-                if (target != null)
-                {
-                    target.TakeDamage(null, damage);
-                }
-            }
-        }
-
         public void SetDirection(ACharacter character, int x, int y)
         {
             if (x < 0) character.Direction = Direction.Left;
@@ -139,14 +123,13 @@ namespace TouhouPrideGameJam4.Game
         /// </summary>
         /// <param name="relX">Relative X position</param>
         /// <param name="relY">Relative Y position</param>
-        public bool MovePlayer(int relX, int relY)
+        public bool MovePlayer(int relX, int relY, bool moveOnly)
         {
+            var newX = Player.Position.x + relX;
+            var newY = Player.Position.y + relY;
             var didMove = false;
             if (Player.CanDoSomething())
             {
-                var newX = Player.Position.x + relX;
-                var newY = Player.Position.y + relY;
-
                 ACharacter target = null;
 
                 for (int r = 1; r <= Player.EquippedWeapon.Range; r++)
@@ -160,26 +143,30 @@ namespace TouhouPrideGameJam4.Game
                 var content = MapManager.Instance.GetContent(newX, newY);
                 if (target != null) // Enemy on the way, we attack it
                 {
-                    Player.Attack(target);
+                    if (!moveOnly)
+                    {
+                        Player.Attack(target);
+                    }
                 }
                 else if (content == TileContentType.Door)
                 {
-                    MapManager.Instance.OpenDoor(newX, newY);
-                    SoundManager.Instance.PlayClip(_openDoor);
+                    if (!moveOnly)
+                    {
+                        MapManager.Instance.OpenDoor(newX, newY);
+                        SoundManager.Instance.PlayClip(_openDoor);
+                    }
                 }
                 else if (content == TileContentType.Chest)
                 {
-                    MapManager.Instance.OpenChest(newX, newY);
-                    SoundManager.Instance.PlayClip(_openDoor);
-                }
-                else if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
-                {
-                    Player.Position = new(newX, newY);
-                    if (MapManager.Instance.GetContent(newX, newY) == TileContentType.ExitEnabled)
+                    if (!moveOnly)
                     {
-                        MapManager.Instance.GoToNextZone();
+                        MapManager.Instance.OpenChest(newX, newY);
+                        SoundManager.Instance.PlayClip(_openDoor);
                     }
-                    didMove = true;
+                }
+                else
+                {
+                    didMove = TryMove(newX, newY);
                 }
                 SetDirection(Player, relX, relY);
             }
@@ -187,6 +174,20 @@ namespace TouhouPrideGameJam4.Game
             PlayEnemyTurn();
 
             return didMove;
+        }
+
+        private bool TryMove(int newX, int newY)
+        {
+            if (Player.CanMove() && MapManager.Instance.IsTileWalkable(newX, newY)) // Nothing here, we can move
+            {
+                Player.Position = new(newX, newY);
+                if (MapManager.Instance.GetContent(newX, newY) == TileContentType.ExitEnabled)
+                {
+                    MapManager.Instance.GoToNextZone();
+                }
+                return true;
+            }
+            return false;
         }
 
         public void PlayEnemyTurn()

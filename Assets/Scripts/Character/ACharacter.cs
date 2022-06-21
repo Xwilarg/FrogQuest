@@ -58,6 +58,8 @@ namespace TouhouPrideGameJam4.Character
 
         public Team Team { set; get; }
 
+        protected bool _didReachPosition = true; // When character is done moving where it needed to
+
         // Position
         private Vector2Int _position;
         public Vector2Int Position
@@ -111,7 +113,9 @@ namespace TouhouPrideGameJam4.Character
             if (_moveTimer < 1f)
             {
                 _moveTimer += Time.deltaTime * 2.5f;
-                transform.position = Vector2.Lerp(OldPos, Position, Mathf.Clamp01(_moveTimer));
+                var t = Mathf.Clamp01(_moveTimer);
+                transform.position = Vector2.Lerp(OldPos, Position, t);
+                _didReachPosition = t == 1f;
                 if (_moveTimer >= 1f)
                 {
                     _anim?.SetBool("IsWalking", false);
@@ -178,6 +182,7 @@ namespace TouhouPrideGameJam4.Character
             {
                 Equip(weapon);
             }
+            Debug.Log(item.Name);
             UpdateInventoryDisplay();
         }
 
@@ -229,15 +234,18 @@ namespace TouhouPrideGameJam4.Character
                 damageText = "MISS";
             }
 
-            if (weapon != null)
+            if (weapon != null && weapon.HitEffects != null)
             {
                 foreach (var status in weapon.HitEffects)
                 {
-                    AddStatus(status, 1000);
+                    if (Random.Range(0, 100) < status.Chance)
+                    {
+                        AddStatus(status.Effect, status.TurnCount);
+                    }
                 }
             }
 
-            if (weapon.SoundOverride != null)
+            if (weapon != null && weapon.SoundOverride != null)
             {
                 SoundManager.Instance.PlayClip(weapon.SoundOverride);
             }
@@ -304,6 +312,10 @@ namespace TouhouPrideGameJam4.Character
         public void Attack(ACharacter target)
         {
             target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1) * (EquippedWeapon.IsHeal ? -1 : 1));
+            if (EquippedWeapon.IsSingleUse)
+            {
+                RemoveItem(EquippedWeapon);
+            }
         }
 
         public override string ToString()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5741561768511771134}
   - component: {fileID: 5741561768511771135}
   - component: {fileID: -4825641583145916850}
+  - component: {fileID: -5583755618232590029}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -73,7 +74,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1077320431
-  m_SortingLayer: -2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Time: 0.1
   m_Parameters:
@@ -165,3 +166,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5583755618232590029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741561768511771132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dee189b16d95114d8b7e1d65709c3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
