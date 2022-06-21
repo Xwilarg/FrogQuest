@@ -1,22 +1,17 @@
-<<<<<<< Updated upstream
-"Sample sentence to explain game stuff"
-sanae neutral "Sample Sanae dialogue"
-none "End of explanations"
-=======
-none “I haven’t seen Suwako for quite awhile…”
-“I mean, she has been known to get into trouble from time to time, but she’s never been away for this long.”
-“Maybe she went off to confront that ice fairy who’s been freezing the frogs?”
-“Suwako may not be the goddess of the Moriya Shrine anymore, but Kanako and I still want to know what she’s up to!”
-sanae joyful “My name is Sanae Kochiya.”
-“I’m a shrine maiden of Kanako Yasaka and the distant descendant of Suwako Moriya.”
-sanae eyesclosed “And I guess you could say I’m kind of a god myself.”
-sanae surprised “A living god!”
-sanae joyful “But I don’t want to brag…”
-sanae eyesclosed “Anyway, I need to find out where Suwako has gone!”
-sanae sad “Hopefully she hasn’t gotten herself into too much trouble.”
-sanae angry “But I know Kanako is counting on me, so I can’t fail!” 
-sanae neutral “But where can I look for clues? I have no idea where she could be.”
-sanae sad “What if someone is responsible for her disappearance?”
-sanae eyesclosed “No… Suwako wouldn’t be so easily apprehended by someone with ill intentions.”
-sanae neutral “Even so, it does make me wonder if someone took her away.”
-sanae joyful “I guess it’s time to figure that all out now!”
+none "I haven’t seen Suwako for quite awhile…"
+"I mean, she has been known to get into trouble from time to time, but she’s never been away for this long."
+"Maybe she went off to confront that ice fairy who’s been freezing the frogs?"
+"Suwako may not be the goddess of the Moriya Shrine anymore, but Kanako and I still want to know what she’s up to!"
+sanae joyful "My name is Sanae Kochiya."
+"I’m a shrine maiden of Kanako Yasaka and the distant descendant of Suwako Moriya."
+sanae eyesclosed "And I guess you could say I’m kind of a god myself."
+sanae surprised "A living god!"
+sanae joyful "But I don’t want to brag…"
+sanae eyesclosed "Anyway, I need to find out where Suwako has gone!"
+sanae sad "Hopefully she hasn’t gotten herself into too much trouble."
+sanae angry "But I know Kanako is counting on me, so I can’t fail!" 
+sanae neutral "But where can I look for clues? I have no idea where she could be."
+sanae sad "What if someone is responsible for her disappearance?"
+sanae eyesclosed "No… Suwako wouldn’t be so easily apprehended by someone with ill intentions."
+sanae neutral "Even so, it does make me wonder if someone took her away."
+sanae joyful "I guess it’s time to figure that all out now!"
