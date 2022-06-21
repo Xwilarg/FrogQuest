@@ -247,7 +247,7 @@ namespace TouhouPrideGameJam4.Character
 
             if (weapon != null && weapon.SoundOverride != null)
             {
-                SoundManager.Instance.PlayClip(weapon.SoundOverride);
+                SoundManager.Instance.PlayAttackClip(weapon.SoundOverride);
             }
 
             if (amount > 0)

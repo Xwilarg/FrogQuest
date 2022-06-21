@@ -43,7 +43,19 @@ namespace TouhouPrideGameJam4.UI
             {
                 var sound = Content.SoundOverride == null ? Content.ActionType.ActionSound : Content.SoundOverride;
                 Content.DoAction(PlayerController.Instance);
-                SoundManager.Instance.PlayClip(sound);
+                switch (Content.Type)
+                {
+                    case Inventory.ItemType.Weapon:
+                        SoundManager.Instance.PlayEquipClip(sound);
+                        break;
+                    case Inventory.ItemType.Potion:
+                        SoundManager.Instance.PlayPotionsClip(sound);
+                        break;
+                    case Inventory.ItemType.Spell:
+                        SoundManager.Instance.PlaySpellsClip(sound);
+                        break;
+                    default: throw new System.NotImplementedException();
+                }
                 PlayerController.Instance.UpdateInventoryDisplay();
             }
             catch (NoFreeSpaceException)

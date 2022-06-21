@@ -153,7 +153,7 @@ namespace TouhouPrideGameJam4.Game
                     if (!moveOnly)
                     {
                         MapManager.Instance.OpenDoor(newX, newY);
-                        SoundManager.Instance.PlayClip(_openDoor);
+                        SoundManager.Instance.PlayOpenContainerClip(_openDoor);
                     }
                 }
                 else if (content == TileContentType.Chest)
@@ -161,7 +161,7 @@ namespace TouhouPrideGameJam4.Game
                     if (!moveOnly)
                     {
                         MapManager.Instance.OpenChest(newX, newY);
-                        SoundManager.Instance.PlayClip(_openDoor);
+                        SoundManager.Instance.PlayOpenContainerClip(_openDoor);
                     }
                 }
                 else

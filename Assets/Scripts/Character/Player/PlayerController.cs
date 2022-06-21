@@ -3,6 +3,7 @@ using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +19,6 @@ namespace TouhouPrideGameJam4.Character.Player
         private AudioClip[] _stepSound;
         private int _stepIndex;
 
-        private AudioSource _source;
         private PlayerInput _input;
 
         private FollowerInfo _followerInfo;
@@ -30,7 +30,6 @@ namespace TouhouPrideGameJam4.Character.Player
         private void Awake()
         {
             Instance = this;
-            _source = GetComponent<AudioSource>();
             _input = GetComponent<PlayerInput>();
         }
 
@@ -146,7 +145,7 @@ namespace TouhouPrideGameJam4.Character.Player
             {
                 _stepIndex = 0;
             }
-            _source.PlayOneShot(_stepSound[_stepIndex]);
+            SoundManager.Instance.PlayFootstepsClip(_stepSound[_stepIndex]);
             UIManager.Instance.UpdateUIOnNewTile();
         }
 
