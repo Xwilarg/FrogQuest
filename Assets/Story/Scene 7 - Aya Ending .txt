@@ -1,0 +1,126 @@
+none “In the end, we defeated Remilia, despite a small struggle.”
+“It wasn’t a very serious incident, after all. But I’m not sure what she would have done had we failed to defeat her.”
+“She seemed more disappointed than angry after she agreed to let us go home.”
+“Well, I don’t blame her for feeling a bit frustrated about her limitations as a vampire.” 
+“Afterwards, I welcomed everyone to the shrine as thanks for helping me save Suwako.”
+“I don’t think Kanako was very happy that I brought a shrine maiden from the rival shrine and a tengu to visit, but she held her tongue since they helped, too.” 
+“She couldn’t quite hide her irritation with Cirno, though.” 
+“Despite our exhaustion, Aya insisted that I help her review her article about the incident for the Bunbunmaru Newspaper.”
+“I think it had something to do with me complaining that she was going to call me ‘the green shrine maiden’ when she first mentioned writing the story.”
+“But, as always, she wanted to work on it as soon as we got back so she could be the first to cover the story.”
+aya joyful “So, how about this? ‘Moriya Shrine’s Living God Confronts the Scarlet Devil to Save Her Ancestor!’”
+sanae surprised “But you, Reimu, and Cirno helped, as well!”
+aya neutral “Eh, I can’t bore people with a super long title. I won’t forget to mention it in the story, though!”
+sanae neutral “If you insist.”
+aya neutral “Is that title better than the one I had before? Where I called her the Frog Goddess?”
+aya joyful “Yeah, much better.” 
+aya joyful “Well, thank you for your approval! I’m sure I’ll have all of this ready to go for tomorrow morning.”
+aya surprised “Oh, maybe if I go now, I could do a delivery overnight!”
+sanae surprised “But no one will see it until morning anyway if you deliver it at night!”
+aya joyful “Ah, I suppose you’re right.”
+aya neutral “Sorry, I don’t mean to act like I’m trying to rush out of here. I guess I’m just excited to report the incident since I was actually there.”
+sanae neutral “But you’ve witnessed a lot of incidents firsthand.”
+aya neutral “I suppose that’s true, but it’s been awhile.”
+aya joyful “Ah, I can’t help but feel excited every time! Journalism is my passion, after all.”
+sanae joyful “Your enthusiasm is definitely admirable, Aya.”
+“You were even kind enough to share something so important to you with someone like me.”
+aya neutral “Oh, speaking of which, when do you want to try your hand at photography again?” 
+sanae neutral “Any time you would like. You know I am always willing to learn new things.”
+aya joyful “Hmm, I vote now!”
+sanae surprised “Ah, now? Don’t you want to relax after solving the incident?”
+aya joyful “Ayaya, you know someone like me is always raring to go!”
+“Besides, Cirno got restless and made Reimu take her outside. I suppose we could enjoy the nice weather today, as well.”
+sanae eyesclosed “...”
+sanae neutral “Actually, would you mind if we stayed in here for just a moment more, Aya?”
+“Even if the nice weather goes away, I can try my hardest to bring it back when we decide to go outside.”
+aya surprised “Oh, that’s fine. Are you exhausted or something?”
+sanae neutral “Not exactly.”
+sanae shy “Although it’s nice to relax after a long day, I was hoping we could just spend more time here together.”
+“If that’s okay with you.”
+aya shy “Oh, uhh… Of course! Is there something you wanted to talk about?”
+sanae neutral “I feel like prior to this incident, we had a lot of negative interactions with one another, you know?” 
+aya angry “Like how Kanako forced the tengu to accept her as soon as you two arrived in Gensokyo?”
+sanae eyesclosed “Yep, it’s a shame that’s how we were first introduced, but we were really in a tough position and I was just doing my job for the shrine!”
+aya neutral “Eh, no hard feelings. You can’t control what she does anyway.”
+sanae neutral “Despite all that, you still accompanied me on the journey to save Suwako.”
+sanae eyesclosed “I guess you did originally come to get information for your newspaper.”
+sanae shy “But you didn’t have to help me with photography or visit the shrine after the fact.”
+aya shy “Ah, what’s your point?”
+sanae shy “I guess I’m glad we had a chance to get to know each other more. It was easy for us to hold a grudge against each other from a distance, I think.”
+“I’ve really enjoyed talking to you and learning from you.”
+“You’re a really amazing girl, Aya. Could I continue to learn more about you in the future?”
+aya surprised “Where’s all this coming from?”
+aya shy “Of course we can keep learning about each other. I’ve been enjoying our time together, too.”
+aya joyful “Besides, I don’t want to lose you as a photography apprentice anytime soon!”
+sanae shy “You won’t. Learning more about you includes learning about your passions, after all.”
+aya shy “...”
+sanae shy “Thank you for your kindness, Aya. I feel like after solving this incident with you, I can confidently call you my friend.”
+“I feel like we’ve both been able to trust each other.”
+“Can I trust you with something else?”
+aya shy “Of course.”
+sanae eyesclosed “I felt very nervous before we went into the Scarlet Devil Mansion. I know that seems somewhat uncharacteristic of me, but I’ve had a lot to think about.”
+“Somehow, Cirno of all people was able to put my mind at ease.”
+sanae neutral “She said that if I don’t address the things that are on my mind, I won’t be able to focus on anything else.”
+“Even though that’s really simple advice, I think it’s also hard to follow because speaking your mind can be scary.”
+“But now that we confronted Remilia and saved Suwako, I think I’m ready to address the other things that have been bothering me.” 
+aya shy “Hmm?”
+sanae eyesclosed “…”
+sanae neutral “Aya, when I arrived in Gensokyo, I felt like an outsider. I know I usually exude confidence and take pride in my powerful heritage, but that doesn’t mean I never experience loneliness.”
+“Despite my status, I can’t help but feel alienated from the other residents of Gensokyo. Sometimes I confuse people with the things I talk about, and I know some still harbor negative feelings towards my shrine.”
+“I’ve always been so focused on Kanako’s plans that it’s been difficult to focus on making friends and nurturing relationships. I also thought that anyone going against the Moriya Shrine wasn’t worth talking to.”
+“When you and I first met, I thought you were just another nosy tengu who was getting in the way of Lady Kanako’s plans.”
+sanae shy “But now I see what a passionate, optimistic, and amazing person you are. You didn’t have to be personable with me during our trip to the Scarlet Devil Mansion. You could have just gathered your info and disappeared.”
+“Instead, you showed me kindness and helped me feel safe the entire time. Because of that, I have come to care for you.”
+“I know we still have a lot to learn about each other, but I guess what I’m trying to say is… In the time we have been together, I believe I have grown to develop feelings for you.”
+“I’m afraid that I don’t quite understand those feelings, as I’m not very familiar with liking anyone in that way.”
+“But I really care about you, Aya.”
+sanae eyesclosed “I understand if you don’t accept my confession. After all, we are two very different people and I’m sure you have much more experience with this stuff than I do.“
+aya shy “No, Sanae!”
+sanae surprised “No?”
+sanae eyesclosed “Okay, I understand-”
+aya shy “No! I mean…”
+“Don’t talk like that. You’re an amazing girl, too!”
+“I don’t have much experience with that sort of thing either.”
+sanae surprised “You don’t?”
+aya joyful “Ayaya, I may be older than you, but you know how busy I am. I’d make a lousy partner, what with never having any free time!”
+aya shy “But, uhh… You like me?”
+sanae shy “Mhm.”
+aya surprised “Ah, but!”
+none “Aya looked around nervously.”
+aya shy “Wouldn’t Kanako be angry hearing you say that to someone like me?”
+sanae shy “Ah, it doesn’t matter right now. Sometimes, I have to make my own decisions.”
+“And this is what my heart was telling me to do right now.”
+aya shy “I see. Well, if you’re being brave right now, I guess I’ll try to be, too.”
+“As I said, I’m not quite familiar with this kind of thing, either.”
+“I’ve always lived so quickly and never had the chance to stop to think about this sort of thing.”
+“But in being with you during this incident, you really got me to stop and appreciate some things. You also caused me to think about certain ideas more deeply.”
+“In the same way that you felt comforted with me, I also felt very safe, despite not knowing you super well.” 
+aya eyesclosed “It’s a little scary to feel such strong things around someone for the first time.”
+aya shy “In saying that, I think I also have feelings for you Sanae.”
+“I knew that I felt something different in your presence, but I couldn’t quite put my finger on it.”
+sanae shy “I’m relieved to hear that. I was worried you would have been angry once you found out.”
+aya surprised “Angry? How could I ever be angry at you for something like that?”
+sanae shy “I was expecting the worst, I guess, even though I’m usually optimistic about things.”
+aya shy “Well, please don’t worry because I accept your feelings.”
+aya eyesclosed “But I think, for once in my life, I would like to take things slow.”
+aya shy “If that’s okay with you?”
+sanae shy “Of course. I think that would be a good idea, too. I think we should get to know each other a bit more first.”
+aya shy “Yeah, but maybe one day we could be…”
+“More than friends?”
+sanae shy “Yeah, we could be for sure.”
+“Would you like to tag along the next time I have to solve an incident? You seemed so excited about being there in person.”
+aya shy “Oh, I would like that very much! And knowing Gensokyo, I’m sure another one will pop up sooner or later.”
+sanae joyful “You mentioned how busy you are, but I know what it’s like. I’ve also always been too busy solving incidents to focus on relationships.
+“But if we go as a pair when something inevitably happens, we could both do our jobs. It would be a good way to spend more time together, while we’re at it!”
+aya joyful “Ayaya, that’s a great idea.”
+aya neutral “Well, there’s no time to waste. How about we try some photography together again, like I’d mentioned before?”
+sanae joyful “Oh, yeah! I’m totally ready for it now!”
+none “With that, I felt a lot better having discussed my feelings with Aya. It felt like a weight was lifted off of my shoulders!”
+“We went outside to see Reimu and Cirno enjoying the pleasant weather together.”
+“Aya took me down the steps of the shrine and we went to the forested area behind the building.”
+“She told me that she always wanted to take more photos around the Moriya Shrine, but she thought it wasn’t worth the trouble dealing with Kanako to get them.”
+“I assured Aya, that as long as she was with me, she could take all of the photos she wanted.”
+“It felt amazing to learn something new from someone so passionate about the subject.”
+“Around Aya, I feel even more energetic than usual and I’m so happy to have met her, despite our past.”
+“Even though I don’t know what the future holds, I’m excited to see where the wind takes us.”
+“I’m confident that things between Aya and I will go exactly as they should, when the time is right.”

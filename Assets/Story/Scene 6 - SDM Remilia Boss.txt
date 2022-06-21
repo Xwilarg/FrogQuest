@@ -34,14 +34,14 @@ suwako neutral “They were like, ‘You need to come with us.’”
 suwako joyful “And I thought, ‘Wow! I’m finally getting invited to the Scarlet Devil’s home? What an honor!’”
 suwako neutral “I mean, it’s not like I was busy or anything. Kanako never lets me have any fun and I was SO BORED!”
 suwako joyful “So now I’m here for tea!”
-sanae shocked “...”
+sanae surprised “...”
 “Suwako, it’s been over a week since you’ve left the shrine!”
 suwako neutral “Oh, really? Well, I guess I thought it was kind of a weekend trip or a sleepover sort of thing, you know?”
 reimu angry “Remilia, enough of this! Tell us the real reason you lured Suwako here.”
 remilia eyesclosed “Haha, of course you see through this facade.”
 remilia neutral “Suwako, you have been an excellent guest, but I didn’t bring you into my residence to merely socialize with you.”
 remilia eyesclosed “In fact, if you hadn’t assumed my servants were extending a friendly invitation to you, they would have taken you here by force.”
-suwako shocked “Huh?! And here I thought a lovely friendship was blooming.”
+suwako surprised “Huh?! And here I thought a lovely friendship was blooming.”
 “But what have I ever done to you?”
 remilia eyesclosed “I apologize for leading you on, but you were a very important part in making sure my most recent plans would be successful.”
 remilia neutral “While you’ve committed no transgressions against me, I did what needed to be done. You were merely a stepping stone as a means to an end.”
