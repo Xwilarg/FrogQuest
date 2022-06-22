@@ -1,97 +1,97 @@
-sanae neutral “Reimu, you’ve taken on Remilia before and been inside the mansion. I think we should work together to find where she’s hiding.”
-reimu joyful “I won’t let you down!”
-sanae neutral “Aya and Cirno, please go and search, as well.”
-aya eyesclosed “Ah, fine. Cirno, try to keep up!”
-cirno joyful “Hooray!”
-reimu neutral “Okay, I think we should start by checking some of the doors.”
-sanae surprised “Ah, but there are so many! How are we going to get through them all?”
-reimu neutral “Don’t worry. I found Remilia once before in her mansion and I’m sure I can do it again.”
-“I’m not alone this time, either.”
-sanae joyful “I suppose having a team will make things easier.”
-sanae neutral “Alright, let’s have a look around.”
-none “Approach the doors to search each room and find Remilia.”
+sanae neutral "Reimu, you’ve taken on Remilia before and been inside the mansion. I think we should work together to find where she’s hiding."
+reimu joyful "I won’t let you down!"
+sanae neutral "Aya and Cirno, please go and search, as well."
+aya eyesclosed "Ah, fine. Cirno, try to keep up!"
+cirno joyful "Hooray!"
+reimu neutral "Okay, I think we should start by checking some of the doors."
+sanae surprised "Ah, but there are so many! How are we going to get through them all?"
+reimu neutral "Don’t worry. I found Remilia once before in her mansion and I’m sure I can do it again."
+"I’m not alone this time, either."
+sanae joyful "I suppose having a team will make things easier."
+sanae neutral "Alright, let’s have a look around."
+none "Approach the doors to search each room and find Remilia."
 
 (Walking, door 1)
-sanae neutral “Hm, this looks like a broom closet… But it’s surprisingly big!”
-reimu joyful “I guess Sakuya does have a lot of cleaning to do around here!”
-sanae neutral “Yeah, but no Suwako or Scarlet Devil…”
+sanae neutral "Hm, this looks like a broom closet… But it’s surprisingly big!"
+reimu joyful "I guess Sakuya does have a lot of cleaning to do around here!"
+sanae neutral "Yeah, but no Suwako or Scarlet Devil…"
 
 (Walking, door 2)
-sanae neutral “Ah, a kitchen!”
-reimu surprised “How much space does one need to cook?!”
-“This is practically the size of my entire living space…”
-sanae surprised “Oh, wow.”
-sanae neutral “But no sign of either of them still.”
+sanae neutral "Ah, a kitchen!"
+reimu surprised "How much space does one need to cook?!"
+"This is practically the size of my entire living space…"
+sanae surprised "Oh, wow."
+sanae neutral "But no sign of either of them still."
 
 (Walking, door 3)
-sanae neutral “It looks like someone’s room, but it’s not very fancy.”
-“This definitely isn’t Remilia’s.”
-reimu joyful “Not fancy? Even some servant’s room at this mansion would make anyone using it feel like royalty!”
-sanae neutral “Yeah, I guess I mean to say that it’s fancy, but not 'rich vampire' fancy.”
-reimu eyesclosed “Now that makes more sense. Either way, seeing such a comfy room reminds me how much I need a nap.”
-sanae joyful “Yeah, you do work hard Reimu. I hope you can rest after all of this.”
-reimu joyful “Ah, thank you. I guess someone has to keep track of all the incidents in Gensokyo.”
-reimu neutral “And solve them.”
-sanae neutral “You’ve always been the one to do that, haven’t you?”
-reimu neutral “Yeah, it seems like I’ve been doing it my whole life.”
-sanae neutral “Sometimes I feel as if I’ve been solving incidents forever, but then I remember how long you’ve been doing it.”
-reimu joyful “Ah, it’s become sort of a job for me, I guess, and a part of my life.”
-“I’m used to it now.”
-sanae eyesclosed “...”
-sanae neutral “Reimu, how do you always stay strong and keep going when things are against you?”
-reimu surprised “What do you mean?”
-sanae neutral “Well, you’ve mentioned facing a lot of hardships and difficulties.”
-“You don’t always have a lot of visitors at the Hakurei Shrine or receive enough donations to keep everything up.”
-“I know it’s easy for others to underestimate a simple shrine maiden. You’re also a human living as a minority in a world of youkai and other beings.”
-sanae sad “And despite all of that, you still manage to put Gensokyo first by solving its incidents. Isn’t that stressful?”
-reimu neutral “Well, yeah… I do get stressed. Things are always so busy for me in my life.”
-“I sometimes wish I could have a break, but things must be balanced in Gensokyo.”
-sanae neutral “Why do you burden yourself with these unending tasks?”
-reimu joyful “You’re acting as if everyone wouldn’t blame me if I left an incident unresolved!”
-reimu neutral “Besides, Gensokyo is my home. I can’t have people running around like they own the place and causing problems for everyone.”
-sanae neutral “Even if people don’t always acknowledge your efforts?”
-reimu joyful “Ah, who cares about that? I’m happy knowing things are fixed at the end of the day, especially if people were in danger at the beginning.”
-sanae neutral “I have a lot of respect for you, Reimu. I want to make a difference, too. But I’d be lying if I said I wasn’t looking forward to Lady Kanako telling me ‘good job’ each time I’ve solved a problem.”
-reimu joyful “Haha, I guess a few people thank me, but it doesn’t really matter if anyone does or not.”
-sanae sad “Isn’t that somewhat lonely, though?”
-reimu surprised “Huh?”
-sanae eyesclosed “I know you have a lot of friends, but you’re always so busy and going off to fight for Gensokyo!”
-reimu surprised “Ah… I mean, I do always have friends around.”
-reimu sad “But I suppose it is lonely sometimes.”
-“I think only a few others could understand my life.”
-reimu neutral “Marisa does, but we’re two very different people. She’s a pretty chaotic person, anyway.”
-“Maybe a few others could as well, but not many.”
-“Oh well, I guess there’s no use in complaining.”
-sanae sad “Reimu, it’s okay. I think I’m someone who could understand, as well.”
-sanae neutral “When I first began solving incidents, it wasn’t easy. And you know what I’m capable of!”
-“We’ve known each other for quite some time, and back when you challenged Kanako and I for the first time, I knew you were a force to be reckoned with. Now, knowing how much you do everyday, I have way more respect for you.”
-sanae joyful “That’s why I admire how strong and dedicated you are. You deserve way more recognition.”
-reimu shy “Don’t talk like that! It’s nothing, really.”
-“But thanks.”
-sanae eyesclosed “Yeah. This is going to sound weird, but talking to Cirno before made me feel less stressed about coming to the Scarlet Devil Mansion.”
-sanae neutral “It’s not good to keep things bottled up, you know?”
-reimu neutral “You’re right.”
-reimu shy “Would I be imposing if I asked to talk to you again sometime about our similar experiences?”
-sanae shy “No, not at all. In fact, I would enjoy it, I think.”
-“Maybe you could come to the Moriya Shrine sometime for tea.”
-sanae joyful “I’ll try my best to convince Kanako that you’re not there to steal followers from us!”
-reimu joyful “Sure, why not?”
-sanae joyful “Then it’s a date!”
-reimu shy “A date?”
-sanae surprised “Oh!”
-“I mean, we can pick a date!”
-sanae shy “You know… To meet.”
-reimu shy “Yeah…”
-“Anyway, we need to keep searching.”
-sanae surprised “Oh, why am I so easily distracted?”
-reimu neutral “Let’s just look at this next door.”
-sanae surprised “Ah, this looks like the way into the back of the mansion!”
-“Somehow, I feel like this is the right door!”
-reimu neutral “I think so, too.”
-“Aya and Cirno are coming this way!”
-aya neutral “We didn’t find anything, but it looks like you both did!”
-sanae joyful “Yes, I trust that this is the way! Have faith in me that this is the right decision!”
-reimu neutral “Then, lead the way!”
-none “My heart is pounding out of my chest! But I can’t give up now.”
-“Everyone is counting on me to lead them to the end!”
-“Lady Kanako, may your blessings be upon me!"
+sanae neutral "It looks like someone’s room, but it’s not very fancy."
+"This definitely isn’t Remilia’s."
+reimu joyful "Not fancy? Even some servant’s room at this mansion would make anyone using it feel like royalty!"
+sanae neutral "Yeah, I guess I mean to say that it’s fancy, but not 'rich vampire' fancy."
+reimu eyesclosed "Now that makes more sense. Either way, seeing such a comfy room reminds me how much I need a nap."
+sanae joyful "Yeah, you do work hard Reimu. I hope you can rest after all of this."
+reimu joyful "Ah, thank you. I guess someone has to keep track of all the incidents in Gensokyo."
+reimu neutral "And solve them."
+sanae neutral "You’ve always been the one to do that, haven’t you?"
+reimu neutral "Yeah, it seems like I’ve been doing it my whole life."
+sanae neutral "Sometimes I feel as if I’ve been solving incidents forever, but then I remember how long you’ve been doing it."
+reimu joyful "Ah, it’s become sort of a job for me, I guess, and a part of my life."
+"I’m used to it now."
+sanae eyesclosed "..."
+sanae neutral "Reimu, how do you always stay strong and keep going when things are against you?"
+reimu surprised "What do you mean?"
+sanae neutral "Well, you’ve mentioned facing a lot of hardships and difficulties."
+"You don’t always have a lot of visitors at the Hakurei Shrine or receive enough donations to keep everything up."
+"I know it’s easy for others to underestimate a simple shrine maiden. You’re also a human living as a minority in a world of youkai and other beings."
+sanae sad "And despite all of that, you still manage to put Gensokyo first by solving its incidents. Isn’t that stressful?"
+reimu neutral "Well, yeah… I do get stressed. Things are always so busy for me in my life."
+"I sometimes wish I could have a break, but things must be balanced in Gensokyo."
+sanae neutral "Why do you burden yourself with these unending tasks?"
+reimu joyful "You’re acting as if everyone wouldn’t blame me if I left an incident unresolved!"
+reimu neutral "Besides, Gensokyo is my home. I can’t have people running around like they own the place and causing problems for everyone."
+sanae neutral "Even if people don’t always acknowledge your efforts?"
+reimu joyful "Ah, who cares about that? I’m happy knowing things are fixed at the end of the day, especially if people were in danger at the beginning."
+sanae neutral "I have a lot of respect for you, Reimu. I want to make a difference, too. But I’d be lying if I said I wasn’t looking forward to Lady Kanako telling me ‘good job’ each time I’ve solved a problem."
+reimu joyful "Haha, I guess a few people thank me, but it doesn’t really matter if anyone does or not."
+sanae sad "Isn’t that somewhat lonely, though?"
+reimu surprised "Huh?"
+sanae eyesclosed "I know you have a lot of friends, but you’re always so busy and going off to fight for Gensokyo!"
+reimu surprised "Ah… I mean, I do always have friends around."
+reimu sad "But I suppose it is lonely sometimes."
+"I think only a few others could understand my life."
+reimu neutral "Marisa does, but we’re two very different people. She’s a pretty chaotic person, anyway."
+"Maybe a few others could as well, but not many."
+"Oh well, I guess there’s no use in complaining."
+sanae sad "Reimu, it’s okay. I think I’m someone who could understand, as well."
+sanae neutral "When I first began solving incidents, it wasn’t easy. And you know what I’m capable of!"
+"We’ve known each other for quite some time, and back when you challenged Kanako and I for the first time, I knew you were a force to be reckoned with. Now, knowing how much you do everyday, I have way more respect for you."
+sanae joyful "That’s why I admire how strong and dedicated you are. You deserve way more recognition."
+reimu shy "Don’t talk like that! It’s nothing, really."
+"But thanks."
+sanae eyesclosed "Yeah. This is going to sound weird, but talking to Cirno before made me feel less stressed about coming to the Scarlet Devil Mansion."
+sanae neutral "It’s not good to keep things bottled up, you know?"
+reimu neutral "You’re right."
+reimu shy "Would I be imposing if I asked to talk to you again sometime about our similar experiences?"
+sanae shy "No, not at all. In fact, I would enjoy it, I think."
+"Maybe you could come to the Moriya Shrine sometime for tea."
+sanae joyful "I’ll try my best to convince Kanako that you’re not there to steal followers from us!"
+reimu joyful "Sure, why not?"
+sanae joyful "Then it’s a date!"
+reimu shy "A date?"
+sanae surprised "Oh!"
+"I mean, we can pick a date!"
+sanae shy "You know… To meet."
+reimu shy "Yeah…"
+"Anyway, we need to keep searching."
+sanae surprised "Oh, why am I so easily distracted?"
+reimu neutral "Let’s just look at this next door."
+sanae surprised "Ah, this looks like the way into the back of the mansion!"
+"Somehow, I feel like this is the right door!"
+reimu neutral "I think so, too."
+"Aya and Cirno are coming this way!"
+aya neutral "We didn’t find anything, but it looks like you both did!"
+sanae joyful "Yes, I trust that this is the way! Have faith in me that this is the right decision!"
+reimu neutral "Then, lead the way!"
+none "My heart is pounding out of my chest! But I can’t give up now."
+"Everyone is counting on me to lead them to the end!"
+"Lady Kanako, may your blessings be upon me!"

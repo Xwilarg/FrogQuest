@@ -1,86 +1,86 @@
-sanae surprised “The youkai are out in full force today!”
-aya neutral “It’s called Youkai Mountain for a reason.”
-sanae neutral “Oh, right.”
-“Anyway, we still have a long way to go until we get to the mansion. We’ve only made it down the mountain.”
-aya joyful “Yep! But don’t worry. I think we’re gonna be a force to be reckoned with!”
-sanae joyful “Ah, you think so?”
-aya joyful “Yep! I’ve become an expert at taking photos and dodging attacks at the same time.”
-sanae neutral “Well, you might have to fight, too…”
-aya neutral “Eh, we’ll see when we get there.”
-none “???: I really don’t need your help.”
-sanae surprised “Did you hear that?”
-aya neutral “Yep, and it sounds like someone familiar!”
-reimu angry “I need to solve the incident and I don’t want to be distracted.”
-cirno joyful “But I wanna help save the frog lady so she won’t yell at me for freezing the frogs anymore!”
-reimu angry “Yeah, no.” 
-sanae neutral “Reimu, did you say something about an incident?”
-reimu neutral “Yep, I’m on my way to the Scarlet Devil Mansion, but I keep running into roadblocks.”
-cirno neutral “...”
-sanae joyful “Oh, we’re on our way there, too! Suwako has been missing and we think they might have something to do with it.”
-cirno joyful “You’re also looking for the frog goddess?!”
-sanae neutral “She’s not-”
-sanae angry “Hey, wait! You’re that little fairy she’s always talking about, right?”
-cirno joyful “Yeah, she always gets so mad when I freeze her frogs. But I’m just trying to have a little fun!”
-cirno neutral “She hasn’t come to Misty Lake to yell at me in awhile. Even though I could freeze ALL the frogs with her missing…”
-cirno angry “How am I supposed to be satisfied with our feud if someone else got rid of her?”
-cirno joyful “I’m supposed to be the one who defeats her and reigns victorious!”
-sanae neutral “Right…”
-aya joyful “No wonder you got caught up, Reimu.”
-reimu angry “Yep.”
-reimu neutral “Anyway, I don’t have time to waste. Who knows what Remilia could be up to? I’m sure it’s not good.”
-sanae sad “Do you think they have something to do with Suwako’s disappearance?”
-reimu neutral “That’s what I’m thinking.”
-reimu angry “Marisa told me she heard them plotting something the last time she went there.”
-“And when Cirno asked me if I had seen Suwako, I figured her disappearance was related. It’s not the first time Remilia has done something like this.”
-sanae neutral “So I’ve heard. Do you think we could take her on if we work together?”
-reimu eyesclosed “Well, I’d prefer to go alone, but I guess it would make more sense to team up if we’re both heading there now.”
-reimu neutral “And Suwako is part of your shrine, anyway.”
-cirno angry “Hey! You’re gonna let the green shrine maiden join your team, but not me?!”
-“That’s so unfair!”
-sanae angry “Suwako is my ancestor! I’m obligated to save her if she’s in trouble!”
-sanae eyesclosed “And I can’t bear the thought of disappointing Kanako.”
-cirno surprised “Wait… What’s ‘ancestor?’”
-aya joyful “Like a grandma!”
-sanae angry “Not exact-“
-cirno surprised “Ohh! But Suwako’s SUPER old!”
-cirno joyful “So she’s like your great great great great…”
-sanae neutral “…”
-cirno joyful “…great great great…”
-aya neutral reimu angry “…”
-cirno joyful “…great great grandma?!”
-sanae eyesclosed “Uhm… Sure.”
-aya joyful “At least she tried!”
-reimu angry “Yeah, but she’s just wasting our time at this point.”
-“Cirno, could you please go home?”
-cirno sad “But I’m, like…”
-“The strongest one here! I’d be an asset to your team!”
-aya neutral “Somehow, I don’t think she’s going to let up, even if we try to sneak away.”
-reimu eyesclosed “And I guess you’re coming, too, huh?”
-aya joyful “You won’t even know I’m here!”
-reimu neutral “Whatever, just as long as you don’t take any photos of me.”
-aya joyful “Ayaya, fine!”
-sanae angry “Okay, we’re getting distracted! We don’t have much time to waste.”
-sanae joyful “Starting now, allow me to lead you all on this journey to find Suwako!”
-“I know I can’t fail!”
-reimu angry “Ugh, fine! This is going to be a long day…”
-aya joyful “Upset that you won’t be the star of the show this time, Reimu?”
-reimu surprised “What’s THAT supposed to mean?!“
-sanae joyful “Let’s find our way through the forest. I know we’ll make it to our destination in no time!”
-cirno joyful “Hooray!”
-none “With that, I gathered a group to assist me on my quest to find my ancestor!”
-“I know I’ll be able to lead the way!”
-“But something keeps bothering me…”
-“How did the Scarlet Devil Mansion manage to capture Suwako, if they’re the ones responsible for her disappearance?”
-“There’s no way she would have gone down without a fight…” 
-sanae surprised “Here we go again!”
-reimu joyful “Don’t act like you’re not used to this by now!”
-sanae angry “I never said I wasn’t used to it!”
-“I’ve been a main character for, like, a really long time now!”
-reimu surprised “What do you mean ‘main character?’”
-sanae neutral “Ah, nothing! Let’s just go.”
-sanae joyful “You’re not gonna make me do everything myself, though. Right?”
-reimu neutral “Oh, I have to help?”
-sanae angry “Hey, don’t make me do all the work!”
-reimu angry “Ugh, fine! (How come I never get a break?)”
-none “Select Reimu’s blessing ability from the skill menu to regain HP.
+sanae surprised "The youkai are out in full force today!"
+aya neutral "It’s called Youkai Mountain for a reason."
+sanae neutral "Oh, right."
+"Anyway, we still have a long way to go until we get to the mansion. We’ve only made it down the mountain."
+aya joyful "Yep! But don’t worry. I think we’re gonna be a force to be reckoned with!"
+sanae joyful "Ah, you think so?"
+aya joyful "Yep! I’ve become an expert at taking photos and dodging attacks at the same time."
+sanae neutral "Well, you might have to fight, too…"
+aya neutral "Eh, we’ll see when we get there."
+none "???: I really don’t need your help."
+sanae surprised "Did you hear that?"
+aya neutral "Yep, and it sounds like someone familiar!"
+reimu angry "I need to solve the incident and I don’t want to be distracted."
+cirno joyful "But I wanna help save the frog lady so she won’t yell at me for freezing the frogs anymore!"
+reimu angry "Yeah, no." 
+sanae neutral "Reimu, did you say something about an incident?"
+reimu neutral "Yep, I’m on my way to the Scarlet Devil Mansion, but I keep running into roadblocks."
+cirno neutral "..."
+sanae joyful "Oh, we’re on our way there, too! Suwako has been missing and we think they might have something to do with it."
+cirno joyful "You’re also looking for the frog goddess?!"
+sanae neutral "She’s not-"
+sanae angry "Hey, wait! You’re that little fairy she’s always talking about, right?"
+cirno joyful "Yeah, she always gets so mad when I freeze her frogs. But I’m just trying to have a little fun!"
+cirno neutral "She hasn’t come to Misty Lake to yell at me in awhile. Even though I could freeze ALL the frogs with her missing…"
+cirno angry "How am I supposed to be satisfied with our feud if someone else got rid of her?"
+cirno joyful "I’m supposed to be the one who defeats her and reigns victorious!"
+sanae neutral "Right…"
+aya joyful "No wonder you got caught up, Reimu."
+reimu angry "Yep."
+reimu neutral "Anyway, I don’t have time to waste. Who knows what Remilia could be up to? I’m sure it’s not good."
+sanae sad "Do you think they have something to do with Suwako’s disappearance?"
+reimu neutral "That’s what I’m thinking."
+reimu angry "Marisa told me she heard them plotting something the last time she went there."
+"And when Cirno asked me if I had seen Suwako, I figured her disappearance was related. It’s not the first time Remilia has done something like this."
+sanae neutral "So I’ve heard. Do you think we could take her on if we work together?"
+reimu eyesclosed "Well, I’d prefer to go alone, but I guess it would make more sense to team up if we’re both heading there now."
+reimu neutral "And Suwako is part of your shrine, anyway."
+cirno angry "Hey! You’re gonna let the green shrine maiden join your team, but not me?!"
+"That’s so unfair!"
+sanae angry "Suwako is my ancestor! I’m obligated to save her if she’s in trouble!"
+sanae eyesclosed "And I can’t bear the thought of disappointing Kanako."
+cirno surprised "Wait… What’s ‘ancestor?’"
+aya joyful "Like a grandma!"
+sanae angry "Not exact-"
+cirno surprised "Ohh! But Suwako’s SUPER old!"
+cirno joyful "So she’s like your great great great great…"
+sanae neutral "…"
+cirno joyful "…great great great…"
+aya neutral reimu angry "…"
+cirno joyful "…great great grandma?!"
+sanae eyesclosed "Uhm… Sure."
+aya joyful "At least she tried!"
+reimu angry "Yeah, but she’s just wasting our time at this point."
+"Cirno, could you please go home?"
+cirno sad "But I’m, like…"
+"The strongest one here! I’d be an asset to your team!"
+aya neutral "Somehow, I don’t think she’s going to let up, even if we try to sneak away."
+reimu eyesclosed "And I guess you’re coming, too, huh?"
+aya joyful "You won’t even know I’m here!"
+reimu neutral "Whatever, just as long as you don’t take any photos of me."
+aya joyful "Ayaya, fine!"
+sanae angry "Okay, we’re getting distracted! We don’t have much time to waste."
+sanae joyful "Starting now, allow me to lead you all on this journey to find Suwako!"
+"I know I can’t fail!"
+reimu angry "Ugh, fine! This is going to be a long day…"
+aya joyful "Upset that you won’t be the star of the show this time, Reimu?"
+reimu surprised "What’s THAT supposed to mean?!"
+sanae joyful "Let’s find our way through the forest. I know we’ll make it to our destination in no time!"
+cirno joyful "Hooray!"
+none "With that, I gathered a group to assist me on my quest to find my ancestor!"
+"I know I’ll be able to lead the way!"
+"But something keeps bothering me…"
+"How did the Scarlet Devil Mansion manage to capture Suwako, if they’re the ones responsible for her disappearance?"
+"There’s no way she would have gone down without a fight…" 
+sanae surprised "Here we go again!"
+reimu joyful "Don’t act like you’re not used to this by now!"
+sanae angry "I never said I wasn’t used to it!"
+"I’ve been a main character for, like, a really long time now!"
+reimu surprised "What do you mean ‘main character?’"
+sanae neutral "Ah, nothing! Let’s just go."
+sanae joyful "You’re not gonna make me do everything myself, though. Right?"
+reimu neutral "Oh, I have to help?"
+sanae angry "Hey, don’t make me do all the work!"
+reimu angry "Ugh, fine! (How come I never get a break?)"
+none "Select Reimu’s blessing ability from the skill menu to regain HP.
 
