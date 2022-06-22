@@ -72,13 +72,33 @@ namespace TouhouPrideGameJam4.Game
             text.text = amount;
         }
 
+        private void UpdateObjectiveText()
+        {
+            if (MapManager.Instance.CurrMap.IsBossRoom)
+            {
+                _objectiveText.text = "Beat Remillia";
+            }
+            else
+            {
+                var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
+                if (enemyCount == 0)
+                {
+                    _objectiveText.text = "Find the exit!";
+                }
+                else
+                {
+                    _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+                }
+            }
+        }
+
         /// <summary>
         /// Add a new enemy to the list of enemies
         /// </summary>
         public void AddCharacter(ACharacter character)
         {
             _characters.Add(character);
-            _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+            UpdateObjectiveText();
         }
 
         public void RemoveCharacter(ACharacter character)
@@ -94,17 +114,13 @@ namespace TouhouPrideGameJam4.Game
                 var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
                 if (enemyCount == 0)
                 {
-                    _objectiveText.text = "Find the exit!";
                     MapManager.Instance.EnableGoal();
                     if (MapManager.Instance.GetContent(Player.Position.x, Player.Position.y) == TileContentType.ExitEnabled)
                     {
                         MapManager.Instance.GoToNextZone();
                     }
                 }
-                else
-                {
-                    _objectiveText.text =  _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
-                }
+                UpdateObjectiveText();
             }
             Destroy(character.gameObject);
         }

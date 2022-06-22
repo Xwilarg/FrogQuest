@@ -23,7 +23,7 @@ namespace TouhouPrideGameJam4.Map
 
         private int _currentWorld = 3, _currentLevel;
 
-        private MapInfo CurrMap => _info[_currentWorld];
+        public MapInfo CurrMap => _info[_currentWorld];
 
         [SerializeField]
         private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
@@ -33,6 +33,9 @@ namespace TouhouPrideGameJam4.Map
 
         [SerializeField]
         private TMP_Text _mapText;
+
+        [SerializeField]
+        private GameObject _bossPrefab;
 
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
@@ -274,7 +277,21 @@ namespace TouhouPrideGameJam4.Map
             }
             else
             {
-                // TODO: Spawn boss
+                for (int y = 0; y < _map.Length; y++)
+                {
+                    for (int x = 0; x < _map[y].Length; x++)
+                    {
+                        if (_map[y][x] != null && _map[y][x].Type == TileType.SpawnBoss)
+                        {
+                            var enemy = Instantiate(_bossPrefab, new Vector3(x, y), Quaternion.identity).GetComponent<ACharacter>();
+                            enemy.Team = Team.Enemies;
+                            enemy.Position = new(x, y);
+                            TurnManager.Instance.AddCharacter(enemy);
+                            enemy.transform.parent = _enemiesParent.transform;
+                            enemy.gameObject.SetActive(false);
+                        }
+                    }
+                }
             }
 
             // Show spawn room

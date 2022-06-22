@@ -37,7 +37,7 @@ MonoBehaviour:
     CanBeWalkedOn: 1
     Sprite: {fileID: 1125702012, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
   - Character: 66
-    Type: 0
+    Type: 4
     GizmoColor: {r: 1, g: 0.15532212, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
     Sprite: {fileID: 1963268225, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}

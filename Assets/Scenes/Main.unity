@@ -180,6 +180,7 @@ MonoBehaviour:
   _prefabItemTopFloor: {fileID: 3346479765826390500, guid: 51e788aa06bc77a439b3c9a49b6fa214, type: 3}
   _mapImage: {fileID: 1203085930}
   _mapText: {fileID: 543854477}
+  _bossPrefab: {fileID: 5139414085749961957, guid: 19d1e9d044912734bb243f1b6e85a040, type: 3}
 --- !u!114 &39555388
 MonoBehaviour:
   m_ObjectHideFlags: 0

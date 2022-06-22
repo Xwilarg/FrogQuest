@@ -5,6 +5,7 @@
         Empty,
         Wall,
         StartingPos,
-        Breakpoint
+        Breakpoint,
+        SpawnBoss
     }
 }
