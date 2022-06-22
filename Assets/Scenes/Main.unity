@@ -174,6 +174,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27b18ae8cc1d38248885fc54aa0aded1, type: 2}
   - {fileID: 11400000, guid: a4906e5c15422f848a831af3ae229015, type: 2}
   - {fileID: 11400000, guid: 55bef9d83269b374aadb8a789b80a5dd, type: 2}
+  - {fileID: 11400000, guid: 456be8f283d3906469cfe351a4211599, type: 2}
   _prefabTile: {fileID: 1238779916511838880, guid: 07237fb06612c2a4cbad46cc36e50ca7, type: 3}
   _prefabItemFloor: {fileID: 7984739664320039825, guid: bfbfbc5cd592a5e4abcef25900e41dc8, type: 3}
   _prefabItemTopFloor: {fileID: 3346479765826390500, guid: 51e788aa06bc77a439b3c9a49b6fa214, type: 3}

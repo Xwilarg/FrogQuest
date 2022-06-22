@@ -13,6 +13,7 @@ namespace TouhouPrideGameJam4.SO.Map
         [Range(0f, 1f)]
         public float ChestPerRoom;
         public int IterationCount;
+        public bool IsBossRoom;
 
         [Header("Rooms")]
         public TextAsset StartingRoom;
