@@ -34,7 +34,7 @@ aya joyful “I believe in you!”
 
 none “TUTORIAL”
 
-(Take green and brown photo)
+"Take photos"
 
 sanae neutral “Hmm… I wonder if these are good enough? I should show them to Aya.”
 aya joyful “Not bad! I guess the composition could use some work, but not too shabby for a newbie!”

@@ -22,3 +22,12 @@ aya joyful “I can see the headlines now! ‘Green shrine maiden saves frog god
 sanae angry “She is NOT the frog god! And why do I have to just be 'the green shrine maiden?' I’m Moriya Shrine’s living god!”
 aya joyful “Yeah, yeah. Whatever, it’s just a working title. I’ll work out the kinks once I get the full story!”
 sanae eyesclosed “Ah, what does it matter? Let’s just go already! Lady Kanako is counting on me!”
+sanae surprised “Ah, I’m sure the inhabitants of Youkai Mountain won’t be too happy that Kanako’s shrine maiden is wandering about…”
+aya joyful “You’ve got that right! But you already know how we solve disagreements here in Gensokyo, hm?”
+sanae angry “Hey! I may be from the outside world, but I’m more than familiar with the customs of Gensokyo.”
+Aya neutral “Well, what are you waiting for then?”
+sanae neutral “Yeah, let’s go. But before we do, is there any way you can help me if there are enemies?”
+aya joyful “Ayaya, you’re talking to the fastest tengu in Gensokyo! I’ll help you get out of the way if an enemy’s about to hit you!”
+sanae joyful “Great! Well, let’s head out then!”
+none “Select Aya’s evade ability from the skill menu before attacking to dodge attacks for one turn.” 
+
