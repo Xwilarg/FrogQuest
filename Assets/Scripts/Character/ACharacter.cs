@@ -57,6 +57,7 @@ namespace TouhouPrideGameJam4.Character
         protected readonly Dictionary<StatusType, int> _currentEffects = new();
 
         public Team Team { set; get; }
+        public bool IsBoss { set; get; }
 
         protected bool _didReachPosition = true; // When character is done moving where it needed to
 
@@ -293,6 +294,10 @@ namespace TouhouPrideGameJam4.Character
             else if (_health > _info.BaseHealth)
             {
                 _health = _info.BaseHealth;
+            }
+            if (IsBoss)
+            {
+                UIManager.Instance.SetBossHealth((float)_health / _info.BaseHealth);
             }
 
             // Display text with the damage done

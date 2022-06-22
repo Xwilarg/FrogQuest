@@ -7,6 +7,7 @@ using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.SO.Map;
 using TouhouPrideGameJam4.Sound;
+using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -285,10 +286,12 @@ namespace TouhouPrideGameJam4.Map
                         {
                             var enemy = Instantiate(_bossPrefab, new Vector3(x, y), Quaternion.identity).GetComponent<ACharacter>();
                             enemy.Team = Team.Enemies;
+                            enemy.IsBoss = true;
                             enemy.Position = new(x, y);
                             TurnManager.Instance.AddCharacter(enemy);
                             enemy.transform.parent = _enemiesParent.transform;
                             enemy.gameObject.SetActive(false);
+                            UIManager.Instance.BossInfoContainer.SetActive(true);
                         }
                     }
                 }
