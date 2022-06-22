@@ -32,7 +32,7 @@ sanae neutral “Fine, let’s keep looking.”
 
 none “Check bushes and trees for coins.”
 
-(Collect x amount of coins)
+"Collect x amount of coins"
 
 sanae neutral “I’m sure we’ve collected everything by now.”
 reimu neutral “Yeah, that was like a whole month’s worth of donations right there!”
