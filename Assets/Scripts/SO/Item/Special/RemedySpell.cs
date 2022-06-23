@@ -1,5 +1,6 @@
 ﻿using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Inventory;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO.Item
@@ -29,5 +30,7 @@ namespace TouhouPrideGameJam4.SO.Item
                 owner.AddStatus(s, TurnCount);
             }
         }
+
+        public override ItemType Type => ItemType.Spell;
     }
 }

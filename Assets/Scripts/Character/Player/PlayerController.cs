@@ -3,6 +3,7 @@ using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
+using TouhouPrideGameJam4.Sound;
 using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +19,6 @@ namespace TouhouPrideGameJam4.Character.Player
         private AudioClip[] _stepSound;
         private int _stepIndex;
 
-        private AudioSource _source;
         private PlayerInput _input;
 
         private FollowerInfo _followerInfo;
@@ -30,7 +30,6 @@ namespace TouhouPrideGameJam4.Character.Player
         private void Awake()
         {
             Instance = this;
-            _source = GetComponent<AudioSource>();
             _input = GetComponent<PlayerInput>();
         }
 
@@ -146,7 +145,7 @@ namespace TouhouPrideGameJam4.Character.Player
             {
                 _stepIndex = 0;
             }
-            _source.PlayOneShot(_stepSound[_stepIndex]);
+            SoundManager.Instance.PlayFootstepsClip(_stepSound[_stepIndex]);
             UIManager.Instance.UpdateUIOnNewTile();
         }
 
@@ -168,45 +167,60 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
+        public void OnSkipDialogs(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                StoryManager.Instance.ToggleSkipDialogs();
+            }
+        }
+
+        private bool _waitingForNextPress;
         public void OnMovement(InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Started || value.phase == InputActionPhase.Canceled)
+            var mov = value.ReadValue<Vector2>();
+            if (mov.x != 0f || mov.y != 0f)
             {
-                var mov = value.ReadValue<Vector2>();
-                if (mov.x != 0f || mov.y != 0f)
+                if (value.phase != InputActionPhase.Started && _waitingForNextPress)
                 {
-                    if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
+                    return;
+                }
+                if (Mathf.Abs(mov.x) > Mathf.Abs(mov.y))
+                {
+                    _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
+                    if (_didReachPosition)
                     {
-                        _walkDirection = new(mov.x > 0 ? 1 : -1, 0);
-                        if (_didReachPosition)
-                        {
-                            if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
-                            {
-                                OnDoneWalking();
-                            }
-                            else
-                            {
-                                _walkDirection = Vector2Int.zero;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        _walkDirection = new(0, mov.y > 0 ? 1 : -1);
-                        if (_didReachPosition && TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                        if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
                         {
                             OnDoneWalking();
                         }
                         else
                         {
+                            _waitingForNextPress = true;
                             _walkDirection = Vector2Int.zero;
                         }
                     }
                 }
                 else
                 {
-                    _walkDirection = Vector2Int.zero;
+                    _walkDirection = new(0, mov.y > 0 ? 1 : -1);
+                    if (_didReachPosition)
+                    {
+                        if (TurnManager.Instance.MovePlayer(_walkDirection.x, _walkDirection.y, false))
+                        {
+                            OnDoneWalking();
+                        }
+                        else
+                        {
+                            _waitingForNextPress = true;
+                            _walkDirection = Vector2Int.zero;
+                        }
+                    }
                 }
+            }
+            else
+            {
+                _walkDirection = Vector2Int.zero;
             }
         }
 

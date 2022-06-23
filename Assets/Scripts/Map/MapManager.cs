@@ -2,10 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.SO.Map;
+using TouhouPrideGameJam4.Sound;
+using TouhouPrideGameJam4.UI;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -18,11 +21,12 @@ namespace TouhouPrideGameJam4.Map
         public static MapManager Instance { get; private set; }
 
         [SerializeField]
-        private WorldInfo[] _info;
+        private MapInfo[] _info;
 
-        private int _currentWorld, _currentLevel;
+        public int CurrentWorld { set; get; }
+        private int _currentLevel;
 
-        private MapInfo CurrMap => _info[_currentWorld].MapInfo;
+        public MapInfo CurrMap => _info[CurrentWorld];
 
         [SerializeField]
         private GameObject _prefabTile, _prefabItemFloor, _prefabItemTopFloor;
@@ -32,6 +36,9 @@ namespace TouhouPrideGameJam4.Map
 
         [SerializeField]
         private TMP_Text _mapText;
+
+        [SerializeField]
+        private GameObject _bossPrefab;
 
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
@@ -48,14 +55,20 @@ namespace TouhouPrideGameJam4.Map
             _enemiesParent = new("Enemies");
             _roomsParent = new("Rooms");
             InitMap();
+            BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
         }
 
         public void GoToNextZone()
         {
-            if (_currentLevel + 1 == _info[_currentWorld].StageCount)
+            if (_currentLevel + 1 == CurrMap.StageCount)
             {
-                _currentWorld++;
+                CurrentWorld++;
                 _currentLevel = 0;
+                BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
+                if (CurrentWorld == 1)
+                {
+                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest1);
+                }
             }
             else
             {
@@ -70,8 +83,8 @@ namespace TouhouPrideGameJam4.Map
             for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i).gameObject);
             _rooms.Clear();
 
-            _mapImage.sprite = _info[_currentWorld].Image;
-            _mapText.text = $"{_info[_currentWorld].Name}\n\n{_currentLevel + 1}/{_info[_currentWorld].StageCount}";
+            _mapImage.sprite = CurrMap.Image;
+            _mapText.text = $"{CurrMap.Name}\n\n{_currentLevel + 1}/{CurrMap.StageCount}";
 
             // Init map
             _map = new Tile[CurrMap.MapSize][];
@@ -114,37 +127,40 @@ namespace TouhouPrideGameJam4.Map
             }
 
             // Place exit room
-            bool didPlaceExit = false;
-            foreach (var room in _rooms.OrderBy(x => Random.value))
+            if (!CurrMap.IsBossRoom)
             {
-                foreach (var d in GetFreeDoors(room, true))
+                bool didPlaceExit = false;
+                foreach (var room in _rooms.OrderBy(x => Random.value))
                 {
-                    if (d.Direction != Direction.Up)
+                    foreach (var d in GetFreeDoors(room, true))
                     {
-                        var possibilities = GetRandomMatchingRoom(new[] { CurrMap.StartingRoom }, d);
-                        if (possibilities.Any())
+                        if (d.Direction != Direction.Up)
                         {
-                            DrawRoom(possibilities[0]);
+                            var possibilities = GetRandomMatchingRoom(new[] { CurrMap.StartingRoom }, d);
+                            if (possibilities.Any())
+                            {
+                                DrawRoom(possibilities[0]);
 
-                            // Add doors to separate rooms
-                            SetTileContent(d.X, d.Y, TileContentType.Door);
+                                // Add doors to separate rooms
+                                SetTileContent(d.X, d.Y, TileContentType.Door);
 
-                            _rooms.Add(possibilities[0]);
+                                _rooms.Add(possibilities[0]);
 
-                            didPlaceExit = true;
-                            break;
+                                didPlaceExit = true;
+                                break;
+                            }
                         }
                     }
+                    if (didPlaceExit)
+                    {
+                        break;
+                    }
                 }
-                if (didPlaceExit)
+                if (!didPlaceExit)
                 {
-                    break;
+                    InitMap();
+                    return;
                 }
-            }
-            if (!didPlaceExit)
-            {
-                InitMap();
-                return;
             }
 
             // Replace empty spaces by walls so the player can't exit the map
@@ -205,63 +221,88 @@ namespace TouhouPrideGameJam4.Map
             TurnManager.Instance.Player.transform.position = new(currentSpawn.x, currentSpawn.y);
             TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
 
-            // Spawn enemies
-            foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
+
+            if (!CurrMap.IsBossRoom)
             {
-                var nbEnemies = Random.Range(0, CurrMap.MaxEnemiesPerRoom + 1);
-                List<Vector2Int> spawnPos = new();
-
-                while (spawnPos.Count < nbEnemies)
+                // Spawn enemies
+                foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
                 {
-                    var y = Random.Range(1, room.Data.Length - 1);
-                    var x = Random.Range(1, room.Data[y].Length - 1);
-                    var pos = new Vector2Int(x, y);
-                    var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true;
+                    var nbEnemies = Random.Range(0, CurrMap.MaxEnemiesPerRoom + 1);
+                    List<Vector2Int> spawnPos = new();
 
-                    if (!spawnPos.Contains(new(room.X + x, room.Y + y)) && tileOk)
+                    while (spawnPos.Count < nbEnemies)
                     {
-                        spawnPos.Add(new(room.X + x, room.Y + y));
+                        var y = Random.Range(1, room.Data.Length - 1);
+                        var x = Random.Range(1, room.Data[y].Length - 1);
+                        var pos = new Vector2Int(x, y);
+                        var tileOk = LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true;
+
+                        if (!spawnPos.Contains(new(room.X + x, room.Y + y)) && tileOk)
+                        {
+                            spawnPos.Add(new(room.X + x, room.Y + y));
+                        }
+                    }
+
+                    foreach (var pos in spawnPos)
+                    {
+                        var sumDrop = CurrMap.EnemiesSpawn.Sum(x => x.Weight);
+                        var targetWeight = Random.Range(0, sumDrop);
+                        var index = 0;
+                        do
+                        {
+                            targetWeight -= CurrMap.EnemiesSpawn[index].Weight;
+                            index++;
+                        } while (targetWeight > 0);
+                        index--;
+                        var target = CurrMap.EnemiesSpawn[index];
+                        var enemy = Instantiate(target.Item, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
+                        enemy.Team = Team.Enemies;
+                        enemy.Position = new(pos.x, pos.y);
+                        TurnManager.Instance.AddCharacter(enemy);
+                        enemy.transform.parent = _enemiesParent.transform;
+                        enemy.gameObject.SetActive(false);
                     }
                 }
 
-                foreach (var pos in spawnPos)
+                // Spawn chest
+                var chestCount = Mathf.CeilToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom) + PersistencyManager.Instance.BonusChestCount;
+                foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(chestCount))
                 {
-                    var sumDrop = CurrMap.EnemiesSpawn.Sum(x => x.Weight);
-                    var targetWeight = Random.Range(0, sumDrop);
-                    var index = 0;
-                    do
+                    while (true)
                     {
-                        targetWeight -= CurrMap.EnemiesSpawn[index].Weight;
-                        index++;
-                    } while (targetWeight > 0);
-                    index--;
-                    var target = CurrMap.EnemiesSpawn[index];
-                    var enemy = Instantiate(target.Item, new Vector3(pos.x, pos.y), Quaternion.identity).GetComponent<ACharacter>();
-                    enemy.Team = Team.Enemies;
-                    enemy.Position = new(pos.x, pos.y);
-                    TurnManager.Instance.AddCharacter(enemy);
-                    enemy.transform.parent = _enemiesParent.transform;
-                    enemy.gameObject.SetActive(false);
-                }
-            }
+                        var y = Random.Range(1, room.Data.Length - 1);
+                        var x = Random.Range(1, room.Data[y].Length - 1);
+                        var pos = new Vector2Int(x, y);
 
-            // Spawn chest
-            var chestCount = Mathf.FloorToInt((_rooms.Count - 1) * CurrMap.ChestPerRoom);
-            foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(chestCount))
-            {
-                while (true)
-                {
-                    var y = Random.Range(1, room.Data.Length - 1);
-                    var x = Random.Range(1, room.Data[y].Length - 1);
-                    var pos = new Vector2Int(x, y);
-
-                    if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
-                    {
-                        SetTileContent(room.X + x, room.Y + y, TileContentType.Chest);
-                        break;
+                        if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
+                        {
+                            SetTileContent(room.X + x, room.Y + y, TileContentType.Chest);
+                            break;
+                        }
                     }
                 }
             }
+            else
+            {
+                for (int y = 0; y < _map.Length; y++)
+                {
+                    for (int x = 0; x < _map[y].Length; x++)
+                    {
+                        if (_map[y][x] != null && _map[y][x].Type == TileType.SpawnBoss)
+                        {
+                            var enemy = Instantiate(_bossPrefab, new Vector3(x, y), Quaternion.identity).GetComponent<ACharacter>();
+                            enemy.Team = Team.Enemies;
+                            enemy.IsBoss = true;
+                            enemy.Position = new(x, y);
+                            TurnManager.Instance.AddCharacter(enemy);
+                            enemy.transform.parent = _enemiesParent.transform;
+                            enemy.gameObject.SetActive(false);
+                            UIManager.Instance.BossInfoContainer.SetActive(true);
+                        }
+                    }
+                }
+            }
+            TurnManager.Instance.CountEnemies();
 
             // Show spawn room
             DiscoverRoom(currentSpawn.x, currentSpawn.y);

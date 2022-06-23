@@ -4,6 +4,7 @@ using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Character.AI;
 using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
@@ -72,13 +73,46 @@ namespace TouhouPrideGameJam4.Game
             text.text = amount;
         }
 
+        private void UpdateObjectiveText()
+        {
+            if (MapManager.Instance.CurrMap.IsBossRoom)
+            {
+                _objectiveText.text = "Beat Remillia";
+            }
+            else
+            {
+                var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
+                if (enemyCount == 0)
+                {
+                    if (MapManager.Instance.CurrentWorld == 1)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest4Kill);
+                    }
+                    _objectiveText.text = "Find the exit!";
+                }
+                else
+                {
+                    if (enemyCount == _totalEnemyCount / 2 && MapManager.Instance.CurrentWorld == 0)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1Half);
+                    }
+                    _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+                }
+            }
+        }
+        private int _totalEnemyCount;
+        public void CountEnemies()
+        {
+            _totalEnemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
+        }
+
         /// <summary>
         /// Add a new enemy to the list of enemies
         /// </summary>
         public void AddCharacter(ACharacter character)
         {
             _characters.Add(character);
-            _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+            UpdateObjectiveText();
         }
 
         public void RemoveCharacter(ACharacter character)
@@ -94,17 +128,13 @@ namespace TouhouPrideGameJam4.Game
                 var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
                 if (enemyCount == 0)
                 {
-                    _objectiveText.text = "Find the exit!";
                     MapManager.Instance.EnableGoal();
                     if (MapManager.Instance.GetContent(Player.Position.x, Player.Position.y) == TileContentType.ExitEnabled)
                     {
                         MapManager.Instance.GoToNextZone();
                     }
                 }
-                else
-                {
-                    _objectiveText.text =  _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
-                }
+                UpdateObjectiveText();
             }
             Destroy(character.gameObject);
         }
@@ -153,7 +183,7 @@ namespace TouhouPrideGameJam4.Game
                     if (!moveOnly)
                     {
                         MapManager.Instance.OpenDoor(newX, newY);
-                        SoundManager.Instance.PlayClip(_openDoor);
+                        SoundManager.Instance.PlayOpenContainerClip(_openDoor);
                     }
                 }
                 else if (content == TileContentType.Chest)
@@ -161,7 +191,7 @@ namespace TouhouPrideGameJam4.Game
                     if (!moveOnly)
                     {
                         MapManager.Instance.OpenChest(newX, newY);
-                        SoundManager.Instance.PlayClip(_openDoor);
+                        SoundManager.Instance.PlayOpenContainerClip(_openDoor);
                     }
                 }
                 else

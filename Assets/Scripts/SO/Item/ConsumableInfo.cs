@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Inventory;
 using UnityEngine;
@@ -8,17 +9,25 @@ namespace TouhouPrideGameJam4.SO.Item
     [CreateAssetMenu(menuName = "ScriptableObject/Item/ConsumableInfo", fileName = "ConsumableInfo")]
     public class ConsumableInfo : AItemInfo
     {
-        public EffectType Effect;
+        public EffectType[] Effect;
         public int Value;
 
-        public override string Description => Effect switch
+        public override string Description
         {
-            EffectType.Heal => $"Heal {Value} HP",
-            EffectType.Invulnerability => $"Make you invulnerable for {Value} turns",
-            EffectType.BoostAttack => $"Double your attack for {Value} turns",
-            EffectType.BoostDefense => $"Half incoming damage for {Value} turns",
-            _ => throw new NotImplementedException()
-        };
+            get
+            {
+                return string.Join("\n", Effect.Select(x =>
+                    x switch
+                    {
+                        EffectType.Heal => $"Heal {Value} HP",
+                        EffectType.Invulnerability => $"Make you invulnerable for {Value} turns",
+                        EffectType.BoostAttack => $"Double your attack for {Value} turns",
+                        EffectType.BoostDefense => $"Half incoming damage for {Value} turns",
+                        _ => throw new NotImplementedException()
+                    })
+                );
+            }
+        }
 
         public override string ActionName => "Use";
 
@@ -28,26 +37,29 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override void DoAction(ACharacter owner)
         {
-            switch (Effect)
+            foreach (var e in Effect)
             {
-                case EffectType.Heal:
-                    owner.TakeDamage(null, -Value);
-                    break;
+                switch (e)
+                {
+                    case EffectType.Heal:
+                        owner.TakeDamage(null, -Value);
+                        break;
 
-                case EffectType.Invulnerability:
-                    owner.AddStatus(StatusType.Invincible, Value);
-                    break;
+                    case EffectType.Invulnerability:
+                        owner.AddStatus(StatusType.Invincible, Value);
+                        break;
 
-                case EffectType.BoostAttack:
-                    owner.AddStatus(StatusType.AttackBoosted, Value);
-                    break;
+                    case EffectType.BoostAttack:
+                        owner.AddStatus(StatusType.AttackBoosted, Value);
+                        break;
 
-                case EffectType.BoostDefense:
-                    owner.AddStatus(StatusType.DefenseBoosted, Value);
-                    break;
+                    case EffectType.BoostDefense:
+                        owner.AddStatus(StatusType.DefenseBoosted, Value);
+                        break;
 
-                default:
-                    throw new NotImplementedException();
+                    default:
+                        throw new NotImplementedException();
+                }
             }
             owner.RemoveItem(this);
         }

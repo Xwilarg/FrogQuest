@@ -17,5 +17,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 12c7492a9d5b9c645b5d68ac2b9a2d2b, type: 3}
   SoundOverride: {fileID: 8300000, guid: a103aaf6e04921749ad35bd2ec1d8967, type: 3}
   ActionType: {fileID: 11400000, guid: afc2076df9c75d0408987849ccc34070, type: 2}
-  Effect: 4
+  Effect: 04000000
   Value: 5

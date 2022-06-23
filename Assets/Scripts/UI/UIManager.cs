@@ -42,6 +42,11 @@ namespace TouhouPrideGameJam4.UI
         public Image ShortcutAction;
         public Sprite ActionNone;
 
+        public GameObject BossInfoContainer;
+        private float _baseBossHealth;
+        [SerializeField]
+        private Image _bossHealthBar;
+
         public Tooltip Tooltip;
 
         private ShortcutButton _shortcutTarget = null;
@@ -53,6 +58,7 @@ namespace TouhouPrideGameJam4.UI
         {
             Instance = this;
             _baseHealth = _healthBar.rectTransform.sizeDelta.x;
+            _baseBossHealth = _bossHealthBar.rectTransform.sizeDelta.x;
         }
 
         public void SetEnergyText(int energy)
@@ -75,6 +81,11 @@ namespace TouhouPrideGameJam4.UI
         public void SetHealth(float value)
         {
             _healthBar.rectTransform.sizeDelta = new Vector2(value * _baseHealth, _healthBar.rectTransform.sizeDelta.y);
+        }
+
+        public void SetBossHealth(float value)
+        {
+            _bossHealthBar.rectTransform.sizeDelta = new Vector2(value * _baseBossHealth, _bossHealthBar.rectTransform.sizeDelta.y);
         }
 
         /// <summary>

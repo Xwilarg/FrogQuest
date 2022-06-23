@@ -57,6 +57,7 @@ namespace TouhouPrideGameJam4.Character
         protected readonly Dictionary<StatusType, int> _currentEffects = new();
 
         public Team Team { set; get; }
+        public bool IsBoss { set; get; }
 
         protected bool _didReachPosition = true; // When character is done moving where it needed to
 
@@ -246,7 +247,7 @@ namespace TouhouPrideGameJam4.Character
 
             if (weapon != null && weapon.SoundOverride != null)
             {
-                SoundManager.Instance.PlayClip(weapon.SoundOverride);
+                SoundManager.Instance.PlayAttackClip(weapon.SoundOverride);
             }
 
             if (amount > 0)
@@ -294,6 +295,10 @@ namespace TouhouPrideGameJam4.Character
             {
                 _health = _info.BaseHealth;
             }
+            if (IsBoss)
+            {
+                UIManager.Instance.SetBossHealth((float)_health / _info.BaseHealth);
+            }
 
             // Display text with the damage done
 
@@ -311,6 +316,10 @@ namespace TouhouPrideGameJam4.Character
         public void Attack(ACharacter target)
         {
             target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1) * (EquippedWeapon.IsHeal ? -1 : 1));
+            if (EquippedWeapon.IsSingleUse)
+            {
+                RemoveItem(EquippedWeapon);
+            }
         }
 
         public override string ToString()

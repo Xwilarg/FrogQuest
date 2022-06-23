@@ -4,6 +4,8 @@ namespace TouhouPrideGameJam4.Inventory
     {
         Weapon,
         Potion,
-        Spell
+        Spell,
+
+        BonusChest // Only used in shop
     }
 }

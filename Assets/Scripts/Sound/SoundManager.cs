@@ -12,24 +12,26 @@ namespace TouhouPrideGameJam4.Sound
         }
 
         [SerializeField]
-        private AudioSource _source;
+        private AudioSource _attackSource, _footstepsSource, _potionsSource, _spellsSource, _equipSource, _openContainerSource, _miscSource;
 
         [SerializeField]
         private AudioClip _errorBip, _selectBip;
 
-        public void PlayClip(AudioClip clip)
-        {
-            _source.PlayOneShot(clip);
-        }
+        public void PlayAttackClip(AudioClip clip) => _attackSource.PlayOneShot(clip);
+        public void PlayFootstepsClip(AudioClip clip) => _footstepsSource.PlayOneShot(clip);
+        public void PlayPotionsClip(AudioClip clip) => _potionsSource.PlayOneShot(clip);
+        public void PlaySpellsClip(AudioClip clip) => _spellsSource.PlayOneShot(clip);
+        public void PlayEquipClip(AudioClip clip) => _equipSource.PlayOneShot(clip);
+        public void PlayOpenContainerClip(AudioClip clip) => _openContainerSource.PlayOneShot(clip);
 
         public void PlayError()
         {
-            _source.PlayOneShot(_errorBip);
+            _miscSource.PlayOneShot(_errorBip);
         }
 
         public void PlaySelectBip()
         {
-            _source.PlayOneShot(_selectBip);
+            _miscSource.PlayOneShot(_selectBip);
         }
     }
 }

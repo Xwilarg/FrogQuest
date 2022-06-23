@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.SO;
 using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
@@ -11,9 +12,11 @@ namespace TouhouPrideGameJam4.Game.Persistency
     {
         public static PersistencyManager Instance { get; private set; }
 
-        public int TotalEnergy { set; get; }
+        public int TotalEnergy { set; get; } = 10000;
 
         public StoryProgress StoryProgress { set; get; }
+
+        public int BonusChestCount { set; get; }
 
         private void Awake()
         {
@@ -36,7 +39,31 @@ namespace TouhouPrideGameJam4.Game.Persistency
         {
             _unlocked.Add(item);
             BuyableItems.RemoveAll(x => x.Item.Name == item.Name);
+            if (_countUnlocked.ContainsKey(item.Type))
+            {
+                _countUnlocked[item.Type]++;
+            }
+            else
+            {
+                _countUnlocked.Add(item.Type, 1);
+            }
         }
+
+        public int GetPrice(ItemType type)
+        {
+            const int basePrice = 100;
+            if (type == ItemType.BonusChest)
+            {
+                return basePrice * (int)Mathf.Pow(2, BonusChestCount);
+            }
+            if (!_countUnlocked.ContainsKey(type))
+            {
+                return basePrice;
+            }
+            return basePrice * (int)Mathf.Pow(2, _countUnlocked[type]);
+        }
+
+        private Dictionary<ItemType, int> _countUnlocked = new();
 
         public AItemInfo RandomUnlockedItem => _unlocked[Random.Range(0, _unlocked.Count)];
 

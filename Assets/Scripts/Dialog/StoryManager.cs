@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
 using TouhouPrideGameJam4.Game.Persistency;
+using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,14 +28,17 @@ namespace TouhouPrideGameJam4.Dialog
         private GameObject _vnContainer;
 
         [SerializeField]
-        private TextAsset _introDialog;
-        private DialogStatement[] _introStatement;
+        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2;
+        private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement;
 
         private DialogStatement[] _current;
         private int _index;
 
         [SerializeField]
         private VNCharacterInfo[] _characters;
+
+        [SerializeField]
+        private GameObject _skipIcon;
 
         private void Awake()
         {
@@ -41,10 +47,55 @@ namespace TouhouPrideGameJam4.Dialog
 
         private void Start()
         {
-            if (PersistencyManager.Instance.StoryProgress == StoryProgress.Intro)
+            var c = _characters.ToList();
+            c.Add(new()
             {
-                _introStatement = Parse(_introDialog);
-                ReadIntroduction();
+                Name = "???",
+                Key = "???"
+            });
+            _characters = c.ToArray();
+
+            ParseAllStories();
+            ProgressIsAvailable(StoryProgress.Intro);
+            if (MapManager.Instance != null)
+            {
+                ProgressIsAvailable(StoryProgress.YoukaiMountain1);
+            }
+        }
+
+        private bool _isSkipping;
+        public void ToggleSkipDialogs()
+        {
+            _isSkipping = !_isSkipping;
+            _skipIcon.SetActive(_isSkipping);
+            if (_isSkipping)
+            {
+                StartCoroutine(SkipDialogues());
+            }
+        }
+
+        private IEnumerator SkipDialogues()
+        {
+            while (_isSkipping)
+            {
+                ShowNextDialogue();
+                yield return new WaitForSeconds(.1f);
+            }
+        }
+
+        public void ProgressIsAvailable(StoryProgress requirement)
+        {
+            if (PersistencyManager.Instance.StoryProgress == requirement)
+            {
+                ReadDialogues(requirement switch
+                {
+                    StoryProgress.Intro => _introStatement,
+                    StoryProgress.YoukaiMountain1 => _mountain1Statement,
+                    StoryProgress.YoukaiMountain1Half => _mountain2Statement,
+                    StoryProgress.Forest1 => _forest1Statement,
+                    StoryProgress.Forest4Kill => _forest2Statement,
+                    _ => throw new NotImplementedException()
+                });
                 PersistencyManager.Instance.IncreaseStory();
             }
         }
@@ -52,6 +103,10 @@ namespace TouhouPrideGameJam4.Dialog
         public void ParseAllStories()
         {
             _introStatement = Parse(_introDialog);
+            _mountain1Statement = Parse(_mountain1);
+            _mountain2Statement = Parse(_mountain2);
+            _forest1Statement = Parse(_forest1);
+            _forest2Statement = Parse(_forest2);
         }
 
         public void ShowNextDialogue()
@@ -65,6 +120,7 @@ namespace TouhouPrideGameJam4.Dialog
                 {
                     button.interactable = true;
                 }
+                _isSkipping = false;
             }
             else
             {
@@ -96,11 +152,6 @@ namespace TouhouPrideGameJam4.Dialog
             }
         }
 
-        public void ReadIntroduction()
-        {
-            ReadDialogues(_introStatement);
-        }
-
         private enum ParsingExpectation
         {
             Dialogue,
@@ -118,7 +169,7 @@ namespace TouhouPrideGameJam4.Dialog
             VNCharacterInfo currentCharacter = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'…,.]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "[\\w?]+|\"[\\w\\s!?'’…,.()…‘’:-]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];
@@ -131,7 +182,7 @@ namespace TouhouPrideGameJam4.Dialog
                     }
                     else
                     {
-                        throw new System.InvalidOperationException($"Parsing of {file.name} failed at {match} for state {exp}");
+                        throw new InvalidOperationException($"Parsing of {file.name} failed at {match} for state {exp}");
                     }
                 }
                 else
@@ -142,6 +193,11 @@ namespace TouhouPrideGameJam4.Dialog
                         currentCharacter = null;
                         exp = ParsingExpectation.Dialogue;
                     }
+                    else if (match == "???" && exp == ParsingExpectation.Start) // We are at the start and found a character info
+                    {
+                        currentCharacter = character;
+                        exp = ParsingExpectation.Mood;
+                    }
                     else if (character != null && exp == ParsingExpectation.Start) // We are at the start and found a character info
                     {
                         currentCharacter = character;
@@ -149,16 +205,25 @@ namespace TouhouPrideGameJam4.Dialog
                     }
                     else if (exp == ParsingExpectation.Mood) // Next element, mood info
                     {
-                        targetMood = match.ToLowerInvariant() switch
+                        if (currentCharacter.Key != "???")
                         {
-                            "joyful" => currentCharacter.JoyfulExpression,
-                            "neutral" => currentCharacter.NeutralExpression,
-                            "eyesclosed" => currentCharacter.EyesClosedExpression,
-                            "angry" => currentCharacter.AngryExpression,
-                            "surprised" => currentCharacter.SurprisedExpression,
-                            "sad" => currentCharacter.SadExpression,
-                            _ => throw new System.InvalidOperationException($"Invalid expression {match}")
-                        };
+                            targetMood = match.ToLowerInvariant() switch
+                            {
+                                "joyful" => currentCharacter.JoyfulExpression,
+                                "neutral" => currentCharacter.NeutralExpression,
+                                "eyesclosed" => currentCharacter.EyesClosedExpression,
+                                "angry" => currentCharacter.AngryExpression,
+                                "surprised" => currentCharacter.SurprisedExpression,
+                                "sad" => currentCharacter.SadExpression,
+                                "shocked" => currentCharacter.ShockedExpression,
+                                "shy" => currentCharacter.ShyExpression,
+                                _ => throw new InvalidOperationException($"Invalid expression {match}")
+                            };
+                        }
+                        else
+                        {
+                            targetMood = null;
+                        }
                         exp = ParsingExpectation.Dialogue;
                     }
                     else if (character == null)
