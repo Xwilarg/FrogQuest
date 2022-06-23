@@ -25,8 +25,8 @@ namespace TouhouPrideGameJam4.Dialog
         private GameObject _vnContainer;
 
         [SerializeField]
-        private TextAsset _introDialog;
-        private DialogStatement[] _introStatement;
+        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2;
+        private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement;
 
         private DialogStatement[] _current;
         private int _index;
@@ -52,6 +52,10 @@ namespace TouhouPrideGameJam4.Dialog
         public void ParseAllStories()
         {
             _introStatement = Parse(_introDialog);
+            _mountain1Statement = Parse(_mountain1);
+            _mountain2Statement = Parse(_mountain2);
+            _forest1Statement = Parse(_forest1);
+            _forest2Statement = Parse(_forest2);
         }
 
         public void ShowNextDialogue()
@@ -118,7 +122,7 @@ namespace TouhouPrideGameJam4.Dialog
             VNCharacterInfo currentCharacter = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'’…,.]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'’…,.()…‘’-]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];
@@ -157,6 +161,8 @@ namespace TouhouPrideGameJam4.Dialog
                             "angry" => currentCharacter.AngryExpression,
                             "surprised" => currentCharacter.SurprisedExpression,
                             "sad" => currentCharacter.SadExpression,
+                            "shocked" => currentCharacter.ShockedExpression,
+                            "shy" => currentCharacter.ShyExpression,
                             _ => throw new System.InvalidOperationException($"Invalid expression {match}")
                         };
                         exp = ParsingExpectation.Dialogue;

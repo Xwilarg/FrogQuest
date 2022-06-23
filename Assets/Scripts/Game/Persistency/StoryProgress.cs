@@ -3,9 +3,10 @@
     public enum StoryProgress
     {
         Intro,
-        MeetAya,
-        MeetReimu,
-        FindSDM,
+        YoukaiMountain0,
+        YoukaiMountain3,
+        Forest1,
+        Forest3Kill,
         EndOfGame
     }
 }

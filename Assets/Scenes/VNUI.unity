@@ -286,5 +286,9 @@ MonoBehaviour:
   _vnImage: {fileID: 1212145243}
   _vnContainer: {fileID: 1212145242}
   _introDialog: {fileID: 4900000, guid: 3c48a9f993c94d34c961c9865f71d917, type: 3}
+  _mountain1: {fileID: 4900000, guid: d48a570759ed1514aafdecc56cb97bd7, type: 3}
+  _mountain2: {fileID: 4900000, guid: 6f4280d37dc582043ab3a997e11a4b40, type: 3}
+  _forest1: {fileID: 4900000, guid: c771543854656784cba376789b9e37e8, type: 3}
+  _forest2: {fileID: 4900000, guid: 52f6d55293bca894bb0fff7bbe779be9, type: 3}
   _characters:
   - {fileID: 11400000, guid: f32ab0a85806856428b682f76700eac1, type: 2}
