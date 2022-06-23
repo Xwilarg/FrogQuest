@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using TouhouPrideGameJam4.Game;
+﻿using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ namespace Assets.Scripts.Projectile
         public bool DestroyAfterFirstHit { set; get; }
         public Vector2Int CurrentPos { set; get; }
         public int Damage { set; get; }
+        public bool NoEffectOnBoss { set; get; }
 
         private void Update()
         {
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Projectile
                 var target = TurnManager.Instance.GetCharacterPos(CurrentPos.x, CurrentPos.y);
                 if (target != null)
                 {
-                    target.TakeDamage(null, Damage);
+                    target.TakeDamage(null, target.IsBoss && NoEffectOnBoss ? 0 : Damage);
                     if (DestroyAfterFirstHit)
                     {
                         Destroy(gameObject);
@@ -31,17 +31,6 @@ namespace Assets.Scripts.Projectile
                     Destroy(gameObject);
                 }
             }
-        }
-
-        private IEnumerator WaitABitAndDestroy()
-        {
-            var rb = GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.zero;
-            rb.isKinematic = true;
-
-            yield return new WaitForSeconds(1f);
-
-            Destroy(gameObject);
         }
     }
 }

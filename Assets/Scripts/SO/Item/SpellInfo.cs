@@ -43,6 +43,7 @@ namespace TouhouPrideGameJam4.SO.Item
         public float XOffset, YOffset;
 
         public bool Piercing;
+        public bool NoEffectOnBoss;
 
         public override ItemType Type => ItemType.Spell;
 
@@ -62,6 +63,7 @@ namespace TouhouPrideGameJam4.SO.Item
                 var proj = go.GetComponent<DamageProjectile>();
                 proj.Damage = DamagePerProjectile;
                 proj.CurrentPos = owner.Position;
+                proj.NoEffectOnBoss = NoEffectOnBoss;
                 proj.DestroyAfterFirstHit = !Piercing;
                 var direction = owner.RelativeDirection;
                 go.GetComponent<Rigidbody2D>().AddForce((Vector2)direction * Speed);

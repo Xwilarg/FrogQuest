@@ -27,3 +27,4 @@ MonoBehaviour:
   XOffset: 0
   YOffset: 0
   Piercing: 0
+  NoEffectOnBoss: 1

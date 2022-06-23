@@ -42,7 +42,6 @@ namespace TouhouPrideGameJam4.UI
             try
             {
                 var sound = Content.SoundOverride == null ? Content.ActionType.ActionSound : Content.SoundOverride;
-                Content.DoAction(PlayerController.Instance);
                 switch (Content.Type)
                 {
                     case Inventory.ItemType.Weapon:
@@ -56,6 +55,7 @@ namespace TouhouPrideGameJam4.UI
                         break;
                     default: throw new System.NotImplementedException();
                 }
+                Content.DoAction(PlayerController.Instance);
                 PlayerController.Instance.UpdateInventoryDisplay();
             }
             catch (NoFreeSpaceException)
