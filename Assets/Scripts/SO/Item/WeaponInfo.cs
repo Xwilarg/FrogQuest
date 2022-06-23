@@ -18,6 +18,8 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public bool IsSingleUse;
 
+        public bool CanCounterAttack;
+
         public override string Description => $"{Damage} damage";
 
         public override string ActionName => "Equip";

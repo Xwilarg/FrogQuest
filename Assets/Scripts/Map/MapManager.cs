@@ -23,7 +23,7 @@ namespace TouhouPrideGameJam4.Map
         [SerializeField]
         private MapInfo[] _info;
 
-        public int CurrentWorld { set; get; }
+        public int CurrentWorld { set; get; } = 3;
         private int _currentLevel;
 
         public MapInfo CurrMap => _info[CurrentWorld];

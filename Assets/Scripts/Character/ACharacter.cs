@@ -320,6 +320,10 @@ namespace TouhouPrideGameJam4.Character
             {
                 RemoveItem(EquippedWeapon);
             }
+            if (target != null && target.EquippedWeapon != null && target.EquippedWeapon.CanCounterAttack) // Target didn't die and can counter attack
+            {
+                target.Attack(this);
+            }
         }
 
         public override string ToString()
