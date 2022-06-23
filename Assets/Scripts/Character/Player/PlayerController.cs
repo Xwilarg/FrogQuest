@@ -167,6 +167,14 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
+        public void OnSkipDialogs(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                StoryManager.Instance.ToggleSkipDialogs();
+            }
+        }
+
         private bool _waitingForNextPress;
         public void OnMovement(InputAction.CallbackContext value)
         {

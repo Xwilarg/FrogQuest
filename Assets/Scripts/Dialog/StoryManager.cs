@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -36,6 +37,9 @@ namespace TouhouPrideGameJam4.Dialog
         [SerializeField]
         private VNCharacterInfo[] _characters;
 
+        [SerializeField]
+        private GameObject _skipIcon;
+
         private void Awake()
         {
             Instance = this;
@@ -47,7 +51,27 @@ namespace TouhouPrideGameJam4.Dialog
             ProgressIsAvailable(StoryProgress.Intro);
             if (MapManager.Instance != null)
             {
-                StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1);
+                ProgressIsAvailable(StoryProgress.YoukaiMountain1);
+            }
+        }
+
+        private bool _isSkipping;
+        public void ToggleSkipDialogs()
+        {
+            _isSkipping = !_isSkipping;
+            _skipIcon.SetActive(_isSkipping);
+            if (_isSkipping)
+            {
+                StartCoroutine(SkipDialogues());
+            }
+        }
+
+        private IEnumerator SkipDialogues()
+        {
+            while (_isSkipping)
+            {
+                ShowNextDialogue();
+                yield return new WaitForSeconds(.1f);
             }
         }
 
@@ -88,6 +112,7 @@ namespace TouhouPrideGameJam4.Dialog
                 {
                     button.interactable = true;
                 }
+                _isSkipping = false;
             }
             else
             {
