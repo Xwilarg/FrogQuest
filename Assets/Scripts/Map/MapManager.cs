@@ -24,7 +24,7 @@ namespace TouhouPrideGameJam4.Map
         private MapInfo[] _info;
 
         public int CurrentWorld { set; get; } = 3;
-        private int _currentLevel;
+        public int CurrentLevel { set; get; }
 
         public MapInfo CurrMap => _info[CurrentWorld];
 
@@ -60,10 +60,10 @@ namespace TouhouPrideGameJam4.Map
 
         public void GoToNextZone()
         {
-            if (_currentLevel + 1 == CurrMap.StageCount)
+            if (CurrentLevel + 1 == CurrMap.StageCount)
             {
                 CurrentWorld++;
-                _currentLevel = 0;
+                CurrentLevel = 0;
                 BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
                 if (CurrentWorld == 1)
                 {
@@ -72,7 +72,7 @@ namespace TouhouPrideGameJam4.Map
             }
             else
             {
-                _currentLevel++;
+                CurrentLevel++;
             }
             InitMap();
         }
@@ -84,7 +84,7 @@ namespace TouhouPrideGameJam4.Map
             _rooms.Clear();
 
             _mapImage.sprite = CurrMap.Image;
-            _mapText.text = $"{CurrMap.Name}\n\n{_currentLevel + 1}/{CurrMap.StageCount}";
+            _mapText.text = $"{CurrMap.Name}\n\n{CurrentLevel + 1}/{CurrMap.StageCount}";
 
             // Init map
             _map = new Tile[CurrMap.MapSize][];

@@ -92,7 +92,7 @@ namespace TouhouPrideGameJam4.Game
                 }
                 else
                 {
-                    if (enemyCount == _totalEnemyCount / 2 && MapManager.Instance.CurrentWorld == 0)
+                    if (enemyCount == _totalEnemyCount / 2 && MapManager.Instance.CurrentWorld == 0 && MapManager.Instance.CurrentLevel == 2)
                     {
                         StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1Half);
                     }
