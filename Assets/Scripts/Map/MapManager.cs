@@ -56,7 +56,6 @@ namespace TouhouPrideGameJam4.Map
             _roomsParent = new("Rooms");
             InitMap();
             BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
-            StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1);
         }
 
         public void GoToNextZone()

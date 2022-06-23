@@ -6,6 +6,7 @@ using TMPro;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
 using TouhouPrideGameJam4.Game.Persistency;
+using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +45,10 @@ namespace TouhouPrideGameJam4.Dialog
         {
             ParseAllStories();
             ProgressIsAvailable(StoryProgress.Intro);
+            if (MapManager.Instance != null)
+            {
+                StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1);
+            }
         }
 
         public void ProgressIsAvailable(StoryProgress requirement)
