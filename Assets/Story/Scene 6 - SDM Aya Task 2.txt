@@ -108,4 +108,4 @@ sanae joyful "Yes, I believe this is it! This must be the right path!"
 reimu neutral "Then, lead the way!"
 none "My heart is pounding out of my chest! But I can’t give up now."
 "Everyone is counting on me to lead them to the end!"
-"Lady Kanako, may your blessings be upon me!’
+"Lady Kanako, may your blessings be upon me!"
