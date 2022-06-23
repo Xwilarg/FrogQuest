@@ -47,6 +47,14 @@ namespace TouhouPrideGameJam4.Dialog
 
         private void Start()
         {
+            var c = _characters.ToList();
+            c.Add(new()
+            {
+                Name = "???",
+                Key = "???"
+            });
+            _characters = c.ToArray();
+
             ParseAllStories();
             ProgressIsAvailable(StoryProgress.Intro);
             if (MapManager.Instance != null)
@@ -161,7 +169,7 @@ namespace TouhouPrideGameJam4.Dialog
             VNCharacterInfo currentCharacter = null;
             ParsingExpectation exp = ParsingExpectation.Start;
 
-            foreach (var m in Regex.Matches(file.text, "\\w+|\"[\\w\\s!?'’…,.()…‘’:-]*\"|\\n").Cast<Match>().Select(x => x.Value))
+            foreach (var m in Regex.Matches(file.text, "[\\w?]+|\"[\\w\\s!?'’…,.()…‘’:-]*\"|\\n").Cast<Match>().Select(x => x.Value))
             {
                 var match = m;
                 if (m.StartsWith("\"")) match = match[1..];
@@ -174,7 +182,7 @@ namespace TouhouPrideGameJam4.Dialog
                     }
                     else
                     {
-                        throw new System.InvalidOperationException($"Parsing of {file.name} failed at {match} for state {exp}");
+                        throw new InvalidOperationException($"Parsing of {file.name} failed at {match} for state {exp}");
                     }
                 }
                 else
@@ -185,6 +193,11 @@ namespace TouhouPrideGameJam4.Dialog
                         currentCharacter = null;
                         exp = ParsingExpectation.Dialogue;
                     }
+                    else if (match == "???" && exp == ParsingExpectation.Start) // We are at the start and found a character info
+                    {
+                        currentCharacter = character;
+                        exp = ParsingExpectation.Mood;
+                    }
                     else if (character != null && exp == ParsingExpectation.Start) // We are at the start and found a character info
                     {
                         currentCharacter = character;
@@ -192,18 +205,25 @@ namespace TouhouPrideGameJam4.Dialog
                     }
                     else if (exp == ParsingExpectation.Mood) // Next element, mood info
                     {
-                        targetMood = match.ToLowerInvariant() switch
+                        if (currentCharacter.Key != "???")
                         {
-                            "joyful" => currentCharacter.JoyfulExpression,
-                            "neutral" => currentCharacter.NeutralExpression,
-                            "eyesclosed" => currentCharacter.EyesClosedExpression,
-                            "angry" => currentCharacter.AngryExpression,
-                            "surprised" => currentCharacter.SurprisedExpression,
-                            "sad" => currentCharacter.SadExpression,
-                            "shocked" => currentCharacter.ShockedExpression,
-                            "shy" => currentCharacter.ShyExpression,
-                            _ => throw new System.InvalidOperationException($"Invalid expression {match}")
-                        };
+                            targetMood = match.ToLowerInvariant() switch
+                            {
+                                "joyful" => currentCharacter.JoyfulExpression,
+                                "neutral" => currentCharacter.NeutralExpression,
+                                "eyesclosed" => currentCharacter.EyesClosedExpression,
+                                "angry" => currentCharacter.AngryExpression,
+                                "surprised" => currentCharacter.SurprisedExpression,
+                                "sad" => currentCharacter.SadExpression,
+                                "shocked" => currentCharacter.ShockedExpression,
+                                "shy" => currentCharacter.ShyExpression,
+                                _ => throw new InvalidOperationException($"Invalid expression {match}")
+                            };
+                        }
+                        else
+                        {
+                            targetMood = null;
+                        }
                         exp = ParsingExpectation.Dialogue;
                     }
                     else if (character == null)

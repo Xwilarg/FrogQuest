@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7193130888304280588, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
@@ -371,6 +371,9 @@ MonoBehaviour:
   _forest2: {fileID: 4900000, guid: 52f6d55293bca894bb0fff7bbe779be9, type: 3}
   _characters:
   - {fileID: 11400000, guid: f32ab0a85806856428b682f76700eac1, type: 2}
+  - {fileID: 11400000, guid: 2adc6340533b61142a2c72b853c6a484, type: 2}
+  - {fileID: 11400000, guid: f149f3c152029ca41b843279c20efa09, type: 2}
+  - {fileID: 11400000, guid: 1e7139f824429cf4da9fadc6ac568f5e, type: 2}
   _skipIcon: {fileID: 1159671226}
 --- !u!224 &1828170869 stripped
 RectTransform:
