@@ -10,6 +10,7 @@ namespace Assets.Scripts.Projectile
         public Vector2Int CurrentPos { set; get; }
         public int Damage { set; get; }
         public bool NoEffectOnBoss { set; get; }
+        public int Owner { set; get; }
 
         private void Update()
         {
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Projectile
             {
                 CurrentPos = pos;
                 var target = TurnManager.Instance.GetCharacterPos(CurrentPos.x, CurrentPos.y);
-                if (target != null)
+                if (target != null && target.GetInstanceID() != Owner)
                 {
                     target.TakeDamage(null, target.IsBoss && NoEffectOnBoss ? 0 : Damage);
                     if (DestroyAfterFirstHit)

@@ -65,6 +65,7 @@ namespace TouhouPrideGameJam4.SO.Item
                 proj.CurrentPos = owner.Position;
                 proj.NoEffectOnBoss = NoEffectOnBoss;
                 proj.DestroyAfterFirstHit = !Piercing;
+                proj.Owner = owner.GetInstanceID();
                 var direction = owner.RelativeDirection;
                 go.GetComponent<Rigidbody2D>().AddForce((Vector2)direction * Speed);
                 Destroy(go, 10f);
