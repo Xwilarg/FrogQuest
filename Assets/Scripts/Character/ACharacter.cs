@@ -323,11 +323,7 @@ namespace TouhouPrideGameJam4.Character
             }
             if (target != null) // Target is not dead
             {
-                if (target.IsBoss)
-                {
-                    ((Enemy)target).AttackCharge = 0;
-                }
-                if (target != null && target.EquippedWeapon != null && target.EquippedWeapon.CanCounterAttack)
+                if (target.EquippedWeapon != null && target.EquippedWeapon.CanCounterAttack)
                 {
                     target.Attack(this);
                 }

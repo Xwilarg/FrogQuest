@@ -294,6 +294,13 @@ namespace TouhouPrideGameJam4.Game
             }
         }
 
+
+
+        private void BossAI(ACharacter c, Vector2Int[] directions, IOrderedEnumerable<ACharacter> targets)
+        {
+            var enemy = (Enemy)c;
+        }
+
         public void PlayEnemyTurn()
         {
             Vector2Int[] directions = new[]
@@ -323,7 +330,14 @@ namespace TouhouPrideGameJam4.Game
 
                 if (c.CanDoSomething() && targets.Any())
                 {
-                    NormalAI(c, directions, targets);
+                    if (c.IsBoss)
+                    {
+                        BossAI(c, directions, targets);
+                    }
+                    else
+                    {
+                        NormalAI(c, directions, targets);
+                    }
                 }
                 else
                 {
