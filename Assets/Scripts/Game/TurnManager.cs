@@ -220,6 +220,80 @@ namespace TouhouPrideGameJam4.Game
             return false;
         }
 
+        private void NormalAI(ACharacter c, Vector2Int[] directions, IOrderedEnumerable<ACharacter> targets)
+        {
+            var enemy = (Enemy)c;
+
+            // If the enemy is close enough
+            if (Vector2.Distance(c.Position, targets.First().Position) < _aiInfo.MaxDistanceToMove)
+            {
+                bool didPlay = false;
+                //var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position)); // TODO: ???
+
+                // We try to attack him
+                foreach (var d in directions)
+                {
+                    for (int r = 1; r <= c.EquippedWeapon.Range; r++)
+                    {
+                        var x = c.Position.x + (d.x * r);
+                        var y = c.Position.y + (d.y * r);
+                        if (MapManager.Instance.IsTileWalkable(x, y))
+                        {
+                            var target = targets.FirstOrDefault(o => o.Position.x == x && o.Position.y == y);
+                            if (target != null && (!c.EquippedWeapon.IsHeal || !target.IsHealthFull)) // We found a target and either it's an enemy, or an allie with health not full
+                            {
+                                if (enemy.AttackCharge < c.Info.TimeBeforeAttack)
+                                {
+                                    enemy.AttackCharge++;
+                                }
+                                else
+                                {
+                                    c.Attack(target);
+                                    SetDirection(c, d.x, d.y);
+                                    if (c.Info.DoesDisappearAfterAttacking)
+                                    {
+                                        RemoveCharacter(c);
+                                    }
+                                    enemy.AttackCharge = 0;
+                                }
+                                didPlay = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Else we try to move towards its position
+                if (!didPlay)
+                {
+                    if (enemy.AttackCharge > 0)
+                    {
+                        enemy.AttackCharge = 0;
+                    }
+                    else
+                    {
+                        if (c.CanMove())
+                        {
+                            foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
+                            {
+                                if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
+                                {
+                                    // An enemy is obstructing the way
+                                    continue;
+                                }
+                                else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
+                                {
+                                    c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
+                                    SetDirection(c, d.x, d.y);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public void PlayEnemyTurn()
         {
             Vector2Int[] directions = new[]
@@ -229,12 +303,12 @@ namespace TouhouPrideGameJam4.Game
             for (int i = _characters.Count - 1; i >= 0; i--)
             {
                 var c = _characters[i];
+
                 // We ignore player or if the current character is disabled
-                if (c is not Enemy enemy || !c.gameObject.activeInHierarchy || !c.CanDoSomething())
+                if (c is not Enemy || !c.gameObject.activeInHierarchy)
                 {
                     continue;
                 }
-
                 // Our target is the closest character with a different team than ours
                 var targets = _characters
                     .Where(x => (c.EquippedWeapon.IsHeal ? (x.Team == c.Team && x.GetInstanceID() != c.GetInstanceID()) : x.Team != c.Team) && x.gameObject.activeInHierarchy)
@@ -247,79 +321,13 @@ namespace TouhouPrideGameJam4.Game
                         return Vector2.Distance(c.Position, x.Position);
                     });
 
-                if (!targets.Any())
+                if (c.CanDoSomething() && targets.Any())
                 {
-                    enemy.AttackCharge = 0;
-                    continue;
+                    NormalAI(c, directions, targets);
                 }
-
-                // If the enemy is close enough
-                if (Vector2.Distance(c.Position, targets.First().Position) < _aiInfo.MaxDistanceToMove)
+                else
                 {
-                    bool didPlay = false;
-                    //var dirTarget = directions.OrderBy(d => Vector2.Distance(c.Position + d, target.Position)); // TODO: ???
-
-                    // We try to attack him
-                    foreach (var d in directions)
-                    {
-                        for (int r = 1; r <= c.EquippedWeapon.Range; r++)
-                        {
-                            var x = c.Position.x + (d.x * r);
-                            var y = c.Position.y + (d.y * r);
-                            if (MapManager.Instance.IsTileWalkable(x, y))
-                            {
-                                var target = targets.FirstOrDefault(o => o.Position.x == x && o.Position.y == y);
-                                if (target != null && (!c.EquippedWeapon.IsHeal || !target.IsHealthFull)) // We found a target and either it's an enemy, or an allie with health not full
-                                {
-                                    if (enemy.AttackCharge < c.Info.TimeBeforeAttack)
-                                    {
-                                        enemy.AttackCharge++;
-                                    }
-                                    else
-                                    {
-                                        c.Attack(target);
-                                        SetDirection(c, d.x, d.y);
-                                        if (c.Info.DoesDisappearAfterAttacking)
-                                        {
-                                            RemoveCharacter(c);
-                                        }
-                                        enemy.AttackCharge = 0;
-                                    }
-                                    didPlay = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    // Else we try to move towards its position
-                    if (!didPlay)
-                    {
-                        if (enemy.AttackCharge > 0)
-                        {
-                            enemy.AttackCharge = 0;
-                        }
-                        else
-                        {
-                            if (c.CanMove())
-                            {
-                                foreach (var d in directions.OrderBy(d => Vector2.Distance(c.Position + d, targets.First().Position)))
-                                {
-                                    if (_characters.FirstOrDefault(e => e.Position.x == c.Position.x + d.x && e.Position.y == c.Position.y + d.y))
-                                    {
-                                        // An enemy is obstructing the way
-                                        continue;
-                                    }
-                                    else if (MapManager.Instance.IsTileWalkable(c.Position.x + d.x, c.Position.y + d.y))
-                                    {
-                                        c.Position = new(c.Position.x + d.x, c.Position.y + d.y);
-                                        SetDirection(c, d.x, d.y);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    ((Enemy)c).AttackCharge = 0;
                 }
                 c.EndTurn();
             }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TouhouPrideGameJam4.Character.AI;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
@@ -320,9 +321,16 @@ namespace TouhouPrideGameJam4.Character
             {
                 RemoveItem(EquippedWeapon);
             }
-            if (target != null && target.EquippedWeapon != null && target.EquippedWeapon.CanCounterAttack) // Target didn't die and can counter attack
+            if (target != null) // Target is not dead
             {
-                target.Attack(this);
+                if (target.IsBoss)
+                {
+                    ((Enemy)target).AttackCharge = 0;
+                }
+                if (target != null && target.EquippedWeapon != null && target.EquippedWeapon.CanCounterAttack)
+                {
+                    target.Attack(this);
+                }
             }
         }
 
