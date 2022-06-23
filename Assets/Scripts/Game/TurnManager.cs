@@ -4,6 +4,7 @@ using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Character.AI;
 using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
@@ -83,13 +84,26 @@ namespace TouhouPrideGameJam4.Game
                 var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
                 if (enemyCount == 0)
                 {
+                    if (MapManager.Instance.CurrentWorld == 1)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest4Kill);
+                    }
                     _objectiveText.text = "Find the exit!";
                 }
                 else
                 {
+                    if (enemyCount == _totalEnemyCount / 2 && MapManager.Instance.CurrentWorld == 0)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1Half);
+                    }
                     _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
                 }
             }
+        }
+        private int _totalEnemyCount;
+        public void CountEnemies()
+        {
+            _totalEnemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -41,10 +42,23 @@ namespace TouhouPrideGameJam4.Dialog
 
         private void Start()
         {
-            if (PersistencyManager.Instance.StoryProgress == StoryProgress.Intro)
+            ParseAllStories();
+            ProgressIsAvailable(StoryProgress.Intro);
+        }
+
+        public void ProgressIsAvailable(StoryProgress requirement)
+        {
+            if (PersistencyManager.Instance.StoryProgress == requirement)
             {
-                _introStatement = Parse(_introDialog);
-                ReadIntroduction();
+                ReadDialogues(requirement switch
+                {
+                    StoryProgress.Intro => _introStatement,
+                    StoryProgress.YoukaiMountain1 => _mountain1Statement,
+                    StoryProgress.YoukaiMountain1Half => _mountain2Statement,
+                    StoryProgress.Forest1 => _forest1Statement,
+                    StoryProgress.Forest4Kill => _forest2Statement,
+                    _ => throw new NotImplementedException()
+                });
                 PersistencyManager.Instance.IncreaseStory();
             }
         }
@@ -98,11 +112,6 @@ namespace TouhouPrideGameJam4.Dialog
             {
                 button.interactable = false;
             }
-        }
-
-        public void ReadIntroduction()
-        {
-            ReadDialogues(_introStatement);
         }
 
         private enum ParsingExpectation

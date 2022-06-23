@@ -3,10 +3,10 @@
     public enum StoryProgress
     {
         Intro,
-        YoukaiMountain0,
-        YoukaiMountain3,
+        YoukaiMountain1,
+        YoukaiMountain1Half,
         Forest1,
-        Forest3Kill,
+        Forest4Kill,
         EndOfGame
     }
 }
