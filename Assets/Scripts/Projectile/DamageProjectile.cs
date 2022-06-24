@@ -11,6 +11,7 @@ namespace Assets.Scripts.Projectile
         public int Damage { set; get; }
         public bool NoEffectOnBoss { set; get; }
         public int Owner { set; get; }
+        public int Range { set; get; }
 
         private void Update()
         {
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Projectile
             if (pos != CurrentPos)
             {
                 CurrentPos = pos;
+                Range--;
                 var target = TurnManager.Instance.GetCharacterPos(CurrentPos.x, CurrentPos.y);
                 if (target != null && target.GetInstanceID() != Owner)
                 {
@@ -28,6 +30,10 @@ namespace Assets.Scripts.Projectile
                     }
                 }
                 else if (!MapManager.Instance.IsTileWalkable(CurrentPos.x, CurrentPos.y))
+                {
+                    Destroy(gameObject);
+                }
+                if (Range == 0)
                 {
                     Destroy(gameObject);
                 }

@@ -45,6 +45,7 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public Color StartColor, EndColor;
         public float StartSize, EndSize;
+        public int Range = -1;
 
         public override ItemType Type => ItemType.Spell;
 
@@ -72,6 +73,7 @@ namespace TouhouPrideGameJam4.SO.Item
                 proj.NoEffectOnBoss = NoEffectOnBoss;
                 proj.DestroyAfterFirstHit = !Piercing;
                 proj.Owner = owner.GetInstanceID();
+                proj.Range = Range;
                 var direction = owner.RelativeDirection;
                 go.GetComponent<Rigidbody2D>().AddForce((Vector2)direction * Speed);
                 Destroy(go, 10f);
