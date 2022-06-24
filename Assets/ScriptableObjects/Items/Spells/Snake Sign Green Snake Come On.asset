@@ -15,8 +15,9 @@ MonoBehaviour:
   UtilityDescription: 
   Name: Snake Sign "Green Snake Come On"
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
+  SoundOverride: {fileID: 8300000, guid: 7a4e86189d6afdc4ca01132ef3bafbb0, type: 3}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
-  Effect: 1
+  Effect: 
   Value: 0
   Prefab: {fileID: 6109682699214613380, guid: 26d659ff054a75b4fa3e14c818143950, type: 3}
   Team: 0

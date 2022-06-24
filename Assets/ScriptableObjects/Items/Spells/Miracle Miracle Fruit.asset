@@ -15,8 +15,9 @@ MonoBehaviour:
   UtilityDescription: 
   Name: Miracle "Miracle Fruit"
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
+  SoundOverride: {fileID: 8300000, guid: 58d315ad0048a6e438b476cd1fa18d59, type: 3}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
-  Effect: 1
+  Effect: 
   Value: 0
   Status: 0400000003000000
   TurnCount: 5

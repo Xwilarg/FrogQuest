@@ -15,8 +15,9 @@ MonoBehaviour:
   UtilityDescription: 
   Name: Snake Sign "Bind Snake Come On"
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
+  SoundOverride: {fileID: 8300000, guid: b773d87df1bdc4f46826444f69e13041, type: 3}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
-  Effect: 1
+  Effect: 
   Value: 0
   Prefab: {fileID: 5297207215834165471, guid: 666b98936da552644a4e1978982e1c45, type: 3}
   Team: 0

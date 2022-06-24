@@ -15,9 +15,11 @@ MonoBehaviour:
   UtilityDescription: 
   Name: Naginata
   Sprite: {fileID: 21300000, guid: ffc213999bba9e04e9b19a035e4661d8, type: 3}
-  SoundOverride: {fileID: 0}
+  SoundOverride: {fileID: 8300000, guid: 7dda035c7fc9ece4cb462a0de06f5b76, type: 3}
   ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}
   Damage: 5
-  HitEffects: 
+  HitEffects: []
   Range: 2
   IsHeal: 0
+  IsSingleUse: 0
+  CanCounterAttack: 0
