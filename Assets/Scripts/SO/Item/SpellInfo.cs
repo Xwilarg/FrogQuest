@@ -1,9 +1,7 @@
 ﻿using Assets.Scripts.Projectile;
 using System.Collections;
 using TouhouPrideGameJam4.Character;
-using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
-using TouhouPrideGameJam4.Map;
 using UnityEngine;
 
 namespace TouhouPrideGameJam4.SO.Item
@@ -45,6 +43,9 @@ namespace TouhouPrideGameJam4.SO.Item
         public bool Piercing;
         public bool NoEffectOnBoss;
 
+        public Color StartColor, EndColor;
+        public float StartSize, EndSize;
+
         public override ItemType Type => ItemType.Spell;
 
         public override string Description => $"Launch {ProjectileCount} projectiles each doing {DamagePerProjectile} damage";
@@ -60,6 +61,11 @@ namespace TouhouPrideGameJam4.SO.Item
             for (int i = 0; i < ProjectileCount; i++)
             {
                 var go = Instantiate(ProjectilePrefab, (Vector2)owner.Position + new Vector2(Random.Range(-XOffset, XOffset), Random.Range(-YOffset, YOffset)), Quaternion.identity);
+                var renderer = go.GetComponent<TrailRenderer>();
+                renderer.startColor = StartColor;
+                renderer.endColor = EndColor;
+                renderer.startWidth = StartSize;
+                renderer.endWidth = EndSize;
                 var proj = go.GetComponent<DamageProjectile>();
                 proj.Damage = DamagePerProjectile;
                 proj.CurrentPos = owner.Position;

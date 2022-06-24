@@ -17,7 +17,7 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 5626ee4374bd4784f91105466a89066c, type: 3}
   SoundOverride: {fileID: 0}
   ActionType: {fileID: 11400000, guid: ac22856e73f30af43bfc788b44f0f3e5, type: 2}
-  Effect: 1
+  Effect: 
   Value: 0
   ProjectilePrefab: {fileID: 5741561768511771132, guid: fae32c60a1f48ee4e90fe237e7294dcd, type: 3}
   Speed: 1000
@@ -27,3 +27,8 @@ MonoBehaviour:
   XOffset: 0.5
   YOffset: 0.5
   Piercing: 1
+  NoEffectOnBoss: 0
+  StartColor: {r: 0.12815951, g: 0.18430851, b: 0.6037736, a: 0}
+  EndColor: {r: 0.46186364, g: 0.5736635, b: 0.9150943, a: 0}
+  StartSize: 0.1
+  EndSize: 0.06
