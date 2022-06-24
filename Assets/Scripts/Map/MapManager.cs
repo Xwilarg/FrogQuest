@@ -322,6 +322,47 @@ namespace TouhouPrideGameJam4.Map
             }
         }
 
+        public Vector2Int[] FindPath(Vector2Int start, Vector2Int stop)
+        {
+            var directions = new[]
+            {
+                Vector2Int.left, Vector2Int.right,
+                Vector2Int.up, Vector2Int.down
+            };
+            var basePath = new List<Vector2Int>()
+            {
+                start
+            };
+            int best = int.MaxValue;
+            return FindPathInternal(stop, 0, ref best, basePath, directions).ToArray();
+        }
+
+        private List<Vector2Int> FindPathInternal(Vector2Int stop, int curr, ref int best, List<Vector2Int> current, Vector2Int[] directions)
+        {
+            if (curr == best)
+            {
+                return null;
+            }
+            var lastNode = current.Last();
+            List<List<Vector2Int>> allPaths = new();
+            foreach (var dir in directions)
+            {
+                var next = lastNode + dir;
+                if (next == stop)
+                {
+                    best = curr;
+                    current.Add(stop);
+                    return current;
+                }
+                else if (!current.Contains(next) && IsTileWalkable(next.x, next.y))
+                {
+                    current.Add(next);
+                    allPaths.Add(FindPathInternal(stop, curr + 1, ref best, new(current), directions));
+                }
+            }
+            return allPaths.Where(x => x != null).OrderBy(x => x.Count).FirstOrDefault();
+        }
+
         private void DiscoverRoom(int x, int y)
         {
             // If object is out of bounds or already active in the hierarchy, we stop here
