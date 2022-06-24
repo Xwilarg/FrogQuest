@@ -19,6 +19,7 @@ namespace TouhouPrideGameJam4.SO.Item
                 return string.Join("\n", Effect.Select(x =>
                     x switch
                     {
+                        EffectType.InfiniteItems => $"Infinite items for {Value} turns",
                         EffectType.Heal => $"Heal {Value} HP",
                         EffectType.Invulnerability => $"Make you invulnerable for {Value} turns",
                         EffectType.BoostAttack => $"Double your attack for {Value} turns",
@@ -41,6 +42,9 @@ namespace TouhouPrideGameJam4.SO.Item
             {
                 switch (e)
                 {
+                    case EffectType.InfiniteItems:
+                        owner.hasInfiniteItems = true;
+                        break;
                     case EffectType.Heal:
                         owner.TakeDamage(null, -Value);
                         break;
@@ -61,7 +65,9 @@ namespace TouhouPrideGameJam4.SO.Item
                         throw new NotImplementedException();
                 }
             }
-            owner.RemoveItem(this);
+            if(!owner.hasInfiniteItems){
+                owner.RemoveItem(this);
+            }
         }
     }
 }

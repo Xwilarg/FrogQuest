@@ -53,7 +53,9 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override void DoAction(ACharacter owner)
         {
-            owner.RemoveItem(this);
+            if(!owner.hasInfiniteItems){
+                owner.RemoveItem(this);
+            }
             owner.StartCoroutine(Shoot(owner));
         }
 
