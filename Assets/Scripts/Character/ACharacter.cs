@@ -37,6 +37,10 @@ namespace TouhouPrideGameJam4.Character
         /// Equipped weapon
         /// </summary>
         private WeaponInfo _equippedWeapon;
+        /// <summary>
+        /// single-use items won't be removed from inventory on use if true
+        /// </summary>
+        [SerializeField] public bool hasInfiniteItems = false;
         public WeaponInfo EquippedWeapon
         {
             set
@@ -317,7 +321,7 @@ namespace TouhouPrideGameJam4.Character
         public void Attack(ACharacter target)
         {
             target.TakeDamage(EquippedWeapon, EquippedWeapon.Damage * (Has(StatusType.AttackBoosted) ? 2 : 1) * (EquippedWeapon.IsHeal ? -1 : 1));
-            if (EquippedWeapon.IsSingleUse)
+            if (EquippedWeapon.IsSingleUse && !hasInfiniteItems)
             {
                 RemoveItem(EquippedWeapon);
             }

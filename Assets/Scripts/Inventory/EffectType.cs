@@ -6,6 +6,7 @@
         Spell,
         Invulnerability,
         BoostAttack,
-        BoostDefense
+        BoostDefense,
+        InfiniteItems //developer potion
     }
 }

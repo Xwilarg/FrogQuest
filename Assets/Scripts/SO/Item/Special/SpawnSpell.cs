@@ -20,7 +20,9 @@ namespace TouhouPrideGameJam4.SO.Item
         public override void DoAction(ACharacter owner)
         {
             var pos = GetClosestEmptySpace(owner);
-            owner.RemoveItem(this); // If GetClosestEmptySpace we make sure to not remove the object
+            if(!owner.hasInfiniteItems){
+                owner.RemoveItem(this); // If GetClosestEmptySpace we make sure to not remove the object
+            }
 
             var c = Instantiate(Prefab, (Vector2)pos, Quaternion.identity).GetComponent<ACharacter>();
             c.Team = Team;
