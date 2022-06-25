@@ -28,6 +28,6 @@ namespace TouhouPrideGameJam4.Map
         /// </summary>
         public bool CanBeWalkedOn;
 
-        public Sprite Sprite;
+        public Sprite[] Sprite;
     }
 }

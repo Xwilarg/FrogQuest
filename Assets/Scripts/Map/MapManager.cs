@@ -23,7 +23,7 @@ namespace TouhouPrideGameJam4.Map
         [SerializeField]
         private MapInfo[] _info;
 
-        public int CurrentWorld { set; get; } = 3;
+        public int CurrentWorld { set; get; }
         public int CurrentLevel { set; get; }
 
         public MapInfo CurrMap => _info[CurrentWorld];
@@ -551,7 +551,7 @@ namespace TouhouPrideGameJam4.Map
             {
                 _map[y][x].Type = tile.Type;
             }
-            _map[y][x].SpriteRendererMain.sprite = tile.Sprite;
+            _map[y][x].SpriteRendererMain.sprite = tile.Sprite[Random.Range(0, tile.Sprite.Length)];
         }
 
         public void SetItemOnFloor(int x, int y, AItemInfo item)

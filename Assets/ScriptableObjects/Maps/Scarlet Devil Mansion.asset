@@ -19,29 +19,31 @@ MonoBehaviour:
   IsBossRoom: 0
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
   Rooms:
-  - {fileID: 4900000, guid: 6d52ab48bedf16545abc4332a17ce619, type: 3}
-  - {fileID: 4900000, guid: bf4e8120dccf8c94ebd3e8743ce04243, type: 3}
-  - {fileID: 4900000, guid: 17e19f6c3cbdc0f489b42f0781991f55, type: 3}
-  - {fileID: 4900000, guid: c6e25a2188fc3ce42b1bd86dbaa2d555, type: 3}
-  - {fileID: 4900000, guid: 4c0d62b3d684a6a448a11283795f5c80, type: 3}
-  - {fileID: 4900000, guid: cd333b3abf7f8b44eb46d9fff516343a, type: 3}
-  - {fileID: 4900000, guid: 69645b255eb891a46b3e8f574dc1dba9, type: 3}
+  - {fileID: 4900000, guid: 69ccbf77c2261a940afc327cdd4df6ec, type: 3}
+  - {fileID: 4900000, guid: 4860257d18899354d8b73da83b4cbe83, type: 3}
+  - {fileID: 4900000, guid: 623d704fd6e5db14da16f83085bbc33b, type: 3}
+  - {fileID: 4900000, guid: e93fdaf5cf7d50d43824814d5caf8e18, type: 3}
+  - {fileID: 4900000, guid: cba5f1d1d389fbe4eb5353e33d9285f7, type: 3}
+  - {fileID: 4900000, guid: 112ea2fbe6c8ec7489dc3b16ad273d4b, type: 3}
   ParsingData:
   - Character: 46
     Type: 0
     GizmoColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.5372549}
     CanBeWalkedOn: 1
-    Sprite: {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    Sprite:
+    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
     CanBeWalkedOn: 0
-    Sprite: {fileID: 21300000, guid: 53343436cef5ccd4fb55f584dfb39191, type: 3}
+    Sprite:
+    - {fileID: 21300000, guid: 53343436cef5ccd4fb55f584dfb39191, type: 3}
   - Character: 83
     Type: 2
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
-    Sprite: {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    Sprite:
+    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
     Weight: 4

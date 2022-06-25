@@ -16,31 +16,33 @@ MonoBehaviour:
   MaxEnemiesPerRoom: 2
   ChestPerRoom: 0.1
   IterationCount: 2
+  IsBossRoom: 0
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
   Rooms:
-  - {fileID: 4900000, guid: 6d52ab48bedf16545abc4332a17ce619, type: 3}
-  - {fileID: 4900000, guid: bf4e8120dccf8c94ebd3e8743ce04243, type: 3}
-  - {fileID: 4900000, guid: 17e19f6c3cbdc0f489b42f0781991f55, type: 3}
-  - {fileID: 4900000, guid: c6e25a2188fc3ce42b1bd86dbaa2d555, type: 3}
-  - {fileID: 4900000, guid: 4c0d62b3d684a6a448a11283795f5c80, type: 3}
-  - {fileID: 4900000, guid: cd333b3abf7f8b44eb46d9fff516343a, type: 3}
-  - {fileID: 4900000, guid: 69645b255eb891a46b3e8f574dc1dba9, type: 3}
+  - {fileID: 4900000, guid: af6d4f641101da74e8204d108eb21535, type: 3}
+  - {fileID: 4900000, guid: c9029786f94605a44b62b24e3baf1d34, type: 3}
+  - {fileID: 4900000, guid: 5c1b82dd04afaea4e9e92703a0013127, type: 3}
+  - {fileID: 4900000, guid: e5f363ada98dc0a409e1b7c2192b3cd1, type: 3}
+  - {fileID: 4900000, guid: 406716d38805bb446a006278c6cbb396, type: 3}
   ParsingData:
   - Character: 46
     Type: 0
     GizmoColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.5372549}
     CanBeWalkedOn: 1
-    Sprite: {fileID: 1963268225, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
+    Sprite:
+    - {fileID: 1874795937, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
     CanBeWalkedOn: 0
-    Sprite: {fileID: 21300000, guid: 53343436cef5ccd4fb55f584dfb39191, type: 3}
+    Sprite:
+    - {fileID: 21300000, guid: 53343436cef5ccd4fb55f584dfb39191, type: 3}
   - Character: 83
     Type: 2
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
-    Sprite: {fileID: 1125702012, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
+    Sprite:
+    - {fileID: 1874795937, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
     Weight: 4
