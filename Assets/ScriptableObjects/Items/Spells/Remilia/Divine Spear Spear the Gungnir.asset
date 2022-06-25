@@ -28,8 +28,8 @@ MonoBehaviour:
   YOffset: 0
   Piercing: 1
   NoEffectOnBoss: 0
-  StartColor: {r: 0.4528302, g: 0.36632013, b: 0, a: 0}
-  EndColor: {r: 1, g: 0.87029076, b: 0.21226418, a: 0}
+  StartColor: {r: 0.4528302, g: 0.36632013, b: 0, a: 1}
+  EndColor: {r: 1, g: 0.87029076, b: 0.21226418, a: 1}
   StartSize: 0.15
   EndSize: 0.06
   Range: 3
