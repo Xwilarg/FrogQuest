@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: (BOSS) Scarlet Devil Mansion
   m_EditorClassIdentifier: 
   MapSize: 200
-  MaxEnemiesPerRoom: 5
-  ChestPerRoom: 0.1
-  IterationCount: 8
+  MaxEnemiesPerRoom: 0
+  ChestPerRoom: 0
+  IterationCount: 0
   IsBossRoom: 1
-  StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
-  Rooms:
-  - {fileID: 4900000, guid: a7a25eea7400ad64aab9d48751dc40cb, type: 3}
+  StartingRoom: {fileID: 4900000, guid: a7a25eea7400ad64aab9d48751dc40cb, type: 3}
+  Rooms: []
   ParsingData:
   - Character: 46
     Type: 0
