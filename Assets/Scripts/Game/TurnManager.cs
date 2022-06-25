@@ -8,6 +8,7 @@ using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
+using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,9 @@ namespace TouhouPrideGameJam4.Game
 
         [SerializeField]
         private AudioClip _openDoor;
+
+        [SerializeField]
+        private SpellInfo _longRangeSpell, _shortRangeSpell;
 
         private string _baseObjectiveText;
 
@@ -299,6 +303,46 @@ namespace TouhouPrideGameJam4.Game
         private void BossAI(ACharacter c, Vector2Int[] directions, IOrderedEnumerable<ACharacter> targets)
         {
             var enemy = (Enemy)c;
+            var target = targets.First();
+            if (enemy.AttackCharge < 2)
+            {
+                enemy.AttackCharge++;
+            }
+            else
+            {
+                enemy.AttackCharge = 0;
+                var x = enemy.Position.x - target.Position.x;
+                var y = enemy.Position.y - target.Position.y;
+                if (Mathf.Abs(x) < Mathf.Abs(y))
+                {
+                    if (x < 0)
+                    {
+                        enemy.Direction = Direction.Left;
+                    }
+                    else
+                    {
+                        enemy.Direction = Direction.Right;
+                    }
+                }
+                else
+                {
+                    if (y < 0)
+                    {
+                        enemy.Direction = Direction.Down;
+                    }
+                    else
+                    {
+                        enemy.Direction = Direction.Up;
+                    }
+                }
+                SpellInfo spell = _longRangeSpell;
+                if (Vector2.Distance(enemy.Position, target.Position) <= _shortRangeSpell.Range)
+                {
+                    spell = _shortRangeSpell;
+                }
+
+                spell.DoAction(enemy);
+            }
         }
 
         public void PlayEnemyTurn()

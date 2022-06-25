@@ -782,32 +782,28 @@ MonoBehaviour:
   m_text: 'Game made in one month for the Touhou Pride Game Jam 4
 
 
-    Audio:
+    <b>Audio:</b>
 
-    Chloe
-    Snow - Sounds
+    Sounds:
+    Chloe Snow
 
-    Nephetheus - Musics
-
-
-    Programming:
-
-    Christian Chaux
+    Musics: Nephetheus and Prismriver Orchestra
 
 
-    Sprites:
+    <b>Programming:</b>
 
-    Colorfulkitten
-    - CGs
-
-    Lever - Character sprites (Visual Novel)
-
-    loge0 - World sprites
+    zanejgr
+    and Christian Chaux
 
 
-    (TODO)
+    <b>2D Art:</b>
 
-'
+    CGs and backgrounds: Colorfulkitten
+
+    Characters
+    (visual novel part): Lever
+
+    World and items: loge0, zino and Colorfulkitten'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

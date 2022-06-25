@@ -198,6 +198,8 @@ MonoBehaviour:
   _damageIndicator: {fileID: 2174806505201314149, guid: fb0c20b8c162c6e43b6bcba0838f8c86, type: 3}
   _playerPrefab: {fileID: 56457190090914801, guid: 735aff12e80c8a84c832a0ef9c9b072a, type: 3}
   _openDoor: {fileID: 8300000, guid: 1d5e2f82082185f449993cf77eb28f6b, type: 3}
+  _longRangeSpell: {fileID: 11400000, guid: a21fca0c3f2fca24ba1699f086df2f9f, type: 2}
+  _shortRangeSpell: {fileID: 11400000, guid: f3510abcd673d514bbf116e340f45ce0, type: 2}
 --- !u!114 &39555389
 MonoBehaviour:
   m_ObjectHideFlags: 0
