@@ -16,6 +16,7 @@ MonoBehaviour:
   MaxEnemiesPerRoom: 5
   ChestPerRoom: 0.1
   IterationCount: 8
+  IsBossRoom: 0
   StartingRoom: {fileID: 4900000, guid: 2d7cb2b9528c7bd4b990bc5fbbf8cbc0, type: 3}
   Rooms:
   - {fileID: 4900000, guid: 6d52ab48bedf16545abc4332a17ce619, type: 3}
@@ -30,7 +31,7 @@ MonoBehaviour:
     Type: 0
     GizmoColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.5372549}
     CanBeWalkedOn: 1
-    Sprite: {fileID: 1963268225, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
+    Sprite: {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
@@ -40,7 +41,7 @@ MonoBehaviour:
     Type: 2
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
-    Sprite: {fileID: 1125702012, guid: 79943af8751a57c488df6f8e3796b0e8, type: 3}
+    Sprite: {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
     Weight: 4

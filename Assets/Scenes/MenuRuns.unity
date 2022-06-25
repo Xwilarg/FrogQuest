@@ -1363,6 +1363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 0}
+  hasInfiniteItems: 0
   _stepSound: []
 --- !u!4 &1102974850
 Transform:

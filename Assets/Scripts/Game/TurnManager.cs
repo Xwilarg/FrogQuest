@@ -304,7 +304,7 @@ namespace TouhouPrideGameJam4.Game
         {
             var enemy = (Enemy)c;
             var target = targets.First();
-            if (enemy.AttackCharge < 2)
+            if (enemy.AttackCharge < c.Info.TimeBeforeAttack)
             {
                 enemy.AttackCharge++;
             }
