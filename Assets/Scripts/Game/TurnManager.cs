@@ -315,28 +315,28 @@ namespace TouhouPrideGameJam4.Game
                 var y = enemy.Position.y - target.Position.y;
                 if (Mathf.Abs(x) < Mathf.Abs(y))
                 {
-                    if (x < 0)
+                    if (y < 0)
                     {
-                        enemy.Direction = Direction.Left;
+                        enemy.Direction = Direction.Up;
                     }
                     else
                     {
-                        enemy.Direction = Direction.Right;
+                        enemy.Direction = Direction.Down;
                     }
                 }
                 else
                 {
-                    if (y < 0)
+                    if (x < 0)
                     {
-                        enemy.Direction = Direction.Down;
+                        enemy.Direction = Direction.Right;
                     }
                     else
                     {
-                        enemy.Direction = Direction.Up;
+                        enemy.Direction = Direction.Left;
                     }
                 }
                 SpellInfo spell = _longRangeSpell;
-                if (Vector2.Distance(enemy.Position, target.Position) <= _shortRangeSpell.Range)
+                if (Vector2Int.Distance(enemy.Position, target.Position) <= _shortRangeSpell.Range)
                 {
                     spell = _shortRangeSpell;
                 }
