@@ -28,8 +28,8 @@ namespace TouhouPrideGameJam4.Dialog
         private GameObject _vnContainer;
 
         [SerializeField]
-        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2;
-        private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement;
+        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu;
+        private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement, _endQuestAyaStatement, _endQuestReimuStatement, _questAyaStatement, _questReimuStatement;
 
         private DialogStatement[] _current;
         private int _index;
@@ -61,6 +61,19 @@ namespace TouhouPrideGameJam4.Dialog
             {
                 ProgressIsAvailable(StoryProgress.YoukaiMountain1);
             }
+        }
+
+        public void ParseAllStories()
+        {
+            _introStatement = Parse(_introDialog);
+            _mountain1Statement = Parse(_mountain1);
+            _mountain2Statement = Parse(_mountain2);
+            _forest1Statement = Parse(_forest1);
+            _forest2Statement = Parse(_forest2);
+            _endQuestAyaStatement = Parse(_endQuestAya);
+            _endQuestReimuStatement = Parse(_endQuestReimu);
+            _questAyaStatement = Parse(_questAya);
+            _questReimuStatement = Parse(_questReimu);
         }
 
         private bool _isSkipping;
@@ -98,15 +111,6 @@ namespace TouhouPrideGameJam4.Dialog
                 });
                 PersistencyManager.Instance.IncreaseStory();
             }
-        }
-
-        public void ParseAllStories()
-        {
-            _introStatement = Parse(_introDialog);
-            _mountain1Statement = Parse(_mountain1);
-            _mountain2Statement = Parse(_mountain2);
-            _forest1Statement = Parse(_forest1);
-            _forest2Statement = Parse(_forest2);
         }
 
         public void ShowNextDialogue()
