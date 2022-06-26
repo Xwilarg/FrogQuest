@@ -428,6 +428,11 @@ namespace TouhouPrideGameJam4.Map
             SetItemOnFloor(x, y, PersistencyManager.Instance.RandomUnlockedItem);
         }
 
+        public void RemoveBush(int x, int y)
+        {
+            ClearContent(x, y);
+        }
+
         public void OpenDoor(int x, int y)
         {
             ClearContent(x, y);

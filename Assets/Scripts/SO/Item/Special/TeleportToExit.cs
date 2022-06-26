@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using TouhouPrideGameJam4.Character;
-using TouhouPrideGameJam4.Game;
+﻿using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;

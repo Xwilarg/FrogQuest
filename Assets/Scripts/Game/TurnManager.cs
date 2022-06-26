@@ -206,6 +206,28 @@ namespace TouhouPrideGameJam4.Game
                         SoundManager.Instance.PlayOpenContainerClip(_openDoor);
                     }
                 }
+                else if (content == TileContentType.Bush)
+                {
+                    if (!moveOnly)
+                    {
+                        MapManager.Instance.RemoveBush(newX, newY);
+                        // TODO: Audio?
+                        PersistencyManager.Instance.QuestProgress++;
+                        if (PersistencyManager.Instance.QuestProgress == PersistencyManager.Instance.MaxQuest)
+                        {
+                            if (PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu)
+                            {
+                                PersistencyManager.Instance.QuestStatus = QuestStatus.CompletedReimu;
+                            }
+                            else
+                            {
+                                PersistencyManager.Instance.QuestStatus = QuestStatus.CompletedAya;
+                            }
+                            StoryManager.Instance.ProgressIsAvailable(StoryProgress.EndQuest);
+                        }
+                        UpdateObjectiveText();
+                    }
+                }
                 else if (content == TileContentType.Chest)
                 {
                     if (!moveOnly)
