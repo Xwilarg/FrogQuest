@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GreySnake
+  m_Controller: {fileID: 9100000, guid: 2842b2ea57ada1b46b20aa10e7a29def, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: adc4be44f37af2840a2e31aa9bc91830, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dab4018bbeb12f84093d491c953f3573, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cc6e3148094e4344c9c674e491888e53, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 050629a755349154d8e44e42d8d438bc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ebcc0f58510aa8e4b8d5cc040921c194, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f57f8bff6fcd9694cbcc1482122cd2a0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 45534c4153622bc4b9fc63d774fb7e88, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b03a5d79ef7823843b02f2d8e583e70e, type: 2}
