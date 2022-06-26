@@ -171,6 +171,7 @@ namespace TouhouPrideGameJam4.Dialog
             else
             {
                 _vnName.text = _current[_index].Name;
+                _vnName.color = _current[_index].Color;
                 _vnContent.text = _current[_index].Content;
                 if (_current[_index].Image == null)
                 {
@@ -278,7 +279,8 @@ namespace TouhouPrideGameJam4.Dialog
                         {
                             Name = currentCharacter != null ? currentCharacter.Name : null,
                             Image = currentCharacter != null ? targetMood : null,
-                            Content = match
+                            Content = match,
+                            Color = currentCharacter != null ? currentCharacter.Color : Color.black
                         });
                         exp = ParsingExpectation.NewLine;
                     }
