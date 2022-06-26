@@ -168,11 +168,18 @@ namespace TouhouPrideGameJam4.Dialog
                     _isSkipping = false;
                 }
             }
+            else if (_index > 0 && _vnContent.text.Length < _current[_index - 1].Content.Length)
+            {
+                lock(_vnContent)
+                {
+                    _vnContent.text = _current[_index - 1].Content;
+                }
+            }
             else
             {
                 _vnName.text = _current[_index].Name;
                 _vnName.color = _current[_index].Color;
-                _vnContent.text = _current[_index].Content;
+                _vnContent.text = string.Empty;
                 if (_current[_index].Image == null)
                 {
                     _vnImage.gameObject.SetActive(false);
@@ -183,6 +190,22 @@ namespace TouhouPrideGameJam4.Dialog
                     _vnImage.sprite = _current[_index].Image;
                 }
                 _index++;
+                StartCoroutine(DisplayLetter());
+            }
+        }
+
+        private IEnumerator DisplayLetter()
+        {
+            while (!_isSkipping && _vnContent.text.Length < _current[_index - 1].Content.Length)
+            {
+                lock(_vnContent)
+                {
+                    if (_vnContent.text.Length < _current[_index - 1].Content.Length)
+                    {
+                        _vnContent.text = _current[_index - 1].Content[..(_vnContent.text.Length + 1)];
+                    }
+                }
+                yield return new WaitForSeconds(.025f);
             }
         }
 
