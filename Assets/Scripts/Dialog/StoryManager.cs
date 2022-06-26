@@ -116,6 +116,13 @@ namespace TouhouPrideGameJam4.Dialog
             {
                 StartCoroutine(SkipDialogues());
             }
+            else
+            {
+                lock (_vnContent)
+                {
+                    _vnContent.text = _current[_index - 1].Content;
+                }
+            }
         }
 
         private IEnumerator SkipDialogues()
