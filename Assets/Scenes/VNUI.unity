@@ -567,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7193130888304280588, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
@@ -637,6 +637,7 @@ MonoBehaviour:
   _vnContent: {fileID: 1212145244}
   _vnImage: {fileID: 1212145243}
   _vnContainer: {fileID: 1212145242}
+  _choiceContainer: {fileID: 1520415394}
   _introDialog: {fileID: 4900000, guid: 3c48a9f993c94d34c961c9865f71d917, type: 3}
   _mountain1: {fileID: 4900000, guid: d48a570759ed1514aafdecc56cb97bd7, type: 3}
   _mountain2: {fileID: 4900000, guid: 6f4280d37dc582043ab3a997e11a4b40, type: 3}
@@ -805,7 +806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754865243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1212145246}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Dialog.StoryManager, ScriptsAssembly
+        m_MethodName: DisplayReimuQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1754865243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,7 +945,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2083446017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1212145246}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Dialog.StoryManager, ScriptsAssembly
+        m_MethodName: DisplayAyaQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2083446017
 MonoBehaviour:
   m_ObjectHideFlags: 0

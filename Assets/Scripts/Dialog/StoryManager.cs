@@ -25,7 +25,7 @@ namespace TouhouPrideGameJam4.Dialog
         private Image _vnImage;
 
         [SerializeField]
-        private GameObject _vnContainer;
+        private GameObject _vnContainer, _choiceContainer;
 
         [SerializeField]
         private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu;
@@ -74,6 +74,20 @@ namespace TouhouPrideGameJam4.Dialog
             _endQuestReimuStatement = Parse(_endQuestReimu);
             _questAyaStatement = Parse(_questAya);
             _questReimuStatement = Parse(_questReimu);
+        }
+
+        public void DisplayReimuQuest()
+        {
+            ReadDialogues(_questReimuStatement);
+            PersistencyManager.Instance.IncreaseStory();
+            _choiceContainer.SetActive(false);
+        }
+
+        public void DisplayAyaQuest()
+        {
+            ReadDialogues(_questReimuStatement);
+            PersistencyManager.Instance.IncreaseStory();
+            _choiceContainer.SetActive(false);
         }
 
         private bool _isSkipping;
@@ -125,6 +139,10 @@ namespace TouhouPrideGameJam4.Dialog
                     button.interactable = true;
                 }
                 _isSkipping = false;
+            }
+            else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Forest1)
+            {
+                _choiceContainer.SetActive(true);
             }
             else
             {
