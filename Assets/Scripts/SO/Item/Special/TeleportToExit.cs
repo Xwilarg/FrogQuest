@@ -1,0 +1,24 @@
+﻿using System.Linq;
+using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Inventory;
+using TouhouPrideGameJam4.Map;
+using UnityEngine;
+
+namespace TouhouPrideGameJam4.SO.Item
+{
+    [CreateAssetMenu(menuName = "ScriptableObject/Item/Special/TeleportToExit", fileName = "TeleportToExit")]
+    public class TeleportToExit : ConsumableInfo
+    {
+        public override string Description => $"Teleport to the exit";
+
+        public override void DoAction(ACharacter owner)
+        {
+            var (X, Y) = MapManager.Instance.Exit;
+            MapManager.Instance.DiscoverRoom(X, Y);
+            owner.Position = new(X, Y);
+        }
+
+        public override ItemType Type => ItemType.Spell;
+    }
+}

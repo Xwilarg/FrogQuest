@@ -384,7 +384,7 @@ namespace TouhouPrideGameJam4.Map
             return allPaths.Where(x => x != null).OrderBy(x => x.Count).FirstOrDefault();
         }
 
-        private void DiscoverRoom(int x, int y)
+        public void DiscoverRoom(int x, int y)
         {
             // If object is out of bounds or already active in the hierarchy, we stop here
             if (y < 0 || y >= _map.Length || x < 0 || x >= _map[y].Length ||
@@ -699,6 +699,28 @@ namespace TouhouPrideGameJam4.Map
         private string[] GetRoom(TextAsset textFile)
         {
             return textFile.text.Replace("\r", "").Split('\n');
+        }
+
+        /// <summary>
+        /// Get the exit of the map
+        /// </summary>
+        /// <returns>X and Y coordinate of the exit</returns>
+        public (int X, int Y) Exit
+        {
+            get
+            {
+                for (int y = 0; y < _map.Length; y++)
+                {
+                    for (int x = 0; x < _map[y].Length; x++)
+                    {
+                        if (_map[y][x] != null && (_map[y][x].Content == TileContentType.ExitEnabled || _map[y][x].Content == TileContentType.ExitDisabled))
+                        {
+                            return (x, y);
+                        }
+                    }
+                }
+                return default;
+            }
         }
 
         private TileData LookupTileByType(TileType type)
