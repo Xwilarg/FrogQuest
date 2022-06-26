@@ -43,9 +43,12 @@ namespace TouhouPrideGameJam4.Dialog
         [SerializeField]
         private GameObject _skipIcon;
 
+        private AudioSource _source;
+
         private void Awake()
         {
             Instance = this;
+            _source = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -196,6 +199,10 @@ namespace TouhouPrideGameJam4.Dialog
 
         private IEnumerator DisplayLetter()
         {
+            if (!_isSkipping)
+            {
+                _source.Play();
+            }
             while (!_isSkipping && _vnContent.text.Length < _current[_index - 1].Content.Length)
             {
                 lock(_vnContent)
@@ -207,6 +214,7 @@ namespace TouhouPrideGameJam4.Dialog
                 }
                 yield return new WaitForSeconds(.025f);
             }
+            _source.Stop();
         }
 
         private void ReadDialogues(DialogStatement[] toRead)
