@@ -30,5 +30,4 @@ sanae surprised "Why would there be more?!"
 reimu joyful "Hey, it doesn’t hurt to check."
 sanae neutral "Fine, let’s keep looking."
 
-none "Check bushes and trees for coins."
-"Collect x amount of coins"
+none "Search for coins by approaching the target objects. Collect x coins!"

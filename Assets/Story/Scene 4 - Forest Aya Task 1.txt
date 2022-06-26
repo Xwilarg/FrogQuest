@@ -31,6 +31,7 @@ aya neutral "How about something green, and then something brown…"
 aya joyful "And, why not? Something cute!"
 sanae neutral "Those seem easy enough. (But ‘cute’ sounds pretty subjective…)"
 aya joyful "I believe in you!"
+sanae neutral "Ah, well there's not much in this forest except trees and bushes, so she's gonna have to settle for photos of those!"
 
-none "Take photos (Add tutorial)"
+none "Take photos by approaching the target objects."
 
