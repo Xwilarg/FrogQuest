@@ -647,6 +647,7 @@ MonoBehaviour:
   _endQuestReimu: {fileID: 4900000, guid: 5c51048d1a9756340a9633b09aab8efe, type: 3}
   _questAya: {fileID: 4900000, guid: 73185cd68ebd3824f926ec9edb77dce2, type: 3}
   _questReimu: {fileID: 4900000, guid: 599b76f1f11b4ec40a5b17f447eb4651, type: 3}
+  _gameOver: {fileID: 4900000, guid: 84eeb8cf0079f40479b77691e3b6e218, type: 3}
   _characters:
   - {fileID: 11400000, guid: f32ab0a85806856428b682f76700eac1, type: 2}
   - {fileID: 11400000, guid: 2adc6340533b61142a2c72b853c6a484, type: 2}

@@ -11,6 +11,7 @@ using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TouhouPrideGameJam4.Dialog
@@ -29,8 +30,9 @@ namespace TouhouPrideGameJam4.Dialog
         private GameObject _vnContainer, _choiceContainer;
 
         [SerializeField]
-        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu;
-        private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement, _endQuestAyaStatement, _endQuestReimuStatement, _questAyaStatement, _questReimuStatement;
+        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu, _gameOver;
+        private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement, _endQuestAyaStatement,
+            _endQuestReimuStatement, _questAyaStatement, _questReimuStatement, _gameOverStatement;
 
         private DialogStatement[] _current;
         private int _index;
@@ -75,6 +77,15 @@ namespace TouhouPrideGameJam4.Dialog
             _endQuestReimuStatement = Parse(_endQuestReimu);
             _questAyaStatement = Parse(_questAya);
             _questReimuStatement = Parse(_questReimu);
+            _gameOverStatement = Parse(_gameOver);
+        }
+
+        private bool _isGameOver;
+
+        public void ShowGameOver()
+        {
+            _isGameOver = true;
+            ReadDialogues(_gameOverStatement);
         }
 
         public void DisplayReimuQuest()
@@ -136,7 +147,12 @@ namespace TouhouPrideGameJam4.Dialog
         {
             if (_current == null || _index == _current.Length) // End of VN part
             {
-                if (PersistencyManager.Instance.StoryProgress == StoryProgress.Quest)
+                if (_isGameOver)
+                {
+                    PersistencyManager.Instance.TotalEnergy += PlayerController.Instance.Energy;
+                    SceneManager.LoadScene("MenuRuns");
+                }
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Quest)
                 {
                     _choiceContainer.SetActive(true);
                 }
