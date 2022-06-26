@@ -281,6 +281,27 @@ namespace TouhouPrideGameJam4.Map
                         }
                     }
                 }
+
+                if (CurrentWorld == 1 && CurrentLevel == 0)
+                {
+                    // Spawn bushes
+                    int bushesCount = PersistencyManager.Instance.MaxQuest;
+                    foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(bushesCount))
+                    {
+                        while (true)
+                        {
+                            var y = Random.Range(1, room.Data.Length - 1);
+                            var x = Random.Range(1, room.Data[y].Length - 1);
+                            var pos = new Vector2Int(x, y);
+
+                            if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
+                            {
+                                SetTileContent(room.X + x, room.Y + y, TileContentType.Bush);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             else
             {
@@ -588,6 +609,7 @@ namespace TouhouPrideGameJam4.Map
                 TileContentType.ExitEnabled => CurrMap.ExitEnabledSprite,
                 TileContentType.ExitDisabled => CurrMap.ExitDisabledSprite,
                 TileContentType.Chest => CurrMap.ChestSprite,
+                TileContentType.Bush => CurrMap.BushSprite,
                 _ => throw new System.NotImplementedException()
             };
             _map[y][x].Content = content;
