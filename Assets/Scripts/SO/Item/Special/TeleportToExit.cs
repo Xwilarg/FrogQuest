@@ -1,4 +1,5 @@
 ﻿using TouhouPrideGameJam4.Character;
+using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace TouhouPrideGameJam4.SO.Item
             var (X, Y) = MapManager.Instance.Exit;
             MapManager.Instance.DiscoverRoom(X, Y);
             owner.Position = new(X, Y);
+            TurnManager.Instance.TryEnableGoal();
         }
 
         public override ItemType Type => ItemType.Spell;

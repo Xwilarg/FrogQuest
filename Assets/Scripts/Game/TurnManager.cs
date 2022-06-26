@@ -127,7 +127,7 @@ namespace TouhouPrideGameJam4.Game
             UpdateObjectiveText();
         }
 
-        private void TryEnableGoal()
+        public void TryEnableGoal()
         {
             if (!_characters.Any(x => x.Team == Team.Enemies) &&
                 PersistencyManager.Instance.QuestStatus != QuestStatus.PendingReimu &&
@@ -225,6 +225,7 @@ namespace TouhouPrideGameJam4.Game
                             }
                             StoryManager.Instance.ProgressIsAvailable(StoryProgress.EndQuest);
                         }
+                        TryEnableGoal();
                         UpdateObjectiveText();
                     }
                 }
