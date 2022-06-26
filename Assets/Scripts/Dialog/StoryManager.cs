@@ -79,20 +79,18 @@ namespace TouhouPrideGameJam4.Dialog
 
         public void DisplayReimuQuest()
         {
-            ReadDialogues(_questReimuStatement);
-            PersistencyManager.Instance.IncreaseStory();
             _choiceContainer.SetActive(false);
             PersistencyManager.Instance.QuestStatus = QuestStatus.PendingReimu;
             TurnManager.Instance.UpdateObjectiveText();
+            ProgressIsAvailable(StoryProgress.Quest);
         }
 
         public void DisplayAyaQuest()
         {
-            ReadDialogues(_questReimuStatement);
-            PersistencyManager.Instance.IncreaseStory();
             _choiceContainer.SetActive(false);
             PersistencyManager.Instance.QuestStatus = QuestStatus.PendingAya;
             TurnManager.Instance.UpdateObjectiveText();
+            ProgressIsAvailable(StoryProgress.Quest);
         }
 
         private bool _isSkipping;
@@ -126,6 +124,8 @@ namespace TouhouPrideGameJam4.Dialog
                     StoryProgress.YoukaiMountain1Half => _mountain2Statement,
                     StoryProgress.Forest1 => _forest1Statement,
                     StoryProgress.Forest4Kill => _forest2Statement,
+                    StoryProgress.Quest => PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu ? _questReimuStatement : _questAyaStatement,
+                    StoryProgress.EndQuest => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _endQuestReimuStatement : _endQuestAyaStatement,
                     _ => throw new NotImplementedException()
                 });
                 PersistencyManager.Instance.IncreaseStory();
@@ -136,18 +136,21 @@ namespace TouhouPrideGameJam4.Dialog
         {
             if (_current == null || _index == _current.Length) // End of VN part
             {
-                _vnContainer.SetActive(false);
-                PlayerController.Instance.EnableRPGController();
-                _current = null;
-                foreach (var button in GameObject.FindGameObjectsWithTag("MenuButton").Select(x => x.GetComponent<Button>()))
+                if (PersistencyManager.Instance.StoryProgress == StoryProgress.Quest)
                 {
-                    button.interactable = true;
+                    _choiceContainer.SetActive(true);
                 }
-                _isSkipping = false;
-            }
-            else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Forest1)
-            {
-                _choiceContainer.SetActive(true);
+                else
+                {
+                    _vnContainer.SetActive(false);
+                    PlayerController.Instance.EnableRPGController();
+                    _current = null;
+                    foreach (var button in GameObject.FindGameObjectsWithTag("MenuButton").Select(x => x.GetComponent<Button>()))
+                    {
+                        button.interactable = true;
+                    }
+                    _isSkipping = false;
+                }
             }
             else
             {
