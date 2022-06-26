@@ -77,11 +77,19 @@ namespace TouhouPrideGameJam4.Game
             text.text = amount;
         }
 
-        private void UpdateObjectiveText()
+        public void UpdateObjectiveText()
         {
             if (MapManager.Instance.CurrMap.IsBossRoom)
             {
                 _objectiveText.text = "Beat Remillia";
+            }
+            else if (PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu)
+            {
+                _objectiveText.text = $"Look for money in bushes: {PersistencyManager.Instance.QuestProgress}/{PersistencyManager.Instance.MaxQuest}";
+            }
+            else if (PersistencyManager.Instance.QuestStatus == QuestStatus.PendingAya)
+            {
+                _objectiveText.text = $"Take photos of bushes: {PersistencyManager.Instance.QuestProgress}/{PersistencyManager.Instance.MaxQuest}";
             }
             else
             {
@@ -119,6 +127,20 @@ namespace TouhouPrideGameJam4.Game
             UpdateObjectiveText();
         }
 
+        private void TryEnableGoal()
+        {
+            if (!_characters.Any(x => x.Team == Team.Enemies) &&
+                PersistencyManager.Instance.QuestStatus != QuestStatus.PendingReimu &&
+                PersistencyManager.Instance.QuestStatus != QuestStatus.PendingAya)
+            {
+                MapManager.Instance.EnableGoal();
+                if (MapManager.Instance.GetContent(Player.Position.x, Player.Position.y) == TileContentType.ExitEnabled)
+                {
+                    MapManager.Instance.GoToNextZone();
+                }
+            }
+        }
+
         public void RemoveCharacter(ACharacter character)
         {
             if (character.GetInstanceID() == Player.GetInstanceID()) // The player died, gameover
@@ -129,15 +151,7 @@ namespace TouhouPrideGameJam4.Game
             else
             {
                 _characters.RemoveAll(x => x.GetInstanceID() == character.GetInstanceID());
-                var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
-                if (enemyCount == 0)
-                {
-                    MapManager.Instance.EnableGoal();
-                    if (MapManager.Instance.GetContent(Player.Position.x, Player.Position.y) == TileContentType.ExitEnabled)
-                    {
-                        MapManager.Instance.GoToNextZone();
-                    }
-                }
+                TryEnableGoal();
                 UpdateObjectiveText();
             }
             Destroy(character.gameObject);

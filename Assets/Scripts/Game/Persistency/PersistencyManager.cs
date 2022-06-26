@@ -18,6 +18,11 @@ namespace TouhouPrideGameJam4.Game.Persistency
 
         public int BonusChestCount { set; get; }
 
+        public QuestStatus QuestStatus { set; get; } = QuestStatus.NotStarted;
+
+        public int QuestProgress { set; get; }
+        public int MaxQuest => 5;
+
         private void Awake()
         {
             Instance = this;

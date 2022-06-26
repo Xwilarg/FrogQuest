@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog.Parsing;
+using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
@@ -81,6 +82,8 @@ namespace TouhouPrideGameJam4.Dialog
             ReadDialogues(_questReimuStatement);
             PersistencyManager.Instance.IncreaseStory();
             _choiceContainer.SetActive(false);
+            PersistencyManager.Instance.QuestStatus = QuestStatus.PendingReimu;
+            TurnManager.Instance.UpdateObjectiveText();
         }
 
         public void DisplayAyaQuest()
@@ -88,6 +91,8 @@ namespace TouhouPrideGameJam4.Dialog
             ReadDialogues(_questReimuStatement);
             PersistencyManager.Instance.IncreaseStory();
             _choiceContainer.SetActive(false);
+            PersistencyManager.Instance.QuestStatus = QuestStatus.PendingAya;
+            TurnManager.Instance.UpdateObjectiveText();
         }
 
         private bool _isSkipping;
