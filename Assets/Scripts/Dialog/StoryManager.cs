@@ -285,7 +285,6 @@ namespace TouhouPrideGameJam4.Dialog
                                 "angry" => currentCharacter.AngryExpression,
                                 "surprised" => currentCharacter.SurprisedExpression,
                                 "sad" => currentCharacter.SadExpression,
-                                "shocked" => currentCharacter.ShockedExpression,
                                 "shy" => currentCharacter.ShyExpression,
                                 _ => throw new InvalidOperationException($"Invalid expression {match}")
                             };
