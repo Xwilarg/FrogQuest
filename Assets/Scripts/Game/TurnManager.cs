@@ -157,6 +157,8 @@ namespace TouhouPrideGameJam4.Game
             Destroy(character.gameObject);
         }
 
+        public IEnumerable<ACharacter> Enemies => _characters.Where(x => x.Team == Team.Enemies);
+
         public void SetDirection(ACharacter character, int x, int y)
         {
             if (x < 0) character.Direction = Direction.Left;
