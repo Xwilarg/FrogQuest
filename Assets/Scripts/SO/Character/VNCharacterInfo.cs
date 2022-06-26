@@ -7,6 +7,7 @@ namespace TouhouPrideGameJam4.SO.Character
     {
         public string Key;
         public string Name;
+        public Color Color;
 
         [Header("Expressions")]
         public Sprite NeutralExpression;

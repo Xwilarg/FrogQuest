@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Remilia
+  m_Controller: {fileID: 9100000, guid: 2842b2ea57ada1b46b20aa10e7a29def, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: adc4be44f37af2840a2e31aa9bc91830, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 696e79bff3f9cfb43b111d9e6291bc9d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cc6e3148094e4344c9c674e491888e53, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3956302477d73fe4c871a89ee16f5706, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ebcc0f58510aa8e4b8d5cc040921c194, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ec547dcf050ca34469372c8441f26ea1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 45534c4153622bc4b9fc63d774fb7e88, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e67750cbc6b931b42b7e77010f512c87, type: 2}

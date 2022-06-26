@@ -43,7 +43,7 @@ namespace TouhouPrideGameJam4.Map
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
 
-        private GameObject _enemiesParent, _roomsParent;
+        private GameObject _enemiesParent, _roomsParent, _itemsParent;
 
         private void Awake()
         {
@@ -54,6 +54,7 @@ namespace TouhouPrideGameJam4.Map
         {
             _enemiesParent = new("Enemies");
             _roomsParent = new("Rooms");
+            _itemsParent = new("Items on Floor");
             InitMap();
             BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
         }
@@ -81,6 +82,7 @@ namespace TouhouPrideGameJam4.Map
         {
             for (int i = 0; i < _enemiesParent.transform.childCount; i++) Destroy(_enemiesParent.transform.GetChild(i).gameObject);
             for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i).gameObject);
+            for (int i = 0; i < _itemsParent.transform.childCount; i++) Destroy(_itemsParent.transform.GetChild(i).gameObject);
             _rooms.Clear();
 
             _mapImage.sprite = CurrMap.Image;
@@ -281,6 +283,27 @@ namespace TouhouPrideGameJam4.Map
                         }
                     }
                 }
+
+                if (CurrentWorld == 1 && CurrentLevel == 0)
+                {
+                    // Spawn bushes
+                    int bushesCount = PersistencyManager.Instance.MaxQuest;
+                    foreach (var room in _rooms.Skip(1).OrderBy(x => Random.value).Take(bushesCount))
+                    {
+                        while (true)
+                        {
+                            var y = Random.Range(1, room.Data.Length - 1);
+                            var x = Random.Range(1, room.Data[y].Length - 1);
+                            var pos = new Vector2Int(x, y);
+
+                            if (LookupTileByChar(room.Data[y][x])?.CanBeWalkedOn == true && TurnManager.Instance.GetCharacterPos(room.X + x, room.Y + y) == null)
+                            {
+                                SetTileContent(room.X + x, room.Y + y, TileContentType.Bush);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             else
             {
@@ -363,7 +386,7 @@ namespace TouhouPrideGameJam4.Map
             return allPaths.Where(x => x != null).OrderBy(x => x.Count).FirstOrDefault();
         }
 
-        private void DiscoverRoom(int x, int y)
+        public void DiscoverRoom(int x, int y)
         {
             // If object is out of bounds or already active in the hierarchy, we stop here
             if (y < 0 || y >= _map.Length || x < 0 || x >= _map[y].Length ||
@@ -405,6 +428,11 @@ namespace TouhouPrideGameJam4.Map
         {
             ClearContent(x, y);
             SetItemOnFloor(x, y, PersistencyManager.Instance.RandomUnlockedItem);
+        }
+
+        public void RemoveBush(int x, int y)
+        {
+            ClearContent(x, y);
         }
 
         public void OpenDoor(int x, int y)
@@ -558,7 +586,9 @@ namespace TouhouPrideGameJam4.Map
         {
             if (_map[y][x].SpriteRendererItem == null)
             {
-                _map[y][x].SpriteRendererItem = Instantiate(_prefabItemFloor, new(x, y), Quaternion.identity).GetComponent<SpriteRenderer>();
+                var go = Instantiate(_prefabItemFloor, new(x, y), Quaternion.identity);
+                _map[y][x].SpriteRendererItem = go.GetComponent<SpriteRenderer>();
+                go.transform.parent = _itemsParent.transform;
             }
             _map[y][x].SpriteRendererItem.sprite = item.Sprite;
             _map[y][x].ItemDropped = item;
@@ -588,6 +618,7 @@ namespace TouhouPrideGameJam4.Map
                 TileContentType.ExitEnabled => CurrMap.ExitEnabledSprite,
                 TileContentType.ExitDisabled => CurrMap.ExitDisabledSprite,
                 TileContentType.Chest => CurrMap.ChestSprite,
+                TileContentType.Bush => CurrMap.BushSprite,
                 _ => throw new System.NotImplementedException()
             };
             _map[y][x].Content = content;
@@ -677,6 +708,28 @@ namespace TouhouPrideGameJam4.Map
         private string[] GetRoom(TextAsset textFile)
         {
             return textFile.text.Replace("\r", "").Split('\n');
+        }
+
+        /// <summary>
+        /// Get the exit of the map
+        /// </summary>
+        /// <returns>X and Y coordinate of the exit</returns>
+        public (int X, int Y) Exit
+        {
+            get
+            {
+                for (int y = 0; y < _map.Length; y++)
+                {
+                    for (int x = 0; x < _map[y].Length; x++)
+                    {
+                        if (_map[y][x] != null && (_map[y][x].Content == TileContentType.ExitEnabled || _map[y][x].Content == TileContentType.ExitDisabled))
+                        {
+                            return (x, y);
+                        }
+                    }
+                }
+                return default;
+            }
         }
 
         private TileData LookupTileByType(TileType type)

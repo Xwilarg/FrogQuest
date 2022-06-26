@@ -60,6 +60,7 @@ MonoBehaviour:
     Weight: 1
   DoorSprite: {fileID: 21300000, guid: 91b9003a4ee672442ba44ebf1e7ad108, type: 3}
   ChestSprite: {fileID: 21300000, guid: 1e22c0c65cead7444b375215b9d5b651, type: 3}
+  BushSprite: {fileID: 21300000, guid: 92b4a9a0d10fac84abd828950e34f50a, type: 3}
   EntranceSprite: {fileID: 21300000, guid: 86a2ae68809abd74d839830a9efa7315, type: 3}
   ExitDisabledSprite: {fileID: 21300000, guid: ef3212f031a939448a1fc4de5378dee3, type: 3}
   ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}

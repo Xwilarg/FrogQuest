@@ -5,6 +5,7 @@
         None,
         Door,
         Chest,
+        Bush,
         Entrance,
         ExitDisabled,
         ExitEnabled

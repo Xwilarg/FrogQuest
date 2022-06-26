@@ -3,7 +3,6 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Character.AI;
-using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
@@ -11,7 +10,6 @@ using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.Sound;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using static UnityEngine.UIElements.NavigationMoveEvent;
 
 namespace TouhouPrideGameJam4.Game
@@ -127,7 +125,7 @@ namespace TouhouPrideGameJam4.Game
             UpdateObjectiveText();
         }
 
-        private void TryEnableGoal()
+        public void TryEnableGoal()
         {
             if (!_characters.Any(x => x.Team == Team.Enemies) &&
                 PersistencyManager.Instance.QuestStatus != QuestStatus.PendingReimu &&
@@ -145,16 +143,15 @@ namespace TouhouPrideGameJam4.Game
         {
             if (character.GetInstanceID() == Player.GetInstanceID()) // The player died, gameover
             {
-                PersistencyManager.Instance.TotalEnergy += ((PlayerController)Player).Energy;
-                SceneManager.LoadScene("MenuRuns");
+                StoryManager.Instance.ShowGameOver();
             }
             else
             {
                 _characters.RemoveAll(x => x.GetInstanceID() == character.GetInstanceID());
                 TryEnableGoal();
                 UpdateObjectiveText();
+                Destroy(character.gameObject);
             }
-            Destroy(character.gameObject);
         }
 
         public IEnumerable<ACharacter> Enemies => _characters.Where(x => x.Team == Team.Enemies);
@@ -204,6 +201,29 @@ namespace TouhouPrideGameJam4.Game
                     {
                         MapManager.Instance.OpenDoor(newX, newY);
                         SoundManager.Instance.PlayOpenContainerClip(_openDoor);
+                    }
+                }
+                else if (content == TileContentType.Bush)
+                {
+                    if (!moveOnly)
+                    {
+                        MapManager.Instance.RemoveBush(newX, newY);
+                        // TODO: Audio?
+                        PersistencyManager.Instance.QuestProgress++;
+                        if (PersistencyManager.Instance.QuestProgress == PersistencyManager.Instance.MaxQuest)
+                        {
+                            if (PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu)
+                            {
+                                PersistencyManager.Instance.QuestStatus = QuestStatus.CompletedReimu;
+                            }
+                            else
+                            {
+                                PersistencyManager.Instance.QuestStatus = QuestStatus.CompletedAya;
+                            }
+                            StoryManager.Instance.ProgressIsAvailable(StoryProgress.EndQuest);
+                        }
+                        TryEnableGoal();
+                        UpdateObjectiveText();
                     }
                 }
                 else if (content == TileContentType.Chest)
