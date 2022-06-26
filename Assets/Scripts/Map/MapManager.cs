@@ -43,7 +43,7 @@ namespace TouhouPrideGameJam4.Map
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
 
-        private GameObject _enemiesParent, _roomsParent;
+        private GameObject _enemiesParent, _roomsParent, _itemsParent;
 
         private void Awake()
         {
@@ -54,6 +54,7 @@ namespace TouhouPrideGameJam4.Map
         {
             _enemiesParent = new("Enemies");
             _roomsParent = new("Rooms");
+            _itemsParent = new("Items on Floor");
             InitMap();
             BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
         }
@@ -81,6 +82,7 @@ namespace TouhouPrideGameJam4.Map
         {
             for (int i = 0; i < _enemiesParent.transform.childCount; i++) Destroy(_enemiesParent.transform.GetChild(i).gameObject);
             for (int i = 0; i < _roomsParent.transform.childCount; i++) Destroy(_roomsParent.transform.GetChild(i).gameObject);
+            for (int i = 0; i < _itemsParent.transform.childCount; i++) Destroy(_itemsParent.transform.GetChild(i).gameObject);
             _rooms.Clear();
 
             _mapImage.sprite = CurrMap.Image;
@@ -584,7 +586,9 @@ namespace TouhouPrideGameJam4.Map
         {
             if (_map[y][x].SpriteRendererItem == null)
             {
-                _map[y][x].SpriteRendererItem = Instantiate(_prefabItemFloor, new(x, y), Quaternion.identity).GetComponent<SpriteRenderer>();
+                var go = Instantiate(_prefabItemFloor, new(x, y), Quaternion.identity);
+                _map[y][x].SpriteRendererItem = go.GetComponent<SpriteRenderer>();
+                go.transform.parent = _itemsParent.transform;
             }
             _map[y][x].SpriteRendererItem.sprite = item.Sprite;
             _map[y][x].ItemDropped = item;
