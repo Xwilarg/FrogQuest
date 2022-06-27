@@ -45,14 +45,15 @@ MonoBehaviour:
     Sprite:
     - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   EnemiesSpawn:
-  - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
+  - Item: {fileID: 6059399865179913992, guid: a8e77692040a76546b08065fda7f58a5, type: 3}
     Weight: 4
-  - Item: {fileID: 5137943778351867792, guid: 0f08927b4ac4b2a46b2aa4be2c1d5883, type: 3}
+  - Item: {fileID: 5137943778351867792, guid: 78d051a08f8e5ae4e924c7412a875eed, type: 3}
     Weight: 2
-  - Item: {fileID: 2667938933725469384, guid: 8ce888d4954a1904b91856b88bc428a2, type: 3}
+  - Item: {fileID: 2667938933725469384, guid: 57111dd48c60ca44aa8a40c639ab000f, type: 3}
     Weight: 1
   DoorSprite: {fileID: 21300000, guid: 91b9003a4ee672442ba44ebf1e7ad108, type: 3}
   ChestSprite: {fileID: 21300000, guid: 1e22c0c65cead7444b375215b9d5b651, type: 3}
+  BushSprite: {fileID: 0}
   EntranceSprite: {fileID: 21300000, guid: 86a2ae68809abd74d839830a9efa7315, type: 3}
   ExitDisabledSprite: {fileID: 21300000, guid: ef3212f031a939448a1fc4de5378dee3, type: 3}
   ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}
