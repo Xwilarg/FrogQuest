@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -71,7 +71,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,8 +123,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: Forest Floor_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 32
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: Forest Floor_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 64
         y: 0
-        width: 200
-        height: 200
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,48 +176,6 @@ TextureImporter:
       bones: []
       spriteID: 26fda03759753dc42aaf8b9b6b06b4e2
       internalID: 842111931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Forest Floor_3
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 733358a270fb08a4d813d8eeb32d3a98
-      internalID: 1617306790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Forest Floor_4
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01131acb0fc2c1849a6a497ce47f4a11
-      internalID: -277378373
       vertices: []
       indices: 
       edges: []
@@ -234,10 +192,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Forest Floor_1: -522408617
-      Forest Floor_3: 1617306790
       Forest Floor_0: 1874795937
       Forest Floor_2: 842111931
-      Forest Floor_4: -277378373
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

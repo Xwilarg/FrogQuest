@@ -33,8 +33,6 @@ MonoBehaviour:
     - {fileID: 1874795937, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
     - {fileID: -522408617, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
     - {fileID: 842111931, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
-    - {fileID: 1617306790, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
-    - {fileID: -277378373, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
@@ -49,8 +47,6 @@ MonoBehaviour:
     - {fileID: 1874795937, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
     - {fileID: -522408617, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
     - {fileID: 842111931, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
-    - {fileID: 1617306790, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
-    - {fileID: -277378373, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
     Weight: 4
