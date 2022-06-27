@@ -31,7 +31,9 @@ MonoBehaviour:
     GizmoColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.5372549}
     CanBeWalkedOn: 1
     Sprite:
-    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
@@ -43,7 +45,9 @@ MonoBehaviour:
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
     Sprite:
-    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: a8e77692040a76546b08065fda7f58a5, type: 3}
     Weight: 4

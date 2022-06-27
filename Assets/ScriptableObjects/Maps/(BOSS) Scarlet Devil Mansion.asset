@@ -25,7 +25,9 @@ MonoBehaviour:
     GizmoColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.5372549}
     CanBeWalkedOn: 1
     Sprite:
-    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   - Character: 88
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
@@ -37,13 +39,17 @@ MonoBehaviour:
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
     Sprite:
-    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   - Character: 66
     Type: 4
     GizmoColor: {r: 1, g: 0.15532212, b: 0, a: 0.40392157}
     CanBeWalkedOn: 1
     Sprite:
-    - {fileID: 21300000, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+    - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
     Weight: 4
@@ -53,6 +59,7 @@ MonoBehaviour:
     Weight: 1
   DoorSprite: {fileID: 21300000, guid: 91b9003a4ee672442ba44ebf1e7ad108, type: 3}
   ChestSprite: {fileID: 21300000, guid: 1e22c0c65cead7444b375215b9d5b651, type: 3}
+  BushSprite: {fileID: 0}
   EntranceSprite: {fileID: 21300000, guid: 86a2ae68809abd74d839830a9efa7315, type: 3}
   ExitDisabledSprite: {fileID: 21300000, guid: ef3212f031a939448a1fc4de5378dee3, type: 3}
   ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}
