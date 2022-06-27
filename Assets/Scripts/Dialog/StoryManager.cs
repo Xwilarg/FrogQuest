@@ -210,7 +210,7 @@ namespace TouhouPrideGameJam4.Dialog
             {
                 _source.Play();
             }
-            while (!_isSkipping && _vnContent.text.Length < _current[_index - 1].Content.Length)
+            while (!_isSkipping && _current != null && _vnContent.text.Length < _current[_index - 1].Content.Length)
             {
                 lock(_vnContent)
                 {
