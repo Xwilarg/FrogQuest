@@ -43,9 +43,12 @@ namespace TouhouPrideGameJam4.Dialog
         [SerializeField]
         private GameObject _skipIcon;
 
+        private AudioSource _source;
+
         private void Awake()
         {
             Instance = this;
+            _source = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -112,6 +115,13 @@ namespace TouhouPrideGameJam4.Dialog
             if (_isSkipping)
             {
                 StartCoroutine(SkipDialogues());
+            }
+            else
+            {
+                lock (_vnContent)
+                {
+                    _vnContent.text = _current[_index - 1].Content;
+                }
             }
         }
 
@@ -196,7 +206,11 @@ namespace TouhouPrideGameJam4.Dialog
 
         private IEnumerator DisplayLetter()
         {
-            while (!_isSkipping && _vnContent.text.Length < _current[_index - 1].Content.Length)
+            if (!_isSkipping)
+            {
+                _source.Play();
+            }
+            while (!_isSkipping && _current != null && _vnContent.text.Length < _current[_index - 1].Content.Length)
             {
                 lock(_vnContent)
                 {
@@ -207,6 +221,7 @@ namespace TouhouPrideGameJam4.Dialog
                 }
                 yield return new WaitForSeconds(.025f);
             }
+            _source.Stop();
         }
 
         private void ReadDialogues(DialogStatement[] toRead)
@@ -285,7 +300,6 @@ namespace TouhouPrideGameJam4.Dialog
                                 "angry" => currentCharacter.AngryExpression,
                                 "surprised" => currentCharacter.SurprisedExpression,
                                 "sad" => currentCharacter.SadExpression,
-                                "shocked" => currentCharacter.ShockedExpression,
                                 "shy" => currentCharacter.ShyExpression,
                                 _ => throw new InvalidOperationException($"Invalid expression {match}")
                             };

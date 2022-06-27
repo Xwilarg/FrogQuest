@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 5137943778351867792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.125, y: 3.125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6195939163456692058
 SpriteRenderer:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9438f609679ed734c8c57d07463a9d38, type: 3}
+  m_Sprite: {fileID: -1930440442, guid: dd1d0a6456b429e4399b7626c3931a8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: f8d8311f1c7b44446b6375ef4e777fa5, type: 2}
+  hasInfiniteItems: 0
+  AttackCharge: 0
 --- !u!95 &2988651369070159574
 Animator:
   serializedVersion: 4
@@ -109,7 +111,7 @@ Animator:
   m_GameObject: {fileID: 5137943778351867792}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 7ad05a83ced5b3147811a7c6fb77e575, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

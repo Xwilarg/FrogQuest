@@ -16,7 +16,6 @@ namespace TouhouPrideGameJam4.SO.Character
         public Sprite SadExpression;
         public Sprite AngryExpression;
         public Sprite SurprisedExpression;
-        public Sprite ShockedExpression;
         public Sprite ShyExpression;
     }
 }
