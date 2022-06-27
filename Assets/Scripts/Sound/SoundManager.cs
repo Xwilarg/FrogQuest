@@ -23,6 +23,7 @@ namespace TouhouPrideGameJam4.Sound
         public void PlaySpellsClip(AudioClip clip) => _spellsSource.PlayOneShot(clip);
         public void PlayEquipClip(AudioClip clip) => _equipSource.PlayOneShot(clip);
         public void PlayOpenContainerClip(AudioClip clip) => _openContainerSource.PlayOneShot(clip);
+        public void PlayMiscClip(AudioClip clip) => _miscSource.PlayOneShot(clip);
 
         public void PlayError()
         {

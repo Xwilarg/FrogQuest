@@ -16,7 +16,7 @@ reimu joyful "Hey, I can’t help that people are always causing problems that r
 sanae joyful "I’m always happy to have visitors, especially you."
 reimu neutral "I appreciate it."
 "Well, I guess it’s getting a bit late, and I don’t want to overstay my welcome."
-sanae shocked "Ah, don’t say that! Stay as long as you’d like."
+sanae surprised "Ah, don’t say that! Stay as long as you’d like."
 sanae shy "Besides, I don’t want to say goodbye yet."
 "And I’d still like to talk about some things."
 reimu shy "What did you have in mind?"
