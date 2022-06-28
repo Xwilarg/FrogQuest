@@ -173,6 +173,7 @@ namespace TouhouPrideGameJam4.Game
             else throw new System.NotImplementedException();
         }
 
+        private int _speDoorCount;
         /// <summary>
         /// Move the player in the world
         /// </summary>
@@ -209,6 +210,26 @@ namespace TouhouPrideGameJam4.Game
                     {
                         MapManager.Instance.OpenDoor(newX, newY);
                         SoundManager.Instance.PlayOpenContainerClip(_openDoor);
+                    }
+                }
+                else if (content == TileContentType.SpeDoorPending)
+                {
+                    if (!moveOnly)
+                    {
+                        if (_speDoorCount == 0)
+                        {
+                            StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDMDoor1);
+                        }
+                        else if (_speDoorCount == 1)
+                        {
+                            StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDMDoor2);
+                        }
+                        else if (_speDoorCount == 2)
+                        {
+                            StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDMDoor3);
+                        }
+                        _speDoorCount++;
+                        MapManager.Instance.ActivateDoorEvent(newX, newY);
                     }
                 }
                 else if (content == TileContentType.Bush)

@@ -190,9 +190,13 @@ namespace TouhouPrideGameJam4.Dialog
                 {
                     _choiceContainer.SetActive(true);
                 }
-                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.SDM1)
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.SDM1Part2)
                 {
                     ProgressIsAvailable(StoryProgress.SDM1Part2);
+                }
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Remilia)
+                {
+                    MapManager.Instance.GoToNextZone();
                 }
                 else
                 {

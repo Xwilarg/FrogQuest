@@ -6,6 +6,7 @@
         Wall,
         StartingPos,
         Breakpoint,
+        SpeDoor,
         SpawnBoss
     }
 }

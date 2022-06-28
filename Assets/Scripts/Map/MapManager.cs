@@ -77,6 +77,10 @@ namespace TouhouPrideGameJam4.Map
                 {
                     StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM1);
                 }
+                else if (CurrentWorld == 3)
+                {
+                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.Remilia);
+                }
             }
             else
             {
@@ -270,6 +274,18 @@ namespace TouhouPrideGameJam4.Map
             var currentSpawn = possibleSpawnPoints[0];
             TurnManager.Instance.Player.transform.position = new(currentSpawn.x, currentSpawn.y);
             TurnManager.Instance.Player.Position = new(currentSpawn.x, currentSpawn.y);
+
+            // Place spe doors
+            for (int y = 0; y < _map.Length; y++)
+            {
+                for (int x = 0; x < _map[y].Length; x++)
+                {
+                    if (_map[y][x] != null && _map[y][x].Type == TileType.SpeDoor)
+                    {
+                        SetTileContent(x, y, TileContentType.SpeDoorPending);
+                    }
+                }
+            }
 
 
             if (!CurrMap.IsBossRoom)
@@ -483,6 +499,11 @@ namespace TouhouPrideGameJam4.Map
             ClearContent(x, y);
         }
 
+        public void ActivateDoorEvent(int x, int y)
+        {
+            _map[y][x].Content = TileContentType.SpeDoorDone;
+        }
+
         public void OpenDoor(int x, int y)
         {
             ClearContent(x, y);
@@ -585,13 +606,13 @@ namespace TouhouPrideGameJam4.Map
 
         public bool IsTileWalkable(int x, int y)
             => DoesTileNotBlockLoS(x, y) &&
-                _map[y][x].Content != TileContentType.Chest;
+                _map[y][x].Content != TileContentType.Chest && _map[y][x].Content != TileContentType.Bush;
 
         public bool DoesTileNotBlockLoS(int x, int y)
             => x >= 0 && x < CurrMap.MapSize && y >= 0 && y < CurrMap.MapSize &&
                 _map[y][x] != null &&
                 LookupTileByType(_map[y][x].Type).CanBeWalkedOn &&
-                _map[y][x].Content != TileContentType.Door;
+                _map[y][x].Content != TileContentType.Door && _map[y][x].Content != TileContentType.SpeDoorDone && _map[y][x].Content != TileContentType.SpeDoorPending;
 
 
         /// <summary>
@@ -667,6 +688,8 @@ namespace TouhouPrideGameJam4.Map
                 TileContentType.ExitDisabled => CurrMap.ExitDisabledSprite,
                 TileContentType.Chest => CurrMap.ChestSprite,
                 TileContentType.Bush => CurrMap.BushSprite,
+                TileContentType.SpeDoorPending => CurrMap.SpeDoor,
+                TileContentType.SpeDoorDone => CurrMap.SpeDoor,
                 _ => throw new System.NotImplementedException()
             };
             _map[y][x].Content = content;

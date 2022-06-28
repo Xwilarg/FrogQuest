@@ -48,6 +48,12 @@ MonoBehaviour:
     - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
     - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
     - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+  - Character: 49
+    Type: 4
+    GizmoColor: {r: 0.4716841, g: 1, b: 0, a: 0.40392157}
+    CanBeWalkedOn: 0
+    Sprite:
+    - {fileID: 21300000, guid: 200112a872c6f7a45bc843715d722098, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: a8e77692040a76546b08065fda7f58a5, type: 3}
     Weight: 4
@@ -58,6 +64,7 @@ MonoBehaviour:
   DoorSprite: {fileID: 21300000, guid: 91b9003a4ee672442ba44ebf1e7ad108, type: 3}
   ChestSprite: {fileID: 21300000, guid: 1e22c0c65cead7444b375215b9d5b651, type: 3}
   BushSprite: {fileID: 0}
+  SpeDoor: {fileID: 21300000, guid: 200112a872c6f7a45bc843715d722098, type: 3}
   EntranceSprite: {fileID: 21300000, guid: 86a2ae68809abd74d839830a9efa7315, type: 3}
   ExitDisabledSprite: {fileID: 21300000, guid: ef3212f031a939448a1fc4de5378dee3, type: 3}
   ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}

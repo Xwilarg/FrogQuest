@@ -4,6 +4,8 @@
     {
         None,
         Door,
+        SpeDoorPending,
+        SpeDoorDone,
         Chest,
         Bush,
         Entrance,
