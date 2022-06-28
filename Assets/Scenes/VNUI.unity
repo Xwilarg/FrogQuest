@@ -760,6 +760,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2adc6340533b61142a2c72b853c6a484, type: 2}
   - {fileID: 11400000, guid: f149f3c152029ca41b843279c20efa09, type: 2}
   - {fileID: 11400000, guid: 1e7139f824429cf4da9fadc6ac568f5e, type: 2}
+  - {fileID: 11400000, guid: 2f68249f551c9864f8b6b326cd5c5a6e, type: 2}
+  - {fileID: 11400000, guid: 75183ca196654ce4284a2b1bb2e4e09d, type: 2}
   _skipIcon: {fileID: 1159671226}
 --- !u!224 &1232501852 stripped
 RectTransform:
