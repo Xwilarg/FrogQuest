@@ -1,5 +1,3 @@
-
-(Walking, door 3)
 sanae neutral "It looks like someone’s room, but it’s not very fancy."
 "This definitely isn’t Remilia’s."
 reimu joyful "Not fancy? Even some servant’s room at this mansion would make anyone using it feel like royalty!"

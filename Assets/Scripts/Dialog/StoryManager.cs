@@ -30,9 +30,11 @@ namespace TouhouPrideGameJam4.Dialog
         private GameObject _vnContainer, _choiceContainer;
 
         [SerializeField]
-        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu, _gameOver;
+        private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu, _gameOver, _sdm1, _sdm1Aya, _sdm1Reimu,
+            _sdm4, _sdmDoors, _sdmDoor1, _sdmDoor2, _sdmDoor3, _sdmBoss, _endingAya, _endingReimu;
         private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement, _endQuestAyaStatement,
-            _endQuestReimuStatement, _questAyaStatement, _questReimuStatement, _gameOverStatement;
+            _endQuestReimuStatement, _questAyaStatement, _questReimuStatement, _gameOverStatement, _sdm1Statement, _sdm1AyaStatement, _sdm1ReimuStatement, _sdm4Statement,
+            _sdmDoorsStatement, _sdmDoor1Statement, _sdmDoor2Statement, _sdmDoor3Statement, _sdmBossStatement, _endingAyaStatement, _endingReimuStatement;
 
         private DialogStatement[] _current;
         private int _index;
@@ -81,6 +83,17 @@ namespace TouhouPrideGameJam4.Dialog
             _questAyaStatement = Parse(_questAya);
             _questReimuStatement = Parse(_questReimu);
             _gameOverStatement = Parse(_gameOver);
+            _sdm1Statement = Parse(_sdm1);
+            _sdm1AyaStatement = Parse(_sdm1Aya);
+            _sdm1ReimuStatement = Parse(_sdm1Reimu);
+            _sdm4Statement = Parse(_sdm4);
+            _sdmDoorsStatement = Parse(_sdmDoors);
+            _sdmDoor1Statement = Parse(_sdmDoor1);
+            _sdmDoor2Statement = Parse(_sdmDoor2);
+            _sdmDoor3Statement = Parse(_sdmDoor3);
+            _sdmBossStatement = Parse(_sdmBoss);
+            _endingAyaStatement = Parse(_endingAya);
+            _endingReimuStatement = Parse(_endingReimu);
         }
 
         private bool _isGameOver;
