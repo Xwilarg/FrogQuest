@@ -314,13 +314,13 @@ namespace TouhouPrideGameJam4.Game
                                 else
                                 {
                                     c.Attack(target);
-                                    SetDirection(c, d.x, d.y);
                                     if (c.Info.DoesDisappearAfterAttacking)
                                     {
                                         RemoveCharacter(c);
                                     }
                                     enemy.AttackCharge = 0;
                                 }
+                                SetDirection(c, d.x, d.y);
                                 didPlay = true;
                                 break;
                             }
