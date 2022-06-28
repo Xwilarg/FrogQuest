@@ -79,7 +79,11 @@ namespace TouhouPrideGameJam4.Game
         {
             if (MapManager.Instance.CurrMap.IsBossRoom)
             {
-                _objectiveText.text = "Beat Remillia";
+                _objectiveText.text = "Beat Remilia";
+            }
+            else if (MapManager.Instance.CurrentWorld == 2 && MapManager.Instance.CurrentLevel == 3)
+            {
+                _objectiveText.text = "Find Remilia";
             }
             else if (PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu)
             {
@@ -127,7 +131,11 @@ namespace TouhouPrideGameJam4.Game
 
         public void TryEnableGoal()
         {
-            if (!_characters.Any(x => x.Team == Team.Enemies) &&
+            if (MapManager.Instance.CurrentWorld == 2 && MapManager.Instance.CurrentLevel == 3)
+            {
+                // TODO
+            }
+            else if (!_characters.Any(x => x.Team == Team.Enemies) &&
                 PersistencyManager.Instance.QuestStatus != QuestStatus.PendingReimu &&
                 PersistencyManager.Instance.QuestStatus != QuestStatus.PendingAya)
             {
