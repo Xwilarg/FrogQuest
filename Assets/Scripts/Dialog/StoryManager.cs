@@ -48,6 +48,9 @@ namespace TouhouPrideGameJam4.Dialog
 
         private AudioSource _source;
 
+        [SerializeField]
+        private GameObject _cgAya, _cgReimu;
+
         private void Awake()
         {
             Instance = this;
@@ -201,6 +204,17 @@ namespace TouhouPrideGameJam4.Dialog
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Remilia)
                 {
                     MapManager.Instance.GoToNextZone();
+                }
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Done)
+                {
+                    if (PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu)
+                    {
+                        _cgReimu.SetActive(true);
+                    }
+                    else
+                    {
+                        _cgAya.SetActive(true);
+                    }
                 }
                 else
                 {

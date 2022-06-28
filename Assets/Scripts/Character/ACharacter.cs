@@ -2,7 +2,9 @@
 using System.Linq;
 using TouhouPrideGameJam4.Character.AI;
 using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Item;
@@ -268,6 +270,14 @@ namespace TouhouPrideGameJam4.Character
             }
 
             _health -= amount;
+            if (IsBoss)
+            {
+                UIManager.Instance.SetBossHealth((float)_health / _info.BaseHealth);
+                if (_health <= 0f)
+                {
+                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.Ending);
+                }
+            }
             if (_health <= 0)
             {
                 PlayerController.Instance.IncreaseEnergy(Random.Range(Info.MinEnergyOnDeath, Info.MaxEnergyOnDeath + 1));
@@ -299,10 +309,6 @@ namespace TouhouPrideGameJam4.Character
             else if (_health > _info.BaseHealth)
             {
                 _health = _info.BaseHealth;
-            }
-            if (IsBoss)
-            {
-                UIManager.Instance.SetBossHealth((float)_health / _info.BaseHealth);
             }
 
             // Display text with the damage done
