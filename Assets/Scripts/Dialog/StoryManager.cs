@@ -163,6 +163,14 @@ namespace TouhouPrideGameJam4.Dialog
                     StoryProgress.Forest4Kill => _forest2Statement,
                     StoryProgress.Quest => PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu ? _questReimuStatement : _questAyaStatement,
                     StoryProgress.EndQuest => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _endQuestReimuStatement : _endQuestAyaStatement,
+                    StoryProgress.SDM1 => _sdm1Statement,
+                    StoryProgress.SDM1Part2 => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _sdm1ReimuStatement : _sdm1AyaStatement,
+                    StoryProgress.SDM4 => _sdm4Statement,
+                    StoryProgress.SDMDoor1 => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _sdmDoor1ReimuStatement : _sdmDoor1AyaStatement,
+                    StoryProgress.SDMDoor2 => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _sdmDoor2ReimuStatement : _sdmDoor2AyaStatement,
+                    StoryProgress.SDMDoor3 => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _sdmDoor3ReimuStatement : _sdmDoor3AyaStatement,
+                    StoryProgress.Remilia => _sdmBossStatement,
+                    StoryProgress.Ending => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _endingReimuStatement : _endingAyaStatement,
                     _ => throw new NotImplementedException()
                 });
                 PersistencyManager.Instance.IncreaseStory();
@@ -181,6 +189,10 @@ namespace TouhouPrideGameJam4.Dialog
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Quest)
                 {
                     _choiceContainer.SetActive(true);
+                }
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.SDM1)
+                {
+                    ProgressIsAvailable(StoryProgress.SDM1Part2);
                 }
                 else
                 {

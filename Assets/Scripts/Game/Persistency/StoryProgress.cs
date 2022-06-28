@@ -9,6 +9,13 @@
         Quest,
         EndQuest,
         Forest4Kill,
-        EndOfGame
+        SDM1,
+        SDM1Part2,
+        SDM4,
+        SDMDoor1,
+        SDMDoor2,
+        SDMDoor3,
+        Remilia,
+        Ending
     }
 }

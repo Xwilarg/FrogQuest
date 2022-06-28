@@ -70,10 +70,18 @@ namespace TouhouPrideGameJam4.Map
                 {
                     StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest1);
                 }
+                else if (CurrentWorld == 2)
+                {
+                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM1);
+                }
             }
             else
             {
                 CurrentLevel++;
+                if (CurrentWorld == 2 && CurrentLevel == 3)
+                {
+                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM4);
+                }
             }
             InitMap();
         }
