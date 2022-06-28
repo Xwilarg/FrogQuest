@@ -13,7 +13,12 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override void DoAction(ACharacter owner)
         {
-            var (X, Y) = MapManager.Instance.Exit;
+            var r = MapManager.Instance.Exit;
+            if (r == default)
+            {
+                return;
+            }
+            var (X, Y) = r;
             MapManager.Instance.DiscoverRoom(X, Y);
             owner.Position = new(X, Y);
             TurnManager.Instance.TryEnableGoal();

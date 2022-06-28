@@ -181,7 +181,7 @@ namespace TouhouPrideGameJam4.Map
 
 
             // Place exit room
-            if (!CurrMap.IsBossRoom)
+            if (!CurrMap.IsBossRoom && CurrentWorld != 2 && CurrentLevel != 3)
             {
                 bool didPlaceExit = false;
                 foreach (var room in _rooms.OrderBy(x => Random.value))
