@@ -294,11 +294,6 @@ namespace TouhouPrideGameJam4.Dialog
                         currentCharacter = null;
                         exp = ParsingExpectation.Dialogue;
                     }
-                    else if (match == "???" && exp == ParsingExpectation.Start) // We are at the start and found a character info
-                    {
-                        currentCharacter = character;
-                        exp = ParsingExpectation.Mood;
-                    }
                     else if (character != null && exp == ParsingExpectation.Start) // We are at the start and found a character info
                     {
                         currentCharacter = character;
