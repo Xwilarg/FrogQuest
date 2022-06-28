@@ -742,6 +742,19 @@ MonoBehaviour:
   _questAya: {fileID: 4900000, guid: 73185cd68ebd3824f926ec9edb77dce2, type: 3}
   _questReimu: {fileID: 4900000, guid: 599b76f1f11b4ec40a5b17f447eb4651, type: 3}
   _gameOver: {fileID: 4900000, guid: 84eeb8cf0079f40479b77691e3b6e218, type: 3}
+  _sdm1: {fileID: 4900000, guid: 1e97ea2dfebf98448bb6a8f4e09d4f74, type: 3}
+  _sdm1Aya: {fileID: 4900000, guid: fc1f7f2300667ad429824e35040e6a8a, type: 3}
+  _sdm1Reimu: {fileID: 4900000, guid: a0a7f6c9610ab86408031acb97efcaba, type: 3}
+  _sdm4: {fileID: 4900000, guid: 0b78c6c2ee44afa4b99789689609939c, type: 3}
+  _sdmDoor1Aya: {fileID: 4900000, guid: f290f70438095a646b7050b749613cdd, type: 3}
+  _sdmDoor2Aya: {fileID: 4900000, guid: 73308c6a66e941a48ad840bf10896d52, type: 3}
+  _sdmDoor3Aya: {fileID: 4900000, guid: 4b056a6d2145f8c45b8de6284dde9d1d, type: 3}
+  _sdmDoor1Reimu: {fileID: 4900000, guid: 195f106a40ecbd94a8b139999a6fdd39, type: 3}
+  _sdmDoor2Reimu: {fileID: 4900000, guid: 846d4e78303ca934483a6628292c45aa, type: 3}
+  _sdmDoor3Reimu: {fileID: 4900000, guid: 97d53d36d774ff04d8a4224f9568aae5, type: 3}
+  _sdmBoss: {fileID: 4900000, guid: a37abd6e2847ee94a8053db700e6910a, type: 3}
+  _endingAya: {fileID: 4900000, guid: 7544cda0d92dd3d4880cdb38d910bd26, type: 3}
+  _endingReimu: {fileID: 4900000, guid: 0ec9eb24ced46fe4987fb367005e5896, type: 3}
   _characters:
   - {fileID: 11400000, guid: f32ab0a85806856428b682f76700eac1, type: 2}
   - {fileID: 11400000, guid: 2adc6340533b61142a2c72b853c6a484, type: 2}

@@ -31,10 +31,11 @@ namespace TouhouPrideGameJam4.Dialog
 
         [SerializeField]
         private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu, _gameOver, _sdm1, _sdm1Aya, _sdm1Reimu,
-            _sdm4, _sdmDoors, _sdmDoor1, _sdmDoor2, _sdmDoor3, _sdmBoss, _endingAya, _endingReimu;
+            _sdm4, _sdmDoor1Aya, _sdmDoor2Aya, _sdmDoor3Aya, _sdmDoor1Reimu, _sdmDoor2Reimu, _sdmDoor3Reimu, _sdmBoss, _endingAya, _endingReimu;
         private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement, _endQuestAyaStatement,
             _endQuestReimuStatement, _questAyaStatement, _questReimuStatement, _gameOverStatement, _sdm1Statement, _sdm1AyaStatement, _sdm1ReimuStatement, _sdm4Statement,
-            _sdmDoorsStatement, _sdmDoor1Statement, _sdmDoor2Statement, _sdmDoor3Statement, _sdmBossStatement, _endingAyaStatement, _endingReimuStatement;
+            _sdmDoor1AyaStatement, _sdmDoor2AyaStatement, _sdmDoor3AyaStatement,
+            _sdmDoor1ReimuStatement, _sdmDoor2ReimuStatement, _sdmDoor3ReimuStatement, _sdmBossStatement, _endingAyaStatement, _endingReimuStatement;
 
         private DialogStatement[] _current;
         private int _index;
@@ -87,10 +88,12 @@ namespace TouhouPrideGameJam4.Dialog
             _sdm1AyaStatement = Parse(_sdm1Aya);
             _sdm1ReimuStatement = Parse(_sdm1Reimu);
             _sdm4Statement = Parse(_sdm4);
-            _sdmDoorsStatement = Parse(_sdmDoors);
-            _sdmDoor1Statement = Parse(_sdmDoor1);
-            _sdmDoor2Statement = Parse(_sdmDoor2);
-            _sdmDoor3Statement = Parse(_sdmDoor3);
+            _sdmDoor1AyaStatement = Parse(_sdmDoor1Aya);
+            _sdmDoor2AyaStatement = Parse(_sdmDoor2Aya);
+            _sdmDoor3AyaStatement = Parse(_sdmDoor3Aya);
+            _sdmDoor1ReimuStatement = Parse(_sdmDoor1Reimu);
+            _sdmDoor2ReimuStatement = Parse(_sdmDoor2Reimu);
+            _sdmDoor3ReimuStatement = Parse(_sdmDoor3Reimu);
             _sdmBossStatement = Parse(_sdmBoss);
             _endingAyaStatement = Parse(_endingAya);
             _endingReimuStatement = Parse(_endingReimu);
