@@ -16,6 +16,7 @@
         SDMDoor2,
         SDMDoor3,
         Remilia,
-        Ending
+        Ending,
+        Done
     }
 }

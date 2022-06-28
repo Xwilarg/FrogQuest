@@ -13,7 +13,7 @@ namespace TouhouPrideGameJam4.Test
         public IEnumerator AreStoriesValid()
         {
             var go = new GameObject("PersistencyManager", typeof(PersistencyManager));
-            go.GetComponent<PersistencyManager>().StoryProgress = StoryProgress.EndOfGame;
+            go.GetComponent<PersistencyManager>().StoryProgress = StoryProgress.Done;
             SceneManager.LoadScene("VNUI", LoadSceneMode.Additive);
             yield return null;
             StoryManager.Instance.ParseAllStories();
