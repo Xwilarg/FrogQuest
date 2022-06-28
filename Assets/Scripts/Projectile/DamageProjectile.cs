@@ -23,7 +23,7 @@ namespace Assets.Scripts.Projectile
                 var target = TurnManager.Instance.GetCharacterPos(CurrentPos.x, CurrentPos.y);
                 if (target != null && target.GetInstanceID() != Owner)
                 {
-                    target.TakeDamage(null, target.IsBoss && NoEffectOnBoss ? 0 : Damage);
+                    target.TakeDamage(null, (target.IsBoss || MapManager.Instance.CurrentWorld == 2) && NoEffectOnBoss ? 0 : Damage);
                     if (DestroyAfterFirstHit)
                     {
                         Destroy(gameObject);
