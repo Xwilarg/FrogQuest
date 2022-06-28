@@ -40,6 +40,9 @@ namespace TouhouPrideGameJam4.Map
         [SerializeField]
         private GameObject _bossPrefab;
 
+        [SerializeField]
+        private TextAsset ThreeDoorsRoom;
+
         private Tile[][] _map;
         private readonly List<Room> _rooms = new();
 
@@ -135,6 +138,43 @@ namespace TouhouPrideGameJam4.Map
                     }
                 }
             }
+
+            if (CurrentWorld == 2 && CurrentLevel == 3)
+            {
+                bool didPlaceObj = false;
+                foreach (var room in _rooms.OrderBy(x => Random.value))
+                {
+                    foreach (var d in GetFreeDoors(room, true))
+                    {
+                        if (d.Direction != Direction.Up)
+                        {
+                            var possibilities = GetRandomMatchingRoom(new[] { ThreeDoorsRoom }, d);
+                            if (possibilities.Any())
+                            {
+                                DrawRoom(possibilities[0]);
+
+                                // Add doors to separate rooms
+                                SetTileContent(d.X, d.Y, TileContentType.Door);
+
+                                _rooms.Add(possibilities[0]);
+
+                                didPlaceObj = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (didPlaceObj)
+                    {
+                        break;
+                    }
+                }
+                if (!didPlaceObj)
+                {
+                    InitMap();
+                    return;
+                }
+            }
+
 
             // Place exit room
             if (!CurrMap.IsBossRoom)

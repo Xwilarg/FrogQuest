@@ -181,6 +181,7 @@ MonoBehaviour:
   _mapImage: {fileID: 1203085930}
   _mapText: {fileID: 543854477}
   _bossPrefab: {fileID: 5139414085749961957, guid: 19d1e9d044912734bb243f1b6e85a040, type: 3}
+  ThreeDoorsRoom: {fileID: 4900000, guid: 11ca95f69744e484da7b529160225c16, type: 3}
 --- !u!114 &39555388
 MonoBehaviour:
   m_ObjectHideFlags: 0
