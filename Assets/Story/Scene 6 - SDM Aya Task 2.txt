@@ -1,6 +1,6 @@
 sanae joyful "Hmm, Aya you’re pretty fast. I think we could cover a lot of ground if we work together."
 aya joyful "Absolutely! You know I won’t let you down."
-sanae neutral "Reimu, are you okay going with Cirno?
+sanae neutral "Reimu, are you okay going with Cirno?"
 reimu neutral "..."
 cirno joyful "..."
 reimu eyesclosed "Fine, let’s just go."
