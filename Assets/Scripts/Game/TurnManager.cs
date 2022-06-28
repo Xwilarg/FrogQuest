@@ -98,10 +98,6 @@ namespace TouhouPrideGameJam4.Game
                 var enemyCount = _characters.Where(x => x.Team == Team.Enemies).Count();
                 if (enemyCount == 0)
                 {
-                    if (MapManager.Instance.CurrentWorld == 1)
-                    {
-                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest4Kill);
-                    }
                     _objectiveText.text = "Find the exit!";
                 }
                 else

@@ -64,7 +64,11 @@ namespace TouhouPrideGameJam4.Map
 
         public void GoToNextZone()
         {
-            if (CurrentLevel + 1 == CurrMap.StageCount)
+            if (PersistencyManager.Instance.StoryProgress == StoryProgress.Forest4Kill && CurrentWorld == 1 && CurrentLevel == 3)
+            {
+                StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest4Kill);
+            }
+            else if (CurrentLevel + 1 == CurrMap.StageCount)
             {
                 CurrentWorld++;
                 CurrentLevel = 0;

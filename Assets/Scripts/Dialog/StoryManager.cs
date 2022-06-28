@@ -160,9 +160,9 @@ namespace TouhouPrideGameJam4.Dialog
                     StoryProgress.YoukaiMountain1 => _mountain1Statement,
                     StoryProgress.YoukaiMountain1Half => _mountain2Statement,
                     StoryProgress.Forest1 => _forest1Statement,
-                    StoryProgress.Forest4Kill => _forest2Statement,
                     StoryProgress.Quest => PersistencyManager.Instance.QuestStatus == QuestStatus.PendingReimu ? _questReimuStatement : _questAyaStatement,
                     StoryProgress.EndQuest => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _endQuestReimuStatement : _endQuestAyaStatement,
+                    StoryProgress.Forest4Kill => _forest2Statement,
                     StoryProgress.SDM1 => _sdm1Statement,
                     StoryProgress.SDM1Part2 => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _sdm1ReimuStatement : _sdm1AyaStatement,
                     StoryProgress.SDM4 => _sdm4Statement,
@@ -189,6 +189,10 @@ namespace TouhouPrideGameJam4.Dialog
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Quest)
                 {
                     _choiceContainer.SetActive(true);
+                }
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.SDM1)
+                {
+                    MapManager.Instance.GoToNextZone();
                 }
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.SDM1Part2)
                 {
