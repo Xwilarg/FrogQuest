@@ -68,33 +68,36 @@ namespace TouhouPrideGameJam4.Map
             {
                 StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest4Kill);
             }
-            else if (CurrentLevel + 1 == CurrMap.StageCount)
-            {
-                CurrentWorld++;
-                CurrentLevel = 0;
-                BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
-                if (CurrentWorld == 1)
-                {
-                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest1);
-                }
-                else if (CurrentWorld == 2)
-                {
-                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM1);
-                }
-                else if (CurrentWorld == 3)
-                {
-                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.Remilia);
-                }
-            }
             else
             {
-                CurrentLevel++;
-                if (CurrentWorld == 2 && CurrentLevel == 3)
+                if (CurrentLevel + 1 == CurrMap.StageCount)
                 {
-                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM4);
+                    CurrentWorld++;
+                    CurrentLevel = 0;
+                    BGMManager.Instance.SetSong(CurrMap.IntroSong, CurrMap.MainSong);
+                    if (CurrentWorld == 1)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.Forest1);
+                    }
+                    else if (CurrentWorld == 2)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM1);
+                    }
+                    else if (CurrentWorld == 3)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.Remilia);
+                    }
                 }
+                else
+                {
+                    CurrentLevel++;
+                    if (CurrentWorld == 2 && CurrentLevel == 3)
+                    {
+                        StoryManager.Instance.ProgressIsAvailable(StoryProgress.SDM4);
+                    }
+                }
+                InitMap();
             }
-            InitMap();
         }
 
         private void InitMap()
