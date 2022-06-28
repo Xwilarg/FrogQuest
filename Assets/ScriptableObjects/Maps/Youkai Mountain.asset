@@ -57,11 +57,12 @@ MonoBehaviour:
   DoorSprite: {fileID: 21300000, guid: 91b9003a4ee672442ba44ebf1e7ad108, type: 3}
   ChestSprite: {fileID: 21300000, guid: 1e22c0c65cead7444b375215b9d5b651, type: 3}
   BushSprite: {fileID: 0}
+  SpeDoor: {fileID: 0}
   EntranceSprite: {fileID: 21300000, guid: 86a2ae68809abd74d839830a9efa7315, type: 3}
   ExitDisabledSprite: {fileID: 21300000, guid: ef3212f031a939448a1fc4de5378dee3, type: 3}
   ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}
   Name: Youkai Mountain
   StageCount: 4
-  Image: {fileID: 21300000, guid: 8ee2ed36c8ce937448da5a44ed156c9f, type: 3}
+  Image: {fileID: 21300000, guid: 1afb462a56ba630429febd02fb963025, type: 3}
   IntroSong: {fileID: 8300000, guid: 0732f8323704fe14ab0c81bfd57e9d04, type: 3}
   MainSong: {fileID: 8300000, guid: a2306b09b06b00a479a8c0f0c89418f1, type: 3}

@@ -66,6 +66,6 @@ MonoBehaviour:
   ExitEnabledSprite: {fileID: 21300000, guid: c45df9619d1dc4448af0376c0ed2cd50, type: 3}
   Name: Scarlet Devil Mansion
   StageCount: 1
-  Image: {fileID: 21300000, guid: 8ee2ed36c8ce937448da5a44ed156c9f, type: 3}
+  Image: {fileID: 21300000, guid: 9d2a2c3338c790e47a38454272ec6978, type: 3}
   IntroSong: {fileID: 8300000, guid: cf7f4632e937e884c9ce0304ae792cd8, type: 3}
   MainSong: {fileID: 8300000, guid: 4fbd367855a23ff4cbeb273d420ffe50, type: 3}
