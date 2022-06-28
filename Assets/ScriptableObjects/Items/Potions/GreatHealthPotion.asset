@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UtilityDescription: It emits a strong red aura
   Name: Health Potion
-  Sprite: {fileID: 21300000, guid: 8abc4904c3eeab744802c4308635ac07, type: 3}
+  Sprite: {fileID: 21300000, guid: 002167f5da3561842b2b2b44f9a8b2da, type: 3}
   SoundOverride: {fileID: 8300000, guid: 6de10a9cfa83fee47b872aabb90b62d2, type: 3}
   ActionType: {fileID: 11400000, guid: afc2076df9c75d0408987849ccc34070, type: 2}
   Effect: 00000000
