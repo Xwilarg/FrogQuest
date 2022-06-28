@@ -21,4 +21,3 @@ sanae neutral "But I really do think we should make our way towards the back of 
 aya neutral "Agreed! Race you there!"
 sanae surprised "Ah, I think we should try to be a little more thorough with our search than that."
 aya joyful "Okay, fine! But don’t take too long or I’ll get antsy."
-none "Approach the doors to search each room and find Remilia."

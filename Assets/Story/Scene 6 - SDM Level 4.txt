@@ -1,0 +1,2 @@
+sanae neutral "Ah, this place is so big! But I feel like we're getting close!"
+none "Approach the doors to search each room and find Remilia."
