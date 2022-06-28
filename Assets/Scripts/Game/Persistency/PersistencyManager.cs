@@ -2,6 +2,7 @@
 using System.Linq;
 using TouhouPrideGameJam4.Inventory;
 using TouhouPrideGameJam4.SO;
+using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,8 @@ namespace TouhouPrideGameJam4.Game.Persistency
 
         public int QuestProgress { set; get; }
         public int MaxQuest => 5;
+
+        public FollowerInfo Follower { set; get; }
 
         private void Awake()
         {

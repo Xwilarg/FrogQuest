@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TMPro;
+using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Inventory;
 using UnityEngine;
@@ -18,6 +19,27 @@ namespace TouhouPrideGameJam4.Menu
 
         [SerializeField]
         private TMP_Text _energyText;
+
+        [SerializeField]
+        private Button _reimuB, _ayaB;
+
+        private void Start()
+        {
+            _ayaB.gameObject.SetActive(PersistencyManager.Instance.StoryProgress > StoryProgress.YoukaiMountain1);
+            _reimuB.gameObject.SetActive(PersistencyManager.Instance.StoryProgress > StoryProgress.YoukaiMountain1Half);
+
+            if (PersistencyManager.Instance.Follower != null)
+            {
+                if (PersistencyManager.Instance.Follower.Type == FollowerType.Aya)
+                {
+                    _ayaB.interactable = false;
+                }
+                else
+                {
+                    _reimuB.interactable = false;
+                }
+            }
+        }
 
         public void StartGame()
         {

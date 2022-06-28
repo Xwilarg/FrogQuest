@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
+using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.SO.Character;
 using TouhouPrideGameJam4.SO.Item;
 using TouhouPrideGameJam4.Sound;
@@ -38,6 +39,10 @@ namespace TouhouPrideGameJam4.Character.Player
             if (SceneManager.GetActiveScene().name == "Main") // Outside of main scene we only use this object for the VN controls
             { // TODO: Move into separate class?
                 Init(Team.Allies);
+                if (PersistencyManager.Instance.Follower != null)
+                {
+                    SetFollower(PersistencyManager.Instance.Follower);
+                }
             }
         }
 
