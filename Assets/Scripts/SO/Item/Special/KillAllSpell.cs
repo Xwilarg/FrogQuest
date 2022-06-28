@@ -13,6 +13,10 @@ namespace TouhouPrideGameJam4.SO.Item
 
         public override void DoAction(ACharacter owner)
         {
+            if (!owner.hasInfiniteItems)
+            {
+                owner.RemoveItem(this);
+            }
             var e = TurnManager.Instance.Enemies;
             while (e.Any())
             {
