@@ -29,5 +29,5 @@ Aya neutral "Well, what are you waiting for then?"
 sanae neutral "Yeah, let’s go. But before we do, is there any way you can help me if there are enemies?"
 aya joyful "Ayaya, you’re talking to the fastest tengu in Gensokyo! I’ll help you get out of the way if an enemy’s about to hit you!"
 sanae joyful "Great! Well, let’s head out then!"
-none "Select Aya’s evade ability from the skill menu before attacking to dodge attacks for one turn." 
+none "Team up with Aya on the shrine menu to equip her evade ability." 
 

@@ -83,5 +83,5 @@ sanae joyful "You’re not gonna make me do everything myself, though. Right?"
 reimu neutral "Oh, I have to help?"
 sanae angry "Hey, don’t make me do all the work!"
 reimu angry "Ugh, fine! (How come I never get a break?)"
-none "Select Reimu’s blessing ability from the skill menu to regain HP."
+none "Team up with Reimu on the shrine menu to equip her blessing ability, which restores HP." 
 
