@@ -213,6 +213,14 @@ namespace TouhouPrideGameJam4.Dialog
                 }
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.EndingCG)
                 {
+                    if (PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu)
+                    {
+                        _cgReimu.SetActive(true);
+                    }
+                    else
+                    {
+                        _cgAya.SetActive(true);
+                    }
                     ProgressIsAvailable(StoryProgress.EndingCG);
                 }
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Remilia)
