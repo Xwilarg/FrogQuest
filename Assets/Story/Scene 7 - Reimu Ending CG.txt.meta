@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
 guid: 708c4d2bdd8c446468a72b8c17c30de3
+=======
+guid: e0e02c32e1a63e149a073f7fe7b2e197
+>>>>>>> 525a07c (Working status symbols on enemies)
+=======
+guid: e0e02c32e1a63e149a073f7fe7b2e197
+>>>>>>> 525a07c83b0b9c2223578890bd75db7a6a0ef564
 TextScriptImporter:
   externalObjects: {}
   userData: 
