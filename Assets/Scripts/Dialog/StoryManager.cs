@@ -181,6 +181,15 @@ namespace TouhouPrideGameJam4.Dialog
             }
         }
 
+        private void Update()
+        {
+            if (_cgAya.activeInHierarchy || _cgReimu.activeInHierarchy)
+            {
+                _endTimer -= Time.deltaTime;
+            }
+        }
+
+        private float _endTimer = .5f;
         public void ShowNextDialogue()
         {
             if (_current == null || _index == _current.Length) // End of VN part
@@ -208,7 +217,12 @@ namespace TouhouPrideGameJam4.Dialog
                 }
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Done)
                 {
-                    if (PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu)
+                    if (_endTimer <= 0f)
+                    {
+                        Destroy(PersistencyManager.Instance.gameObject);
+                        SceneManager.LoadScene("MainMenu");
+                    }
+                    else if (PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu)
                     {
                         _cgReimu.SetActive(true);
                     }
