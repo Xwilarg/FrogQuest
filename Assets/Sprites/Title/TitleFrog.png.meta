@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a8a4fd4c34495174bb5e7fe679bb140b
+=======
+guid: 7efa46259ad569540b3294e8b358826d
+>>>>>>> 525a07c (Working status symbols on enemies)
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
