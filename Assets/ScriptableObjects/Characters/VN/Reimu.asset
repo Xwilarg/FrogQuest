@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: reimu
   Name: Reimu
-  Color: {r: 0.89019614, g: 0.227451, b: 0.2509804, a: 1}
+  Color: {r: 0.6320754, g: 0.15205587, b: 0.16909818, a: 1}
   NeutralExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
   EyesClosedExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
   SadExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
   AngryExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
   SurprisedExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
-  ShockedExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}
   ShyExpression: {fileID: 21300000, guid: a542e391c7231214ba0a88b3abbd85eb, type: 3}

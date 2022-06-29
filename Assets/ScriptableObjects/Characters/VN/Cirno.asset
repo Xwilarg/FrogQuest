@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: cirno
   Name: Cirno
-  Color: {r: 0.18039216, g: 0.32941177, b: 0.8470589, a: 1}
+  Color: {r: 0.16037735, g: 0.2679245, b: 0.6415094, a: 1}
   NeutralExpression: {fileID: 21300000, guid: 26b5f20f1f27504429d9fbd7237c5fbb, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: aaf512306e17e6943bcb84a6e6f9cecf, type: 3}
   EyesClosedExpression: {fileID: 21300000, guid: cc782af2819222f4d9bedabecee9c9bd, type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: sanae
   Name: Sanae
-  Color: {r: 0.29411766, g: 0.63529414, b: 0.34117648, a: 1}
+  Color: {r: 0.18623175, g: 0.4245283, b: 0.21910025, a: 1}
   NeutralExpression: {fileID: 21300000, guid: c11143711cfdf9f4db0042b4cb54927f, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
   EyesClosedExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}

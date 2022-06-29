@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: remilia
   Name: Remilia
-  Color: {r: 0.854902, g: 0.67058825, b: 0.7019608, a: 1}
+  Color: {r: 0.49056602, g: 0.33552864, b: 0.36191797, a: 1}
   NeutralExpression: {fileID: 21300000, guid: c29748dcb669cee4db5ba23eb54cec78, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: a82b72de3fc199243916a747c5e2f7a4, type: 3}
   EyesClosedExpression: {fileID: 21300000, guid: 7bfa9bb5f0e59b54997627a6c39d341f, type: 3}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: aya
   Name: Aya
-  Color: {r: 0.25882354, g: 0.2627451, b: 0.25882354, a: 1}
+  Color: {r: 0.18778922, g: 0.18867922, b: 0.18778922, a: 1}
   NeutralExpression: {fileID: 21300000, guid: 59ae7f63cf707be47a7a253bd6348484, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: f54a2ae4314e17249983caa1c09fc582, type: 3}
   EyesClosedExpression: {fileID: 21300000, guid: f54a2ae4314e17249983caa1c09fc582, type: 3}
