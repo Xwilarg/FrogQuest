@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9ea308d5f314042bb8ff7f630593ae, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  UtilityDescription: 
+  UtilityDescription: A ranged weapon utilizing arrows.
   Name: Bow
   Sprite: {fileID: 21300000, guid: 12d4fcec8053d624dbbd320b2619a2d5, type: 3}
   SoundOverride: {fileID: 0}
   ActionType: {fileID: 11400000, guid: 6425eec96a30e1e4da63a1e2dc3a2eed, type: 2}
   Damage: 2
-  HitEffects: 
+  HitEffects: []
   Range: 5
   IsHeal: 0
+  IsSingleUse: 0
+  CanCounterAttack: 0

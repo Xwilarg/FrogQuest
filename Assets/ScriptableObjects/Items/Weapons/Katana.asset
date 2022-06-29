@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9ea308d5f314042bb8ff7f630593ae, type: 3}
   m_Name: Katana
   m_EditorClassIdentifier: 
-  UtilityDescription: 
+  UtilityDescription: A traditional weapon from feudal Japan, characterized by its
+    long, curved blade. It's cool, but not as cool as that one gardener's katanas...
   Name: Katana
   Sprite: {fileID: 21300000, guid: 06aeab81c3208934c8857160fb9c5e83, type: 3}
   SoundOverride: {fileID: 8300000, guid: 7dda035c7fc9ece4cb462a0de06f5b76, type: 3}
@@ -22,3 +23,4 @@ MonoBehaviour:
   Range: 1
   IsHeal: 0
   IsSingleUse: 0
+  CanCounterAttack: 0
