@@ -39,7 +39,7 @@ MonoBehaviour:
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
     CanBeWalkedOn: 0
     Sprite:
-    - {fileID: 21300000, guid: 53343436cef5ccd4fb55f584dfb39191, type: 3}
+    - {fileID: 21300000, guid: ab8415be5b6b47a4181f7eebc519f6c4, type: 3}
   - Character: 83
     Type: 2
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
