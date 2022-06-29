@@ -38,9 +38,9 @@ MonoBehaviour:
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
     CanBeWalkedOn: 0
     Sprite:
-    - {fileID: 2103645046, guid: 5bd628a90a0ee9e4c8db5c3385ea83e6, type: 3}
-    - {fileID: 623089281, guid: 5bd628a90a0ee9e4c8db5c3385ea83e6, type: 3}
-    - {fileID: -1855353695, guid: 5bd628a90a0ee9e4c8db5c3385ea83e6, type: 3}
+    - {fileID: 413175994, guid: c74b526590272974c9090c75f07c5bd3, type: 3}
+    - {fileID: 1643917162, guid: c74b526590272974c9090c75f07c5bd3, type: 3}
+    - {fileID: 875755588, guid: c74b526590272974c9090c75f07c5bd3, type: 3}
   - Character: 83
     Type: 2
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
