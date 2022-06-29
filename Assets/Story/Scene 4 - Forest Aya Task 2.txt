@@ -6,7 +6,7 @@ aya neutral "Don’t think too much about it!"
 sanae neutral "Hmm…"
 sanae joyful "Oh, I know!"
 aya neutral "?"
-none *snap!*
+none "Snap!"
 aya surprised "..."
 "What was that?"
 sanae neutral "Oh, uhm."
