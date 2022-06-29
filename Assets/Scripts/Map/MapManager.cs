@@ -323,7 +323,7 @@ namespace TouhouPrideGameJam4.Map
                     foreach (var pos in spawnPos)
                     {
                         var sumDrop = CurrMap.EnemiesSpawn.Sum(x => x.Weight);
-                        var targetWeight = Random.Range(0, sumDrop);
+                        var targetWeight = Random.Range(0, sumDrop + 1);
                         var index = 0;
                         do
                         {
