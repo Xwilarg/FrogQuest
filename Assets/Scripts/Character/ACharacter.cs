@@ -276,6 +276,7 @@ namespace TouhouPrideGameJam4.Character
                 if (_health <= 0f)
                 {
                     StoryManager.Instance.ProgressIsAvailable(StoryProgress.Ending);
+                    StoryManager.Instance.ShowShrine();
                 }
             }
             if (_health <= 0)

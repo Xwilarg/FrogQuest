@@ -31,11 +31,12 @@ namespace TouhouPrideGameJam4.Dialog
 
         [SerializeField]
         private TextAsset _introDialog, _mountain1, _mountain2, _forest1, _forest2, _endQuestAya, _endQuestReimu, _questAya, _questReimu, _gameOver, _sdm1, _sdm1Aya, _sdm1Reimu,
-            _sdm4, _sdmDoor1Aya, _sdmDoor2Aya, _sdmDoor3Aya, _sdmDoor1Reimu, _sdmDoor2Reimu, _sdmDoor3Reimu, _sdmBoss, _endingAya, _endingReimu;
+            _sdm4, _sdmDoor1Aya, _sdmDoor2Aya, _sdmDoor3Aya, _sdmDoor1Reimu, _sdmDoor2Reimu, _sdmDoor3Reimu, _sdmBoss, _endingAya, _endingReimu, _ending2Aya, _ending2Reimu;
         private DialogStatement[] _introStatement, _mountain1Statement, _mountain2Statement, _forest1Statement, _forest2Statement, _endQuestAyaStatement,
             _endQuestReimuStatement, _questAyaStatement, _questReimuStatement, _gameOverStatement, _sdm1Statement, _sdm1AyaStatement, _sdm1ReimuStatement, _sdm4Statement,
             _sdmDoor1AyaStatement, _sdmDoor2AyaStatement, _sdmDoor3AyaStatement,
-            _sdmDoor1ReimuStatement, _sdmDoor2ReimuStatement, _sdmDoor3ReimuStatement, _sdmBossStatement, _endingAyaStatement, _endingReimuStatement;
+            _sdmDoor1ReimuStatement, _sdmDoor2ReimuStatement, _sdmDoor3ReimuStatement, _sdmBossStatement, _endingAyaStatement, _endingReimuStatement,
+            _ending2AyaStatement, _ending2ReimuStatement;
 
         private DialogStatement[] _current;
         private int _index;
@@ -49,7 +50,7 @@ namespace TouhouPrideGameJam4.Dialog
         private AudioSource _source;
 
         [SerializeField]
-        private GameObject _cgAya, _cgReimu;
+        private GameObject _cgAya, _cgReimu, _cgShrine;
 
         private void Awake()
         {
@@ -101,6 +102,8 @@ namespace TouhouPrideGameJam4.Dialog
             _sdmBossStatement = Parse(_sdmBoss);
             _endingAyaStatement = Parse(_endingAya);
             _endingReimuStatement = Parse(_endingReimu);
+            _ending2AyaStatement = Parse(_ending2Aya);
+            _ending2ReimuStatement = Parse(_ending2Reimu);
         }
 
         private bool _isGameOver;
@@ -154,6 +157,11 @@ namespace TouhouPrideGameJam4.Dialog
             }
         }
 
+        public void ShowShrine()
+        {
+            _cgShrine.gameObject.SetActive(true);
+        }
+
         public void ProgressIsAvailable(StoryProgress requirement)
         {
             if (PersistencyManager.Instance.StoryProgress == requirement)
@@ -175,21 +183,13 @@ namespace TouhouPrideGameJam4.Dialog
                     StoryProgress.SDMDoor3 => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _sdmDoor3ReimuStatement : _sdmDoor3AyaStatement,
                     StoryProgress.Remilia => _sdmBossStatement,
                     StoryProgress.Ending => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _endingReimuStatement : _endingAyaStatement,
+                    StoryProgress.EndingCG => PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu ? _ending2ReimuStatement : _ending2AyaStatement,
                     _ => throw new NotImplementedException()
                 });
                 PersistencyManager.Instance.IncreaseStory();
             }
         }
 
-        private void Update()
-        {
-            if (_cgAya.activeInHierarchy || _cgReimu.activeInHierarchy)
-            {
-                _endTimer -= Time.deltaTime;
-            }
-        }
-
-        private float _endTimer = .5f;
         public void ShowNextDialogue()
         {
             if (_current == null || _index == _current.Length) // End of VN part
@@ -211,25 +211,18 @@ namespace TouhouPrideGameJam4.Dialog
                 {
                     ProgressIsAvailable(StoryProgress.SDM1Part2);
                 }
+                else if (PersistencyManager.Instance.StoryProgress == StoryProgress.EndingCG)
+                {
+                    ProgressIsAvailable(StoryProgress.EndingCG);
+                }
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Remilia)
                 {
                     MapManager.Instance.GoToNextZone();
                 }
                 else if (PersistencyManager.Instance.StoryProgress == StoryProgress.Done)
                 {
-                    if (_endTimer <= 0f)
-                    {
-                        Destroy(PersistencyManager.Instance.gameObject);
-                        SceneManager.LoadScene("MainMenu");
-                    }
-                    else if (PersistencyManager.Instance.QuestStatus == QuestStatus.CompletedReimu)
-                    {
-                        _cgReimu.SetActive(true);
-                    }
-                    else
-                    {
-                        _cgAya.SetActive(true);
-                    }
+                    Destroy(PersistencyManager.Instance.gameObject);
+                    SceneManager.LoadScene("MainMenu");
                 }
                 else
                 {

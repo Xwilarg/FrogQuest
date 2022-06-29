@@ -17,6 +17,7 @@
         SDMDoor3,
         Remilia,
         Ending,
+        EndingCG,
         Done
     }
 }
