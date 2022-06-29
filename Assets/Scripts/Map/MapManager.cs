@@ -298,8 +298,12 @@ namespace TouhouPrideGameJam4.Map
             if (!CurrMap.IsBossRoom)
             {
                 // Spawn enemies
-                foreach (var room in _rooms.Skip(1)) // We check each room, skipping the starting one
+                foreach (var room in _rooms) // We check each room, skipping the starting one
                 {
+                    if (room.Data.Any(x => x.Contains("S"))) // Skip rooms with entry points
+                    {
+                        continue;
+                    }
                     var nbEnemies = Random.Range(0, CurrMap.MaxEnemiesPerRoom + 1);
                     List<Vector2Int> spawnPos = new();
 
