@@ -43,6 +43,11 @@ namespace TouhouPrideGameJam4.Character.Player
                 {
                     SetFollower(PersistencyManager.Instance.Follower);
                 }
+                if (PersistencyManager.Instance.StoryProgress == StoryProgress.EndQuest)
+                {
+                    PersistencyManager.Instance.StoryProgress = StoryProgress.Quest;
+                    PersistencyManager.Instance.QuestStatus = QuestStatus.NotStarted;
+                }
             }
         }
 
