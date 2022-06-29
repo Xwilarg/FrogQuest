@@ -16,9 +16,9 @@ MonoBehaviour:
   Name: Sanae
   Color: {r: 0.18623175, g: 0.4245283, b: 0.21910025, a: 1}
   NeutralExpression: {fileID: 21300000, guid: c11143711cfdf9f4db0042b4cb54927f, type: 3}
-  JoyfulExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
-  EyesClosedExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
-  SadExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
-  AngryExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
-  SurprisedExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
-  ShyExpression: {fileID: 21300000, guid: 8609fa8eccf23db4f98efe6a2ea4576b, type: 3}
+  JoyfulExpression: {fileID: 21300000, guid: 7026f03425d66dc478fd189e188dfb89, type: 3}
+  EyesClosedExpression: {fileID: 21300000, guid: 87b9746b23fdd68468e09cdf07a103ea, type: 3}
+  SadExpression: {fileID: 21300000, guid: 7e064da9d1a094045a51793647a4d0c9, type: 3}
+  AngryExpression: {fileID: 21300000, guid: 7844b152d0b74ea4aa07e739fb270126, type: 3}
+  SurprisedExpression: {fileID: 21300000, guid: afb746fde1026f540b17da9854ca62b5, type: 3}
+  ShyExpression: {fileID: 21300000, guid: 48c9ba1132aa6334ca68178d4590db1e, type: 3}

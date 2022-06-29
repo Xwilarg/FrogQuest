@@ -15,7 +15,7 @@ MonoBehaviour:
   Key: suwako
   Name: Suwako
   Color: {r: 0.4339623, g: 0.31358665, b: 0.20265219, a: 1}
-  NeutralExpression: {fileID: 21300000, guid: 0cdab7dcf0f9f8240beda7b9040abd02, type: 3}
+  NeutralExpression: {fileID: 21300000, guid: 8e10a32e6e23d884093d5f2c8b25adb7, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: 2986c71081290bd48a28c129b453c161, type: 3}
   EyesClosedExpression: {fileID: 0}
   SadExpression: {fileID: 0}
