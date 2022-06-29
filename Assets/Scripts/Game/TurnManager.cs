@@ -107,6 +107,10 @@ namespace TouhouPrideGameJam4.Game
                         StoryManager.Instance.ProgressIsAvailable(StoryProgress.YoukaiMountain1Half);
                     }
                     _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
+                    if (MapManager.Instance.CurrentWorld > 1)
+                    {
+                        _objectiveText.text = _objectiveText.text.Replace("Youkais", "Fairies");
+                    }
                 }
             }
         }
