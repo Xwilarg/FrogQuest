@@ -120,7 +120,7 @@ namespace TouhouPrideGameJam4.Character
         {
             if (_moveTimer < 1f)
             {
-                _moveTimer += Time.deltaTime * 2.5f;
+                _moveTimer += Time.deltaTime * 5f;
                 var t = Mathf.Clamp01(_moveTimer);
                 transform.position = Vector2.Lerp(OldPos, Position, t);
                 _didReachPosition = t == 1f;
