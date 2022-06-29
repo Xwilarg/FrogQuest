@@ -57,6 +57,7 @@ namespace TouhouPrideGameJam4.UI
                 }
                 Content.DoAction(PlayerController.Instance);
                 PlayerController.Instance.UpdateInventoryDisplay();
+                OnPointerEnter(default);
             }
             catch (NoFreeSpaceException)
             {
@@ -77,6 +78,7 @@ namespace TouhouPrideGameJam4.UI
         public void Clear()
         {
             SetContent(null);
+            OnPointerEnter(default);
         }
 
         public void SetContent(AItemInfo item)
