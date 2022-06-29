@@ -63,7 +63,8 @@ namespace TouhouPrideGameJam4.Dialog
             c.Add(new()
             {
                 Name = "???",
-                Key = "???"
+                Key = "???",
+                Color = Color.black
             });
             _characters = c.ToArray();
 
