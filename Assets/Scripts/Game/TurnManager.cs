@@ -109,7 +109,7 @@ namespace TouhouPrideGameJam4.Game
                     _objectiveText.text = _baseObjectiveText.Replace("{0}", _characters.Where(x => x.Team == Team.Enemies).Count().ToString());
                     if (MapManager.Instance.CurrentWorld > 1)
                     {
-                        _objectiveText.text = _objectiveText.text.Replace("Youkais", "Fairies");
+                        _objectiveText.text = _objectiveText.text.Replace("Youkai", "Fairies");
                     }
                 }
             }

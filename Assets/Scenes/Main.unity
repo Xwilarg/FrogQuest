@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Chase the Youkais!
+  m_text: 'Chase the Youkai!
 
     {0} remaining'
   m_isRightToLeft: 0
