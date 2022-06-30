@@ -18,7 +18,7 @@ MonoBehaviour:
   NeutralExpression: {fileID: 21300000, guid: 59ae7f63cf707be47a7a253bd6348484, type: 3}
   JoyfulExpression: {fileID: 21300000, guid: 8beefe3a4b77c1e4f9fba3418d239b48, type: 3}
   EyesClosedExpression: {fileID: 21300000, guid: 3a553278abd761d4d9648d138e03e73d, type: 3}
-  SadExpression: {fileID: 21300000, guid: f54a2ae4314e17249983caa1c09fc582, type: 3}
+  SadExpression: {fileID: 21300000, guid: ad98a461ab90bce4db1da7260bf58d25, type: 3}
   AngryExpression: {fileID: 21300000, guid: 2fe283e8cf6654e4b85df8ee784a1988, type: 3}
   SurprisedExpression: {fileID: 21300000, guid: e08fa04ab9ce4d64cb904bacb4367423, type: 3}
   ShyExpression: {fileID: 21300000, guid: 92f09ad430028604b921fe374365366d, type: 3}

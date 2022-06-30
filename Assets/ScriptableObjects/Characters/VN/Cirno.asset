@@ -21,4 +21,4 @@ MonoBehaviour:
   SadExpression: {fileID: 21300000, guid: c2f34777eb104604aa9b8cdac6f67e17, type: 3}
   AngryExpression: {fileID: 21300000, guid: 60cc3c2df656ab2438c80f51077c4bb4, type: 3}
   SurprisedExpression: {fileID: 21300000, guid: eb7cbe5cc1132384aa15bbe095876b23, type: 3}
-  ShyExpression: {fileID: 21300000, guid: cc782af2819222f4d9bedabecee9c9bd, type: 3}
+  ShyExpression: {fileID: 0}
