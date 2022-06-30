@@ -402,6 +402,16 @@ namespace TouhouPrideGameJam4.Map
             }
             TurnManager.Instance.CountEnemies();
 
+            if (!CurrMap.IsBossRoom && (CurrentWorld != 2 || CurrentLevel != 3)) // Somehow sometimes the exit still isn't here?
+            {
+
+                if (!_map.SelectMany(x => x).Any(x => x != null && (x.Content == TileContentType.ExitDisabled || x.Content == TileContentType.ExitEnabled)))
+                {
+                    InitMap();
+                    return;
+                }
+            }
+
             // Show spawn room
             DiscoverRoom(currentSpawn.x, currentSpawn.y);
         }
