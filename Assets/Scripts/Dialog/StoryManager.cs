@@ -10,6 +10,7 @@ using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Game.Persistency;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.SO.Character;
+using TouhouPrideGameJam4.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,6 +52,9 @@ namespace TouhouPrideGameJam4.Dialog
 
         [SerializeField]
         private GameObject _cgAya, _cgReimu, _cgShrine;
+
+        [SerializeField]
+        private AudioClip _bgmEnd;
 
         private void Awake()
         {
@@ -160,6 +164,7 @@ namespace TouhouPrideGameJam4.Dialog
         public void ShowShrine()
         {
             _cgShrine.gameObject.SetActive(true);
+            BGMManager.Instance.SetSong(null, _bgmEnd);
         }
 
         public void ProgressIsAvailable(StoryProgress requirement)

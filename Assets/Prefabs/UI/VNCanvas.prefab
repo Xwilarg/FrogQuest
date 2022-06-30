@@ -1209,6 +1209,7 @@ MonoBehaviour:
   _cgAya: {fileID: 1392556991}
   _cgReimu: {fileID: 963733347}
   _cgShrine: {fileID: 621160940}
+  _bgmEnd: {fileID: 0}
 --- !u!1 &7193130888304280588
 GameObject:
   m_ObjectHideFlags: 0

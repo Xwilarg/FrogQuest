@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212145246, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
+      propertyPath: _bgmEnd
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e74bbf0134e3e141916af6d0a57cf0d, type: 3}
     - target: {fileID: 958320323832118720, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
       propertyPath: m_Name
       value: VNCanvas
