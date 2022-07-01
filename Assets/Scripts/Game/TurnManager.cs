@@ -212,7 +212,7 @@ namespace TouhouPrideGameJam4.Game
                         SoundManager.Instance.PlayOpenContainerClip(_openDoor);
                     }
                 }
-                else if (content >= TileContentType.SpeDoorPending)
+                else if (content == TileContentType.SpeDoorPending)
                 {
                     if (!moveOnly)
                     {
