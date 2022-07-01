@@ -414,6 +414,7 @@ namespace TouhouPrideGameJam4.Game
             {
                 Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down
             };
+            _characters.RemoveAll(x => x == null);
             for (int i = _characters.Count - 1; i >= 0; i--)
             {
                 var c = _characters[i];
