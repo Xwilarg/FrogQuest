@@ -1,9 +1,9 @@
-XX.XX
-X...X
-X...X
-X...X
+HX.XH
+H...H
+H...H
+H...H
 .....
-X...X
-X...X
-X...X
-XX.XX
+H...H
+H...H
+H...H
+HX.XH

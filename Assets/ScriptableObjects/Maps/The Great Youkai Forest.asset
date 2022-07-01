@@ -33,7 +33,7 @@ MonoBehaviour:
     - {fileID: 1874795937, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
     - {fileID: -522408617, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
     - {fileID: 842111931, guid: 579ca8d5bd7866444b3f3d82c5f7b80d, type: 3}
-  - Character: 88
+  - Character: 72
     Type: 1
     GizmoColor: {r: 0, g: 0, b: 0, a: 1}
     CanBeWalkedOn: 0
@@ -41,6 +41,14 @@ MonoBehaviour:
     - {fileID: 413175994, guid: c74b526590272974c9090c75f07c5bd3, type: 3}
     - {fileID: 1643917162, guid: c74b526590272974c9090c75f07c5bd3, type: 3}
     - {fileID: 875755588, guid: c74b526590272974c9090c75f07c5bd3, type: 3}
+  - Character: 88
+    Type: 1
+    GizmoColor: {r: 0, g: 0, b: 0, a: 1}
+    CanBeWalkedOn: 0
+    Sprite:
+    - {fileID: -1052128422, guid: 802a948079d895a4d8ab35d0098491ae, type: 3}
+    - {fileID: 1798601783, guid: 802a948079d895a4d8ab35d0098491ae, type: 3}
+    - {fileID: -1052128422, guid: 802a948079d895a4d8ab35d0098491ae, type: 3}
   - Character: 83
     Type: 2
     GizmoColor: {r: 1, g: 0.9584457, b: 0, a: 0.40392157}
