@@ -246,6 +246,14 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
+        public void OnMenu(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                UIManager.Instance.TogglePauseMenu();
+            }
+        }
+
         public void OnWait(InputAction.CallbackContext value)
         {
             if (value.performed)

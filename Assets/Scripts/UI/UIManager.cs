@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using TouhouPrideGameJam4.Character;
 using TouhouPrideGameJam4.Character.Player;
+using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
 using TouhouPrideGameJam4.Map;
 using TouhouPrideGameJam4.Sound;
@@ -59,6 +60,9 @@ namespace TouhouPrideGameJam4.UI
 
         [SerializeField]
         private Sprite _sanaeJoyful, _sanaeNeutral, _sanaeSad;
+
+        [SerializeField]
+        private GameObject _pauseMenu;
 
         private void Awake()
         {
@@ -215,6 +219,17 @@ namespace TouhouPrideGameJam4.UI
                 UpdateUIOnNewTile();
             }
             get => _shortcutTarget;
+        }
+
+        public void BackToShrine()
+        {
+            _pauseMenu.SetActive(false);
+            StoryManager.Instance.ShowGameOver();
+        }
+
+        public void TogglePauseMenu()
+        {
+            _pauseMenu.SetActive(!_pauseMenu.activeInHierarchy);
         }
     }
 }
