@@ -225,7 +225,7 @@ namespace TouhouPrideGameJam4.Map
             }
 
             // Replace empty spaces by walls so the player can't exit the map
-            var wall = LookupTileByType(TileType.Wall);
+            var wall = LookupTileByChar('H');
             foreach (var r in _rooms)
             {
                 foreach (var d in GetFreeDoors(r, true))
