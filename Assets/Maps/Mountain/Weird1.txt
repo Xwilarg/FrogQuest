@@ -1,7 +1,7 @@
- XX.XXX
- X....X
-X.....X
+HHH.HHH
+HX....H
+H.....H
 .......
-X....XX
- X....X
- XX.XXX
+H....XH
+HX....H
+ HH.HHH
