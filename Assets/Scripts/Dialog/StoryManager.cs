@@ -161,6 +161,13 @@ namespace TouhouPrideGameJam4.Dialog
             }
         }
 
+        private bool _dontRevertRPGMode;
+        public void EnableEndCinematic()
+        {
+            PlayerController.Instance.EnableVNController();
+            _dontRevertRPGMode = true;
+        }
+
         public void ShowShrine()
         {
             _cgShrine.gameObject.SetActive(true);
@@ -237,7 +244,7 @@ namespace TouhouPrideGameJam4.Dialog
                     Destroy(PersistencyManager.Instance.gameObject);
                     SceneManager.LoadScene("MainMenu");
                 }
-                else
+                else if (!_dontRevertRPGMode)
                 {
                     _vnContainer.SetActive(false);
                     PlayerController.Instance.EnableRPGController();

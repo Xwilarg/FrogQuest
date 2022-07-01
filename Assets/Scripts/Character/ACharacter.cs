@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TouhouPrideGameJam4.Character.AI;
 using TouhouPrideGameJam4.Character.Player;
@@ -275,11 +276,12 @@ namespace TouhouPrideGameJam4.Character
                 UIManager.Instance.SetBossHealth((float)_health / _info.BaseHealth);
                 if (_health <= 0f)
                 {
-                    StoryManager.Instance.ProgressIsAvailable(StoryProgress.Ending);
-                    StoryManager.Instance.ShowShrine();
+                    _anim.SetTrigger("Die");
+                    StoryManager.Instance.EnableEndCinematic();
+                    StartCoroutine(WaitAndShowEnding());
                 }
             }
-            if (_health <= 0)
+            else if (_health <= 0)
             {
                 PlayerController.Instance.IncreaseEnergy(Random.Range(Info.MinEnergyOnDeath, Info.MaxEnergyOnDeath + 1));
                 if (_info.StartingItems.Any() && !MapManager.Instance.IsAnythingOnFloor(Position.x, Position.y)) // TODO: Put object on the next tile?
@@ -323,6 +325,13 @@ namespace TouhouPrideGameJam4.Character
                 damageText = amount.ToString();
             }
             TurnManager.Instance.SpawnDamageText(damageText, color, Position.x + Random.Range(-.5f, .5f), Position.y + Random.Range(-.5f, .5f));
+        }
+
+        private IEnumerator WaitAndShowEnding()
+        {
+            yield return new WaitForSeconds(4f);
+            StoryManager.Instance.ProgressIsAvailable(StoryProgress.Ending);
+            StoryManager.Instance.ShowShrine();
         }
 
         public void Attack(ACharacter target)
