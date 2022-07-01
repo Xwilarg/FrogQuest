@@ -56,7 +56,7 @@ namespace TouhouPrideGameJam4.Character
         }
 
         protected float _baseHealthMult = 1f;
-        private int MaxHealth => Mathf.FloorToInt(MaxHealth * _baseHealthMult);
+        private int MaxHealth => Mathf.FloorToInt(_info.BaseHealth * _baseHealthMult);
 
         private Animator _anim;
 
