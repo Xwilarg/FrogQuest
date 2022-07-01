@@ -1,8 +1,8 @@
    H.H
-  XX.XX
- X.....X
-X.......X
+  HH.HH
+ H.....H
+H.......H
 .........
-X...X...X
-X..X X..X
- XX   XX
+H...X...H
+H..HHH..H
+ HH   HH
