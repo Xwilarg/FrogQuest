@@ -56,6 +56,9 @@ namespace TouhouPrideGameJam4.Character
             }
         }
 
+        protected float _baseHealthMult = 1f;
+        private float MaxHealth => MaxHealth * _baseHealthMult;
+
         private Animator _anim;
 
         // Used for smooth movement
@@ -111,7 +114,7 @@ namespace TouhouPrideGameJam4.Character
         {
             Team = team;
             _anim = GetComponent<Animator>();
-            _health = _info.BaseHealth;
+            _health = MaxHealth;
             _items = _info.StartingItems.Where(x => x.Item != null).Select(x => x.Item).ToList();
             EquippedWeapon = (WeaponInfo)_info.StartingItems.FirstOrDefault(x => x.Item != null && x.Item.Type == ItemType.Weapon)?.Item;
             UpdateInventoryDisplay();
@@ -231,7 +234,7 @@ namespace TouhouPrideGameJam4.Character
             inventory.UpdateContent(this, _items, baseFilter);
         }
 
-        public bool IsHealthFull => _health == _info.BaseHealth;
+        public bool IsHealthFull => _health == MaxHealth;
 
         public virtual void TakeDamage(WeaponInfo weapon, int amount)
         {
@@ -273,7 +276,7 @@ namespace TouhouPrideGameJam4.Character
             _health -= amount;
             if (IsBoss)
             {
-                UIManager.Instance.SetBossHealth((float)_health / _info.BaseHealth);
+                UIManager.Instance.SetBossHealth((float)_health / MaxHealth);
                 if (_health <= 0f)
                 {
                     _anim.SetTrigger("Die");
@@ -309,9 +312,9 @@ namespace TouhouPrideGameJam4.Character
                 }
                 TurnManager.Instance.RemoveCharacter(this);
             }
-            else if (_health > _info.BaseHealth)
+            else if (_health > MaxHealth)
             {
-                _health = _info.BaseHealth;
+                _health = MaxHealth;
             }
 
             // Display text with the damage done
@@ -352,7 +355,7 @@ namespace TouhouPrideGameJam4.Character
 
         public override string ToString()
         {
-            return $"{name} - Health: {_health} / {_info.BaseHealth}";
+            return $"{name} - Health: {_health} / {MaxHealth}";
         }
     }
 }

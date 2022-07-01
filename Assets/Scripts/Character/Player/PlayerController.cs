@@ -38,16 +38,20 @@ namespace TouhouPrideGameJam4.Character.Player
         {
             if (SceneManager.GetActiveScene().name == "Main") // Outside of main scene we only use this object for the VN controls
             { // TODO: Move into separate class?
-                Init(Team.Allies);
                 if (PersistencyManager.Instance.Follower != null)
                 {
                     SetFollower(PersistencyManager.Instance.Follower);
+                    if (PersistencyManager.Instance.Follower.Type == FollowerType.Reimu)
+                    {
+                        _baseHealthMult = 1.2f;
+                    }
                 }
                 if (PersistencyManager.Instance.StoryProgress == StoryProgress.EndQuest)
                 {
                     PersistencyManager.Instance.StoryProgress = StoryProgress.Quest;
                     PersistencyManager.Instance.QuestStatus = QuestStatus.NotStarted;
                 }
+                Init(Team.Allies);
             }
         }
 
