@@ -16,12 +16,6 @@ MonoBehaviour:
   StartingItems:
   - Item: {fileID: 11400000, guid: de9f3cb585e44ad4d8c0e96982def4e2, type: 2}
     Weight: 0
-  - Item: {fileID: 11400000, guid: 974e17539b6c7934e94b0b66435785bc, type: 2}
-    Weight: 0
-  - Item: {fileID: 11400000, guid: 35c86dbe96a8f4148a37dba913e993b0, type: 2}
-    Weight: 0
-  - Item: {fileID: 11400000, guid: 43f1699f9a2efcb41b65819930faf249, type: 2}
-    Weight: 0
   DefaultWeapon: {fileID: 11400000, guid: e51a727081a2bba4fa24f371e1d1771e, type: 2}
   DoesDisappearAfterAttacking: 0
   TimeBeforeAttack: 0
