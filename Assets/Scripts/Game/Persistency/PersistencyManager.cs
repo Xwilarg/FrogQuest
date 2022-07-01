@@ -13,7 +13,7 @@ namespace TouhouPrideGameJam4.Game.Persistency
     {
         public static PersistencyManager Instance { get; private set; }
 
-        public int TotalEnergy { set; get; } = 10000;
+        public int TotalEnergy { set; get; }
 
         public StoryProgress StoryProgress { set; get; }
 
