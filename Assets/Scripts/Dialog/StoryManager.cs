@@ -152,6 +152,16 @@ namespace TouhouPrideGameJam4.Dialog
             }
         }
 
+        public void GoBack()
+        {
+            if (_index > 1)
+            {
+                _index--;
+                _vnContent.text = _current[_index - 1].Content[..^1];
+                ShowNextDialogue();
+            }
+        }
+
         private IEnumerator SkipDialogues()
         {
             while (_isSkipping)

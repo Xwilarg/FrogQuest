@@ -189,6 +189,14 @@ namespace TouhouPrideGameJam4.Character.Player
             }
         }
 
+        public void GoBackDialogue(InputAction.CallbackContext value)
+        {
+            if (value.performed && value.ReadValue<Vector2>().y > 0f)
+            {
+                StoryManager.Instance.GoBack();
+            }
+        }
+
         private bool _waitingForNextPress;
         public void OnMovement(InputAction.CallbackContext value)
         {

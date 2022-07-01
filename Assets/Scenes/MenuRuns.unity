@@ -1750,6 +1750,27 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3acac45b-d03f-491d-a8c1-ec9d3c33cf86
     m_ActionName: VN/Skip[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e5011d-47bc-4896-80e7-39d1ea961bfa
+    m_ActionName: RPG/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1102974849}
+        m_TargetAssemblyTypeName: TouhouPrideGameJam4.Character.Player.PlayerController,
+          ScriptsAssembly
+        m_MethodName: GoBackDialogue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 974c81a9-1425-496d-ab78-b3d44b59ee7a
+    m_ActionName: VN/GoBack[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: VN
