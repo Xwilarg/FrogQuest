@@ -1,5 +1,5 @@
 XXXX.XXXX
-X..X....X
+H..H....H
 .........
-X......XX
+H......HH
 XXXX.XXXX
