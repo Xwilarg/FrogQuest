@@ -1,8 +1,8 @@
-   X.X
+   H.H
   XX.XX
  X.....X
 X.......X
 .........
 X...X...X
 X..X X..X
- XX   XX
+ XX   XX
