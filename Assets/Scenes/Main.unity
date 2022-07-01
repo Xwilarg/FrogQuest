@@ -241,6 +241,10 @@ MonoBehaviour:
   Tooltip: {fileID: 6173789479232382167}
   _profileAya: {fileID: 151939496}
   _profileReimu: {fileID: 646302510}
+  _imageSanae: {fileID: 2043829397}
+  _sanaeJoyful: {fileID: 21300000, guid: 7026f03425d66dc478fd189e188dfb89, type: 3}
+  _sanaeNeutral: {fileID: 21300000, guid: c11143711cfdf9f4db0042b4cb54927f, type: 3}
+  _sanaeSad: {fileID: 21300000, guid: 7e064da9d1a094045a51793647a4d0c9, type: 3}
 --- !u!114 &39555391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5411,7 +5415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c11143711cfdf9f4db0042b4cb54927f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7026f03425d66dc478fd189e188dfb89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

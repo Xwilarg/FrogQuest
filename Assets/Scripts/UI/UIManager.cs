@@ -54,6 +54,12 @@ namespace TouhouPrideGameJam4.UI
         [SerializeField]
         private Image _profileAya, _profileReimu;
 
+        [SerializeField]
+        private Image _imageSanae;
+
+        [SerializeField]
+        private Sprite _sanaeJoyful, _sanaeNeutral, _sanaeSad;
+
         private void Awake()
         {
             Instance = this;
@@ -81,6 +87,19 @@ namespace TouhouPrideGameJam4.UI
         public void SetHealth(float value)
         {
             _healthBar.rectTransform.sizeDelta = new Vector2(value * _baseHealth, _healthBar.rectTransform.sizeDelta.y);
+
+            if (value > .66f)
+            {
+                _imageSanae.sprite = _sanaeJoyful;
+            }
+            else if (value > .33f)
+            {
+                _imageSanae.sprite = _sanaeNeutral;
+            }
+            else
+            {
+                _imageSanae.sprite = _sanaeSad;
+            }
         }
 
         public void SetBossHealth(float value)
