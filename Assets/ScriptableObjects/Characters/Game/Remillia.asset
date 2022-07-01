@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c223a2adffa9b4f81632831997a83e, type: 3}
   m_Name: Remillia
   m_EditorClassIdentifier: 
-  BaseHealth: 150
+  BaseHealth: 100
   StartingItems: []
   DefaultWeapon: {fileID: 11400000, guid: 73b47b0d3d4d6b048b8428d518cc50b1, type: 2}
   DoesDisappearAfterAttacking: 0

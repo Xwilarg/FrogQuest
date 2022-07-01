@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TouhouPrideGameJam4.Character.AI;
 using TouhouPrideGameJam4.Character.Player;
 using TouhouPrideGameJam4.Dialog;
 using TouhouPrideGameJam4.Game;
@@ -57,7 +56,7 @@ namespace TouhouPrideGameJam4.Character
         }
 
         protected float _baseHealthMult = 1f;
-        private float MaxHealth => MaxHealth * _baseHealthMult;
+        private int MaxHealth => Mathf.FloorToInt(MaxHealth * _baseHealthMult);
 
         private Animator _anim;
 
