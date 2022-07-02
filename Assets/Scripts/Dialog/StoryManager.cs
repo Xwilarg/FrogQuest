@@ -58,6 +58,9 @@ namespace TouhouPrideGameJam4.Dialog
 
         private void Awake()
         {
+            _vnContainer.SetActive(false);
+            _choiceContainer.SetActive(false);
+
             Instance = this;
             _source = GetComponent<AudioSource>();
         }
