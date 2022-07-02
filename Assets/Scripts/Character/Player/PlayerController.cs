@@ -51,6 +51,10 @@ namespace TouhouPrideGameJam4.Character.Player
                     PersistencyManager.Instance.StoryProgress = StoryProgress.Quest;
                     PersistencyManager.Instance.QuestStatus = QuestStatus.NotStarted;
                 }
+                if (PersistencyManager.Instance.EasyMode)
+                {
+                    _baseHealthMult *= 3f;
+                }
                 Init(Team.Allies);
             }
         }

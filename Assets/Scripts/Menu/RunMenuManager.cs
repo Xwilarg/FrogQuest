@@ -23,6 +23,14 @@ namespace TouhouPrideGameJam4.Menu
         [SerializeField]
         private Button _reimuB, _ayaB;
 
+        [SerializeField]
+        private Button _easyButton;
+
+        public void TriggerEasyMode()
+        {
+            PersistencyManager.Instance.EasyMode = true;
+        }
+
         private void Start()
         {
             _ayaB.gameObject.SetActive(PersistencyManager.Instance.StoryProgress > StoryProgress.YoukaiMountain1);
@@ -38,6 +46,11 @@ namespace TouhouPrideGameJam4.Menu
                 {
                     _reimuB.interactable = false;
                 }
+            }
+
+            if (PersistencyManager.Instance.EasyMode)
+            {
+                _easyButton.interactable = false;
             }
         }
 

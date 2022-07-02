@@ -26,6 +26,8 @@ namespace TouhouPrideGameJam4.Game.Persistency
 
         public FollowerInfo Follower { set; get; }
 
+        public bool EasyMode { set; get; }
+
         private void Awake()
         {
             Instance = this;
