@@ -29,6 +29,7 @@ namespace TouhouPrideGameJam4.Menu
         public void TriggerEasyMode()
         {
             PersistencyManager.Instance.EasyMode = true;
+            PersistencyManager.Instance.TotalEnergy += 1000;
         }
 
         private void Start()
