@@ -6433,7 +6433,6 @@ GameObject:
   - component: {fileID: 315567602694586679}
   - component: {fileID: 315567602694586673}
   - component: {fileID: 315567602694586678}
-  - component: {fileID: 315567602694586680}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6491,18 +6490,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &315567602694586680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315567602694586676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf18317e8855c0548852fce1d78e1fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &315567602755983492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6650,6 +6637,7 @@ GameObject:
   - component: {fileID: 315567603135487069}
   - component: {fileID: 315567603135487058}
   - component: {fileID: 315567603135487070}
+  - component: {fileID: 315567603135487071}
   m_Layer: 5
   m_Name: WaitButton
   m_TagString: Untagged
@@ -6785,6 +6773,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &315567603135487071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315567603135487056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf18317e8855c0548852fce1d78e1fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &315567603451741664
 MonoBehaviour:
   m_ObjectHideFlags: 0
