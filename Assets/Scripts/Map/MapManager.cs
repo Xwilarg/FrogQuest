@@ -53,6 +53,11 @@ namespace TouhouPrideGameJam4.Map
             Instance = this;
         }
 
+        public void MoveChild(Transform t)
+        {
+            t.transform.parent = _enemiesParent.transform;
+        }
+
         private void Start()
         {
             _enemiesParent = new("Enemies");

@@ -27,6 +27,7 @@ namespace TouhouPrideGameJam4.SO.Item
             var c = Instantiate(Prefab, (Vector2)pos, Quaternion.identity).GetComponent<ACharacter>();
             c.Team = Team;
             c.Position = pos;
+            MapManager.Instance.MoveChild(c.transform);
 
             TurnManager.Instance.AddCharacter(c);
         }
