@@ -131,6 +131,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1232501853, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
+      propertyPath: m_Pitch
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232501853, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
+      propertyPath: m_Volume
+      value: 0.461
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232501853, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8625f6980b8c0e348a728d4ad4bd7b4f, type: 3}
+    - target: {fileID: 1232501853, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.124
+      objectReference: {fileID: 0}
     - target: {fileID: 958320323832118720, guid: b6df1c97451d3ec4aa97c6ad35027ec7, type: 3}
       propertyPath: m_Name
       value: VNCanvas
