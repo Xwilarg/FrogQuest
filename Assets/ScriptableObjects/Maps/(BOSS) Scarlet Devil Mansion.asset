@@ -50,6 +50,12 @@ MonoBehaviour:
     - {fileID: -1337881165, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
     - {fileID: -477640131, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
     - {fileID: 429956481, guid: 2df2321c3af833b4fa88b601f0f287ed, type: 3}
+  - Character: 72
+    Type: 1
+    GizmoColor: {r: 0, g: 0, b: 0, a: 1}
+    CanBeWalkedOn: 0
+    Sprite:
+    - {fileID: -710757975, guid: a616345ccd189e74ab3cf0e69de16f26, type: 3}
   EnemiesSpawn:
   - Item: {fileID: 6059399865179913992, guid: 97184cb6824cc7d4baf118c28e51e8a4, type: 3}
     Weight: 4
